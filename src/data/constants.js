@@ -106,3 +106,5 @@ export const LOGO_FILES = [
 // 폴더에만 존재하는 예외 파일(라이트/다크가 서로 다름)
 export const LIGHT_ONLY_FILES = ["nsd132851977 1.png", "nsd181452869 1.png"];
 export const DARK_ONLY_FILES = ["nsd132844419 1.png", "nsd18156958 1.png"];
+
+

@@ -4,7 +4,10 @@
   "description": "fe-news-jaemin",
   "main": "index.js",
   "scripts": {
-    "start": "npx serve ."
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -17,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/rkdwoals159/fe-news/issues"
   },
-  "homepage": "https://github.com/rkdwoals159/fe-news#readme"
+  "homepage": "https://github.com/rkdwoals159/fe-news#readme",
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
 }

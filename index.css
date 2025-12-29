@@ -141,6 +141,10 @@ img {
   background: var(--surface-alt);
 }
 
+html[data-theme="dark"] .brand__icon {
+  filter: brightness(0) invert(1);
+}
+
 .header__right {
   display: flex;
   align-items: center;
@@ -159,7 +163,7 @@ img {
   height: 36px;
   border-radius: 10px;
   border: 1px solid var(--border-default);
-  background: var(--surface-default);
+  background: transparent;
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -171,6 +175,7 @@ img {
   width: 18px;
   height: 18px;
   opacity: 0.9;
+  filter: none;
 }
 
 .icon-btn:hover {
@@ -347,12 +352,14 @@ img {
   display: grid;
   place-items: center;
   padding: 0;
+  margin: 0 auto;
 }
 
 .stand__nav img {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 40px;
   opacity: 0.5;
+  filter: none;
 }
 
 .stand__nav:hover img {
@@ -406,50 +413,66 @@ img {
   background: var(--surface-alt);
 }
 
-.subscribe-cell {
-  background: color-mix(in srgb, var(--surface-brand-alt), transparent 40%);
+.logo-card:hover,
+.logo-card:focus-within {
+  outline: 3px solid color-mix(in srgb, var(--text-point), transparent 10%);
+  outline-offset: -3px;
 }
 
-.subscribe-cell__inner {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--text-bold);
-  font-weight: 800;
+/* Dark mode: 아이콘 svg 기본 색(#14212B)이 어두워서 반전 처리 */
+html[data-theme="dark"] .icon-btn img,
+html[data-theme="dark"] .stand__nav img {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
-.subscribe-cell__inner img {
-  width: 18px;
-  height: 18px;
-}
-
-.sub-btn {
+/* Subscription pill (screenshot-like) */
+.sub-pill {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
-  height: 28px;
-  padding: 0 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -48%);
+  height: 52px;
+  padding: 0 20px;
   border-radius: 999px;
-  border: 1px solid var(--border-default);
+  border: 2px solid var(--border-bold);
   background: var(--surface-default);
   color: var(--text-bold);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  word-break: keep-all;
+  max-width: calc(100% - 24px);
+  justify-content: center;
   cursor: pointer;
   opacity: 0;
-  transform: translateY(2px);
-  transition: opacity 140ms ease, transform 140ms ease, border-color 140ms ease;
+  transition: opacity 140ms ease, border-color 140ms ease, transform 140ms ease;
 }
 
-.logo-card:hover .sub-btn {
+.sub-pill__text {
+  white-space: nowrap;
+}
+
+.sub-pill__icon {
+  font-size: 14px;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.logo-card:hover .sub-pill,
+.logo-card:focus-within .sub-pill {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(-50%, -50%);
 }
 
-.sub-btn.is-subscribed {
-  border-color: var(--surface-brand-default);
-  color: var(--text-point);
+.sub-pill:hover {
+  border-color: var(--text-point);
 }
+
+/* Subscribe CTA should behave like other cells: show pill only on hover/focus */
 
 .logos.is-list {
   grid-template-columns: repeat(2, minmax(0, 1fr));

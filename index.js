@@ -3,7 +3,8 @@ import {
   LIGHT_ONLY_FILES,
   LOGO_FILES,
   STORAGE_KEYS,
-} from "./constants.js";
+} from "./src/data/constants.js";
+import { initSystemTheme } from "./util/theme.js";
 
 const state = {
   page: 0,
@@ -31,29 +32,6 @@ function shuffle(arr) {
   return copy;
 }
 
-function ensureThemeToggleButton() {
-  let $btn = document.querySelector('[data-action="toggle-theme"]');
-  if ($btn) return $btn;
-
-  const $right = document.querySelector(".header__right");
-  if (!$right) return null;
-
-  $btn = document.createElement("button");
-  $btn.className = "icon-btn";
-  $btn.type = "button";
-  $btn.setAttribute("data-action", "toggle-theme");
-  $btn.setAttribute("aria-label", "다크 모드 전환");
-  $btn.title = "다크 모드 전환";
-
-  const $img = document.createElement("img");
-  $img.src = "./public/icons/Symbol.png";
-  $img.alt = "";
-  $btn.appendChild($img);
-
-  $right.appendChild($btn);
-  return $btn;
-}
-
 function encodePathSegment(filename) {
   // keep slashes as-is (there shouldn't be any), but encode spaces etc.
   return encodeURIComponent(filename).replaceAll("%2F", "/");
@@ -63,21 +41,8 @@ function getThemeFolder(theme) {
   return theme === "dark" ? "darkmodelogos" : "lightmodelogos";
 }
 
-function setTheme(theme, { persist = true } = {}) {
+function setThemeInState(theme) {
   state.theme = theme;
-  document.documentElement.setAttribute("data-theme", theme);
-  if (persist) {
-    localStorage.setItem(STORAGE_KEYS.THEME, theme);
-  }
-
-  const $btn = ensureThemeToggleButton();
-  if ($btn) {
-    $btn.setAttribute(
-      "aria-label",
-      theme === "dark" ? "라이트 모드 전환" : "다크 모드 전환"
-    );
-    $btn.title = theme === "dark" ? "라이트 모드 전환" : "다크 모드 전환";
-  }
 }
 
 function getSubscribedSet() {
@@ -182,17 +147,6 @@ function getCurrentLogoList() {
   return base;
 }
 
-function renderSubscribeCell() {
-  return `
-    <li class="logo-card subscribe-cell">
-      <div class="subscribe-cell__inner">
-        <img src="./public/icons/plus.png" alt="" />
-        <span>구독</span>
-      </div>
-    </li>
-  `;
-}
-
 function renderLogos() {
   const $logos = $("#logos");
   if (!$logos) return;
@@ -200,8 +154,8 @@ function renderLogos() {
   const files = getCurrentLogoList();
   const subscribed = getSubscribedSet();
 
-  // per page: 24 cells, first is "subscribe" cell, rest 23 logos
-  const logosPerPage = Math.max(1, state.perPage - 1);
+  // per page: 24 cells (6*4)
+  const logosPerPage = Math.max(1, state.perPage);
   const totalPages = Math.max(
     1,
     Math.min(4, Math.ceil(files.length / logosPerPage))
@@ -213,27 +167,27 @@ function renderLogos() {
   const items = files.slice(start, end);
 
   const folder = getThemeFolder(state.theme);
-  $logos.innerHTML =
-    renderSubscribeCell() +
-    items
-      .map((filename) => {
-        const src = `./public/${folder}/${encodePathSegment(filename)}`;
-        const isSub = subscribed.has(filename);
-        const btnText = isSub ? "구독중" : "구독";
-        return `
-          <li class="logo-card" data-logo="${encodePathSegment(filename)}">
-            <img src="${src}" alt="언론사 로고" loading="lazy" decoding="async" />
-            <button class="sub-btn ${
-              isSub ? "is-subscribed" : ""
-            }" type="button" data-action="toggle-sub" data-logo="${encodePathSegment(
-          filename
-        )}">
-              ${btnText}
-            </button>
-          </li>
-        `;
-      })
-      .join("");
+  $logos.innerHTML = items
+    .map((filename) => {
+      const src = `/${folder}/${encodePathSegment(filename)}`;
+      const isSub = subscribed.has(filename);
+      const btnText = isSub ? "해지하기" : "구독하기";
+      const btnIcon = isSub ? "×" : "+";
+      return `
+        <li class="logo-card" data-logo="${encodePathSegment(filename)}">
+          <img src="${src}" alt="언론사 로고" loading="lazy" decoding="async" />
+          <button class="sub-pill ${
+            isSub ? "is-subscribed" : ""
+          }" type="button" data-action="toggle-sub" data-logo="${encodePathSegment(
+        filename
+      )}" aria-label="${btnText}">
+            <span class="sub-pill__icon">${btnIcon}</span>
+            <span class="sub-pill__text">${btnText}</span>
+          </button>
+        </li>
+      `;
+    })
+    .join("");
 
   updateNavButtons(totalPages);
 }
@@ -249,7 +203,7 @@ function setTab(tab) {
 }
 
 async function loadNewsData() {
-  const res = await fetch("./news.json", { cache: "no-store" });
+  const res = await fetch("/data/news.json", { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load news.json: ${res.status}`);
   const json = await res.json();
   if (!Array.isArray(json)) return [];
@@ -364,13 +318,6 @@ function bindEvents() {
       window.location.reload();
       return;
     }
-    if (action === "toggle-theme") {
-      setTheme(state.theme === "dark" ? "light" : "dark", {
-        persist: true,
-      });
-      renderLogos();
-      return;
-    }
 
     if (action === "toggle-sub") {
       const encoded = target.getAttribute("data-logo") || "";
@@ -413,19 +360,15 @@ function bindEvents() {
 
 async function init() {
   setDate();
-  ensureThemeToggleButton();
   buildShuffledLogoLists();
 
-  const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME);
-  const prefersDark = window.matchMedia?.(
-    "(prefers-color-scheme: dark)"
-  )?.matches;
-
-  if (savedTheme === "dark" || savedTheme === "light") {
-    setTheme(savedTheme, { persist: true });
-  } else {
-    setTheme(prefersDark ? "dark" : "light", { persist: false });
-  }
+  initSystemTheme({
+    onChange: (theme) => {
+      setThemeInState(theme);
+      // 테마 변경 시 로고(라이트/다크 폴더)도 즉시 반영
+      renderLogos();
+    },
+  });
 
   const savedView = localStorage.getItem(STORAGE_KEYS.VIEW);
   setView(savedView === "list" || savedView === "grid" ? savedView : "grid");
