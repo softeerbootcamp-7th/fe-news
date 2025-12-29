@@ -1,0 +1,21 @@
+{
+  "name": "fe-news",
+  "version": "1.0.0",
+  "description": "fe-news-jaemin",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkdwoals159/fe-news.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rkdwoals159/fe-news/issues"
+  },
+  "homepage": "https://github.com/rkdwoals159/fe-news#readme"
+}
