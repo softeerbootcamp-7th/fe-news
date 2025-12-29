@@ -10,19 +10,16 @@
     <div class="page">
       <header class="header">
         <div class="container header__inner">
-          <button
-            class="brand"
-            type="button"
-            data-action="refresh"
-            aria-label="새로고침"
-          >
-            <img
-              class="brand__icon"
-              src="./public/icons/newspaper.png"
-              alt=""
-            />
-            <span class="brand__name">뉴스스탠드</span>
-          </button>
+          <h1 class="brand" aria-label="뉴스스탠드">
+            <a class="brand__link" href="./" data-action="refresh">
+              <img
+                class="brand__icon"
+                src="./public/icons/newspaper.png"
+                alt=""
+              />
+              <span class="brand__name">뉴스스탠드</span>
+            </a>
+          </h1>
 
           <div class="header__right">
             <time class="date" id="date" datetime=""></time>
@@ -63,7 +60,7 @@
           </a>
         </section>
 
-        <section class="section">
+        <section class="section" aria-label="언론사별 기사들을 확인하는 영역">
           <div class="section__header">
             <nav class="tabs" aria-label="언론사 탭">
               <button
@@ -107,7 +104,7 @@
             </div>
           </div>
 
-          <div class="stand" aria-label="언론사 목록">
+          <section class="stand" aria-label="언론사 목록">
             <button
               class="stand__nav stand__nav--left"
               type="button"
@@ -118,7 +115,7 @@
             </button>
 
             <div class="stand__panel">
-              <div class="logos" id="logos" role="list"></div>
+              <ul class="logos" id="logos" aria-label="언론사 로고 목록"></ul>
             </div>
 
             <button
@@ -129,7 +126,7 @@
             >
               <img src="./public/icons/chevron-right.png" alt="" />
             </button>
-          </div>
+          </section>
         </section>
       </main>
     </div>
