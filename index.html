@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Stand</title>
+  </head>
+  <body>
+    <!-- 1. 기본 상단 영역 -->
+    <div id="newsstand">
+      <header class="newsstand-header">
+        <h2 class="newstand-title">
+          <img src="./assets/icon-news.png" alt="" aria-hidden="true" />
+        </h2>
+        <time class="newstand-date" datetime="2026-01-14">
+          2026. 01. 14. 수요일
+        </time>
+      </header>
+      <!-- 2. 최신 뉴스 자동롤링 영역 -->
+      <section class="news-ticker" aria-label="최신 뉴스">
+        <ul>
+          <li class="news-item">
+            <a href="#" class="news-link">
+              <strong class="press-name">연합뉴스</strong>
+              <span class="news-title">[속보] 도심 공원 '조용한 독서존' 시범 운영... 시민 호응 이어져</span>
+            </a>
+          </li>
+          <li class="news-item">
+            <a href="#" class="news-link">
+              <strong class="press-name">서울경제</strong>
+              <span class="news-title">착한 소비 캠페인, 지역 상권 회복에 긍정적 영향</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <!-- 3. 언론사별 기사들을 확인하는 영역 -->
+      <section class="press-stand">
+        <header class="press-header">
+          <div class="tab-group" role="tablist">
+            <button type="button" class="tab-item is-active" role="tab" aria-selected="true">
+              전체 언론사
+            </button>
+            <button type="button" class="tab-item" role="tab" aria-selected="false">
+              내가 구독한 언론사
+              <span class="count">9</span>
+            </button>
+          </div>
+          <div class="tab-controls">
+            <button type="button" class="btn-list" aria-label="리스트 보기">
+              <img src="icon-list.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" class="btn-grid" aria-label="그리드 보기">
+              <img src="icon-grid.svg" alt="" aria-hidden="true" />
+            </button>
+          </div>
+        </header>
+        <div class="press-content">
+        </div>
+      </section>
+    </div>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
