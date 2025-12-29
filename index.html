@@ -1,11 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>뉴스스탠드</title>
+    <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
-    <h1>Hello World</h1>
+    <div class="page">
+      <header class="header">
+        <div class="container header__inner">
+          <button
+            class="brand"
+            type="button"
+            data-action="refresh"
+            aria-label="새로고침"
+          >
+            <img
+              class="brand__icon"
+              src="./public/icons/newspaper.png"
+              alt=""
+            />
+            <span class="brand__name">뉴스스탠드</span>
+          </button>
+
+          <div class="header__right">
+            <time class="date" id="date" datetime=""></time>
+            <button
+              class="icon-btn"
+              type="button"
+              data-action="toggle-theme"
+              aria-label="다크 모드 전환"
+              title="다크 모드 전환"
+            >
+              <img src="./public/icons/Symbol.png" alt="" />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <section class="newsbar" aria-label="최신 뉴스 자동 롤링">
+          <a
+            class="newsbar__item"
+            id="rolling-left"
+            href="#"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span class="newsbar__source">-</span>
+            <span class="newsbar__title">불러오는 중...</span>
+          </a>
+          <a
+            class="newsbar__item"
+            id="rolling-right"
+            href="#"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span class="newsbar__source">-</span>
+            <span class="newsbar__title">불러오는 중...</span>
+          </a>
+        </section>
+
+        <section class="section">
+          <div class="section__header">
+            <nav class="tabs" aria-label="언론사 탭">
+              <button
+                class="tab is-active"
+                type="button"
+                data-action="tab"
+                data-tab="all"
+              >
+                전체 언론사
+              </button>
+              <button
+                class="tab"
+                type="button"
+                data-action="tab"
+                data-tab="subscribed"
+              >
+                내가 구독한 언론사
+                <span class="badge" id="sub-count" aria-label="구독 수">0</span>
+              </button>
+            </nav>
+
+            <div class="view-toggle" aria-label="보기 전환">
+              <button
+                class="icon-btn"
+                type="button"
+                data-action="view"
+                data-view="list"
+                aria-label="리스트 보기"
+              >
+                <img src="./public/icons/closed.png" alt="" />
+              </button>
+              <button
+                class="icon-btn is-active"
+                type="button"
+                data-action="view"
+                data-view="grid"
+                aria-label="그리드 보기"
+              >
+                <img src="./public/icons/grid-view.png" alt="" />
+              </button>
+            </div>
+          </div>
+
+          <div class="stand" aria-label="언론사 목록">
+            <button
+              class="stand__nav stand__nav--left"
+              type="button"
+              data-action="prev"
+              aria-label="이전"
+            >
+              <img src="./public/icons/chevron-right.png" alt="" />
+            </button>
+
+            <div class="stand__panel">
+              <div class="logos" id="logos" role="list"></div>
+            </div>
+
+            <button
+              class="stand__nav stand__nav--right"
+              type="button"
+              data-action="next"
+              aria-label="다음"
+            >
+              <img src="./public/icons/chevron-right.png" alt="" />
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
