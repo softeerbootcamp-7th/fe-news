@@ -1,6 +1,6 @@
 import { $ } from "../utils/dom.js";
 
-export async function loadNewsData(url = "/data/news.json") {
+export async function loadNewsData(url = "/mockData/news.json") {
   const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load news.json: ${res.status}`);
   const json = await res.json();

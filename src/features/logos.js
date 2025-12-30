@@ -131,8 +131,17 @@ export function renderLogos({
   const items = files.slice(start, end);
 
   const folder = getThemeFolder(state.theme);
-  $logos.innerHTML = items
+  const shouldPadEmptyCells =
+    state.tab === "subscribed" && state.view === "grid";
+  const cells = shouldPadEmptyCells
+    ? Array.from({ length: logosPerPage }, (_, i) => items[i] ?? null)
+    : items;
+
+  $logos.innerHTML = cells
     .map((filename) => {
+      if (!filename)
+        return `<li class="logo-card is-empty" aria-hidden="true"></li>`;
+
       const src = `/${folder}/${encodePathSegment(filename)}`;
       const isSub = subscribed.has(filename);
       const btnText = isSub ? "해지하기" : "구독하기";

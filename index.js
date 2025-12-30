@@ -49,8 +49,48 @@ function rerenderLogos() {
   });
 }
 
+function pressNameFromFilename(filename) {
+  // 파일명 기반(임시) 표시용 라벨: 확장자/뒤쪽 숫자 제거
+  return String(filename || "")
+    .replace(/\.(png|jpe?g|webp|svg)$/i, "")
+    .replace(/\s+\d+$/g, "")
+    .trim();
+}
+
+function confirmUnsubscribe({ pressName } = {}) {
+  const $dialog = document.getElementById("unsubscribe-dialog");
+  if (!($dialog instanceof HTMLDialogElement)) {
+    // fallback
+    return Promise.resolve(
+      window.confirm(
+        `${pressName || "선택한 언론사"}을(를) 구독해지하시겠습니까?`
+      )
+    );
+  }
+
+  const $name = $dialog.querySelector('[data-role="press-name"]');
+  if ($name) $name.textContent = pressName || "언론사";
+
+  // backdrop click => cancel
+  if (!$dialog.dataset.backdropBound) {
+    $dialog.addEventListener("click", (e) => {
+      if (e.target === $dialog) $dialog.close("cancel");
+    });
+    $dialog.dataset.backdropBound = "1";
+  }
+
+  return new Promise((resolve) => {
+    const onClose = () => {
+      $dialog.removeEventListener("close", onClose);
+      resolve($dialog.returnValue === "confirm");
+    };
+    $dialog.addEventListener("close", onClose);
+    $dialog.showModal();
+  });
+}
+
 function bindEvents() {
-  document.addEventListener("click", (e) => {
+  document.addEventListener("click", async (e) => {
     const target =
       e.target instanceof Element ? e.target.closest("[data-action]") : null;
     if (!target) return;
@@ -65,8 +105,15 @@ function bindEvents() {
       const encoded = target.getAttribute("data-logo") || "";
       const filename = decodeURIComponent(encoded);
       const set = getSubscribedSet(STORAGE_KEYS.SUBSCRIBED_PRESS);
-      if (set.has(filename)) set.delete(filename);
-      else set.add(filename);
+      if (set.has(filename)) {
+        const ok = await confirmUnsubscribe({
+          pressName: pressNameFromFilename(filename),
+        });
+        if (!ok) return;
+        set.delete(filename);
+      } else {
+        set.add(filename);
+      }
       setSubscribedSet(STORAGE_KEYS.SUBSCRIBED_PRESS, set);
       updateSubscribedCount({ storageKey: STORAGE_KEYS.SUBSCRIBED_PRESS });
       rerenderLogos();
