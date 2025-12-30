@@ -12,12 +12,10 @@
   },
   "license": "ISC",
   "author": "lwjmcn",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "node": "node",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "vite": "^7.3.0"
   }
 }
