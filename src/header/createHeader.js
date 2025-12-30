@@ -8,4 +8,21 @@ export function createHeader() {
 
   // 날짜 설정
   document.querySelector(".today").innerText = parseDateString(new Date());
+
+  // 다크모드
+  document.querySelector(".toggle-theme-button").onclick = () => {
+    const root = document.documentElement;
+
+    const currentTheme = root.getAttribute("data-theme");
+    const nextTheme = currentTheme === "light" ? "dark" : "light";
+
+    const svg = document.getElementsByClassName("toggle-theme-button")[0]
+      .firstElementChild;
+    svg.src =
+      nextTheme === "light"
+        ? "public/assets/svg/dark_mode.svg"
+        : "public/assets/svg/light_mode.svg";
+
+    root.setAttribute("data-theme", nextTheme);
+  };
 }
