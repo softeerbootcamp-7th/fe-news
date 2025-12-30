@@ -6,6 +6,7 @@ import { newsData } from './data.js'
  * - [week 1-1 레이아웃]
  * - 모듈 나누기
  * - 그리드 컨텐츠 없어도 레이아웃 유지되도록
+ * - 그리드 페이지네이션 > 최대 4페이지
  * 
  * - [week 1-2 구독 및 롤링 기능]
  * - 구독 호버 레이아웃
@@ -17,6 +18,10 @@ import { newsData } from './data.js'
 const ITEMS_PER_PAGE = 24
 let currentPage = 1
 let currentView = 'grid'
+
+// 새로고침마다 데이터 섞기
+// TODO: 최적화 고민
+const shuffledData = [...newsData].sort(() => Math.random() - 0.5);
 
 // 오늘 날짜 표시
 function displayTodayDate() {
@@ -37,12 +42,12 @@ function displayTodayDate() {
 function getPaginatedData(page) {
   const start = (page - 1) * ITEMS_PER_PAGE
   const end = start + ITEMS_PER_PAGE
-  return newsData.slice(start, end)
+  return shuffledData.slice(start, end)
 }
 
 // 총 페이지 수 계산
 function getTotalPages() {
-  return Math.ceil(newsData.length / ITEMS_PER_PAGE)
+  return Math.ceil(shuffledData.length / ITEMS_PER_PAGE)
 }
 
 // 그리드 렌더링
