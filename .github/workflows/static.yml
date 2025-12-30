@@ -1,24 +1,48 @@
-steps:
-  - name: Checkout
-    uses: actions/checkout@v4
+name: Deploy static content to Pages
 
-  - name: Get commit hash
-    id: commit
-    run: echo "hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
 
-  # 1. 특정 커밋 해시 폴더로 스냅샷 배포 (snapshots/8eea7c3)
-  - name: Deploy Snapshot
-    uses: peaceiris/actions-gh-pages@v4
-    with:
-      github_token: ${{ secrets.GITHUB_TOKEN }}
-      publish_dir: . # 배포할 파일이 있는 디렉토리
-      destination_dir: snapshots/${{ steps.commit.outputs.hash }} # 이 경로에 복사됨
-      keep_files: true # 중요! 기존의 다른 스냅샷 폴더들을 지우지 않고 유지함
+# 1. 권한 설정 (이게 없으면 토큰이 있어도 브랜치 생성을 못할 수 있음)
+permissions:
+  contents: write
 
-  # 2. 루트 디렉토리에 최신 버전 배포
-  - name: Deploy Latest
-    uses: peaceiris/actions-gh-pages@v4
-    with:
-      github_token: ${{ secrets.GITHUB_TOKEN }}
-      publish_dir: .
-      keep_files: true # snapshots 폴더를 지우지 않기 위해 설정
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get commit hash
+        id: commit
+        run: echo "hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      # 2. 배포할 파일들을 'build' 폴더 한곳에 예쁘게 모으기
+      - name: Prepare Build Directory
+        run: |
+          mkdir build
+
+          # (A) 루트(최신 버전) 파일 복사
+          # .git과 build 폴더 자신은 제외하고 복사
+          rsync -av --exclude='.git' --exclude='build' . build/
+
+          # (B) 스냅샷 폴더 생성 및 복사
+          HASH=${{ steps.commit.outputs.hash }}
+          mkdir -p build/snapshots/$HASH
+
+          # 다시 한번 스냅샷 폴더로 파일 복사
+          rsync -av --exclude='.git' --exclude='build' . build/snapshots/$HASH/
+
+          echo "📂 Build directory prepared successfully."
+          ls -R build
+
+      # 3. 딱 한 번의 실행으로 배포 끝내기
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build # 위에서 합친 폴더를 배포
+          keep_files: true # 중요: 과거에 만든 다른 스냅샷들을 지우지 않음
