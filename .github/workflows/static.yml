@@ -1,80 +1,24 @@
-name: Deploy static content to Pages
+steps:
+  - name: Checkout
+    uses: actions/checkout@v4
 
-on:
-  push:
-    branches: ['main']
+  - name: Get commit hash
+    id: commit
+    run: echo "hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
-  workflow_dispatch:
+  # 1. 특정 커밋 해시 폴더로 스냅샷 배포 (snapshots/8eea7c3)
+  - name: Deploy Snapshot
+    uses: peaceiris/actions-gh-pages@v4
+    with:
+      github_token: ${{ secrets.GITHUB_TOKEN }}
+      publish_dir: . # 배포할 파일이 있는 디렉토리
+      destination_dir: snapshots/${{ steps.commit.outputs.hash }} # 이 경로에 복사됨
+      keep_files: true # 중요! 기존의 다른 스냅샷 폴더들을 지우지 않고 유지함
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: 'pages'
-  cancel-in-progress: false
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Get commit hash
-        id: commit
-        run: echo "hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-
-      - name: Deploy Snapshot to gh-pages
-        run: |
-          # 작업 디렉토리 저장 (GITHUB_WORKSPACE는 항상 유효)
-          WORK_DIR="$GITHUB_WORKSPACE"
-          TEMP_BUILD_DIR="$WORK_DIR/../temp_build"
-
-          # 현재 소스 코드를 임시 디렉토리에 백업
-          mkdir -p "$TEMP_BUILD_DIR"
-          rsync -av --exclude='.git' --exclude='node_modules' "$WORK_DIR/" "$TEMP_BUILD_DIR/"
-
-          # gh-pages 브랜치 가져오기 및 체크아웃
-          git fetch origin gh-pages || true
-          git checkout gh-pages || git checkout -b gh-pages
-
-          # 커밋 해시 가져오기
-          HASH=${{ steps.commit.outputs.hash }}
-
-          # snapshots 디렉토리 생성 및 파일 복사
-          mkdir -p snapshots/$HASH
-          cp -r "$TEMP_BUILD_DIR"/* snapshots/$HASH/
-
-          # 루트에도 최신 버전 복사
-          cp -r "$TEMP_BUILD_DIR"/* .
-
-          # snapshots 내부의 불필요한 파일만 제거 (현재 .git은 유지해야 함)
-          find snapshots/$HASH -name "node_modules" -type d -exec rm -rf {} + || true
-          find snapshots/$HASH -name ".git" -type d -exec rm -rf {} + || true
-          find snapshots/$HASH -name ".DS_Store" -delete || true
-          find . -maxdepth 1 -name "node_modules" -type d -exec rm -rf {} + || true
-          find . -maxdepth 1 -name ".DS_Store" -delete || true
-
-          # snapshots/$HASH/index.html에 base 태그 추가
-          REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
-          BASE_URL="/$REPO_NAME/snapshots/$HASH/"
-          if [ -f "snapshots/$HASH/index.html" ]; then
-            # base 태그가 이미 있는지 확인하고, 없으면 추가
-            if ! grep -q '<base' "snapshots/$HASH/index.html"; then
-              # Linux sed 사용 (GitHub Actions는 Ubuntu)
-              sed -i "s|<head>|<head>\n    <base href=\"$BASE_URL\">|" "snapshots/$HASH/index.html"
-            fi
-          fi
-
-          # git 설정
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # 변경사항 추가 및 커밋
-          git add snapshots/$HASH .
-          git commit -m "Deploy snapshot: $HASH" || echo "No changes to commit"
-          git push origin gh-pages
+  # 2. 루트 디렉토리에 최신 버전 배포
+  - name: Deploy Latest
+    uses: peaceiris/actions-gh-pages@v4
+    with:
+      github_token: ${{ secrets.GITHUB_TOKEN }}
+      publish_dir: .
+      keep_files: true # snapshots 폴더를 지우지 않기 위해 설정
