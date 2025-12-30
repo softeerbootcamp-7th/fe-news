@@ -1,0 +1,28 @@
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-text-point);
+}
+
+.logo h1 {
+    color: var(--color-text-strong);
+}
+
+time {
+    color: var(--color-text-default);
+}
