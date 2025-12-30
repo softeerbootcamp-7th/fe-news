@@ -1,0 +1,222 @@
+/* ========================================
+   CSS Variables (Design Tokens)
+   ======================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* ===== Typography ===== */
+  --font-main: "Pretendard Variable", Pretendard, sans-serif;
+
+  --weight-bold: 700;
+  --weight-medium: 500;
+
+  --size-l: 24px;
+  --size-m: 16px;
+  --size-r: 14px;
+  --size-s: 12px;
+
+  --lh-none: 1;
+  --lh-tight: 1.2;
+  --lh-medium: 1.5;
+
+  /* ===== Colors: Primitive ===== */
+  --grayscale-white-alt: #ffffffb3;
+  --grayscale-white: #ffffff;
+  --grayscale-50: #f5f7f9;
+  --grayscale-100: #d2dae0;
+  --grayscale-200: #879298;
+  --grayscale-300: #6e8091;
+  --grayscale-400: #5f6e76;
+  --grayscale-500: #4b5966;
+  --grayscale-black: #14212b;
+
+  --blue-100: #7890e7;
+  --blue-500: #4362d0;
+
+  /* ===== Colors: Semantic (Light Mode) ===== */
+  --text-strong: var(--grayscale-black);
+  --text-bold: var(--grayscale-500);
+  --text-default: var(--grayscale-400);
+  --text-weak: var(--grayscale-200);
+  --text-point: var(--blue-500);
+
+  --surface-default: var(--grayscale-white);
+  --surface-alt: var(--grayscale-50);
+  --surface-brand-default: var(--blue-500);
+
+  --border-bold: var(--grayscale-300);
+  --border-default: var(--grayscale-100);
+
+  /* ===== Object Styles ===== */
+  --radius-full: 999px;
+  --radius-100: 8px;
+  --border-width: 1px;
+
+  /* ===== Shadows ===== */
+  --shadow-popup: 0 4px 2px rgba(20, 33, 43, 0.02),
+    0 2px 18px rgba(20, 33, 43, 0.08);
+}
+
+/* ===== Dark Mode ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-strong: var(--grayscale-white);
+    --text-bold: var(--grayscale-50);
+    --text-default: var(--grayscale-100);
+    --text-point: var(--blue-500);
+
+    --surface-default: var(--grayscale-black);
+    --surface-alt: var(--grayscale-500);
+
+    --border-default: var(--grayscale-400);
+  }
+}
+
+/* ========================================
+   Global Styles
+   ======================================== */
+
+* {
+  font-family: var(--font-main);
+}
+
+body {
+  background-color: var(--surface-default);
+  color: var(--text-default);
+}
+
+/* ========================================
+   Typography Classes
+   ======================================== */
+
+/* Display Bold */
+.display-bold24 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-l);
+  line-height: var(--lh-none);
+}
+
+.display-bold16 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-m);
+  line-height: var(--lh-none);
+}
+
+.display-bold14 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-r);
+  line-height: var(--lh-none);
+}
+
+.display-bold12 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-s);
+  line-height: var(--lh-none);
+}
+
+.display-medium16 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-m);
+  line-height: 1.375; /* 22px */
+}
+
+.display-medium14 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-r);
+  line-height: var(--lh-none);
+}
+
+.display-medium12 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-s);
+  line-height: var(--lh-none);
+}
+
+/* Selected Bold */
+.selected-bold16 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-m);
+  line-height: var(--lh-none);
+}
+
+.selected-bold14 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-r);
+  line-height: var(--lh-none);
+}
+
+/* Available Medium */
+.available-medium16 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-m);
+  line-height: var(--lh-none);
+}
+
+.available-medium14 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-r);
+  line-height: var(--lh-none);
+}
+
+.available-medium12 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-s);
+  line-height: var(--lh-none);
+}
+
+/* Hover Medium */
+.hover-medium16 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-m);
+  line-height: var(--lh-none);
+  text-decoration: underline;
+}
+
+.hover-medium14 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-r);
+  line-height: var(--lh-none);
+  text-decoration: underline;
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+
+/* Border Radius */
+.radius-full {
+  border-radius: var(--radius-full);
+}
+
+.radius-100 {
+  border-radius: var(--radius-100);
+}
+
+/* Borders */
+.border-default {
+  border: var(--border-width) solid var(--border-default);
+}
+
+.border-bold {
+  border: var(--border-width) solid var(--border-bold);
+}
+
+/* Shadows */
+.shadow-popup {
+  box-shadow: var(--shadow-popup);
+}
