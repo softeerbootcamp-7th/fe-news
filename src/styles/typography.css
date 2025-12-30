@@ -1,0 +1,48 @@
+/* Base */
+body {
+  font-family: var(--font-family-base);
+  color: var(--text-default);
+}
+
+/* Display */
+.display-bold-24 {
+  font-size: var(--font-size-24);
+  font-weight: var(--font-weight-bold);
+}
+
+.display-bold-16 {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+}
+
+.display-bold-14 {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+}
+
+.display-bold-12 {
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Medium */
+.medium-16 {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-22);
+}
+
+.medium-14 {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+}
+
+.medium-12 {
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Underline (hover / selected) */
+.underline {
+  text-decoration: underline;
+}

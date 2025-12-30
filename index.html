@@ -1,18 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <title>뉴스스탠드</title>
-    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./src/styles/global.css" />
+    <link rel="stylesheet" href="./src/styles/tokens.css" />
+    <link rel="stylesheet" href="./src/styles/theme.css" />
+    <link rel="stylesheet" href="./src/styles/typography.css" />
   </head>
   <body>
     <!-- 기본 상단 영역 -->
-    <header>
-      <section aria-label="뉴스스탠드 헤더" class="main-title">
-        <img src="" alt="logo" class="main-logo" />
-        <h1>뉴스스탠드</h1>
+    <header class="header-container">
+      <section aria-label="뉴스스탠드 헤더" class="flex-group">
+        <img
+          src="public/assets/svg/newspaper.svg"
+          alt="logo"
+          class="main-logo"
+        />
+        <h1 class="main-title display-bold-24">뉴스스탠드</h1>
       </section>
-      <time class="today">2026. 01. 14. 수요일</time>
+      <div class="flex-group">
+        <time class="today display-medium-16">2026. 01. 14. 수요일</time>
+        <button class="toggle-theme-button">
+          <img src="public/assets/svg/dark_mode.svg" alt="다크모드 사용하기" />
+        </button>
+      </div>
     </header>
 
     <main>
