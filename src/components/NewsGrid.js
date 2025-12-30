@@ -1,28 +1,20 @@
 // src/components/NewsGrid.js
-export default class NewsGrid {
-  constructor(newsItems) {
-    this.newsItems = newsItems || [];
-  }
+export const NewsGrid = (newsItems = [], isDarkMode = false) => {
+  const gridCells = newsItems
+    .map(
+      (item) => `
+    <div class="grid-cell border-default">
+      <img src="${isDarkMode ? item.darkLogo : item.lightLogo}" alt="${
+        item.name
+      }">
+    </div>
+  `
+    )
+    .join("");
 
-  render() {
-    const gridCells = this.newsItems
-      .map(
-        (item) => `
-      <div class="grid-cell border-default">
-        <img src="${item.logo}" alt="${item.name}">
-      </div>
-    `
-      )
-      .join("");
-
-    return `
-      <div class="grid-content">
-        ${gridCells}
-      </div>
-    `;
-  }
-
-  updateNews(newsItems) {
-    this.newsItems = newsItems;
-  }
-}
+  return `
+    <div class="grid-content">
+      ${gridCells}
+    </div>
+  `;
+};

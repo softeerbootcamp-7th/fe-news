@@ -82,8 +82,11 @@
 }
 
 body {
-  background-color: var(--surface-default);
+  height: 100vh;
   color: var(--text-default);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header {
@@ -106,6 +109,7 @@ header {
 .flex-gap-8 {
   display: flex;
   gap: 8px;
+  margin-top: 40px;
 }
 
 .rolling-news-content {
@@ -117,32 +121,74 @@ header {
   gap: 16px;
 }
 
-.grid-group {
-  display: grid;
-  grid-template-columns: 120px 1fr 120px;
-  align-items: center;
+.grid-container {
   background-color: var(--surface-alt);
+  margin-top: 32px;
 }
 
 .grid-tab {
   display: flex;
   gap: 24px;
+  margin-bottom: 24px;
 }
 
 .grid-tab-item {
   display: flex;
   gap: 4px;
   padding: 0px;
-  background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
+.grid-wrapper {
+  position: relative;
+}
+
 .grid-content {
   display: grid;
+  gap: 0px;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 16px;
+  margin-top: 24px;
+  width: 930px;
+  height: 388px;
+}
+
+.grid-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--border-default);
+  background-color: var(--surface-default);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-default);
+  transition: all 0.2s;
+}
+
+.grid-arrow:hover {
+  background-color: var(--surface-alt);
+  border-color: var(--border-bold);
+  color: var(--text-strong);
+}
+
+.grid-arrow-left {
+  left: -80px;
+}
+
+.grid-arrow-right {
+  right: -80px;
 }
 
 /* ========================================

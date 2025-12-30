@@ -1,63 +1,64 @@
 // src/main.js
-import Header from "./components/Header.js";
-import RollingNews from "./components/RollingNews.js";
-import GridTab from "./components/GridTab.js";
-import NewsGrid from "./components/NewsGrid.js";
+import { Header } from "./components/Header.js";
+import { RollingNews } from "./components/RollingNews.js";
+import { GridContainer } from "./components/GridContainer.js";
 
-class App {
-  constructor() {
-    this.app = document.getElementById("app");
+// 앱 상태
+const state = {
+  selectedTab: "all",
+  subscribedPressIds: new Set([1, 2, 3, 4, 5, 6, 7, 8]),
+  isDarkMode: window.matchMedia("(prefers-color-scheme: dark)").matches,
+  allPresses: Array(24)
+    .fill(null)
+    .map((_, i) => ({
+      id: i + 1,
+      name: `press${i + 1}`,
+      lightLogo: `/asset/light_mode_logo/press${i + 1}.png`,
+      darkLogo: `/asset/dark_mode_logo/press${i + 1}.png`,
+    })),
+};
 
-    // 컴포넌트 초기화
-    this.header = new Header();
-    this.rollingNews = new RollingNews();
-    this.gridTab = new GridTab(8);
+// 렌더링
+const render = () => {
+  const app = document.getElementById("app");
 
-    // 뉴스 데이터 (임시)
-    this.allNewsItems = Array(24)
-      .fill(null)
-      .map((_, i) => ({
-        name: "서울경제",
-        logo: "...",
-      }));
+  const template = `
+    ${Header()}
+    ${RollingNews()}
+    <main>
+      ${GridContainer(
+        state.selectedTab,
+        state.subscribedPressIds.size,
+        state.allPresses,
+        state.isDarkMode
+      )}
+    </main>
+  `;
 
-    this.newsGrid = new NewsGrid(this.allNewsItems);
+  app.innerHTML = template;
+  attachEventListeners();
+};
 
-    this.render();
-    this.attachEventListeners();
-  }
-
-  render() {
-    const template = `
-      ${this.header.render()}
-      ${this.rollingNews.render()}
-      <main>
-        <section class="grid-group">
-          <div></div>
-          ${this.gridTab.render()}
-          <div></div>
-          <div></div>
-          ${this.newsGrid.render()}
-          <div></div>
-        </section>
-      </main>
-    `;
-
-    this.app.innerHTML = template;
-  }
-
-  attachEventListeners() {
-    this.gridTab.attachEventListeners();
-
-    // 탭 변경 이벤트 리스닝
-    document.addEventListener("tabChange", (e) => {
-      const { tab } = e.detail;
+// 이벤트 리스너
+const attachEventListeners = () => {
+  const buttons = document.querySelectorAll(".grid-tab-item");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const tab = button.getAttribute("data-tab");
+      state.selectedTab = tab;
       console.log(`Tab changed to: ${tab}`);
-      // 여기서 뉴스 필터링 로직 추가 가능
-      this.render();
+      render();
     });
-  }
-}
+  });
+};
+
+// 다크모드 변경 감지
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", (e) => {
+    state.isDarkMode = e.matches;
+    render();
+  });
 
 // 앱 초기화
-new App();
+render();
