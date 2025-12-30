@@ -411,6 +411,15 @@ img {
   padding: 18px;
 }
 
+.logo-card.is-empty {
+  background: transparent;
+  pointer-events: none;
+}
+
+.logo-card.is-empty:hover {
+  background: transparent;
+}
+
 .logo-card:nth-child(6n) {
   border-right: 0;
 }
