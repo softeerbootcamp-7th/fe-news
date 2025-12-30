@@ -5,6 +5,7 @@
 
 - [x]  npm + vite + esm 환경 수동 구축
 - [x]  브라우저 화면에 hello world를 출력
+- [x]  pretendard 폰트 설치
 - [ ]  typography 세팅
 - [ ]  color 세팅
 - [ ]  object style 세팅
@@ -12,6 +13,7 @@
 
 **FEATURE**
 
+- [ ]  전체 레이아웃 구성 (시멘틱 태그 최대한 활용하기)
 - 상단 영역
     - [ ]  로고 표시
     - [ ]  로고 클릭 시 화면 새로고침
