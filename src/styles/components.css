@@ -13,23 +13,40 @@ header {
 }
 #title-and-logo {
   display: flex;
+  align-items: center;
   gap: 8px;
 }
+h1 {
+  font-size: var(--fs-24);
+}
 
+#newspaper-icon {
+  width: 24;
+  height: 24;
+}
 .auto-rolling-news {
+  display: flex;
+  align-items: center;
   width: 461px;
   padding: 16px;
   border: 1px solid #d2dae0;
   background-color: #f5f7f9;
+  gap: 16px;
 }
 .auto-rolling-news-bar {
   width: 930px;
   height: 49px;
   display: flex;
-  gap: 16px;
+  gap: 8px;
+}
+
+.clean-button {
+  border: 0;
+  background-color: transparent;
 }
 #tab-button {
   display: flex;
+  gap: 24px;
 }
 #tab-and-viewer {
   display: flex;
@@ -44,4 +61,22 @@ header {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(4, 1fr);
+}
+
+.press-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d2dae0;
+}
+
+.height-space-40 {
+  height: 40px;
+}
+
+.height-space-32 {
+  height: 32px;
+}
+.height-space-20 {
+  height: 32px;
 }
