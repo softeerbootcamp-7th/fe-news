@@ -1,21 +1,46 @@
+@import url("/fonts/Pretendard-1.3.9/web/static/pretendard.css");
+
 /* ==========================================================================
    Design Tokens (from palette screenshot)
    ========================================================================== */
 :root {
+  /* Typography (spec) */
+  --ff-base: Pretendard, ui-sans-serif, system-ui, -apple-system,
+    "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", Roboto, Helvetica, Arial;
+  --fw-bold: 700;
+  --fw-medium: 500;
+  --fs-l: 24px;
+  --fs-m: 16px;
+  --fs-r: 14px;
+  --fs-s: 12px;
+  --lh-auto: normal;
+  --lh-22: 22px;
+
+  /* Typography tokens (font shorthand) */
+  --typo-bold-l: var(--fw-bold) var(--fs-l) / var(--lh-auto) var(--ff-base);
+  --typo-bold-m: var(--fw-bold) var(--fs-m) / var(--lh-auto) var(--ff-base);
+  --typo-bold-r: var(--fw-bold) var(--fs-r) / var(--lh-auto) var(--ff-base);
+  --typo-bold-s: var(--fw-bold) var(--fs-s) / var(--lh-auto) var(--ff-base);
+
+  --typo-medium-m: var(--fw-medium) var(--fs-m) / var(--lh-22) var(--ff-base);
+  --typo-medium-r: var(--fw-medium) var(--fs-r) / var(--lh-auto) var(--ff-base);
+  --typo-medium-s: var(--fw-medium) var(--fs-s) / var(--lh-auto) var(--ff-base);
+
   /* Grayscale */
-  --grayscale-black: #0f172a;
+  --grayscale-black: #14212b;
   --grayscale-white: #ffffff;
-  --grayscale-50: #f8fafc;
-  --grayscale-100: #f1f5f9;
-  --grayscale-200: #e2e8f0;
-  --grayscale-300: #cbd5e1;
-  --grayscale-400: #94a3b8;
-  --grayscale-500: #64748b;
-  --grayscale-white-alt: #e2e8f0;
+  --grayscale-50: #f5f7f9;
+  --grayscale-100: #d2dae0;
+  --grayscale-200: #879298;
+  --grayscale-300: #6e8091;
+  --grayscale-400: #5f6e76;
+  --grayscale-500: #4b5966;
+  /* #FFFFFF(70%) */
+  --grayscale-white-alt: rgba(255, 255, 255, 0.7);
 
   /* Blue */
-  --blue-100: #dbeafe;
-  --blue-500: #3b82f6;
+  --blue-100: #7890e7;
+  --blue-500: #4362d0;
 
   /* Semantic tokens */
   --text-strong: var(--grayscale-black);
@@ -49,10 +74,11 @@ html[data-theme="dark"] {
   --text-white-default: var(--grayscale-white);
   --text-white-weak: var(--grayscale-white-alt);
 
-  --surface-default: #0b1220;
-  --surface-alt: #111b2c;
-  --border-bold: rgba(226, 232, 240, 0.28);
-  --border-default: rgba(226, 232, 240, 0.18);
+  /* palette spec (Dark Mode token mapping) */
+  --surface-default: var(--grayscale-black);
+  --surface-alt: var(--grayscale-500);
+  --border-bold: var(--grayscale-white-alt);
+  --border-default: var(--grayscale-400);
   --shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
 }
 
@@ -74,9 +100,7 @@ body {
   margin: 0;
   background: var(--surface-default);
   color: var(--text-strong);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Apple SD Gothic Neo",
-    "Noto Sans KR", "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji",
-    "Segoe UI Emoji";
+  font-family: var(--ff-base);
   letter-spacing: -0.2px;
 }
 
@@ -118,8 +142,7 @@ img {
 .brand {
   margin: 0;
   color: var(--text-strong);
-  font-weight: 700;
-  font-size: 26px;
+  font: var(--typo-bold-l);
 }
 
 .brand__link {
@@ -135,15 +158,15 @@ img {
 .brand__icon {
   width: 28px;
   height: 28px;
+  display: block;
+  color: var(--text-point);
 }
 
 .brand__link:hover {
   background: var(--surface-alt);
 }
 
-html[data-theme="dark"] .brand__icon {
-  filter: brightness(0) invert(1);
-}
+/* 인라인 SVG라서 fill(currentColor)로 자동 대응: 별도 filter 불필요 */
 
 .header__right {
   display: flex;
@@ -154,7 +177,7 @@ html[data-theme="dark"] .brand__icon {
 }
 
 .date {
-  font-size: 16px;
+  font: var(--typo-medium-r);
   color: var(--text-default);
 }
 
@@ -169,13 +192,13 @@ html[data-theme="dark"] .brand__icon {
   cursor: pointer;
   box-shadow: var(--shadow);
   padding: 0;
+  color: var(--text-bold);
 }
 
-.icon-btn img {
+.icon-btn .icon {
   width: 18px;
   height: 18px;
-  opacity: 0.9;
-  filter: none;
+  display: block;
 }
 
 .icon-btn:hover {
@@ -183,9 +206,8 @@ html[data-theme="dark"] .brand__icon {
 }
 
 .icon-btn.is-active {
-  border-color: var(--surface-brand-default);
-  box-shadow: 0 0 0 2px
-    color-mix(in srgb, var(--surface-brand-default), transparent 80%);
+  border-color: var(--border-default);
+  color: var(--text-point);
 }
 
 /* ==========================================================================
@@ -200,15 +222,15 @@ html[data-theme="dark"] .brand__icon {
 
 .newsbar__item {
   border: 1px solid var(--border-default);
-  background: var(--surface-default);
-  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
+  /* border-radius: var(--radius-sm); */
   padding: 16px 18px;
   display: flex;
   align-items: center;
   gap: 12px;
   text-decoration: none;
   color: inherit;
-  box-shadow: var(--shadow);
+  /* box-shadow: var(--shadow); */
   min-height: 56px;
 }
 
@@ -242,14 +264,14 @@ html[data-theme="dark"] .brand__icon {
 }
 
 .newsbar__source {
-  font-weight: 800;
+  font: var(--typo-bold-r);
   color: var(--text-strong);
   white-space: nowrap;
 }
 
 .newsbar__title {
   color: var(--text-bold);
-  font-weight: 600;
+  font: var(--typo-medium-m);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -283,11 +305,11 @@ html[data-theme="dark"] .brand__icon {
   padding: 10px 0;
   cursor: pointer;
   color: var(--text-default);
-  font-size: 18px;
-  font-weight: 700;
+  font: var(--typo-medium-m);
 }
 
 .tab.is-active {
+  font: var(--typo-bold-m);
   color: var(--text-strong);
 }
 
@@ -310,10 +332,9 @@ html[data-theme="dark"] .brand__icon {
   min-width: 22px;
   padding: 0 7px;
   border-radius: 999px;
-  background: var(--surface-brand-default);
+  background: var(--surface-brand-alt);
   color: var(--text-white-default);
-  font-size: 12px;
-  font-weight: 800;
+  font: var(--typo-bold-s);
   margin-left: 8px;
 }
 
@@ -409,14 +430,13 @@ html[data-theme="dark"] .brand__icon {
   background: var(--surface-alt);
 }
 
-.logo-card:hover,
+/* .logo-card:hover,
 .logo-card:focus-within {
   outline: 3px solid color-mix(in srgb, var(--text-point), transparent 10%);
   outline-offset: -3px;
-}
+} */
 
 /* Dark mode: 아이콘 svg 기본 색(#14212B)이 어두워서 반전 처리 */
-html[data-theme="dark"] .icon-btn img,
 html[data-theme="dark"] .stand__nav img {
   filter: brightness(0) invert(1);
   opacity: 0.9;
@@ -434,8 +454,7 @@ html[data-theme="dark"] .stand__nav img {
   border: 2px solid var(--border-bold);
   background: var(--surface-default);
   color: var(--text-bold);
-  font-size: 12px;
-  font-weight: 700;
+  font: var(--typo-medium-s);
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -463,10 +482,10 @@ html[data-theme="dark"] .stand__nav img {
   opacity: 1;
   transform: translate(-50%, -50%);
 }
-
+/* 
 .sub-pill:hover {
   border-color: var(--text-point);
-}
+} */
 
 /* Subscribe CTA should behave like other cells: show pill only on hover/focus */
 
