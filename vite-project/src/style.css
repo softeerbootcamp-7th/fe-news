@@ -79,3 +79,44 @@
   --shadow-elevation-2: 0 4px 8px rgba(20, 33, 43, 0.15);
   --shadow-blur18-xo-y4: 0 4px 18px rgba(20, 33, 43, 0.2);
 }
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#app {
+  width: 930px;
+  height: 388px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#app header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#app main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
