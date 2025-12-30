@@ -14,8 +14,13 @@
   "author": "lwjmcn",
   "type": "module",
   "scripts": {
-    "node": "node",
     "start": "node server.js",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "vite": "^7.3.0"
   }
 }
