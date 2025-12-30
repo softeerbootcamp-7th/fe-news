@@ -1,0 +1,19 @@
+@import url('./reset.css');
+@import url('./typography.css');
+@import url('./color.css');
+
+:root {
+    /* Drop shadow tokens */
+  --shadow-popup: 
+    0px 4px 2px rgba(20, 18, 27, 0.02),
+    0px 2px 18px rgba(20, 18, 27, 0.08);
+}
+
+#app {
+  width: 100%;
+  max-width: 930px; /* 필요 시 제한 */
+  min-height: 100vh; /* 화면 전체 높이 채움 */
+  margin: 60px auto; /* 가운데 정렬 */
+  display: flex;
+  flex-direction: column; /* header → main 순서 유지 */
+}
