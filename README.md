@@ -3,8 +3,8 @@
 ### week1 TODO
 **SETTING**
 
-- [ ]  npm + vite + esm 환경 수동 구축
-- [ ]  브라우저 화면에 hello world를 출력
+- [x]  npm + vite + esm 환경 수동 구축
+- [x]  브라우저 화면에 hello world를 출력
 - [ ]  typography 세팅
 - [ ]  color 세팅
 - [ ]  object style 세팅
