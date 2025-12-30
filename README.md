@@ -6,18 +6,18 @@
 - [x]  npm + vite + esm 환경 수동 구축
 - [x]  브라우저 화면에 hello world를 출력
 - [x]  pretendard 폰트 설치
-- [ ]  typography 세팅
-- [ ]  color 세팅
-- [ ]  object style 세팅
-- [ ]  Icon svg로 세팅
+- [x]  typography 세팅
+- [x]  color 세팅
+- [x]  object style 세팅
+- [x]  Icon svg로 세팅
 
 **FEATURE**
 
 - [x]  전체 레이아웃 구성 (시멘틱 태그 최대한 활용하기)
 - 상단 영역
-    - [ ]  로고 표시
-    - [ ]  로고 클릭 시 화면 새로고침
-    - [ ]  시스템 날짜 표시
+    - [x]  로고 표시
+    - [x]  로고 클릭 시 화면 새로고침
+    - [x]  시스템 날짜 표시
 
 - 뉴스 롤링 영역
     - [ ]  최신 뉴스 2개 5s 마다 자동 롤링
