@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>뉴스스탠드</title>
+</head>
+<body>
+    <div id="app">
+    <!-- 상단 영역 -->
+    <header>
+        <h1>뉴스스탠드</h1>
+        <p>2026.01.14 수요일</p>
+    </header>
+
+    <main>
+        <!-- 최신 뉴스 자동 롤링 영역 -->
+        <section aria-label="latest news rolling">
+            <div class="rolling-container">
+            <!-- 왼쪽 롤링 영역 -->
+            <ul class="rolling-left">
+                <li>최신 뉴스 헤드라인 1</li>
+                <li>최신 뉴스 헤드라인 2</li>
+                <li>최신 뉴스 헤드라인 3</li>
+                <li>최신 뉴스 헤드라인 4</li>
+                <li>최신 뉴스 헤드라인 5</li>
+            </ul>
+
+            <!-- 오른쪽 롤링 영역 -->
+            <ul class="rolling-right">
+                <li>최신 뉴스 헤드라인 6</li>
+                <li>최신 뉴스 헤드라인 7</li>
+                <li>최신 뉴스 헤드라인 8</li>
+                <li>최신 뉴스 헤드라인 9</li>
+                <li>최신 뉴스 헤드라인 10</li>
+            </ul>
+            </div>
+        </section>
+
+        <!-- 언론사별 기사 확인 영역 -->
+        <section aria-label="news providers">
+            <div aria-label="news tab">
+                <p>전체 언론사</p>
+                <p>내가 구독한 언론사</p>
+            </div>
+            <div aria-label="news grid">
+                <button type="button" aria-label="previous page">
+                    ◀
+                </button>
+
+                <ul class="news-grid">
+                <!-- 6 x 4 = 24 -->
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                <li>언론사</li>
+                </ul>
+
+                <button type="button" aria-label="next page">
+                    ▶
+                </button>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- <script type="module" src="./src/app.js"></script> -->
+
+</body>
+</html>

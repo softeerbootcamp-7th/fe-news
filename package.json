@@ -1,0 +1,21 @@
+{
+  "name": "fe-news",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1jiwoo27/fe-news.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1jiwoo27/fe-news/issues"
+  },
+  "homepage": "https://github.com/1jiwoo27/fe-news#readme"
+}
