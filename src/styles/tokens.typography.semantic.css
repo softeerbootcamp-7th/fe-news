@@ -1,0 +1,67 @@
+:root {
+  /* ---------- Display ---------- */
+  --typo-display-bold24:
+    var(--font-weight-bold)
+    var(--font-size-l) /
+    var(--line-height-auto)
+    var(--font-family-base);
+
+  --typo-display-bold16:
+    var(--font-weight-bold)
+    var(--font-size-m) /
+    var(--line-height-auto)
+    var(--font-family-base);
+
+  --typo-display-bold14:
+    var(--font-weight-bold)
+    var(--font-size-r) /
+    var(--line-height-auto)
+    var(--font-family-base);
+
+  --typo-display-bold12:
+    var(--font-weight-bold)
+    var(--font-size-s) /
+    var(--line-height-auto)
+    var(--font-family-base);
+
+  /* ---------- Medium ---------- */
+  --typo-display-medium16:
+    var(--font-weight-medium)
+    var(--font-size-m) /
+    var(--line-height-22)
+    var(--font-family-base);
+
+  --typo-display-medium14:
+    var(--font-weight-medium)
+    var(--font-size-r) /
+    var(--line-height-auto)
+    var(--font-family-base);
+
+  --typo-display-medium12:
+    var(--font-weight-medium)
+    var(--font-size-s) /
+    var(--line-height-auto)
+    var(--font-family-base);
+
+  /* ---------- Selected ---------- */
+  --typo-selected-bold16: var(--typo-display-bold16);
+  --typo-selected-bold14: var(--typo-display-bold14);
+
+  /* ---------- Available ---------- */
+  --typo-available-medium16: var(--typo-display-medium16);
+  --typo-available-medium14: var(--typo-display-medium14);
+  --typo-available-medium12: var(--typo-display-medium12);
+
+  /* ---------- Hover ---------- */
+  --typo-hover-medium16:
+    var(--font-weight-medium)
+    var(--font-size-m) /
+    var(--line-height-22)
+    var(--font-family-base);
+
+  --typo-hover-medium14:
+    var(--font-weight-medium)
+    var(--font-size-r) /
+    var(--line-height-auto)
+    var(--font-family-base);
+}

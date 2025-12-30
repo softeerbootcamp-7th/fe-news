@@ -1,0 +1,21 @@
+:root {
+  /* ---------- Text ---------- */
+  --color-text-primary: var(--color-grayscale-black);
+  --color-text-secondary: var(--color-grayscale-500);
+  --color-text-tertiary: var(--color-grayscale-300);
+  --color-text-disabled: var(--color-grayscale-200);
+  --color-text-inverse: var(--color-grayscale-white);
+
+  /* ---------- Background ---------- */
+  --color-bg-default: var(--color-grayscale-white);
+  --color-bg-alt: var(--color-grayscale-50);
+  --color-bg-inverse: var(--color-grayscale-black);
+
+  /* ---------- Border ---------- */
+  --color-border-default: var(--color-grayscale-100);
+  --color-border-strong: var(--color-grayscale-200);
+
+  /* ---------- Brand / Action ---------- */
+  --color-primary: var(--color-blue-500);
+  --color-primary-hover: var(--color-blue-100);
+}
