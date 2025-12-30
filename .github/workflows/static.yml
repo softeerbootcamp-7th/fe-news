@@ -1,20 +1,55 @@
-- name: Deploy Snapshot to gh-pages
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches: ['main']
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get commit hash
+        id: commit
+        run: echo "hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Deploy Snapshot to gh-pages
         run: |
           mkdir -p ../temp_build
-          rsync -av --exclude='.git' . ../temp_build/
-          
+          rsync -av --exclude='.git' --exclude='node_modules' . ../temp_build/
+
           git fetch origin gh-pages || true
           git checkout gh-pages || git checkout -b gh-pages
-          
+
           HASH=${{ steps.commit.outputs.hash }}
-          
+
           mkdir -p snapshots/$HASH
           cp -r ../temp_build/* snapshots/$HASH/
-          
+
           cp -r ../temp_build/* .
-          
+
+          find . -name "node_modules" -type d -exec rm -rf {} + || true
+          find . -name ".git" -type d -exec rm -rf {} + || true
+          find . -name ".DS_Store" -delete || true
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
           git add snapshots/$HASH .
-          git commit -m "Deploy snapshot: $HASH"
+          git commit -m "Deploy snapshot: $HASH" || echo "No changes to commit"
           git push origin gh-pages
