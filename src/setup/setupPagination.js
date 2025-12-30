@@ -11,7 +11,13 @@ export default function setupPagination(
     const nextBtn = container.querySelector(".pagination-arrow.next");
 
     if (prevBtn) {
-      prevBtn.disabled = currentPage === 0;
+      if (currentPage === 0) {
+        prevBtn.disabled = true;
+        prevBtn.style.visibility = "hidden";
+      } else {
+        prevBtn.style.visibility = "visible";
+        prevBtn.disabled = false;
+      }
     }
 
     if (nextBtn) {

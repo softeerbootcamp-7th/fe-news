@@ -1,3 +1,5 @@
+import "../style/header.css";
+
 export default function header() {
   const now = new Date();
   const koreaTime = new Date(

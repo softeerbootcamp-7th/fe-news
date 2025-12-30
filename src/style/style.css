@@ -1,0 +1,80 @@
+/* =========================
+   CSS RESET
+   ========================= */
+
+/* 1. 모든 요소 기본 여백 제거 + box-sizing 통일 */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. HTML, Body 기본 설정 */
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+/* 3. 기본 폰트 상속 */
+body {
+  line-height: 1;
+  font-family: inherit;
+  background: none;
+}
+
+/* 4. 리스트 스타일 제거 */
+ol, ul {
+  list-style: none;
+}
+
+/* 5. 링크 기본 스타일 제거 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 6. 버튼 초기화 */
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+/* 7. input, textarea 기본 스타일 제거 */
+input, textarea, select {
+  font: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* 8. 이미지, 미디어 요소 */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 9. 테이블 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 10. 인용, 강조 태그 */
+blockquote, q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+}
+
+/* 11. heading 기본 크기 제거 */
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}

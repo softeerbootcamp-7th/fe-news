@@ -1,4 +1,5 @@
 import pagination, { nextButton } from "./pagination.js";
+import "../style/gridNews.css";
 
 export default function gridNews(
   newsItems = [],

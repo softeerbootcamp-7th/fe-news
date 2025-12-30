@@ -1,3 +1,5 @@
+import "../style/newsFilter.css";
+
 export default function newsFilter(
   activeFilter = "all",
   activeView = "grid",

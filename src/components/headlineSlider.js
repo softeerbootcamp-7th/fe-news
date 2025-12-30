@@ -1,3 +1,5 @@
+import "../style/headelineSlider.css";
+
 export default function headelineSlider() {
   return /* html */ `
         <section class="headline-section" aria-label="주요 헤드라인">
