@@ -1,0 +1,7 @@
+.layout-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 32px;
+    width: 930px;
+}
