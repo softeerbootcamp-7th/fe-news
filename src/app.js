@@ -1,6 +1,19 @@
 import './style.css'
 import { newsData } from './data.js'
 
+/**
+ * TODO
+ * - [week 1-1 레이아웃]
+ * - 모듈 나누기
+ * - 그리드 컨텐츠 없어도 레이아웃 유지되도록
+ * 
+ * - [week 1-2 구독 및 롤링 기능]
+ * - 구독 호버 레이아웃
+ * - 구독 모달 레이아웃
+ * - 구독 기능
+ * - 롤링 뉴스 기능
+ */
+
 const ITEMS_PER_PAGE = 24
 let currentPage = 1
 let currentView = 'grid'
