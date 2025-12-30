@@ -1,0 +1,29 @@
+@use '@/styles/variable.scss' as *;
+@use '@/styles/typography.scss' as *;  
+
+.rolling-section {
+    align-items: center;
+    display: flex;
+    gap:0.5rem;
+    width: 100%;
+
+    &__item {
+        align-items: center;
+        background-color: var(--surface-alt);
+        border: 1px solid var(--border-default);
+        display: flex;
+        flex-grow: 1;
+        gap:1rem;
+        padding:1rem;
+
+        &--newspaper {
+            @include display-bold14;
+            color: var(--text-strong);
+        }
+
+        &--title {
+            @include available-medium14;
+            color: var(--text-default);
+        }
+    }
+}
