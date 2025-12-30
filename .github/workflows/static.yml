@@ -12,8 +12,6 @@
           mkdir -p ../temp_build
           cp -r . ../temp_build/
           
-          git checkout gh-pages || git checkout --orphan gh-pages
-          
           HASH=${{ steps.commit.outputs.hash }}
           mkdir -p snapshots/$HASH
           cp -r ../temp_build/* snapshots/$HASH/
