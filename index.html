@@ -1,13 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vite-project</title>
+    <title>뉴스스탠드</title>
+    <link rel="stylesheet" href="/src/styles/components.css" />
+    <link rel="stylesheet" href="/src/styles/typography.css" />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <div id="page">
+      <header aria-label="헤더">
+        <div id="title-and-logo">
+          <img id="nespaper-icon" src="/icons/newspaper.svg" />
+          <h1 class="display-bold24">뉴스스탠드</h1>
+        </div>
+
+        <p class="display-medium16" id="todays-date">2026.01.14 수요일</p>
+      </header>
+      <div class="height-space-40"></div>
+      <div aria-label="최신 뉴스 자동 롤링 영역" class="auto-rolling-news-bar">
+        <article class="auto-rolling-news">
+          <span class="display-bold14">연합뉴스</span>
+          <span class="available-medium14"
+            >[속보] 도심 공원 '조용한 독서존' 시범 운영.... 시민 호응
+            이어져</span
+          >
+        </article>
+        <article class="auto-rolling-news">
+          <span class="display-bold14">서울경제</span>
+          <span class="available-medium14"
+            >착한 소비 캠페인, 지역 상권 회복에 긍정적 영향</span
+          >
+        </article>
+      </div>
+      <div class="height-space-32"></div>
+      <div id="tab-and-viewer" aria-label="전체언론사, 구독 언론사 탭 영역">
+        <div id="tab-button">
+          <button class="selected-bold16 clean-button">전체언론사</button>
+          <div id="subscribed-press">
+            <button class="available-medium16 clean-button">
+              내가 구독한 언론사
+            </button>
+            <span>8</span>
+          </div>
+        </div>
+
+        <div id="viewer-button">
+          <img src="/icons/grid-view.svg" />
+          <img src="/icons/list-view.svg" />
+        </div>
+      </div>
+      <div class="height-space-20"></div>
+      <div id="grid-view">
+        <div class="press-logo">
+          <img src="/images/logos/light-mode/008 1.png" />
+        </div>
+        <div class="press-logo">
+          <img src="/images/logos/light-mode/008 1.png" />
+        </div>
+        <div class="press-logo">
+          <img src="/images/logos/light-mode/008 1.png" />
+        </div>
+        <div class="press-logo">
+          <img src="/images/logos/light-mode/008 1.png" />
+        </div>
+        <div class="press-logo">
+          <img src="/images/logos/light-mode/008 1.png" />
+        </div>
+        <div class="press-logo">
+          <img src="/images/logos/light-mode/008 1.png" />
+        </div>
+        <div class="press-logo">
+          <img src="/images/logos/light-mode/008 1.png" />
+        </div>
+        <div class="press-logo">
+          <img src="/images/logos/light-mode/008 1.png" />
+        </div>
+        <div class="press-logo">
+          <img src="/images/logos/light-mode/008 1.png" />
+        </div>
+        <div class="press-logo">
+          <img src="/images/logos/light-mode/008 1.png" />
+        </div>
+      </div>
+    </div>
   </body>
 </html>
