@@ -1,4 +1,6 @@
-import { createHeader } from './components/header';
+import { createAutoRollingNews } from './components/autoRollingNews/autoRollingNews';
+import { createHeader } from './components/header/header';
+import './styles/layout.css';
 import './styles/index.css';
 
 const app = document.querySelector('#app');
@@ -8,5 +10,7 @@ app.innerHTML =  `
 `
 const layoutMain = app.querySelector('.news');
 const header = createHeader();
+const autoRollingNews = createAutoRollingNews();
 
-layoutMain.prepend(header);
+layoutMain.append(header);
+layoutMain.append(autoRollingNews);
