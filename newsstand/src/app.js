@@ -1,11 +1,11 @@
-import { createLayout } from "./components/layout";
-import { getDate } from "./lib/utils";
+import { header } from "./components/header";
 
 const root = document.getElementById("app");
 
-root.innerHTML = createLayout();
+// 메인 컨테이너 생성
+const mainContainer = document.createElement("div");
+mainContainer.id = "main-container";
 
-document.addEventListener("DOMContentLoaded", () => {
-  const dateField = document.getElementById("date");
-  dateField.innerText = getDate();
-});
+// 헤더 생성
+root.appendChild(mainContainer);
+mainContainer.append(header());
