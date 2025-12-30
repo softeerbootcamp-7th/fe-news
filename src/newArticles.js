@@ -5,8 +5,7 @@ export class NewArticlesView {
     this.rightIndex = 1;
     this.lastIndex = 1;
 
-    const articlesContainer =
-      document.getElementsByClassName("new-articles")[0];
+    const articlesContainer = document.querySelector(".new-articles");
     this.leftArticleContainer = articlesContainer.children[0];
     this.rightArticleContainer = articlesContainer.children[1];
 

@@ -1,12 +1,11 @@
 import { parseDateString } from "@/utils/parse";
 
 export function createHeader() {
-  document.getElementsByClassName("today")[0].innerText = parseDateString(
-    new Date()
-  );
-  document
-    .getElementsByClassName("main-logo")[0]
-    .addEventListener("click", () => {
-      location.reload();
-    });
+  // 로고 클릭 시 새로고침
+  document.querySelector(".main-logo").addEventListener("click", () => {
+    location.reload();
+  });
+
+  // 날짜 설정
+  document.querySelector(".today").innerText = parseDateString(new Date());
 }
