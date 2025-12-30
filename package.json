@@ -1,0 +1,26 @@
+{
+  "name": "news",
+  "version": "1.0.0",
+  "description": "News stand, softeer fe first week mission",
+  "homepage": "https://github.com/lwjmcn/fe-news#readme",
+  "bugs": {
+    "url": "https://github.com/lwjmcn/fe-news/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lwjmcn/fe-news.git"
+  },
+  "license": "ISC",
+  "author": "lwjmcn",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "vite": "^7.3.0"
+  }
+}
