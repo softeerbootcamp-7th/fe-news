@@ -1,0 +1,103 @@
+@mixin text-bold-lg {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+@mixin text-bold-md {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+@mixin text-bold-rg {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+@mixin text-bold-sm {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+@mixin text-medium-md {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.375rem;
+}
+
+@mixin text-medium-md-underline {
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+@mixin text-medium-rg {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+@mixin text-medium-rg-underline {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+@mixin text-medium-sm {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.display-bold24 {
+  @include text-bold-lg;
+}
+
+.display-bold16 {
+  @include text-bold-md;
+}
+
+.display-bold14 {
+  @include text-bold-rg;
+}
+
+.display-bold12 {
+  @include text-bold-sm;
+}
+
+.display-medium16 {
+  @include text-medium-md;
+}
+
+.display-medium14 {
+  @include text-medium-rg;
+}
+
+.display-medium12 {
+  @include text-medium-sm;
+}
+
+.selected-bold16 {
+  @include text-bold-md;
+}
+
+.selected-bold14 {
+  @include text-bold-rg;
+}
+
+.available-medium16 {
+  @include text-medium-md;
+}
+
+.available-medium14 {
+  @include text-medium-rg;
+}
+
+.available-medium12 {
+  @include text-medium-sm;
+}
+
+.hover-medium16 {
+  @include text-medium-md-underline;
+}
+
+.hover-medium14 {
+  @include text-medium-rg-underline;
+}
