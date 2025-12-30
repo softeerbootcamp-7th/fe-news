@@ -124,6 +124,11 @@ body {
   white-space: nowrap;
 }
 
+.rolling-news-item p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /* 탭 영역 */
 .tabs {
   display: flex;
