@@ -9,6 +9,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  --text-white-weak: rgb(255, 255, 255, 0.7);
+  --text-white-default: #FFFFFF;
+  --surface-alt: #F5F7F9;
+  --border-default: #D2DAE0;
+  --text-weak: #879298;
+  --border-bold: #6E8091;
+  --text-default: #5F6E76;
+  --text-bold: #4B5966;
+  --text-strong: #14212B;
+  --surface-brand-alt: #7890E7;
+  --surface-brand-default: #4362D0;
 }
 
 #title {
@@ -33,5 +44,5 @@
 .todaysDate {
   font-size: 16;
   font-weight: 500;
-  color: #5F6276;
+  color: var(--text-default);
 }
