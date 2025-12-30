@@ -9,4 +9,20 @@ function loadSVG() {
     })
 }
 
+const dateEl = document.querySelector(".date");
+
+function updateDate() {
+  const now = new Date();
+
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, "0");
+  const dd = String(now.getDate()).padStart(2, "0");
+  const day = now.getDay();
+  const days = ["일", "월", "화", "수", "목", "금", "토"];
+
+  dateEl.textContent = `${yyyy}. ${mm}. ${dd}. ${days[day]}요일`;
+}
+
 loadSVG();
+updateDate();
+setInterval(updateDate, 60000); // 매 분마다 시간 업데이트
