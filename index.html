@@ -9,47 +9,53 @@
     <header>
       <img src="" alt="logo" />
       <h1>뉴스스탠드</h1>
-      <p>2026. 01. 14. 수요일</p>
+      <time id="today">2026. 01. 14. 수요일</time>
     </header>
 
     <main>
       <!-- 최신 뉴스 자동롤링 영역 -->
-      <div>
+      <section aria-label="최신 뉴스">
         <!-- 뉴스 요소 -->
-        <div>
+        <article>
           <p>연합뉴스</p>
-          <p>[속보] 도심 공원 '조용한 독서촌' 시범 운영... 시민 호응 이어져</p>
-        </div>
-        <div>
+          <h3>
+            [속보] 도심 공원 '조용한 독서촌' 시범 운영... 시민 호응 이어져
+          </h3>
+        </article>
+        <article>
           <p>연합뉴스</p>
-          <p>[속보] 도심 공원 '조용한 독서촌' 시범 운영... 시민 호응 이어져</p>
-        </div>
-      </div>
+          <h3>
+            [속보] 도심 공원 '조용한 독서촌' 시범 운영... 시민 호응 이어져
+          </h3>
+        </article>
+      </section>
       <!-- 언론사별 기사들을 확인하는 영역  -->
-      <div>
-        <!-- 상단 영역-->
-        <div>
-          <h3>전체 언론사</h3>
+      <section aria-label="언론사 뉴스">
+        <!-- 언론사 필터 탭-->
+        <header>
+          <h2>전체 언론사</h2>
           <div>
-            <h3>내가 구독한 언론사</h3>
+            <h2>내가 구독한 언론사</h2>
             <p>8</p>
           </div>
           <!-- 그리드/리스트 보기 -->
-          <button>
-            <img src="" alt="grid button" />
-          </button>
-          <button>
-            <img src="" alt="list button" />
-          </button>
-        </div>
+          <nav aria-label="보기 방식">
+            <button>
+              <img src="" alt="grid button" />
+            </button>
+            <button>
+              <img src="" alt="list button" />
+            </button>
+          </nav>
+        </header>
 
-        <!-- 언론사 영역-->
-        <div>
+        <!-- 언론사 목록 영역-->
+        <section aria-label="언론사 목록">
           <button>
-            <img src="" alt="좌측 화살표" />
+            <img src="" alt="이전 목록" />
           </button>
           <button>
-            <img src="" alt="우측 화살표" />
+            <img src="" alt="다음 목록" />
           </button>
           <!-- 그리드 -->
           <ul id="list">
@@ -66,10 +72,9 @@
               <img src="" alt="SBS Biz 로고" />
             </li>
           </ul>
-        </div>
-      </div>
+        </section>
+      </section>
     </main>
-    <div></div>
     <script type="module" src="/src/app.js"></script>
   </body>
 </html>
