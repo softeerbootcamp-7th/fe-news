@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>뉴스스탠드</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="container header__inner">
+          <h1 class="brand" aria-label="뉴스스탠드">
+            <a class="brand__link" href="./" data-action="refresh">
+              <img class="brand__icon" src="/icons/newspaper.svg" alt="" />
+              <span class="brand__name">뉴스스탠드</span>
+            </a>
+          </h1>
+
+          <div class="header__right">
+            <time class="date" id="date" datetime=""></time>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <section class="newsbar" aria-label="최신 뉴스 자동 롤링">
+          <a
+            class="newsbar__item"
+            id="rolling-left"
+            href="#"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span class="newsbar__source">-</span>
+            <span class="newsbar__title">불러오는 중...</span>
+          </a>
+          <a
+            class="newsbar__item"
+            id="rolling-right"
+            href="#"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span class="newsbar__source">-</span>
+            <span class="newsbar__title">불러오는 중...</span>
+          </a>
+        </section>
+
+        <section class="section" aria-label="언론사별 기사들을 확인하는 영역">
+          <div class="section__header">
+            <nav class="tabs" aria-label="언론사 탭">
+              <button
+                class="tab is-active"
+                type="button"
+                data-action="tab"
+                data-tab="all"
+              >
+                전체 언론사
+              </button>
+              <button
+                class="tab"
+                type="button"
+                data-action="tab"
+                data-tab="subscribed"
+              >
+                내가 구독한 언론사
+                <span class="badge" id="sub-count" aria-label="구독 수">0</span>
+              </button>
+            </nav>
+
+            <div class="view-toggle" aria-label="보기 전환">
+              <button
+                class="icon-btn"
+                type="button"
+                data-action="view"
+                data-view="list"
+                aria-label="리스트 보기"
+              >
+                <img src="/icons/list-view.svg" alt="" />
+              </button>
+              <button
+                class="icon-btn is-active"
+                type="button"
+                data-action="view"
+                data-view="grid"
+                aria-label="그리드 보기"
+              >
+                <img src="/icons/grid-view.svg" alt="" />
+              </button>
+            </div>
+          </div>
+
+          <section class="stand" aria-label="언론사 목록">
+            <button
+              class="stand__nav stand__nav--left"
+              type="button"
+              data-action="prev"
+              aria-label="이전"
+            >
+              <img src="/icons/LeftButton.svg" alt="" />
+            </button>
+
+            <div class="stand__panel">
+              <ul class="logos" id="logos" aria-label="언론사 로고 목록"></ul>
+            </div>
+
+            <button
+              class="stand__nav stand__nav--right"
+              type="button"
+              data-action="next"
+              aria-label="다음"
+            >
+              <img src="/icons/RightButton.svg" alt="" />
+            </button>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
