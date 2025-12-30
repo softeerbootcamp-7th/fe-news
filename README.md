@@ -38,4 +38,4 @@ https://forhyundaisofteer.github.io/fe-news/
 - CSS 다크 모드 적용
   - [data-theme="dark"]
 - Mock Data 세팅
-- Dialog 구현 (구독)
+- Dialog 구현
