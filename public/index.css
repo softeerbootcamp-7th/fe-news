@@ -127,7 +127,7 @@ img {
    Header
    ========================================================================== */
 .header {
-  border-bottom: 1px solid var(--border-default);
+  /* border-bottom: 1px solid var(--border-default); */
   background: var(--surface-default);
 }
 
@@ -216,8 +216,10 @@ img {
 .newsbar {
   margin-top: 26px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
+  width: 100%;
+  justify-items: stretch;
 }
 
 .newsbar__item {
@@ -232,6 +234,9 @@ img {
   color: inherit;
   /* box-shadow: var(--shadow); */
   min-height: 56px;
+  min-width: 0; /* grid item width fix: keep 50:50 even with long content */
+  width: 100%;
+  justify-self: stretch;
 }
 
 .newsbar__item {
@@ -245,7 +250,8 @@ img {
 }
 
 .newsbar__item .newsbar__title {
-  display: inline-block;
+  display: block; /* ensure flex-ellipsis works (override old inline-block rule) */
+  min-width: 0;
 }
 
 .newsbar__item.is-switching .newsbar__title {
@@ -267,11 +273,15 @@ img {
   font: var(--typo-bold-r);
   color: var(--text-strong);
   white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .newsbar__title {
   color: var(--text-bold);
   font: var(--typo-medium-m);
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0; /* flex item ellipsis fix */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -347,15 +357,15 @@ img {
 /* ==========================================================================
    Stand (grid container with chevrons)
    ========================================================================== */
-.stand {
+.stand-wrap {
   margin-top: 18px;
+  position: relative;
+}
+
+.stand {
   border: 1px solid var(--border-default);
-  border-radius: var(--radius);
   background: var(--surface-default);
   box-shadow: var(--shadow);
-  display: grid;
-  grid-template-columns: 64px 1fr 64px;
-  align-items: stretch;
   min-height: 430px;
 }
 
@@ -373,7 +383,19 @@ img {
   display: grid;
   place-items: center;
   padding: 0;
-  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 120px;
+}
+
+.stand__nav--left {
+  left: -56px;
+}
+
+.stand__nav--right {
+  right: -56px;
 }
 
 .stand__nav img {
@@ -393,7 +415,7 @@ img {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-sm);
+  /* border-radius: var(--radius-sm); */
   overflow: hidden;
   background: var(--surface-default);
   list-style: none;
@@ -474,6 +496,66 @@ html[data-theme="dark"] .stand__nav img {
   cursor: pointer;
   opacity: 0;
   transition: opacity 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.confirm-dialog {
+  width: min(520px, calc(100vw - 32px));
+  padding: 0;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--surface-default);
+  color: var(--text-strong);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+}
+
+.confirm-dialog::backdrop {
+  background: rgba(15, 23, 42, 0.16);
+}
+
+.confirm-dialog__body {
+  padding: 30px 24px 26px;
+  text-align: center;
+}
+
+.confirm-dialog__text {
+  margin: 0;
+  font: var(--typo-medium-m);
+  color: var(--text-default);
+}
+
+.confirm-dialog__press {
+  font: var(--typo-bold-m);
+  color: var(--text-strong);
+}
+
+.confirm-dialog__actions {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border-default);
+}
+
+.confirm-dialog__btn {
+  border: 0;
+  background: transparent;
+  padding: 18px 16px;
+  cursor: pointer;
+  font: var(--typo-bold-m);
+  color: var(--text-strong);
+}
+
+.confirm-dialog__btn + .confirm-dialog__btn {
+  border-left: 1px solid var(--border-default);
+}
+
+.confirm-dialog__btn:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.confirm-dialog__btn:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--text-point), transparent 10%);
+  outline-offset: -3px;
 }
 
 .sub-pill__text {
@@ -565,8 +647,16 @@ html[data-theme="dark"] .stand__nav img {
     font-size: 16px;
   }
 
-  .stand {
-    grid-template-columns: 44px 1fr 44px;
+  .stand__nav {
+    width: 44px;
+  }
+
+  .stand__nav--left {
+    left: -22px;
+  }
+
+  .stand__nav--right {
+    right: -22px;
   }
 
   .logos {
