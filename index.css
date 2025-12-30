@@ -366,10 +366,6 @@ html[data-theme="dark"] .brand__icon {
   opacity: 0.85;
 }
 
-.stand__nav--left img {
-  transform: rotate(180deg);
-}
-
 .logos {
   width: min(930px, 100%);
   height: 388px;
