@@ -1,0 +1,28 @@
+@use '@/styles/variable.scss' as *;
+@use '@/styles/typography.scss' as *;  
+
+.header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    &__logo {
+        align-items: center;
+        display: flex;
+        gap: 0.5rem;
+
+        &--title {
+            @include display-bold24;
+            color: var(--text-strong);
+        }
+
+        &--icon {
+            color: var(--text-point);
+        }
+    }    
+
+    &__date {
+        @include display-medium16;
+        color: var(--text-default);
+    }
+}
