@@ -46,58 +46,58 @@
   font-weight: 500;
 }
 
-.display-bold24 {
+@mixin display-bold24 {
   @include text-bold-lg;
 }
 
-.display-bold16 {
+@mixin display-bold16 {
   @include text-bold-md;
 }
 
-.display-bold14 {
+@mixin display-bold14 {
   @include text-bold-rg;
 }
 
-.display-bold12 {
+@mixin display-bold12 {
   @include text-bold-sm;
 }
 
-.display-medium16 {
+@mixin display-medium16 {
   @include text-medium-md;
 }
 
-.display-medium14 {
+@mixin display-medium14 {
   @include text-medium-rg;
 }
 
-.display-medium12 {
+@mixin display-medium12 {
   @include text-medium-sm;
 }
 
-.selected-bold16 {
+@mixin selected-bold16 {
   @include text-bold-md;
 }
 
-.selected-bold14 {
+@mixin selected-bold14 {
   @include text-bold-rg;
 }
 
-.available-medium16 {
+@mixin available-medium16 {
   @include text-medium-md;
 }
 
-.available-medium14 {
+@mixin available-medium14 {
   @include text-medium-rg;
 }
 
-.available-medium12 {
+@mixin available-medium12 {
   @include text-medium-sm;
 }
 
-.hover-medium16 {
+@mixin hover-medium16 {
   @include text-medium-md-underline;
 }
 
-.hover-medium14 {
+@mixin hover-medium14 {
   @include text-medium-rg-underline;
 }
