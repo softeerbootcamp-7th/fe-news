@@ -1,0 +1,43 @@
+.grid-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.main-contents {
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+  align-items: center;
+  justify-items: center;
+  gap: 30px;
+}
+
+.nav-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  grid-column: 1;
+  color: var(--border-bold);
+}
+
+.nav-button.next {
+  grid-column: 3;
+}
+
+.nav-button.disabled {
+  visibility: hidden; /* 공간(60px)은 그대로 차지함 */
+  pointer-events: none; /* 클릭 안 되게 방지 */
+}
+
+.press-logo-grid {
+  width: 100%;
+  min-width: 500px;
+  height: 388px;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}

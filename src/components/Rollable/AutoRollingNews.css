@@ -1,0 +1,33 @@
+.auto-rolling-news-section {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 24px;
+  margin-inline: 90px;
+}
+
+.auto-rolling-news {
+  box-sizing: border-box; /* 패딩과 보더를 너비에 포함시킴 */
+  flex: 1;
+  height: 49px;
+  border: 1px solid var(--border-default);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 16px;
+  gap: 16px;
+  background-color: var(--surface-alt);
+}
+.press-company {
+  font-size: 14px;
+  color: var(--text-strong);
+  font-weight: bold;
+}
+.news-title {
+  font-size: 14px;
+  color: var(--text-default);
+}
+.news-title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

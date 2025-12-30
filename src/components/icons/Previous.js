@@ -1,0 +1,6 @@
+export function Prev() {
+  return `
+  <svg width="26" height="41" viewBox="0 0 26 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24.781 0.384155L0.781006 20.3842L24.781 40.3842" stroke="currentColor"/>
+</svg>`;
+}

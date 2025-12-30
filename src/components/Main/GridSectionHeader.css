@@ -1,0 +1,50 @@
+.grid-section-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  margin-inline: 90px;
+}
+
+.subscription-toggle-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+.subscription-toggle:hover {
+  text-decoration: underline;
+}
+
+.subscription-toggle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-week);
+  cursor: pointer;
+  gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.subscription-toggle.is-active {
+  font-weight: bold;
+  color: var(--text-strong);
+}
+
+.view-toggle-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.view-toggle {
+  cursor: pointer;
+  color: var(--text-week);
+}
+
+.view-toggle.is-active {
+  color: var(--blue-500);
+}
