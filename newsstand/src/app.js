@@ -1,4 +1,5 @@
 import { header } from "./components/header";
+import { newsContent } from "./components/newsContents";
 import { rolling } from "./components/rolling";
 
 const root = document.getElementById("app");
@@ -13,3 +14,6 @@ mainContainer.append(header());
 
 // 최신 뉴스 롤링 파트
 mainContainer.append(rolling());
+
+// 전체 언론사 파트
+mainContainer.append(newsContent());

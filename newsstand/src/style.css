@@ -13,3 +13,8 @@
 #rolling-card-wrapper {
   display: flex;
 }
+
+.ns-controls {
+  display: flex;
+  justify-content: space-between;
+}
