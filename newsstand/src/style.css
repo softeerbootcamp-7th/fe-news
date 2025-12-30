@@ -1,3 +1,7 @@
+#title-wrap {
+  display: flex;
+}
+
 .ns-header {
   display: flex;
 }

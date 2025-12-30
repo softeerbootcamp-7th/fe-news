@@ -1,12 +1,6 @@
 export function createLayout() {
   return `
   <div id="main-container">
-    <header class="ns-header">
-      <h1 class="ns-logo" aria-label="뉴스스탠드">뉴스스탠드</h1>
-      <div class="ns-date">
-        <div id="date"></div>
-      </div>
-    </header>
 
     <main class="ns-main">
       <!-- 최신 뉴스 롤링 섹션 -->
