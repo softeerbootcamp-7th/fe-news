@@ -142,7 +142,7 @@ export function renderLogos({
       if (!filename)
         return `<li class="logo-card is-empty" aria-hidden="true"></li>`;
 
-      const src = `/${folder}/${encodePathSegment(filename)}`;
+      const src = `/images/${folder}/${encodePathSegment(filename)}`;
       const isSub = subscribed.has(filename);
       const btnText = isSub ? "해지하기" : "구독하기";
       const btnIcon = isSub ? "×" : "+";

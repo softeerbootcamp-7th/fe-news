@@ -123,7 +123,14 @@ img {
   height: auto;
   display: block;
 }
-
+/* ==========================================================================
+   !important list
+   ========================================================================== */
+/* Global: remove browser focus rings (Shift/Tab focus outlines) */
+:focus,
+:focus-visible {
+  outline: none !important;
+}
 /* ==========================================================================
    Header
    ========================================================================== */
@@ -365,7 +372,7 @@ img {
 .stand {
   /* border: 1px solid var(--border-default); */
   background: var(--surface-default);
-  box-shadow: var(--shadow);
+  /* box-shadow: var(--shadow); */
   min-height: 430px;
 }
 
