@@ -1,21 +1,14 @@
 {
   "name": "fe-news",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npx serve ."
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/1jiwoo27/fe-news.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/1jiwoo27/fe-news/issues"
-  },
-  "homepage": "https://github.com/1jiwoo27/fe-news#readme"
+  "devDependencies": {
+    "vite": "^7.2.4"
+  }
 }
