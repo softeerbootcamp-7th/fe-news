@@ -1,5 +1,6 @@
 export function createLayout() {
   return `
+  <div id="main-container">
     <header class="ns-header">
       <h1 class="ns-logo" aria-label="뉴스스탠드">뉴스스탠드</h1>
       <div class="ns-date">
@@ -64,5 +65,6 @@ export function createLayout() {
         <div class="ns-grid" role="list" data-role="publisher-grid"></div>
       </section>
     </main>
+    </div>
   `;
 }
