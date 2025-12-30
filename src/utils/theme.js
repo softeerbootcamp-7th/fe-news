@@ -24,13 +24,4 @@ export function initSystemTheme({
     const next = applyTheme(themeFromMediaQuery(e));
     if (typeof onChange === "function") onChange(next);
   };
-
-  // Safari 구버전 대응 (addListener/removeListener)
-  if (mql?.addEventListener) mql.addEventListener("change", handler);
-  else mql?.addListener?.(handler);
-
-  return () => {
-    if (mql?.removeEventListener) mql.removeEventListener("change", handler);
-    else mql?.removeListener?.(handler);
-  };
 }

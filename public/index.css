@@ -109,7 +109,8 @@ body {
 }
 
 .container {
-  width: min(var(--container), calc(100% - 48px));
+  /* width: min(var(--container), calc(100% - 48px)); */
+  width: 930px;
   margin: 0 auto;
 }
 
@@ -323,7 +324,7 @@ img {
   color: var(--text-strong);
 }
 
-.tab.is-active::after {
+/* .tab.is-active::after {
   content: "";
   position: absolute;
   left: 0;
@@ -332,7 +333,7 @@ img {
   height: 3px;
   background: var(--surface-brand-default);
   border-radius: 2px;
-}
+} */
 
 .badge {
   display: inline-flex;
@@ -359,21 +360,21 @@ img {
    ========================================================================== */
 .stand-wrap {
   margin-top: 18px;
-  position: relative;
 }
 
 .stand {
-  border: 1px solid var(--border-default);
+  /* border: 1px solid var(--border-default); */
   background: var(--surface-default);
   box-shadow: var(--shadow);
   min-height: 430px;
 }
 
 .stand__panel {
-  padding: 22px 18px;
+  /* padding: 22px 18px; */
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .stand__nav {
@@ -390,12 +391,16 @@ img {
   height: 120px;
 }
 
+.stand__nav[hidden] {
+  display: none !important;
+}
+
 .stand__nav--left {
-  left: -56px;
+  left: -80px;
 }
 
 .stand__nav--right {
-  right: -56px;
+  right: -80px;
 }
 
 .stand__nav img {
@@ -499,7 +504,9 @@ html[data-theme="dark"] .stand__nav img {
 }
 
 .confirm-dialog {
-  width: min(520px, calc(100vw - 32px));
+  /* width: min(520px, calc(100vw - 32px)); */
+  width: 320px;
+  height: 160px;
   padding: 0;
   border: 1px solid var(--border-default);
   border-radius: var(--radius-sm);
