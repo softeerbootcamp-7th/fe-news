@@ -3,91 +3,117 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>뉴스스탠드</title>
+    <title>News Stand</title>
+    <link rel="stylesheet" href="./src/style.css" />
 </head>
 <body>
-    <div id="app">
-    <!-- 상단 영역 -->
-    <header>
-        <h1>뉴스스탠드</h1>
-        <p>2026.01.14 수요일</p>
-    </header>
-
-    <main>
-        <!-- 최신 뉴스 자동 롤링 영역 -->
-        <section aria-label="latest news rolling">
-            <div class="rolling-container">
-            <!-- 왼쪽 롤링 영역 -->
-            <ul class="rolling-left">
-                <li>최신 뉴스 헤드라인 1</li>
-                <li>최신 뉴스 헤드라인 2</li>
-                <li>최신 뉴스 헤드라인 3</li>
-                <li>최신 뉴스 헤드라인 4</li>
-                <li>최신 뉴스 헤드라인 5</li>
-            </ul>
-
-            <!-- 오른쪽 롤링 영역 -->
-            <ul class="rolling-right">
-                <li>최신 뉴스 헤드라인 6</li>
-                <li>최신 뉴스 헤드라인 7</li>
-                <li>최신 뉴스 헤드라인 8</li>
-                <li>최신 뉴스 헤드라인 9</li>
-                <li>최신 뉴스 헤드라인 10</li>
-            </ul>
+    <div id="app" class="news-stand">
+        <!-- 상단 영역 -->
+        <header class="news-header">
+            <div class="news-title">
+                <img
+                    src="./src/assets/newspaper.svg"
+                    alt="뉴스스탠드 로고"
+                    class="news-logo"
+                />
+                <h1 class="news-text">뉴스스탠드</h1>
             </div>
-        </section>
+            <p class="news-date">2026. 01. 14. 수요일</p>
+        </header>
 
-        <!-- 언론사별 기사 확인 영역 -->
-        <section aria-label="news providers">
-            <div aria-label="news tab">
-                <p>전체 언론사</p>
-                <p>내가 구독한 언론사</p>
-            </div>
-            <div aria-label="news grid">
-                <button type="button" aria-label="previous page">
-                    ◀
-                </button>
+        <main class="news-main">
+            <!-- 최신 뉴스 자동 롤링 영역 -->
+            <section class="rolling-section" aria-label="latest news rolling">
+                <div class="rolling-container">
+                    <!-- 왼쪽 바 -->
+                    <ul class="rolling-list rolling-left">
+                        <li class="rolling-item">
+                            <span class="news-provider">연합뉴스</span>
+                            <span class="news-headline">도심 공원 ‘조용한 독서존’ 시범 운영… 시민 호응 이어져</span>
+                        </li>
+                        <li class="rolling-item">
+                            <span class="news-provider">한국경제</span>
+                            <span class="news-headline">중소기업 체감 경기 소폭 개선, 고용 지표는 여전히 부진</span>
+                        </li>
+                        <li class="rolling-item">
+                            <span class="news-provider">서울신문</span>
+                            <span class="news-headline">지방자치단체, 생활 밀착형 교통 개선 사업 확대</span>
+                        </li>
+                        <li class="rolling-item">
+                            <span class="news-provider">질병관리청</span>
+                            <span class="news-headline">겨울철 독감 유행 주의보… 예방 접종 당부</span>
+                        </li>
+                        <li class="rolling-item">
+                            <span class="news-provider">국토일보</span>
+                            <span class="news-headline">청년 주거 지원 정책 개편 논의 본격화</span>
+                        </li>
+                    </ul>
 
-                <ul class="news-grid">
-                <!-- 6 x 4 = 24 -->
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
+                    <!-- 오른쪽 바 -->
+                    <ul class="rolling-list rolling-right">
+                        <li class="rolling-item">
+                            <span class="news-provider">서울경제</span>
+                            <span class="news-headline">착한 소비 캠페인, 지역 상권 회복에 긍정적 영향</span>
+                        </li>
+                        <li class="rolling-item">
+                            <span class="news-provider">전자신문</span>
+                            <span class="news-headline">AI 활용 행정 서비스 확대… 민원 처리 속도 개선</span>
+                        </li>
+                        <li class="rolling-item">
+                            <span class="news-provider">매일경제</span>
+                            <span class="news-headline">국내 증시 혼조세 마감, 투자자 관망 심리 지속</span>
+                        </li>
+                        <li class="rolling-item">
+                            <span class="news-provider">교육부</span>
+                            <span class="news-headline">초·중등 교육 과정 개편안 발표… 현장 의견 수렴</span>
+                        </li>
+                        <li class="rolling-item">
+                            <span class="news-provider">문화일보</span>
+                            <span class="news-headline">문화·예술 행사, 지역 경제 활성화 효과 분석</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
 
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
+            <!-- 언론사별 기사 확인 영역 -->
+            <section class="provider-section" aria-label="news providers">
+                <!-- 탭 영역 -->
+                <div class="provider-tab" aria-label="news tab">
+                    <div class="provider-tab-text">
+                        <p class="tab-item tab-item--active">전체 언론사</p>
+                        <div class="tab-subscribe">
+                            <p class="tab-item">내가 구독한 언론사</p>
+                            <span class="sub-badge">0</span>
+                        </div>
+                    </div>
+                    <div class="provider-tab-icon">
+                        <img
+                            src="./src/assets/list-unactive.svg"
+                            alt="리스트 뷰 로고"
+                            class="tab-logo"
+                        />
+                        <img
+                            src="./src/assets/grid-active.svg"
+                            alt="그리드 뷰 로고"
+                            class="tab-logo"
+                        />
+                    </div>
+                </div>
 
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
+                <!-- 언론사 그리드 -->
+                <div class="provider-grid-wrapper" aria-label="news grid">
+                    <button class="grid-nav-btn grid-nav-btn--prev" aria-label="이전 페이지">
+                        <img src="./src/assets/left-arrow.svg" alt="이전 페이지 버튼" />
+                    </button>
+                    <ul class="provider-grid"></ul>
+                    <button class="grid-nav-btn grid-nav-btn--next" aria-label="다음 페이지">
+                        <img src="./src/assets/right-arrow.svg" alt="다음 페이지 버튼" />
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
 
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                <li>언론사</li>
-                </ul>
-
-                <button type="button" aria-label="next page">
-                    ▶
-                </button>
-            </div>
-        </section>
-    </main>
-</div>
-
-<!-- <script type="module" src="./src/app.js"></script> -->
-
+    <script type="module" src="./src/app.js"></script>
 </body>
 </html>
