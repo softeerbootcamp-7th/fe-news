@@ -69,7 +69,10 @@ export class NewArticlesView {
     });
 
     // old new 제거
-    setTimeout(() => oldArticle.remove(), 500);
+    oldArticle.addEventListener("transitionend", () => {
+      oldArticle.remove();
+    });
+    // setTimeout(() => oldArticle.remove(), 500);
   }
 
   render() {
