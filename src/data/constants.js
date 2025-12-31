@@ -107,4 +107,12 @@ export const LOGO_FILES = [
 export const LIGHT_ONLY_FILES = ["nsd132851977 1.png", "nsd181452869 1.png"];
 export const DARK_ONLY_FILES = ["nsd132844419 1.png", "nsd18156958 1.png"];
 
-
+export const dayNames = [
+  "일요일",
+  "월요일",
+  "화요일",
+  "수요일",
+  "목요일",
+  "금요일",
+  "토요일",
+];
