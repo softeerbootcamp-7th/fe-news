@@ -1,4 +1,7 @@
 export class NewArticlesView {
+  static ROLL_INTERVAL_MS = 5000;
+  static ROLL_OFFSET_MS = 1000;
+
   constructor(articlesData) {
     this.data = articlesData;
     this.leftIndex = 0;
@@ -10,8 +13,7 @@ export class NewArticlesView {
     this.rightArticleContainer = articlesContainer.children[1];
 
     this.leftLastRoll = performance.now();
-    this.rightLastRoll = performance.now() + 1000; // 오른쪽 1초 시간차
-    this.rollInterval = 5000;
+    this.rightLastRoll = performance.now() + this.ROLL_OFFSET_MS; // 오른쪽 1초 시간차
     this.leftPaused = false;
     this.rightPaused = false;
     this.rafId = requestAnimationFrame(this.loop.bind(this));
@@ -32,7 +34,7 @@ export class NewArticlesView {
   }
   shouldRoll(timestamp, side) {
     const lastRoll = side === "left" ? this.leftLastRoll : this.rightLastRoll;
-    return timestamp - lastRoll >= this.rollInterval;
+    return timestamp - lastRoll >= ROLL_INTERVAL_MS;
   }
 
   leftRoll() {
@@ -116,13 +118,14 @@ export class NewArticlesView {
     if (side === "left") {
       this.leftPaused = false;
       this.leftLastRoll = performance.now();
-      if (!this.rightPaused) this.rightLastRoll = this.leftLastRoll + 1000; // 시간차 유지
+      if (!this.rightPaused)
+        this.rightLastRoll = this.leftLastRoll + ROLL_OFFSET_MS; // 시간차 유지
       const titleElement =
         this.leftArticleContainer.firstElementChild.children[1];
       titleElement.classList.remove("underline");
     } else {
       this.rightPaused = false;
-      this.rightLastRoll = this.leftLastRoll + 1000; // 시간차 유지
+      this.rightLastRoll = this.leftLastRoll + ROLL_OFFSET_MS; // 시간차 유지
       const titleElement =
         this.rightArticleContainer.firstElementChild.children[1];
       titleElement.classList.remove("underline");
