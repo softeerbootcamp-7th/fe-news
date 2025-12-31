@@ -1,0 +1,14 @@
+:root {
+    --grayscale_white-alt: rgba(255,255,255,0.7);
+    --grayscale_white: #FFFFFF;
+    --grayscale_50: #F5F7F9;
+    --grayscale_100: #D2DAE0;
+    --grayscale_200: #879298;
+    --grayscale_300: #6E8091;
+    --grayscale_400: #5F6E76;
+    --grayscale_500: #4B5966;
+    --grayscale_black: #14212B;
+
+    --blue_100: #7890E7;
+    --blue_500: #4362D0;
+}

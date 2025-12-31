@@ -5,20 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Newsstand</title>
     <script type="module" src="./app.js"></script>
+    <link rel="stylesheet" href="color-variables.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="header">
         <div class="header-inner">
             <!-- 왼쪽 영역 -->
             <div class="header-left">
-                <a href="/" class="logo">
+                <a href="/" class="logo-home">
                     <img src="./logos/Title.svg" alt="뉴스스탠드_로고" />
                 </a>
             </div>
 
             <!-- 오른쪽 영역 -->
             <div class="header-right">
-                <time id="system-time" datetime="">시간</time>
+                <time id="current-date"></time>
             </div>
         </div>
     </header>
@@ -27,9 +29,9 @@
         <!-- 좌측 탭 -->
         <article class="rolling-tab">
             <ul class="news-list">
-                <li class="news-item">
+                <li class="news-article">
                     <span class="press">연합뉴스</span>
-                    <a href="#" class="news-title">[속보] 도심 공원...</a>
+                    <a href="#" class="news-title">[속보] 도심 공원 '조용한 독서촌' 시범 운영... 시민 호응 이어져</a>
                 </li>
             </ul>
         </article>
@@ -37,9 +39,9 @@
         <!-- 우측 탭 -->
         <article class="rolling-tab">
             <ul class="news-list">
-                <li class="news-item">
-                    <span class="press">연합뉴스</span>
-                    <a href="#" class="news-title">[속보] 도심 공원...</a>
+                <li class="news-article">
+                    <span class="press">서울경제</span>
+                    <a href="#" class="news-title">착한 소비 캠페인, 지역 상권 회복에 긍정적 영향</a>
                 </li>
             </ul>
         </article>
@@ -48,27 +50,30 @@
     <section class="container">
         <nav class="container-nav">
             <!-- 네비게이션 좌측 탭 -->
-            <div class="container-nev-left">
-                <ul>
-                    <li>전체 언론사</li>
-                    <li>내가 구독한 언론사</li>
-                    <li>구독언론수</li>
-                </ul>
+            <div class="container-nav-left">
+                <span>전체 언론사</span>
+                <span>
+                    <span>내가 구독한 언론사</span>
+                    <span class="badge" aria-label="구독한 언론사 수">0</span>
+                </span>
             </div>
 
             <!-- 네비게이션 우측 탭 -->
-            <div class="container-nev-right">
-                <li>리스트 전환 버튼</li>
-                <li>그리드 전환 버튼</li>
+            <div class="container-nav-right">
+                <img src="./logos/list-view.svg" alt="리스트 뷰">
+                <img src="./logos/grid-view.svg" alt="그리드 뷰">
             </div>
         </nav>
 
+        <!-- 하단 그리드 -->
         <section class="grid-container">
-            <button class="arrow-left">Previous</button>
+            <button class="arrow left" id="prevBtn" aria-lable="이전"></button>
 
-            <div id="newsstand-grid"></div>
-
-            <button class="arrow-right">Next</button>
+            <div class="grid-wrapper">
+                <div class="news-grid" id="newsGrid"></div>
+            </div>
+        
+            <button class="arrow right" id="nextBtn" aria-label="다음"></button>
         </section>
     </section>
 

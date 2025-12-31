@@ -3,7 +3,7 @@ export function NewsStand(){
     section.className = "newsstand";
 
     const title = document.createElement("div");
-    title.textContent = "GRID";
+    // title.textContent = "GRID";
 
     section.appendChild(title);
     return section;
