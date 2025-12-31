@@ -1,0 +1,24 @@
+.titleHeader {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  margin-inline: 90px;
+}
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-strong);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.date {
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--text-default);
+}
