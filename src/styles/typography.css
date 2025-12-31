@@ -1,0 +1,99 @@
+@import "./variables.css";
+
+/* 폰트 토큰 네이밍 */
+
+/* Display - Bold */
+.display-bold24 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-l);
+  line-height: var(--line-height-auto);
+}
+
+.display-bold16 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-m);
+  line-height: var(--line-height-auto);
+}
+
+.display-bold14 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-r);
+  line-height: var(--line-height-auto);
+}
+
+.display-bold12 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-s);
+  line-height: var(--line-height-auto);
+}
+
+/* Display - Medium */
+.display-medium16 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-m);
+  line-height: var(--line-height-m);
+}
+
+.display-medium14 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-r);
+  line-height: var(--line-height-m);
+}
+
+.display-medium12 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-s);
+  line-height: var(--line-height-auto);
+}
+
+/* Selected & Available */
+.selected-bold16 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-m);
+  line-height: var(--line-height-auto);
+}
+
+.selected-bold14 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-r);
+  line-height: var(--line-height-auto);
+}
+.available-medium14 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-r);
+  line-height: var(--line-height-auto);
+}
+
+.available-medium16 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-m);
+  line-height: var(--line-height-auto);
+}
+
+/* Hover (Underline) */
+.hover-medium16 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-m);
+  line-height: var(--line-height-m);
+  text-decoration: underline;
+}
+
+.hover-medium14 {
+  font-family: var(--font-family);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-r);
+  line-height: var(--line-height-m);
+  text-decoration: underline;
+}

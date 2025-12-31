@@ -1,0 +1,31 @@
+/* 색상, 폰트 크기 등 기본 css 변수 */
+
+:root {
+  /* 폰트 설정 */
+  --font-family: "Pretendard", sans-serif;
+
+  /* 폰트 굵기 */
+  --weight-bold: 700;
+  --weight-medium: 500;
+
+  /* 폰트 사이즈 */
+  --size-l: 24px;
+  --size-m: 16px;
+  --size-r: 14px;
+  --size-s: 12px;
+
+  /* 색상: Grayscale */
+  --grayscale-white: #ffffff;
+  --grayscale-white-alt: rgba(255, 255, 255, 0.7); /* #FFFFFF(70%) */
+  --grayscale-50: #f5f7f9;
+  --grayscale-100: #d2dae0;
+  --grayscale-200: #879298;
+  --grayscale-300: #6e8091;
+  --grayscale-400: #5f6e76;
+  --grayscale-500: #4b5966;
+  --grayscale-black: #14212b;
+
+  /* 색상: Blue */
+  --blue-100: #7890e7;
+  --blue-500: #4362d0;
+}
