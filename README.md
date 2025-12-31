@@ -1,4 +1,13 @@
-# 뉴스 스탠드 틀 설계 (html only)
+# 뉴스 스탠드 기능 체크리스트
+
+1.  개발 환경 세팅
+
+- [x] Vite 프로젝트 생성
+- [x] `npm install` 의존성 설치
+  - [x] node_modules 폴더 생성
+  - [x] package-lock.json 생성
+- [x] Git 초기화
+  - [x] gitignore 파일 확인
 
 ## header
 

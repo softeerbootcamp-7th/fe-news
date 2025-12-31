@@ -1,0 +1,133 @@
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/fonts/Pretendard.woff2') format('woff2');
+  font-display: swap;
+}
+
+:root {
+  --font-base: 'Pretendard', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', Arial;
+
+  /* ---- Typography System ---- */
+  /* display-bold */
+  --display-bold24: 24px;
+  --display-bold16: 16px;
+  --display-bold14: 14px;
+  --display-bold12: 12px;
+  --fw-bold: 700;
+
+  /* display-medium */
+  --display-medium16: 16px;
+  --display-medium14: 14px;
+  --display-medium12: 12px;
+  --fw-medium: 500;
+
+  /* selected-bold */
+  --selected-bold16: 16px;
+  --selected-bold14: 14px;
+
+  /* available-medium */
+  --available-medium16: 16px;
+  --available-medium14: 14px;
+  --available-medium12: 12px;
+
+  /* hover-medium (with underline) */
+  --hover-medium16: 16px;
+  --hover-medium14: 14px;
+
+  /* ---- Grayscale Colors ---- */
+  --grayscale-white-alt: #ffffff;
+  --grayscale-white: #ffffff;
+  --grayscale-50: #f5f7f9;
+  --grayscale-100: #d2dae0;
+  --grayscale-200: #879298;
+  --grayscale-300: #6e8091;
+  --grayscale-400: #5f6e76;
+  --grayscale-500: #4b5966;
+  --grayscale-black: #14212b;
+
+  /* ---- Blue Colors ---- */
+  --blue-100: #7890e7;
+  --blue-500: #4362d0;
+
+  /* ---- Light Mode: Semantic Colors ---- */
+  --text-strong: var(--grayscale-black);
+  --text-bold: var(--grayscale-500);
+  --text-default: var(--grayscale-400);
+  --text-weak: var(--grayscale-200);
+  --text-white-default: var(--grayscale-white);
+  --text-white-weak: var(--grayscale-white-alt);
+  --text-point: var(--blue-500);
+
+  --surface-default: var(--grayscale-white);
+  --surface-alt: var(--grayscale-50);
+  --surface-brand-default: var(--blue-500);
+  --surface-brand-alt: var(--blue-100);
+
+  --border-bold: var(--grayscale-300);
+  --border-default: var(--grayscale-100);
+
+  /* ---- Object Styles: Radius ---- */
+  --radius-full: 999px;
+  --radius-100: 8px;
+
+  /* ---- Object Styles: Border ---- */
+  --border-width: 1px;
+
+  /* ---- Object Styles: Shadow ---- */
+  --shadow-elevation-1: 0 2px 4px rgba(20, 33, 43, 0.1);
+  --shadow-elevation-2: 0 4px 8px rgba(20, 33, 43, 0.15);
+  --shadow-blur18-xo-y4: 0 4px 18px rgba(20, 33, 43, 0.2);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#app {
+  width: 930px;
+  height: 388px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#app header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#app main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.title {
+  color: var(--text-strong);
+  font-weight: var(--fw-bold);
+  margin: 0;
+  font-size: var(--display-bold24);
+}
+
+.date {
+  color: var(--text-default);
+  font-size: var(--available-medium14);
+}
