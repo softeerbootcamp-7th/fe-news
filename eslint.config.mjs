@@ -3,11 +3,17 @@
 import eslint from '@eslint/js';
 import { defineConfig } from 'eslint/config';
 import stylistic from '@stylistic/eslint-plugin';
+import globals from 'globals';
 
 export default defineConfig(
   eslint.configs.recommended,
   {
     ignores: ['node_modules', 'dist'],
+    languageOptions: {
+      globals :{
+        ...globals.browser,
+      },
+    },
     plugins: {
       '@stylistic': stylistic,
     },
