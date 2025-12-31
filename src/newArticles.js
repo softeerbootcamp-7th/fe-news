@@ -18,23 +18,21 @@ export class NewArticlesView {
   }
 
   loop(timestamp) {
-    if (
-      !this.leftPaused &&
-      timestamp - this.leftLastRoll >= this.rollInterval
-    ) {
+    if (!this.leftPaused && this.shouldRoll(timestamp, "left")) {
       this.leftRoll();
       this.leftLastRoll = timestamp;
     }
 
-    if (
-      !this.rightPaused &&
-      timestamp - this.rightLastRoll >= this.rollInterval
-    ) {
+    if (!this.rightPaused && this.shouldRoll(timestamp, "right")) {
       this.rightRoll();
       this.rightLastRoll = timestamp;
     }
 
     this.rafId = requestAnimationFrame(this.loop.bind(this)); // raf로 넘어가면 this가 window 객체로 바뀌므로 바인딩 필요
+  }
+  shouldRoll(timestamp, side) {
+    const lastRoll = side === "left" ? this.leftLastRoll : this.rightLastRoll;
+    return timestamp - lastRoll >= this.rollInterval;
   }
 
   leftRoll() {
