@@ -1,0 +1,55 @@
+/* Semantic design tokens and theme mapping */
+
+/* Light (default) */
+:root {
+  /* text */
+  --text-strong: var(--grayscale-black);
+  --text-bold: var(--grayscale-500);
+  --text-default: var(--grayscale-400);
+  --text-weak: var(--grayscale-200);
+  --text-white-default: var(--grayscale-white);
+  --text-white-weak: var(--grayscale-white-alt);
+  --text-point: var(--blue-500);
+
+  /* surfaces */
+  --surface-default: var(--grayscale-white);
+  --surface-alt: var(--grayscale-50);
+  --surface-brand-default: var(--blue-500);
+  --surface-brand-alt: var(--blue-100);
+
+  /* borders */
+  --border-bold: var(--grayscale-300);
+  --border-default: var(--grayscale-100);
+}
+
+/* Dark theme overrides */
+html[data-theme="dark"] {
+  --text-strong: var(--grayscale-white);
+  --text-bold: var(--grayscale-50);
+  --text-default: var(--grayscale-100);
+  --text-weak: var(--grayscale-white-alt);
+  --text-white-default: var(--grayscale-white);
+  --text-white-weak: var(--grayscale-white-alt);
+  --text-point: var(--blue-500);
+
+  --surface-default: var(--grayscale-black);
+  --surface-alt: var(--grayscale-500);
+  --surface-brand-default: var(--blue-500);
+  --surface-brand-alt: var(--blue-100);
+
+  --border-bold: var(--grayscale-white-alt);
+  --border-default: var(--grayscale-400);
+}
+
+/* Utilities */
+.text-strong { color: var(--text-strong); }
+.text-default { color: var(--text-default); }
+.text-weak { color: var(--text-weak); }
+.text-point { color: var(--text-point); }
+
+.bg-surface { background: var(--surface-default); }
+.bg-surface-alt { background: var(--surface-alt); }
+.bg-brand { background: var(--surface-brand-default); }
+
+.border-default { border-color: var(--border-default); }
+.border-bold { border-color: var(--border-bold); }

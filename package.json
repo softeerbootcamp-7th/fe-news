@@ -1,0 +1,26 @@
+{
+  "name": "fe-news",
+  "version": "1.0.0",
+  "description": "fe-news project",
+  "homepage": "https://github.com/HIHJH/fe-news#readme",
+  "bugs": {
+    "url": "https://github.com/HIHJH/fe-news/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HIHJH/fe-news.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "vite": "^7.3.0"
+  }
+}
