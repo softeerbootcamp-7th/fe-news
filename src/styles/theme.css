@@ -1,0 +1,45 @@
+/* =========================
+   Light Mode
+========================= */
+:root[data-theme="light"] {
+  --text-strong: var(--grayscale-black);
+  --text-bold: var(--grayscale-500);
+  --text-default: var(--grayscale-400);
+  --text-weak: var(--grayscale-200);
+
+  --text-white-default: var(--grayscale-white);
+  --text-white-weak: var(--grayscale-white-70);
+
+  --text-point: var(--blue-500);
+
+  --surface-default: var(--grayscale-white);
+  --surface-alt: var(--grayscale-50);
+  --surface-brand-default: var(--blue-500);
+  --surface-brand-alt: var(--blue-100);
+
+  --border-bold: var(--grayscale-300);
+  --border-default: var(--grayscale-100);
+}
+
+/* =========================
+   Dark Mode
+========================= */
+:root[data-theme="dark"] {
+  --text-strong: var(--grayscale-white);
+  --text-bold: var(--grayscale-50);
+  --text-default: var(--grayscale-100);
+  --text-weak: var(--grayscale-white-70);
+
+  --text-white-default: var(--grayscale-white);
+  --text-white-weak: var(--grayscale-white-70);
+
+  --text-point: var(--blue-500);
+
+  --surface-default: var(--grayscale-black);
+  --surface-alt: var(--grayscale-500);
+  --surface-brand-default: var(--blue-500);
+  --surface-brand-alt: var(--blue-100);
+
+  --border-bold: var(--grayscale-white-70);
+  --border-default: var(--grayscale-400);
+}

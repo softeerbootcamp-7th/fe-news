@@ -1,8 +1,13 @@
-import getString from "@/test.js";
+import { NewArticlesView } from "@/newArticles.js";
 
-const list = document.getElementById("list");
-const newItem = document.createElement("li");
-const itemText = document.createTextNode(getString());
+import { articlesData } from "/dummy/articlesData";
+import { createHeader } from "./header/createHeader";
 
-newItem.appendChild(itemText);
-list.appendChild(newItem);
+// 기본 상단 영역
+createHeader();
+
+// 뉴스 자동 롤링
+const newArticlesView = new NewArticlesView(articlesData);
+newArticlesView.render();
+
+// 리스트 영역

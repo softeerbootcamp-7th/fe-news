@@ -1,55 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <title>뉴스스탠드</title>
+    <link rel="stylesheet" href="./src/styles/global.css" />
+    <link rel="stylesheet" href="./src/styles/tokens.css" />
+    <link rel="stylesheet" href="./src/styles/theme.css" />
+    <link rel="stylesheet" href="./src/styles/typography.css" />
   </head>
   <body>
     <!-- 기본 상단 영역 -->
-    <header>
-      <img src="" alt="logo" />
-      <h1>뉴스스탠드</h1>
-      <p>2026. 01. 14. 수요일</p>
+    <header class="header-container">
+      <section aria-label="뉴스스탠드 헤더" class="flex-group">
+        <img
+          src="public/assets/svg/newspaper.svg"
+          alt="logo"
+          class="main-logo"
+        />
+        <h1 class="main-title display-bold-24">뉴스스탠드</h1>
+      </section>
+      <div class="flex-group">
+        <time class="today display-medium-16">2026. 01. 14. 수요일</time>
+        <button class="toggle-theme-button">
+          <img src="public/assets/svg/dark_mode.svg" alt="다크모드 사용하기" />
+        </button>
+      </div>
     </header>
 
     <main>
       <!-- 최신 뉴스 자동롤링 영역 -->
-      <div>
+      <section aria-label="최신 뉴스" class="new-articles">
         <!-- 뉴스 요소 -->
-        <div>
-          <p>연합뉴스</p>
-          <p>[속보] 도심 공원 '조용한 독서촌' 시범 운영... 시민 호응 이어져</p>
-        </div>
-        <div>
-          <p>연합뉴스</p>
-          <p>[속보] 도심 공원 '조용한 독서촌' 시범 운영... 시민 호응 이어져</p>
-        </div>
-      </div>
+        <div class="roll-container"></div>
+        <div class="roll-container"></div>
+      </section>
       <!-- 언론사별 기사들을 확인하는 영역  -->
-      <div>
-        <!-- 상단 영역-->
-        <div>
-          <h3>전체 언론사</h3>
+      <section aria-label="언론사 뉴스">
+        <!-- 언론사 필터 탭-->
+        <header>
+          <h2>전체 언론사</h2>
           <div>
-            <h3>내가 구독한 언론사</h3>
+            <h2>내가 구독한 언론사</h2>
             <p>8</p>
           </div>
           <!-- 그리드/리스트 보기 -->
-          <button>
-            <img src="" alt="grid button" />
-          </button>
-          <button>
-            <img src="" alt="list button" />
-          </button>
-        </div>
+          <nav aria-label="보기 방식">
+            <button>
+              <img src="" alt="grid button" />
+            </button>
+            <button>
+              <img src="" alt="list button" />
+            </button>
+          </nav>
+        </header>
 
-        <!-- 언론사 영역-->
-        <div>
+        <!-- 언론사 목록 영역-->
+        <section aria-label="언론사 목록">
           <button>
-            <img src="" alt="좌측 화살표" />
+            <img src="" alt="이전 목록" />
           </button>
           <button>
-            <img src="" alt="우측 화살표" />
+            <img src="" alt="다음 목록" />
           </button>
           <!-- 그리드 -->
           <ul id="list">
@@ -66,10 +77,9 @@
               <img src="" alt="SBS Biz 로고" />
             </li>
           </ul>
-        </div>
-      </div>
+        </section>
+      </section>
     </main>
-    <div></div>
     <script type="module" src="/src/app.js"></script>
   </body>
 </html>
