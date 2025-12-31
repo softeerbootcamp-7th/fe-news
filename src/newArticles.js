@@ -34,7 +34,7 @@ export class NewArticlesView {
   }
   shouldRoll(timestamp, side) {
     const lastRoll = side === "left" ? this.leftLastRoll : this.rightLastRoll;
-    return timestamp - lastRoll >= ROLL_INTERVAL_MS;
+    return timestamp - lastRoll >= this.ROLL_INTERVAL_MS;
   }
 
   leftRoll() {
@@ -119,13 +119,13 @@ export class NewArticlesView {
       this.leftPaused = false;
       this.leftLastRoll = performance.now();
       if (!this.rightPaused)
-        this.rightLastRoll = this.leftLastRoll + ROLL_OFFSET_MS; // 시간차 유지
+        this.rightLastRoll = this.leftLastRoll + this.ROLL_OFFSET_MS; // 시간차 유지
       const titleElement =
         this.leftArticleContainer.firstElementChild.children[1];
       titleElement.classList.remove("underline");
     } else {
       this.rightPaused = false;
-      this.rightLastRoll = this.leftLastRoll + ROLL_OFFSET_MS; // 시간차 유지
+      this.rightLastRoll = this.leftLastRoll + this.ROLL_OFFSET_MS; // 시간차 유지
       const titleElement =
         this.rightArticleContainer.firstElementChild.children[1];
       titleElement.classList.remove("underline");
