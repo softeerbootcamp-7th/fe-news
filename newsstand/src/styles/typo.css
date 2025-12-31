@@ -1,0 +1,125 @@
+/* 기본 타이포 베이스 */
+.typo {
+  font-family: var(--font-family-base);
+  color: var(--color-text-default);
+}
+
+/* === Display (주요 텍스트) === */
+/* display-bold24 : $bold.L */
+.typo-display-bold24 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-l);
+  line-height: var(--line-height-auto);
+}
+
+/* display-bold16 : $bold.M */
+.typo-display-bold16 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-auto);
+}
+
+/* display-bold14 : $bold.R */
+.typo-display-bold14 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-r);
+  line-height: var(--line-height-auto);
+}
+
+/* display-bold12 : $bold.S */
+.typo-display-bold12 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-auto);
+}
+
+/* display-medium16 : $medium.M */
+.typo-display-medium16 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-22);
+}
+
+/* display-medium14 : $medium.R */
+.typo-display-medium14 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-r);
+  line-height: var(--line-height-22);
+}
+
+/* display-medium12 : $medium.S */
+.typo-display-medium12 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-22);
+}
+
+/* === selected / available / hover 상태 텍스트 === */
+/* selected-bold16 : $bold.M (underline) */
+.typo-selected-bold16 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-22);
+  text-decoration: underline;
+}
+
+/* selected-bold14 : $bold.R */
+.typo-selected-bold14 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-r);
+  line-height: var(--line-height-22);
+}
+
+/* available-medium16 : $medium.M */
+.typo-available-medium16 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-22);
+}
+
+.typo-available-medium14 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-r);
+  line-height: 100%;
+}
+
+/* hover-medium16 : $medium.M.underline */
+.typo-hover-medium16 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-22);
+  text-decoration: underline;
+}
+
+/* === color 유틸 === */
+.text-strong {
+  color: var(--color-text-strong);
+}
+.text-bold {
+  color: var(--color-text-bold);
+}
+.text-weak {
+  color: var(--color-text-weak);
+}
+.text-point {
+  color: var(--color-text-point);
+}
+
+/* white 텍스트 (dark surface 위) */
+.text-on-dark {
+  color: var(--color-text-white-default);
+}
+.text-on-dark-weak {
+  color: var(--color-text-white-weak);
+}

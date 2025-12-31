@@ -1,0 +1,62 @@
+#app {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  overflow-y: hidden;
+  align-items: center;
+}
+
+#main-container {
+  outline: 1px solid red;
+  padding: 58px 175px;
+  width: 1280px;
+  height: 720px;
+  font-size: 24px;
+}
+
+#title-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 136px;
+  height: 29px;
+  gap: 8px;
+}
+
+.ns-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.ns-title {
+  font-size: 24px;
+}
+
+#roll-wrapper {
+  display: flex;
+  width: 930px;
+  height: 49px;
+  gap: 8px;
+  margin-top: 69px;
+}
+
+#rolling-card-wrapper {
+  display: flex;
+  width: 461px;
+  /* padding: 16px; */
+  gap: 16px;
+  align-items: center;
+  padding-left: 16px;
+}
+#rolling-card-wrapper:hover {
+  cursor: pointer;
+}
+#rolling-card-wrapper:hover p {
+  text-decoration: underline;
+}
+
+.ns-controls {
+  display: flex;
+  justify-content: space-between;
+}
