@@ -1,0 +1,30 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 45 920;
+  src: url('/fonts/PretendardVariable.woff2') format('woff2');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,body {
+  font-family: 'Pretendard Variable', sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'Pretendard Variable', sans-serif;
+}
+
+li {
+  list-style: none;
+}
