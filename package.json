@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"dev": "vite"
 	},
 	"repository": {
 		"type": "git",
@@ -16,5 +16,8 @@
 	"bugs": {
 		"url": "https://github.com/pakxe/fe-news/issues"
 	},
-	"homepage": "https://github.com/pakxe/fe-news#readme"
+	"homepage": "https://github.com/pakxe/fe-news#readme",
+	"devDependencies": {
+		"vite": "^7.3.0"
+	}
 }

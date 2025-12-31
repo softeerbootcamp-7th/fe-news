@@ -1,33 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 	<head>
+		<meta charset="UTF-8" />
 		<title>news stand</title>
+		<link rel="stylesheet" href="/style.css" />
 	</head>
 	<body>
-        <header>
-            <img>
-                <img>아이콘</img>
-                <span>뉴스스탠드</span>
-            </a>
-            <time></time>
-        </header>
-        <main>
-            <nav>
-                <a>전체 언론사</a>
-                <a>내가 구독한 언론사 <span>8</span></a>
-            </nav>
-            <section>
-                <nav>
-                    <a>종합/경제 <span>1/81</span></a>
-                    <a>방송/통신</a>
-                    <a>종합/경제</a>
-                </nav>
-                <ol>
-                    <li><a>서울경제</a></li>
-                    <li><a>언론사1</a></li>
-                    <li><a>언론사2</a></li>
-                </ol>
-            </section>
-        </main>
+		<header class="flex flex-row justify-between">
+			<a href="/" class="inline-flex gap-2 items-center">
+				<div class="w-6 h-6 icon-newspaper bg-point icon"></div>
+				<span class="display-bold24">뉴스스탠드</span>
+			</a>
+			<time class="display-medium16 text-default"
+				>2026.01.14. 수요일</time
+			>
+		</header>
+		<div class="mb-10"></div>
+		<section>
+			<ul class="flex flex-row justify-between gap-2">
+				<li class="border-default bg-alt p-4 w-f">
+					<span class="display-bold14">연합뉴스</span>
+					<a class="available-medium14 text-default">기사~</a>
+				</li>
+				<li class="border-default bg-alt p-4 w-f">
+					<span class="display-bold14">연합뉴스</span>
+					<a class="available-medium14 text-default">기사~</a>
+				</li>
+			</ul>
+		</section>
+		<div class="mb-8"></div>
+
+		<main>
+			<nav class="flex flex-row justify-between">
+				<ul class="flex flex-row gap-6">
+					<li>
+						<a class="selected-bold16 text-strong">전체 언론사</a>
+					</li>
+					<li class="flex flex-row gap-1">
+						<a class="available-medium16 text-weak"
+							>내가 구독한 언론사
+							<span
+								class="display-medium12 text-white-weak inline-flex bg-brand rounded-100 h-5 min-w-5 justify-center items-center"
+								>8</span
+							></a
+						>
+					</li>
+				</ul>
+				<ul class="flex flex-row gap-2">
+					<li>
+						<button class="none-style-btn" aria-label="목록 보기">
+							<div
+								class="icon icon-list-view bg-weak w-6 h-6"
+							></div>
+						</button>
+					</li>
+					<li>
+						<button
+							class="none-style-btn"
+							aria-label="그리드 보기"
+							aria-current="true"
+						>
+							<div
+								class="icon icon-grid-view bg-point w-6 h-6"
+							></div>
+						</button>
+					</li>
+				</ul>
+			</nav>
+			<div class="mb-6"></div>
+
+			<section>
+				<ul class="grid grid-cols-6 grid-rows-4 border-default">
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+					<li
+						class="border-default aspect-card inline-flex justify-center items-center"
+					>
+						<a>언론사</a>
+					</li>
+				</ul>
+			</section>
+		</main>
 	</body>
 </html>
