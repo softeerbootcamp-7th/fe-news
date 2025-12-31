@@ -8,39 +8,41 @@
     <script src="index.js" defer></script>
 </head>
 <body>
-    <div>
-        <div>
-            <div>
-                <div>로고 아이콘</div>
-                <div>뉴스스탠드</div>
-            </div>
-            <div>2026.2.12. 월요일</div>
-        </div>
-        <div>
-            <div>
-                <div>연합뉴스</div>
-                <div>[속보] 도심 공원 '조용한 독서존' 시범 운영...시민 호응 이어져</div>
-            </div>
-            <div>
-                <div>서울경제</div>
-                <div>[속보] 착한 소비 캠페인, 지역 상권 회복에 긍정적 영향</div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <div>
-                    <div>전체 언론사</div>
-                    <div>내가 구독한 언론사</div>
+    <div class="app">
+        <header class="header">
+            <a href="/" class="header__logo">
+                <img src="./assets/icons/newspaper.svg"
+                    alt="뉴스스탠드 로고"
+                    class="header__icon">
+                <h1 class="header__title">뉴스스탠드</h1>
+            </a>
+            <time class="header__date" datetime="2026-02-12">2026.2.12. 월요일</time>
+        </header>
+        <section class="rolling-bar" aria-label="속보 뉴스">
+            <article class="rolling-bar__item">
+                <p class="rolling-bar__source">연합뉴스</p>
+                <h3 class="rolling-bar__content">[속보] 도심 공원 '조용한 독서존' 시범 운영...시민 호응 이어져</h3>
+            </article>
+            <article class="rolling-bar__item">
+                <p class="rolling-bar__source">서울경제</p>
+                <h3 class="rolling-bar__content">[속보] 착한 소비 캠페인, 지역 상권 회복에 긍정적 영향</h3>
+            </article>
+        </section>
+        <section class="content" aria-label="언론사 목록">
+            <header class="content__header">
+                <nav class="content__tabs" aria-label="언론사 필터">
+                    <button class="content__tab content__tab--active" aria-pressed="true">전체 언론사</button>
+                    <button class="content__tab" aria-pressed="false">내가 구독한 언론사</button>
+                </nav>
+                <div class="content__view-modes" role="group" aria-label="보기 방식">
+                    <button class="content__view-mode" aria-label="리스트 보기">리스트 아이콘</button>
+                    <button class="content__view-mode content__view-mode--active" aria-label="그리드 보기" aria-pressed="true">그리드 아이콘</button>
                 </div>
-                <div>
-                    <div>리스트 아이콘</div>
-                    <div>그리드 아이콘</div>
-                </div>
-            </div>
-            <div>
+            </header>
+            <div class="content__grid">
                 그리드 영역 ++++
             </div>
-        </div>
+        </section>
     </div>
 </body>
 </html>

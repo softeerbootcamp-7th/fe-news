@@ -1,0 +1,151 @@
+/* * { outline: 1px solid red; } */
+
+:root {
+    /* Font Sizes */
+    --font-size-24: 24px;
+    --font-size-16: 16px;
+    --font-size-14: 14px;
+    --font-size-12: 12px;
+    
+    /* Font Weights */
+    --font-weight-bold: 700;
+    --font-weight-medium: 500;
+
+    /* Colors */
+    --color-grayscale-white-alt: #FFFFFFB2;
+    --color-grayscale-white: #FFFFFF;
+    --color-grayscale-50: #F5F7F9;
+    --color-grayscale-100: #D2DAE0;
+    --color-grayscale-200: #879298;
+    --color-grayscale-300: #6E8091;
+    --color-grayscale-400: #5F6E76;
+    --color-grayscale-500: #4B5966;
+    --color-grayscale-black: #14212B;
+    --color-blue-100: #7890E7;
+    --color-blue-500: #4362D0;
+
+    --text-text-strong: var(--color-grayscale-black);
+    --text-text-bold: var(--color-grayscale-500);
+    --text-text-default: var(--color-grayscale-400);
+    --text-text-weak: var(--color-grayscale-200);
+    --text-text-weak-default: var(--color-grayscale-white);
+    --text-text-weak-weak: var(--color-grayscale-white-alt);
+    --text-text-point: var(--color-blue-500);
+    --text-text-surface-default: var(--color-grayscale-white);
+    --text-text-surface-alt: var(--color-grayscale-50);
+    --text-text-surface-brand-default: var(--color-blue-500);
+    --text-text-surface-brand-alt: var(--color-blue-100);
+    --text-text-border-bold: var(--color-grayscale-300);
+    --text-text-border-default: var(--color-grayscale-100);
+}
+
+/* App Container */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.app {
+    width: 930px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 48px 0 0 0;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 8px;
+}
+
+.header__icon {
+    width: 24px;
+    height: 24px;
+}
+
+.header__title {
+    font-size: var(--font-size-24);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-grayscale-black);
+    line-height: 100%;
+    margin: 0;
+}
+
+.header__date {
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-text-default);
+}
+
+/* Rolling Bar (속보 뉴스) */
+.rolling-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 40px 0 0 0;
+}
+
+.rolling-bar__item {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--text-text-border-default);
+    background-color: var(--text-text-surface-alt);
+    padding: 16px;
+    gap: 16px;
+}
+
+.rolling-bar__source {
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-text-strong);
+    margin: 0;
+}
+
+.rolling-bar__content {
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-text-default);
+    margin: 0;
+}
+
+/* Content Section */
+.content {
+    margin: 32px 0 0 0;
+}
+
+.content__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content__tabs {
+}
+
+.content__tab {
+}
+
+.content__tab--active {
+}
+
+.content__view-modes {
+}
+
+.content__view-mode {
+}
+
+.content__view-mode--active {
+}
+
+.content__grid {
+}
