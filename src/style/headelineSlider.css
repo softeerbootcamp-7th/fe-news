@@ -1,0 +1,30 @@
+.headline-section {
+    display: flex;
+    justify-content: space-between;
+    margin: 4rem 21rem 4rem; 
+}
+
+.headline-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+}
+
+.headline-list li{
+    padding: 1rem;
+    width: 100%;
+    list-style: none;
+    border: 0.1rem solid black;
+    background-color: gainsboro;
+}
+
+.headline-list li article {
+    display: flex;
+    align-items: center;
+    gap: 2rem
+}
+
+.headline-list li article h3 {
+    font-weight: bolder;
+}

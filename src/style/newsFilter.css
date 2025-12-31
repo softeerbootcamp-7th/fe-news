@@ -1,0 +1,49 @@
+.news-filter-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 21rem 2rem; 
+}
+
+.news-filter {
+    display: flex;
+    gap: 1rem;
+}
+
+.filter-btn {
+    border: none;
+    background-color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.active {
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+.count {
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    background-color: blue;
+    color: white;
+    opacity: 0.5;
+    font-size: 1rem;
+}
+
+.active .count {
+    background-color: blue;
+    color: white;
+    opacity: 1;
+    font-size: 1rem;
+}
+
+.view-toggle {
+    display: flex;
+    gap: 1rem;
+}
+
+.view-btn {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
