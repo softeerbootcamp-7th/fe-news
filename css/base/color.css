@@ -1,0 +1,63 @@
+/* === 기본 색상 팔레트 (Raw Tokens) === */
+:root {
+  /* Grayscale */
+  --grayscale-white-alt: rgba(255, 255, 255, 0.7);
+  --grayscale-white: #ffffff;
+  --grayscale-50: #f5f7f9;
+  --grayscale-100: #d2dae0;
+  --grayscale-200: #879298;
+  --grayscale-300: #6b8091;
+  --grayscale-400: #5f6e76;
+  --grayscale-500: #485966;
+  --grayscale-black: #14121b;
+
+  /* Blue */
+  --blue-100: #789ce7;
+  --blue-500: #4362d0;
+}
+
+/* === Light Mode (기본) === */
+:root {
+  /* Text */
+  --color-text-strong: var(--grayscale-black);
+  --color-text-bold: var(--grayscale-500);
+  --color-text-default: var(--grayscale-400);
+  --color-text-weak: var(--grayscale-200);
+  --color-text-white-default: var(--grayscale-white);
+  --color-text-white-weak: var(--grayscale-white-alt);
+  --color-text-point: var(--blue-500);
+
+  /* Surface (배경) */
+  --color-surface-default: var(--grayscale-white);
+  --color-surface-alt: var(--grayscale-50);
+  --color-surface-brand-default: var(--blue-500);
+  --color-surface-brand-alt: var(--blue-100);
+
+  /* Border */
+  --color-border-bold: var(--grayscale-300);
+  --color-border-default: var(--grayscale-100);
+}
+
+/* === Dark Mode === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Text */
+    --color-text-strong: var(--grayscale-white);
+    --color-text-bold: var(--grayscale-50);
+    --color-text-default: var(--grayscale-100);
+    --color-text-weak: var(--grayscale-white-alt);
+    --color-text-white-default: var(--grayscale-white-alt);
+    --color-text-white-weak: var(--grayscale-white-alt);
+    --color-text-point: var(--blue-500);
+
+    /* Surface */
+    --color-surface-default: var(--grayscale-black);
+    --color-surface-alt: var(--grayscale-500);
+    --color-surface-brand-default: var(--blue-500);
+    --color-surface-brand-alt: var(--blue-100);
+
+    /* Border */
+    --color-border-bold: var(--grayscale-white-alt);
+    --color-border-default: var(--grayscale-400);
+  }
+}
