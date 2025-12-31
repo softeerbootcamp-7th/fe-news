@@ -1,0 +1,8 @@
+.news {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    width: 930px;
+    margin: 32px;
+}

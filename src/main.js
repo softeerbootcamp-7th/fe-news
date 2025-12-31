@@ -1,24 +1,16 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import { createAutoRollingNews } from './components/autoRollingNews/autoRollingNews';
+import { createHeader } from './components/header/header';
+import './styles/layout.css';
+import './styles/index.css';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
+const app = document.querySelector('#app');
+
+app.innerHTML =  `
+  <article class="news"></article>
 `
+const layoutMain = app.querySelector('.news');
+const header = createHeader();
+const autoRollingNews = createAutoRollingNews();
 
-setupCounter(document.querySelector('#counter'))
+layoutMain.append(header);
+layoutMain.append(autoRollingNews);

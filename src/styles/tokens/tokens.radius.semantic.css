@@ -1,0 +1,22 @@
+:root {
+  /* ==============================
+     Radius
+     ============================== */
+  --radius-full: 999px; /* circle / pill */
+  --radius-100: 8px;   /* default component */
+
+
+  /* ==============================
+     Border
+     ============================== */
+  --border-width-default: 1px;
+  --border-color-default: #E5E7EB;
+
+
+  /* ==============================
+     Drop Shadow
+     ============================== */
+  --shadow-popup:
+    0 4px 18px rgba(20, 33, 43, 0.08),
+    0 0 2px rgba(20, 33, 43, 0.02);
+}
