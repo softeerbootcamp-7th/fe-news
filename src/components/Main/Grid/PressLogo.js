@@ -1,5 +1,5 @@
-import { CloseIcon } from "../icons/CloseIcon";
-import { PlusIcon } from "../icons/PlusIcon";
+import { CloseIcon } from "../../icons/CloseIcon";
+import { PlusIcon } from "../../icons/PlusIcon";
 import "./PressLogo.css";
 
 export function PressLogo(logo, is_subscribed = false) {

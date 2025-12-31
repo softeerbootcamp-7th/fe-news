@@ -1,7 +1,7 @@
 import "./GridSectionHeader.css";
-import { Badge } from "../Shared/Badge";
-import { ListViewIcon } from "../Icons/ListViewIcon";
-import { GridViewIcon } from "../Icons/GridViewIcon";
+import { Badge } from "../../Shared/Badge";
+import { ListViewIcon } from "../../icons/ListViewIcon";
+import { GridViewIcon } from "../../icons/GridViewIcon";
 
 export function GridSectionHeader(
   onlySubscriped = false,
