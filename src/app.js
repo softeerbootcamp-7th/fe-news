@@ -1,7 +1,7 @@
 import { NewArticlesView } from "@/newArticles.js";
 
-import { articlesData } from "/dummy/articlesData";
-import { createHeader } from "./header/createHeader";
+import { articlesData } from "@/dummy/articlesData";
+import { createHeader } from "@/header/createHeader";
 
 // 기본 상단 영역
 createHeader();
