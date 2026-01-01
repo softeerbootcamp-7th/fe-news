@@ -13,7 +13,7 @@ export class LatestNewsView {
     this.rightNewsContainer = newsContainer.children[1];
 
     this.leftLastRoll = performance.now();
-    this.rightLastRoll = performance.now() + this.ROLL_OFFSET_MS; // 오른쪽 1초 시간차
+    this.rightLastRoll = performance.now() + LatestNewsView.ROLL_OFFSET_MS; // 오른쪽 1초 시간차
     this.leftPaused = false;
     this.rightPaused = false;
     this.rafId = requestAnimationFrame(this.loop.bind(this));
@@ -34,7 +34,7 @@ export class LatestNewsView {
   }
   shouldRoll(timestamp, side) {
     const lastRoll = side === "left" ? this.leftLastRoll : this.rightLastRoll;
-    return timestamp - lastRoll >= this.ROLL_INTERVAL_MS;
+    return timestamp - lastRoll >= LatestNewsView.ROLL_INTERVAL_MS;
   }
 
   leftRoll() {
@@ -127,7 +127,7 @@ export class LatestNewsView {
       titleElement.classList.remove("underline");
     } else {
       this.rightPaused = false;
-      this.rightLastRoll = this.leftLastRoll + this.ROLL_OFFSET_MS; // 시간차 유지
+      this.rightLastRoll = this.leftLastRoll + LatestNewsView.ROLL_OFFSET_MS; // 시간차 유지
       const titleElement =
         this.rightNewsContainer.firstElementChild.children[1];
       titleElement.classList.remove("underline");
