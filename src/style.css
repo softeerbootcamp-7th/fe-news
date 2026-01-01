@@ -1,6 +1,6 @@
-@import './design/tokens.css';
-@import './design/semantic.css';
-@import './design/typography.css';
+@import './styles/tokens.css';
+@import './styles/semantic.css';
+@import './styles/typography.css';
 
 * {
   margin: 0;
