@@ -58,31 +58,54 @@
             aria-label="언론사 구독 필터링 여부 선택"
           >
             <button class="press-news__tab active" aria-label="전체 언론사 탭">
-              <h2>전체 언론사</h2>
+              <h2 class="display-bold-16">전체 언론사</h2>
             </button>
             <button
               class="press-news__tab my"
               aria-label="내가 구독한 언론사 탭"
             >
-              <h2>내가 구독한 언론사</h2>
-              <div class="badge"><span>8</span></div>
+              <h2 class="medium-16">내가 구독한 언론사</h2>
+              <div class="badge"><span class="medium-12">8</span></div>
             </button>
           </nav>
           <!-- 그리드/리스트 보기 -->
           <nav class="press-news__view-toggle" aria-label="보기 방식">
-            <button class="view-toggle view-toggle--grid">
-              <img src="" alt="그리드 보기" />
+            <button class="view-toggle selected" aria-label="그리드 보기">
+              <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16 2V16H2V2H16ZM17.1 0H0.9C0.4 0 0 0.4 0 0.9V17.1C0 17.5 0.4 18 0.9 18H17.1C17.5 18 18 17.5 18 17.1V0.9C18 0.4 17.5 0 17.1 0ZM8 4H14V6H8V4ZM8 8H14V10H8V8ZM8 12H14V14H8V12ZM4 4H6V6H4V4ZM4 8H6V10H4V8ZM4 12H6V14H4V12Z"
+                  fill="currentColor"
+                />
+              </svg>
             </button>
-            <button class="view-toggle view-toggle--list">
-              <img src="" alt="리스트 보기" />
+            <button class="view-toggle" aria-label="리스트 보기">
+              <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M0 8V0H8V8H0ZM0 18V10H8V18H0ZM10 8V0H18V8H10ZM10 18V10H18V18H10ZM2 6H6V2H2V6ZM12 6H16V2H12V6ZM12 16H16V12H12V16ZM2 16H6V12H2V16Z"
+                  fill="currentColor"
+                />
+              </svg>
             </button>
           </nav>
         </header>
 
         <!-- 언론사 목록 영역-->
         <section aria-label="언론사 목록" class="press-list">
-          <button class="press-list__control press-list__control--prev">
-            <img src="" alt="이전 목록" />
+          <button
+            class="press-list__control press-list__control--prev"
+            aria-label="이전 목록"
+          >
+            <svg
+              viewBox="0 0 26 41"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-label="이전 목록"
+              fill="none"
+            >
+              <path
+                d="M24.781 0.384155L0.781006 20.3842L24.781 40.3842"
+                stroke="currentColor"
+              />
+            </svg>
           </button>
 
           <!-- 그리드 -->
@@ -101,12 +124,23 @@
             </li>
           </ul>
 
-          <button class="press-list__control press-list__control--next">
-            <img src="" alt="다음 목록" />
+          <button
+            class="press-list__control press-list__control--next"
+            aria-label="다음 목록"
+          >
+            <svg
+              viewBox="0 0 26 41"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.320068 40.3842L24.3201 20.3842L0.320068 0.384155"
+                stroke="currentColor"
+              />
+            </svg>
           </button>
 
           <dialog
-            open
             class="press-list__dialog"
             aria-labelledby="press-dialog-title"
           >
