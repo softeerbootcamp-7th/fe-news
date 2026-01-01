@@ -104,6 +104,10 @@ body {
     gap: 16px;
 }
 
+.rolling-bar__item--hidden {
+    display: none;
+}
+
 .rolling-bar__source {
     font-size: var(--font-size-14);
     font-weight: var(--font-weight-bold);
