@@ -7,7 +7,7 @@ export const createGrid = () => {
   const gridList = getGridData();
   const nsGrid = createEl(
     "section",
-    "ns-press-grid",
+    "ns-press-grid border-default",
     `
       <ul class="ns-press-grid__list"></ul>
     `
@@ -17,7 +17,7 @@ export const createGrid = () => {
 
   const list = nsGrid.querySelector(".ns-press-grid__list");
 
-  gridList.forEach((press) => {
+  gridList.slice(0, 24).forEach((press) => {
     const item = createGridCard(press);
     list.appendChild(item);
   });

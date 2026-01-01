@@ -3,7 +3,7 @@ import { createEl } from "../lib/dom";
 export const createGridCard = (press) => {
   const item = createEl(
     "li",
-    "ns-press-grid__item",
+    "ns-press-grid__item surface-default",
     `
       <div
         class="ns-press-grid__button"
@@ -13,13 +13,13 @@ export const createGridCard = (press) => {
           src="${press.icon}"
           alt="${press.name}"
         />
-
-        // <button class="subscribe-btn">
-        //   + 구독하기
-        // </button>
       </div>
     `
   );
 
   return item;
 };
+
+// <button class="subscribe-btn">
+//   + 구독하기
+// </button>
