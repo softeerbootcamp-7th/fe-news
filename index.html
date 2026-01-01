@@ -3,83 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <title>뉴스스탠드</title>
-    <link rel="stylesheet" href="./src/styles/global.css" />
     <link rel="stylesheet" href="./src/styles/tokens.css" />
     <link rel="stylesheet" href="./src/styles/theme.css" />
     <link rel="stylesheet" href="./src/styles/typography.css" />
+    <link rel="stylesheet" href="./src/styles/global.css" />
+    <link rel="stylesheet" href="./src/styles/newsstand.css" />
   </head>
   <body>
     <!-- 기본 상단 영역 -->
-    <header class="header-container">
-      <section aria-label="뉴스스탠드 헤더" class="flex-group">
+    <header class="newsstand-header">
+      <section aria-label="뉴스스탠드 헤더" class="newsstand-header__left">
         <img
           src="public/assets/svg/newspaper.svg"
           alt="logo"
-          class="main-logo"
+          class="newsstand-header__logo"
         />
-        <h1 class="main-title display-bold-24">뉴스스탠드</h1>
+        <h1 class="newsstand-header__title display-bold-24">뉴스스탠드</h1>
       </section>
-      <div class="flex-group">
-        <time class="today display-medium-16">2026. 01. 14. 수요일</time>
-        <button class="toggle-theme-button">
+
+      <div class="newsstand-header__right">
+        <time class="newsstand-header__date display-medium-16">
+          2026. 01. 14. 수요일
+        </time>
+        <button class="theme-toggle-button" aria-label="테마 전환">
           <img src="public/assets/svg/dark_mode.svg" alt="다크모드 사용하기" />
         </button>
       </div>
     </header>
 
-    <main>
+    <main class="newsstand-main">
       <!-- 최신 뉴스 자동롤링 영역 -->
-      <section aria-label="최신 뉴스" class="new-articles">
-        <!-- 뉴스 요소 -->
-        <div class="roll-container"></div>
-        <div class="roll-container"></div>
+      <section aria-label="최신 뉴스" class="latest-news">
+        <div class="latest-news__roll"></div>
+        <div class="latest-news__roll"></div>
       </section>
-      <!-- 언론사별 기사들을 확인하는 영역  -->
-      <section aria-label="언론사 뉴스">
-        <!-- 언론사 필터 탭-->
-        <header>
-          <h2>전체 언론사</h2>
-          <div>
-            <h2>내가 구독한 언론사</h2>
-            <p>8</p>
+
+      <!-- 언론사별 기사들을 확인하는 영역 -->
+      <section aria-label="언론사 뉴스" class="press-news">
+        <!-- 필터 / 보기 옵션 -->
+        <header class="press-news__header">
+          <div class="press-news__tabs">
+            <h2 class="press-news__tab press-news__tab--active">전체 언론사</h2>
+            <div class="press-news__tab-my">
+              <h2 class="press-news__tab">내가 구독한 언론사</h2>
+              <p class="press-news__count">8</p>
+            </div>
           </div>
           <!-- 그리드/리스트 보기 -->
-          <nav aria-label="보기 방식">
-            <button>
-              <img src="" alt="grid button" />
+          <nav class="press-news__view-toggle" aria-label="보기 방식">
+            <button class="view-toggle view-toggle--grid">
+              <img src="" alt="그리드 보기" />
             </button>
-            <button>
-              <img src="" alt="list button" />
+            <button class="view-toggle view-toggle--list">
+              <img src="" alt="리스트 보기" />
             </button>
           </nav>
         </header>
 
         <!-- 언론사 목록 영역-->
-        <section aria-label="언론사 목록">
-          <button>
+        <section aria-label="언론사 목록" class="press-list">
+          <button class="press-list__control press-list__control--prev">
             <img src="" alt="이전 목록" />
           </button>
-          <button>
-            <img src="" alt="다음 목록" />
-          </button>
           <!-- 그리드 -->
-          <ul id="list">
-            <li>
+          <ul class="press-list__items">
+            <li class="press-list__item">
               <img src="" alt="서울경제 로고" />
             </li>
-            <li>
+            <li class="press-list__item">
               <img src="" alt="데일리안 로고" />
             </li>
-            <li>
+            <li class="press-list__item">
               <img src="" alt="헤럴드 경제 로고" />
             </li>
-            <li>
+            <li class="press-list__item">
               <img src="" alt="SBS Biz 로고" />
             </li>
           </ul>
+
+          <button class="press-list__control press-list__control--next">
+            <img src="" alt="다음 목록" />
+          </button>
         </section>
       </section>
     </main>
+
     <script type="module" src="/src/app.js"></script>
   </body>
 </html>

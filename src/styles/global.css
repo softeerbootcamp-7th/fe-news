@@ -2,38 +2,6 @@ body {
   background-color: var(--surface-default);
 }
 
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.flex-group {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-.main-title {
-  color: var(--text-strong);
-}
-
-#today {
-  color: var(--text-default);
-}
-
-.roll-container {
-  height: 50px;
-  margin: 10px;
-  position: relative;
-  overflow: hidden;
-}
-.roll-container > article {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  transform: translateY(50px);
-  transition: transform 0.4s ease;
-}
-
 .underline {
   text-decoration: underline;
 }

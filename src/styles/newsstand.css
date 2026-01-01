@@ -1,0 +1,143 @@
+/* ================================
+   Newsstand Header
+================================ */
+.newsstand-header {
+  /* header layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.newsstand-header__left,
+.newsstand-header__right {
+  /* flex group */
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.newsstand-header__title {
+  /* h1 title */
+  color: var(--text-strong);
+}
+
+.newsstand-header__date {
+  /* date text */
+  color: var(--text-default);
+}
+
+.theme-toggle-button {
+  /* theme toggle icon */
+  & img {
+  }
+}
+
+/* ================================
+   Latest News (Rolling)
+================================ */
+.latest-news {
+  /* container */
+}
+
+.latest-news__roll {
+  /* rolling column container */
+  height: 50px;
+  margin: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.latest-news__roll > article {
+  /* rolling column */
+  position: absolute;
+  display: flex;
+  align-items: center;
+  transform: translateY(50px);
+  transition: transform 0.4s ease;
+}
+
+.latest-news__roll > p {
+  /* press name */
+}
+
+.latest-news__roll > h3 {
+  /* news title */
+}
+
+/* ================================
+   Press News Section
+================================ */
+.press-news {
+  /* section wrapper */
+}
+
+.press-news__header {
+  /* tabs + view toggle */
+}
+
+.press-news__tabs {
+  /* tab group */
+}
+
+.press-news__tab {
+  /* single tab */
+}
+
+.press-news__tab--active {
+  /* active tab */
+}
+
+.press-news__count {
+  /* subscription count */
+}
+
+.press-news__view-toggle {
+  /* grid/list buttons */
+}
+
+.press-news__view-toggle .view-toggle {
+  /* toggle button */
+}
+
+.press-news__view-toggle .view-toggle--grid {
+  /* grid mode */
+}
+
+.press-news__view-toggle .view-toggle--list {
+  /* list mode */
+}
+
+/* ================================
+   Press List
+================================ */
+.press-list {
+  /* list wrapper */
+}
+
+.press-list__control {
+  /* prev / next button */
+}
+
+.press-list__control--prev {
+  /* previous */
+}
+
+.press-list__control--next {
+  /* next */
+}
+
+.press-list__items {
+  /* ul */
+}
+
+.press-list__item {
+  /* li */
+}
+
+.press-list__item img {
+  /* press logo */
+}
+
+.press-list__item--active {
+  /* selected press */
+}
