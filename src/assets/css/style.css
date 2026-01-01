@@ -12,7 +12,7 @@
   --display-bold16: 700 16px 'Pretendard';
   --display-bold14: 700 14px 'Pretendard';
   --display-bold12: 700 12px 'Pretendard';
-  --display-medium16: 500 16px 'Pretendard'/22px 'Pretendard';
+  --display-medium16: 500 16px/22px 'Pretendard';
   --display-medium14: 500 14px 'Pretendard';
   --display-medium12: 500 12px 'Pretendard';
   --selected-bold16: 700 16px 'Pretendard';
@@ -25,13 +25,11 @@
   --hover-medium16: 500 16px 'Pretendard';
   --hover-medium14: 500 14px 'Pretendard';
 
-.upperTab {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   --text-white-weak: rgb(255, 255, 255, 0.7);
   --text-white-default: #FFFFFF;
   --surface-alt: #F5F7F9;
+  --surface-default: #FFFFFF;
+  --text-point: #4362D0;
   --border-default: #D2DAE0;
   --text-weak: #879298;
   --border-bold: #6E8091;
@@ -52,8 +50,12 @@
   align-items: center;
   justify-content: space-between;
   column-gap: 8px;
+  padding-left: 0;
   border: 0px;
   background: white;
+  cursor: pointer;
+}
+
 #autoRollingNewsBar {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -158,6 +160,11 @@
   border-style: solid;
 }
 
+#viewArea > .center > .grid-cell {
+  display: block;
+  text-align: center;
+  align-self: center;
+}
 
 #viewArea > .left {
   position: absolute;
@@ -206,7 +213,7 @@
 
 .newspaperIcon {
   width: 24px;
-  height: 24px;
+  height: 20px;
 }
 
 .todaysDate {
