@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.newsstand-header__logo {
+  color: var(--text-point);
+}
+
 .newsstand-header__title {
   /* h1 title */
   color: var(--text-strong);
