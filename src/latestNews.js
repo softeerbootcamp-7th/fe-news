@@ -136,7 +136,7 @@ export class LatestNewsView {
 
   createNewsElement(dataIndex) {
     // 특정 데이터로 뉴스 요소 생성
-    const news = document.createElement("news");
+    const news = document.createElement("article");
     const press = document.createElement("p");
     press.textContent = this.data[dataIndex].press;
     const title = document.createElement("h3");
