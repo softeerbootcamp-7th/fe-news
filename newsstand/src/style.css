@@ -23,6 +23,10 @@
   gap: 8px;
 }
 
+#title-wrap:hover {
+  cursor: pointer;
+}
+
 .ns-header {
   display: flex;
   justify-content: space-between;
