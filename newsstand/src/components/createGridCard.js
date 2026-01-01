@@ -13,13 +13,12 @@ export const createGridCard = (press) => {
           src="${press.icon}"
           alt="${press.name}"
         />
+        <button class="subscribe-btn surface-alt typo-available-medium12 border-default text-weak">
+          + 구독하기
+        </button>
       </div>
     `
   );
 
   return item;
 };
-
-// <button class="subscribe-btn">
-//   + 구독하기
-// </button>

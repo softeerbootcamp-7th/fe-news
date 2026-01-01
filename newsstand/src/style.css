@@ -94,6 +94,7 @@
 
 .ns-press-grid__item {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   /* 필요하면 border, padding 등 */
@@ -103,4 +104,39 @@
 
 .ns-press-grid__item img {
   height: 20px;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.ns-press-grid__item:hover img {
+  opacity: 0;
+}
+
+.ns-press-grid__item:hover {
+  background: #f5f7f9;
+}
+
+.subscribe-btn {
+  position: absolute;
+  top: 36px;
+  left: 41px;
+  width: 72px;
+  height: 24px;
+  padding-right: 6px;
+  padding-left: 6px;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.subscribe-btn:hover {
+  border: 1px solid var(--color-border-bold);
+  color: var(--color-text-bold);
+}
+
+.ns-press-grid__item:hover .subscribe-btn {
+  opacity: 1;
+  pointer-events: auto;
 }

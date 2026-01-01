@@ -78,6 +78,14 @@
   line-height: var(--line-height-22);
 }
 
+/* available-medium12 : $medium.S */
+.typo-available-medium12 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-22);
+}
+
 /* available-medium16 : $medium.M */
 .typo-available-medium16 {
   font-family: var(--font-family-base);
