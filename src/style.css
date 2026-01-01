@@ -21,6 +21,7 @@ body {
   padding: 20px;
 }
 
+/* --- 헤더 영역 --- */
 .header {
   display: flex;
   justify-content: space-between;
@@ -43,63 +44,7 @@ body {
   width: 100%;
 }
 
-.grid {
-  display: grid;
-  width: 930px;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-}
-
-.grid-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;  
-  height: 96.25px;
-  background: var(--surface-default);
-  outline: 1px solid var(--border-default);
-  cursor: pointer;
-  list-style-type: none;
-}
-
-.grid-item.placeholder {
-  pointer-events: none;
-}
-
-.grid-item:hover {
-  background-color: var(--surface-alt);
-}
-
-.grid-item-image {
-  height: 20px;
-  object-fit: cover;
-  background-color: var(--surface-alt);
-}
-
-.grid-item-content {
-  padding: 15px;
-}
-
-.grid-item-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--text-strong);
-}
-
-.grid-item-description {
-  font-size: 0.9rem;
-  color: var(--text-default);
-  margin-bottom: 10px;
-  line-height: 1.4;
-  overflow: hidden;
-}
-
-.grid-item-date {
-  font-size: 0.8rem;
-  color: var(--text-weak);
-}
-
-
-/* 롤링 뉴스 */
+/* --- 롤링 뉴스 영역 --- */
 .rolling-news {
   width: 100%;
   display: flex;
@@ -133,7 +78,7 @@ body {
   cursor: pointer;
 }
 
-/* 탭 영역 */
+/* --- 탭 영역 --- */
 .tabs {
   display: flex;
   gap: 10px;
@@ -171,7 +116,48 @@ body {
   filter: none;
 }
 
-/* 리스트 (임의의 카드 디자인) */
+
+/* --- 그리드 영역 --- */
+.grid {
+  display: grid;
+  width: 930px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.grid-wrapper {
+  position: relative;
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  height: 96.25px;
+  background: var(--surface-default);
+  outline: 1px solid var(--border-default);
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.grid-item.placeholder {
+  pointer-events: none;
+}
+
+.grid-item:hover {
+  background-color: var(--surface-alt);
+}
+
+.grid-item-image {
+  height: 20px;
+  object-fit: cover;
+  background-color: var(--surface-alt);
+}
+
+.grid-item-content {
+  padding: 15px;
+}
+
+/* --- 리스트 영역 (임의의 카드 디자인) --- */
 .list {
   display: flex;
   flex-direction: column;
@@ -238,23 +224,8 @@ body {
   color: var(--text-weak);
 }
 
-/* 그리드 + 페이지네이션 */
-.container {
-  max-width: 930px;
-  margin: 0 auto;
-}
 
-.grid-wrapper {
-  position: relative;
-  width: 930px;
-  margin: 0 auto;
-}
-
-.grid {
-  width: 930px;
-}
-
-/* 페이지네이션 */
+/* --- 페이지네이션 --- */
 .pagination-btn {
   position: absolute;
   top: 50%;
@@ -280,20 +251,6 @@ body {
 
 .pagination-btn:disabled {
   display: none;
-}
-
-.pagination-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.9rem;
-  color: var(--text-default);
-  margin-bottom: 40px;
-  font-weight: 500;
-}
-
-.pagination-info span {
-  margin: 0 4px;
 }
 
 /* 테마 변경 토글
