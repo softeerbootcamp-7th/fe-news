@@ -114,6 +114,90 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+#tabAndViewer {
+  height: 24px;
+  margin-block: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#tabButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+#viewButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#allPress {
+  font: var(--selected-bold16);
+  color: var(--text-strong);
+}
+#viewArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+#viewArea > .center {
+  display: grid;
+  width: 100%;
+  height: 388px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  border-width: 1px;
+  border-color: var(--border-default);
+  border-style: solid;
+}
+
+
+#viewArea > .left {
+  position: absolute;
+  left: 300px;
+}
+
+#viewArea > .right {
+  position: absolute;
+  right: 300px;
+}
+
+.subscribedPress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.subscribedPress > .title {
+  font: var(--available-medium16);
+  color: var(--text-weak);
+}
+
+.subscribedPress > .badge {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  background: var(--surface-brand-alt);
+  font: var(--display-medium12);
+  color: var(--text-white-weak);
+}
+
+.upperTab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block: 36px;
 }
 
 .displayText {
