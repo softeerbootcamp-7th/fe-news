@@ -53,6 +53,9 @@
   align-items: center;
   padding-left: 16px;
 }
+#rolling-card-wrapper h1 {
+  min-width: 50px;
+}
 #rolling-card-wrapper:hover {
   cursor: pointer;
 }
