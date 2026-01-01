@@ -111,10 +111,6 @@ export class LatestNewsView {
 
     if (side === "left") this.leftPaused = true;
     else this.rightPaused = true;
-
-    const titleElement = container.firstElementChild.children[1];
-    titleElement.classList.add("underline");
-    container.style.cursor = "pointer";
   }
 
   resume(side) {
@@ -122,15 +118,10 @@ export class LatestNewsView {
       this.leftPaused = false;
       this.leftLastRoll = performance.now();
       if (!this.rightPaused)
-        this.rightLastRoll = this.leftLastRoll + this.ROLL_OFFSET_MS; // 시간차 유지
-      const titleElement = this.leftNewsContainer.firstElementChild.children[1];
-      titleElement.classList.remove("underline");
+        this.rightLastRoll = this.leftLastRoll + LatestNewsView.ROLL_OFFSET_MS; // 시간차 유지
     } else {
       this.rightPaused = false;
       this.rightLastRoll = this.leftLastRoll + LatestNewsView.ROLL_OFFSET_MS; // 시간차 유지
-      const titleElement =
-        this.rightNewsContainer.firstElementChild.children[1];
-      titleElement.classList.remove("underline");
     }
   }
 
@@ -138,8 +129,10 @@ export class LatestNewsView {
     // 특정 데이터로 뉴스 요소 생성
     const news = document.createElement("article");
     const press = document.createElement("p");
+    press.classList.add("display-bold-14");
     press.textContent = this.data[dataIndex].press;
     const title = document.createElement("h3");
+    title.classList.add("medium-14");
     title.textContent = this.data[dataIndex].mainTitle;
     news.appendChild(press);
     news.appendChild(title);

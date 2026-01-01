@@ -5,7 +5,10 @@ body {
 .underline {
   text-decoration: underline;
 }
-
+p,
+h3 {
+  margin: 0;
+}
 button {
   flex-direction: row;
   justify-content: center;
