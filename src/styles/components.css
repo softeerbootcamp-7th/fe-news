@@ -20,6 +20,19 @@ h1 {
   font-size: var(--fs-24);
 }
 
+#badge {
+  width: 20px;
+  height: 20px;
+  background-color: var(--blue-100);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#subscribed-press {
+  display: flex;
+}
+
 #newspaper-icon {
   width: 24;
   height: 24;
@@ -82,4 +95,13 @@ h1 {
 }
 .height-space-58 {
   height: 58px;
+}
+
+.left:hover > .news-headline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.right:hover > .news-headline {
+  text-decoration: underline;
+  cursor: pointer;
 }
