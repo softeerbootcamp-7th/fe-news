@@ -60,6 +60,10 @@ body {
   list-style-type: none;
 }
 
+.grid-item.placeholder {
+  pointer-events: none;
+}
+
 .grid-item:hover {
   background-color: var(--surface-alt);
 }

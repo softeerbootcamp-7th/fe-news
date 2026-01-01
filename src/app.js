@@ -9,7 +9,6 @@ import { attachPaginationEvents, updatePaginationButtons } from './components/pa
 /**
  * TODO
  * - [week 1-1 레이아웃]
- * - 그리드 컨텐츠 없어도 레이아웃 유지되도록
  * - 그리드 페이지네이션 > 최대 4페이지
  * 
  * - [week 1-2 구독 및 롤링 기능]
