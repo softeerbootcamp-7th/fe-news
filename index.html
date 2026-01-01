@@ -84,6 +84,7 @@
           <button class="press-list__control press-list__control--prev">
             <img src="" alt="이전 목록" />
           </button>
+
           <!-- 그리드 -->
           <ul class="press-list__items">
             <li class="press-list__item">
@@ -103,6 +104,22 @@
           <button class="press-list__control press-list__control--next">
             <img src="" alt="다음 목록" />
           </button>
+
+          <dialog
+            open
+            class="press-list__dialog"
+            aria-labelledby="press-dialog-title"
+          >
+            <div class="dialog-title">
+              <h3 class="medium-16">
+                <strong>언론사명</strong>을(를)<br />구독해지하시겠습니까?
+              </h3>
+            </div>
+            <div class="dialog-actions">
+              <button class="dialog-button secondary">예, 해지합니다</button>
+              <button class="dialog-button primary">아니오</button>
+            </div>
+          </dialog>
         </section>
       </section>
     </main>

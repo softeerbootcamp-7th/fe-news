@@ -8,8 +8,10 @@ body {
 p,
 h3 {
   margin: 0;
+  padding: 0;
 }
-button {
+
+.button-label {
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -46,4 +48,87 @@ button {
 
 .bg-gray {
   background-color: var(--surface-alt);
+}
+
+.badge {
+  /* height: 20px; */
+  width: fit-content;
+  padding: 2px 6px;
+  border-radius: 8px;
+
+  background-color: var(--surface-brand-alt);
+  color: var(--text-white-weak);
+  &.active {
+    background-color: var(--surface-brand-default);
+    color: var(--text-white-default);
+  }
+
+  & > span {
+    /* medium-12 */
+    font-size: var(--font-size-12);
+    font-weight: var(--font-weight-medium);
+  }
+}
+
+dialog {
+  width: 320px;
+  height: 140px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+
+  filter: drop-shadow(0px 4px 2px rgba(20, 33, 43, 0.02))
+    drop-shadow(0px 2px 18px rgba(20, 33, 43, 0.08));
+
+  outline: 1px solid var(--border-default);
+  outline-offset: -0.5px;
+  border: none;
+
+  /* medium 16 */
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-22);
+
+  & .dialog-title {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > h3 {
+      text-align: center;
+      color: var(--text-default);
+      & > strong {
+        color: var(--text-strong);
+      }
+    }
+  }
+
+  & .dialog-actions {
+    height: 46px;
+    background-color: var(--surface-alt);
+
+    & .dialog-button {
+      height: 100%;
+      border-radius: 0;
+      border: none;
+      outline: 1px solid var(--border-default);
+      outline-offset: -0.5px;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      background-color: transparent;
+      &.secondary {
+        float: left;
+        width: 50%;
+        color: var(--text-default);
+      }
+      &.primary {
+        float: right;
+        width: 50%;
+        color: var(--text-strong);
+      }
+    }
+  }
 }
