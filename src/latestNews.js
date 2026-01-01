@@ -1,16 +1,16 @@
-export class NewArticlesView {
+export class LatestNewsView {
   static ROLL_INTERVAL_MS = 5000;
   static ROLL_OFFSET_MS = 1000;
 
-  constructor(articlesData) {
-    this.data = articlesData;
+  constructor(newsData) {
+    this.data = newsData;
     this.leftIndex = 0;
     this.rightIndex = 1;
     this.lastIndex = 1;
 
-    const articlesContainer = document.querySelector(".latest-news");
-    this.leftArticleContainer = articlesContainer.children[0];
-    this.rightArticleContainer = articlesContainer.children[1];
+    const newsContainer = document.querySelector(".latest-news");
+    this.leftNewsContainer = newsContainer.children[0];
+    this.rightNewsContainer = newsContainer.children[1];
 
     this.leftLastRoll = performance.now();
     this.rightLastRoll = performance.now() + this.ROLL_OFFSET_MS; // 오른쪽 1초 시간차
@@ -43,10 +43,10 @@ export class NewArticlesView {
     this.lastIndex %= this.data.length;
     this.leftIndex = this.lastIndex;
 
-    const newArticle = this.appendLeftArticleElement();
-    const oldArticle = this.leftArticleContainer.firstElementChild;
+    const newNews = this.appendLeftNewsElement();
+    const oldNews = this.leftNewsContainer.firstElementChild;
 
-    this.roll(newArticle, oldArticle);
+    this.roll(newNews, oldNews);
   }
 
   rightRoll() {
@@ -55,59 +55,59 @@ export class NewArticlesView {
     this.lastIndex %= this.data.length;
     this.rightIndex = this.lastIndex;
 
-    const newArticle = this.appendRightArticleElement();
-    const oldArticle = this.rightArticleContainer.firstElementChild;
+    const newNews = this.appendRightNewsElement();
+    const oldNews = this.rightNewsContainer.firstElementChild;
 
-    this.roll(newArticle, oldArticle);
+    this.roll(newNews, oldNews);
   }
 
-  roll(newArticle, oldArticle) {
+  roll(newNews, oldNews) {
     // 애니메이션
     requestAnimationFrame(() => {
-      newArticle.style.transform = "translateY(0)";
-      oldArticle.style.transform = "translateY(-50px)";
+      newNews.style.transform = "translateY(0)";
+      oldNews.style.transform = "translateY(-50px)";
     });
 
     // old new 제거
-    oldArticle.addEventListener("transitionend", () => {
-      oldArticle.remove();
+    oldNews.addEventListener("transitionend", () => {
+      oldNews.remove();
     });
-    // setTimeout(() => oldArticle.remove(), 500);
+    // setTimeout(() => oldNews.remove(), 500);
   }
 
   render() {
     // 첫 2개의 뉴스 추가
-    const leftArticle = this.appendLeftArticleElement();
-    const rightArticle = this.appendRightArticleElement();
-    leftArticle.style.transform = "translateY(0)";
-    rightArticle.style.transform = "translateY(0)";
+    const leftNews = this.appendLeftNewsElement();
+    const rightNews = this.appendRightNewsElement();
+    leftNews.style.transform = "translateY(0)";
+    rightNews.style.transform = "translateY(0)";
   }
 
-  appendLeftArticleElement() {
-    const leftArticle = this.createArticleElement(this.leftIndex);
+  appendLeftNewsElement() {
+    const leftNews = this.createNewsElement(this.leftIndex);
 
-    leftArticle.addEventListener("mouseenter", () => this.pause("left"));
-    leftArticle.addEventListener("mouseleave", () => this.resume("left"));
+    leftNews.addEventListener("mouseenter", () => this.pause("left"));
+    leftNews.addEventListener("mouseleave", () => this.resume("left"));
 
-    this.leftArticleContainer.appendChild(leftArticle);
+    this.leftNewsContainer.appendChild(leftNews);
 
-    return leftArticle;
+    return leftNews;
   }
 
-  appendRightArticleElement() {
-    const rightArticle = this.createArticleElement(this.rightIndex);
+  appendRightNewsElement() {
+    const rightNews = this.createNewsElement(this.rightIndex);
 
-    rightArticle.addEventListener("mouseenter", () => this.pause("right"));
-    rightArticle.addEventListener("mouseleave", () => this.resume("right"));
+    rightNews.addEventListener("mouseenter", () => this.pause("right"));
+    rightNews.addEventListener("mouseleave", () => this.resume("right"));
 
-    this.rightArticleContainer.appendChild(rightArticle);
+    this.rightNewsContainer.appendChild(rightNews);
 
-    return rightArticle;
+    return rightNews;
   }
 
   pause(side) {
     const container =
-      side === "left" ? this.leftArticleContainer : this.rightArticleContainer;
+      side === "left" ? this.leftNewsContainer : this.rightNewsContainer;
 
     if (side === "left") this.leftPaused = true;
     else this.rightPaused = true;
@@ -123,28 +123,27 @@ export class NewArticlesView {
       this.leftLastRoll = performance.now();
       if (!this.rightPaused)
         this.rightLastRoll = this.leftLastRoll + this.ROLL_OFFSET_MS; // 시간차 유지
-      const titleElement =
-        this.leftArticleContainer.firstElementChild.children[1];
+      const titleElement = this.leftNewsContainer.firstElementChild.children[1];
       titleElement.classList.remove("underline");
     } else {
       this.rightPaused = false;
       this.rightLastRoll = this.leftLastRoll + this.ROLL_OFFSET_MS; // 시간차 유지
       const titleElement =
-        this.rightArticleContainer.firstElementChild.children[1];
+        this.rightNewsContainer.firstElementChild.children[1];
       titleElement.classList.remove("underline");
     }
   }
 
-  createArticleElement(dataIndex) {
+  createNewsElement(dataIndex) {
     // 특정 데이터로 뉴스 요소 생성
-    const article = document.createElement("article");
+    const news = document.createElement("news");
     const press = document.createElement("p");
     press.textContent = this.data[dataIndex].press;
     const title = document.createElement("h3");
     title.textContent = this.data[dataIndex].mainTitle;
-    article.appendChild(press);
-    article.appendChild(title);
+    news.appendChild(press);
+    news.appendChild(title);
 
-    return article;
+    return news;
   }
 }
