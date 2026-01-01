@@ -16,3 +16,12 @@ export const getDate = () => {
   });
   return `${formatted} ${weekdays[today.getDay()]}`;
 };
+
+// 구독한 언론사에 따라 필터링된 언론사 목록을 반환하는 함수
+export const getVisiblePresses = (state, PRESS_LIST) => {
+  const list =
+    state.tab === "subscribed"
+      ? PRESS_LIST.filter((press) => state.subscribedPresses.includes(press.id))
+      : PRESS_LIST;
+  return list;
+};
