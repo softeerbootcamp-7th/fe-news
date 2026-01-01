@@ -1,16 +1,13 @@
 import './style.css'
 import { newsData } from './data/newsData.js'
 import { displayTodayDate } from './utils/date.js'
-import { getPaginatedData, getTotalPages } from './utils/pagination.js'
+import { getPaginatedData, getTotalPages, ITEMS_PER_PAGE } from './utils/pagination.js'
 import { renderGridView } from './components/gridView.js'
 import { renderListView } from './components/listView.js'
 import { attachPaginationEvents, updatePaginationButtons } from './components/paginationControls.js'
 
 /**
  * TODO
- * - [week 1-1 레이아웃]
- * - 그리드 페이지네이션 > 최대 4페이지
- * 
  * - [week 1-2 구독 및 롤링 기능]
  * - 구독 호버 레이아웃
  * - 구독 모달 레이아웃
@@ -20,10 +17,18 @@ import { attachPaginationEvents, updatePaginationButtons } from './components/pa
 
 let currentPage = 1
 let currentView = 'grid'
+const GRID_PAGE_LIMIT = 4
+const GRID_ITEMS_LIMIT = ITEMS_PER_PAGE * GRID_PAGE_LIMIT
 
 // 새로고침마다 데이터 섞기
 // TODO: 최적화 고민
 const shuffledData = [...newsData].sort(() => Math.random() - 0.5)
+
+function getCurrentSourceData() {
+  return currentView === 'grid'
+    ? shuffledData.slice(0, GRID_ITEMS_LIMIT)
+    : shuffledData
+}
 
 function setActiveTab(viewType) {
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -33,8 +38,9 @@ function setActiveTab(viewType) {
 
 function renderPage(page) {
   currentPage = page
-  const pageData = getPaginatedData(shuffledData, page)
-  const totalPages = getTotalPages(shuffledData)
+  const sourceData = getCurrentSourceData()
+  const totalPages = getTotalPages(sourceData)
+  const pageData = getPaginatedData(sourceData, page)
 
   if (currentView === 'grid') {
     renderGridView(pageData)
@@ -82,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     },
     onNext: () => {
-      const totalPages = getTotalPages(shuffledData)
+      const totalPages = getTotalPages(getCurrentSourceData())
       if (currentPage < totalPages) {
         renderPage(currentPage + 1)
         window.scrollTo({ top: 0, behavior: 'smooth' })
