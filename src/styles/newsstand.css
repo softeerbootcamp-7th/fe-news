@@ -1,3 +1,9 @@
+body {
+  padding: 58px 136px;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
 /* ================================
    Newsstand Header
 ================================ */
@@ -6,6 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .newsstand-header__left,
@@ -45,6 +52,8 @@
   /* container */
   display: flex;
   gap: 8px;
+
+  margin-bottom: 32px;
 }
 
 .latest-news__roll {
@@ -96,6 +105,7 @@
 ================================ */
 .press-news {
   /* section wrapper */
+  position: relative;
 }
 
 .press-news__header {
@@ -139,18 +149,30 @@
 ================================ */
 .press-list {
   /* list wrapper */
+  height: 388px;
+
+  display: grid;
+  position: relative;
 }
 
 .press-list__control {
   /* prev / next button */
+  width: 24px;
+  height: 40px;
+  color: var(--border-bold);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .press-list__control--prev {
   /* previous */
+  left: -70px;
 }
 
 .press-list__control--next {
   /* next */
+  right: -70px;
 }
 
 .press-list__items {
