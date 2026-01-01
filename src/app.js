@@ -5,6 +5,7 @@ import { getPaginatedData, getTotalPages, ITEMS_PER_PAGE } from './utils/paginat
 import { renderGridView } from './components/gridView.js'
 import { renderListView } from './components/listView.js'
 import { attachPaginationEvents, updatePaginationButtons } from './components/paginationControls.js'
+import { initRolling } from './components/rolling.js'
 
 /**
  * TODO
@@ -78,6 +79,7 @@ function bindLogoReload() {
 
 document.addEventListener('DOMContentLoaded', () => {
   displayTodayDate()
+  initRolling()
   bindTabEvents()
   bindLogoReload()
 
