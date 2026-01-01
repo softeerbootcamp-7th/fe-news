@@ -2,9 +2,6 @@ body {
   background-color: var(--surface-default);
 }
 
-.underline {
-  text-decoration: underline;
-}
 p,
 h3 {
   margin: 0;
