@@ -33,7 +33,10 @@
         <time class="newsstand-header__date display-medium-16">
           2026. 01. 14. 수요일
         </time>
-        <button class="theme-toggle-button bg-gray" aria-label="테마 전환">
+        <button
+          class="theme-toggle-button button-label bg-gray"
+          aria-label="테마 전환"
+        >
           <span class="theme-toggle-button__icon"></span>
         </button>
       </div>
@@ -50,13 +53,21 @@
       <section aria-label="언론사 뉴스" class="press-news">
         <!-- 필터 / 보기 옵션 -->
         <header class="press-news__header">
-          <div class="press-news__tabs">
-            <h2 class="press-news__tab press-news__tab--active">전체 언론사</h2>
-            <div class="press-news__tab-my">
-              <h2 class="press-news__tab">내가 구독한 언론사</h2>
-              <p class="press-news__count">8</p>
-            </div>
-          </div>
+          <nav
+            class="press-news__tabs"
+            aria-label="언론사 구독 필터링 여부 선택"
+          >
+            <button class="press-news__tab active" aria-label="전체 언론사 탭">
+              <h2>전체 언론사</h2>
+            </button>
+            <button
+              class="press-news__tab my"
+              aria-label="내가 구독한 언론사 탭"
+            >
+              <h2>내가 구독한 언론사</h2>
+              <div class="badge"><span>8</span></div>
+            </button>
+          </nav>
           <!-- 그리드/리스트 보기 -->
           <nav class="press-news__view-toggle" aria-label="보기 방식">
             <button class="view-toggle view-toggle--grid">
