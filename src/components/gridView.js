@@ -1,5 +1,5 @@
 import { ITEMS_PER_PAGE } from '../utils/pagination.js'
-import { isSubscribed, toggleSubscription } from '../utils/subscription.js'
+import { subscription } from '../utils/subscription.js'
 
 export function renderGridView(items) {
   const content = document.getElementById('content')
@@ -13,7 +13,7 @@ export function renderGridView(items) {
   items.forEach(item => {
     const gridItem = document.createElement('li')
     gridItem.className = 'grid-item'
-    const subscribed = isSubscribed(item.id)
+    const subscribed = subscription.isSubscribed(item.id)
     gridItem.innerHTML = `
       <img src="${item.image}" alt="${item.title}" class="grid-item-image">
       <div class="grid-item-overlay">
@@ -26,8 +26,8 @@ export function renderGridView(items) {
     const btn = gridItem.querySelector('.subscribe-btn')
     btn.addEventListener('click', (e) => {
       e.stopPropagation()
-      toggleSubscription(item.id)
-      const isNowSubscribed = isSubscribed(item.id)
+      subscription.toggle(item.id)
+      const isNowSubscribed = subscription.isSubscribed(item.id)
       btn.classList.toggle('subscribed', isNowSubscribed)
       btn.textContent = isNowSubscribed ? '해지하기' : '구독하기'
     })

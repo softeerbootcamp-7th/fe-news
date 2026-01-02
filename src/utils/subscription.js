@@ -1,41 +1,43 @@
 const SUBSCRIPTION_KEY = 'subscribed_news'
 
-let subscriptionCache = null
+export const subscription = {
+  cache: null,
 
-function loadSubscriptions() {
-  const data = localStorage.getItem(SUBSCRIPTION_KEY)
-  return new Set(data ? JSON.parse(data) : [])
-}
+  load() {
+    const data = localStorage.getItem(SUBSCRIPTION_KEY)
+    return new Set(data ? JSON.parse(data) : [])
+  },
 
-function saveSubscriptions(subscriptionSet) {
-  localStorage.setItem(SUBSCRIPTION_KEY, JSON.stringify([...subscriptionSet]))
-}
+  save(subscriptionSet) {
+    localStorage.setItem(SUBSCRIPTION_KEY, JSON.stringify([...subscriptionSet]))
+  },
 
-export function getSubscriptions() {
-  if (!subscriptionCache) {
-    subscriptionCache = loadSubscriptions()
+  get() {
+    if (!this.cache) {
+      this.cache = this.load()
+    }
+    return this.cache
+  },
+
+  toggle(newsId) {
+    const subscriptions = this.get()
+    
+    if (subscriptions.has(newsId)) {
+      subscriptions.delete(newsId)
+    } else {
+      subscriptions.add(newsId)
+    }
+    
+    this.save(subscriptions)
+    return subscriptions
+  },
+
+  isSubscribed(newsId) {
+    return this.get().has(newsId)
+  },
+
+  clear() {
+    localStorage.removeItem(SUBSCRIPTION_KEY)
+    this.cache = null
   }
-  return subscriptionCache
-}
-
-export function toggleSubscription(newsId) {
-  const subscriptions = getSubscriptions()
-  
-  if (subscriptions.has(newsId)) {
-    subscriptions.delete(newsId)
-  } else {
-    subscriptions.add(newsId)
-  }
-  
-  saveSubscriptions(subscriptions)
-  return subscriptions
-}
-
-export function isSubscribed(newsId) {
-  return getSubscriptions().has(newsId)
-}
-
-export function clearSubscriptions() {
-  localStorage.removeItem(SUBSCRIPTION_KEY)
-  subscriptionCache = null
 }
