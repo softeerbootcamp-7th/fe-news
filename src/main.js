@@ -1,6 +1,9 @@
 // src/main.js
 import { Header } from "./components/Header.js";
-import { RollingNews } from "./components/RollingNews.js";
+import {
+  AutoRollingNews,
+  initAutoRolling,
+} from "./components/AutoRollingNews.js";
 import { GridContainer } from "./components/GridContainer.js";
 
 // 앱 상태
@@ -24,7 +27,7 @@ const render = () => {
 
   const template = `
     ${Header()}
-    ${RollingNews()}
+    ${AutoRollingNews()}
     <main>
       ${GridContainer(
         state.selectedTab,
@@ -37,6 +40,7 @@ const render = () => {
 
   app.innerHTML = template;
   attachEventListeners();
+  initAutoRolling(); // 롤링 뉴스 초기화
 };
 
 // 이벤트 리스너

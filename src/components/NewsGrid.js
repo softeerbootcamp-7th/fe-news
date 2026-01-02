@@ -3,7 +3,7 @@ export const NewsGrid = (newsItems = [], isDarkMode = false) => {
   const gridCells = newsItems
     .map(
       (item) => `
-    <div class="grid-cell border-default">
+    <div class="flex items-center justify-center border">
       <img src="${isDarkMode ? item.darkLogo : item.lightLogo}" alt="${
         item.name
       }">
@@ -13,7 +13,7 @@ export const NewsGrid = (newsItems = [], isDarkMode = false) => {
     .join("");
 
   return `
-    <div class="grid-content">
+    <div class="grid gap-0 grid-cols-6 grid-rows-4 mt-6 w-930 h-97">
       ${gridCells}
     </div>
   `;
