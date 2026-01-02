@@ -70,8 +70,8 @@ export function initRollingNews() {
     
     [leftTrack, rightTrack].forEach((track) => {
         track.addEventListener('mouseenter', () => {
-        stopRolling();
-        clearTimeout(hoverTimeout);
+            stopRolling();
+            clearTimeout(hoverTimeout);
         });
 
         track.addEventListener('mouseleave', () => {

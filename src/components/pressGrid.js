@@ -1,12 +1,12 @@
 import { pressLogos, PER_PAGE } from '../data/press.js';
-import { isSubscribed, toggleSubscribe } from '../state/subscription.js';
+import { isSubscribed } from '../state/subscription.js';
+
+let currentTab = 'all';
 
 let currentPage = 0;
 const lastPage = 3;
 
 const grid = document.querySelector('.provider-grid');
-console.log('grid:', grid);
-
 const prevBtn = document.querySelector('.grid-nav-btn--prev');
 const nextBtn = document.querySelector('.grid-nav-btn--next');
 
