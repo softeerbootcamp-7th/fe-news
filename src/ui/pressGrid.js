@@ -2,6 +2,8 @@ import { pressLogos, PER_PAGE } from '../data/press.js';
 import { isSubscribed, toggleSubscribe } from '../state/subscription.js';
 
 let currentPage = 0;
+const lastPage = 3;
+
 const grid = document.querySelector('.provider-grid');
 console.log('grid:', grid);
 
@@ -20,7 +22,7 @@ function shuffle(array) {
 
 const shufflePressLogos = shuffle(pressLogos);
 
-export function initProviderGrid() {
+export function initPressGrid() {
     render();
     prevBtn.addEventListener('click', prev);
     nextBtn.addEventListener('click', next);
@@ -45,7 +47,7 @@ function render() {
     });
 
     prevBtn.style.display = currentPage === 0 ? 'none' : 'block';
-    nextBtn.style.display = currentPage === 3 ? 'none' : 'block';
+    nextBtn.style.display = currentPage === lastPage ? 'none' : 'block';
 }
 
 function prev() {
@@ -55,7 +57,7 @@ function prev() {
 }
 
 function next() {
-    if (currentPage === 3) return;
+    if (currentPage === lastPage) return;
     currentPage++;
     render();
 }
