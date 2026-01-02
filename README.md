@@ -43,5 +43,4 @@ https://forhyundaisofteer.github.io/fe-news/
 - CSS 다크 모드 적용
   - [data-theme="dark"]
 - 롤링 구현
-- Mock Data 세팅
 - Dialog 구현
