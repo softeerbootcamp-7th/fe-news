@@ -3,11 +3,8 @@ export default function setupPagination(container, onPageChange) {
     const arrow = e.target.closest(".pagination-arrow");
     if (!arrow || arrow.disabled) return;
 
-    if (arrow.classList.contains("prev")) {
-      onPageChange("prev");
-    } else if (arrow.classList.contains("next")) {
-      onPageChange("next");
-    }
+    const direction = arrow.classList.contains("prev") ? "prev" : "next";
+    onPageChange(direction);
   });
 }
 
@@ -16,16 +13,14 @@ export function updatePaginationUI(container, currentPage, totalPages) {
   const nextBtn = container.querySelector(".pagination-arrow.next");
 
   if (prevBtn) {
-    if (currentPage === 0) {
-      prevBtn.disabled = true;
-      prevBtn.style.visibility = "hidden";
-    } else {
-      prevBtn.disabled = false;
-      prevBtn.style.visibility = "visible";
-    }
+    const isFirstPage = currentPage === 0;
+    prevBtn.disabled = isFirstPage;
+    prevBtn.classList.toggle("hidden", isFirstPage);
   }
 
   if (nextBtn) {
-    nextBtn.disabled = currentPage === totalPages - 1 || totalPages === 0;
+    const isLastPage = currentPage === totalPages - 1 || totalPages === 0;
+    nextBtn.disabled = isLastPage;
+    nextBtn.classList.toggle("hidden", isLastPage);
   }
 }
