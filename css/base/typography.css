@@ -51,7 +51,54 @@ body {
   line-height: normal;
 }
 
-/* === 밑줄 버전 === */
+/* === Selected (선택된 상태) === */
+.selected-bold16 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: normal;
+}
+
+.selected-bold14 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: normal;
+}
+
+/* === Available (선택 가능 상태) === */
+.available-medium16 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.available-medium14 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: normal;
+}
+
+.available-medium12 {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: normal;
+}
+
+/* === Hover (호버 상태) === */
+.hover-medium16 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  text-decoration: underline;
+}
+
+.hover-medium14 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: normal;
+  text-decoration: underline;
+}
+
+/* === 밑줄 변형 공통 === */
 .display-medium16.underline,
 .display-medium14.underline {
   text-decoration: underline;
