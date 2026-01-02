@@ -107,3 +107,17 @@ h1 {
   text-decoration: underline;
   cursor: pointer;
 }
+.press-logo > .subscribe-btn {
+  display: none;
+}
+
+.press-logo:hover {
+  cursor: pointer;
+  background-color: var(--grayscale-50);
+}
+.press-logo:hover > img {
+  display: none;
+}
+.press-logo:hover > .subscribe-btn {
+  display: block;
+}
