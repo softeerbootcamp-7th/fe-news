@@ -91,6 +91,101 @@
 
         <!-- 언론사 목록 영역-->
         <section aria-label="언론사 목록" class="press-list">
+          <!-- 리스트 -->
+          <section class="press-section" aria-label="보기 목록">
+            <nav class="press-tabs" aria-label="언론사 카테고리">
+              <button
+                class="press-tabs__item active"
+                style="--progress: 20%"
+                aria-current="true"
+              >
+                <p class="display-bold-14">종합/경제</p>
+                <p class="display-bold-12">
+                  1
+                  <span> / 81 </span>
+                </p>
+              </button>
+              <button class="press-tabs__item">
+                <p class="press-tabs__title medium-14">방송/통신</p>
+              </button>
+              <button class="press-tabs__item">
+                <p class="press-tabs__title medium-14">IT</p>
+              </button>
+              <button class="press-tabs__item">
+                <p class="press-tabs__title medium-14">영자지</p>
+              </button>
+            </nav>
+            <section class="press-feed">
+              <!-- 언론사 정보 -->
+              <header class="press-feed__header">
+                <img src="" alt="서울경제 로고" class="press-feed__logo" />
+
+                <time
+                  datetime="2026-01-14T18:27"
+                  class="press-feed__time medium-12"
+                >
+                  2026.01.14. 18:27 편집
+                </time>
+
+                <button class="button-label bg-gray press-feed__subscribe">
+                  <svg aria-hidden="true" viewBox="0 0 12 12">
+                    <path
+                      d="M9.5 6.5H6.5V9.5H5.5V6.5H2.5V5.5H5.5V2.5H6.5V5.5H9.5V6.5Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <p>구독하기</p>
+                </button>
+              </header>
+              <div class="press-feed__container">
+                <!-- 메인 뉴스 -->
+                <article class="press-feed__lead">
+                  <img
+                    src=""
+                    alt="메인 뉴스 썸네일"
+                    class="press-feed__thumbnail"
+                  />
+                  <h3 class="press-feed__headline medium-16">
+                    동네 빵집 '작은 선물 포장 서비스' 도입... 재방문율 상승
+                  </h3>
+                </article>
+
+                <!-- 서브 뉴스 -->
+                <ul class="press-feed__list medium-16">
+                  <li>반려동물 수제 간식 시장 확대... 소규모 창업도 증가세</li>
+                  <li>반려동물 수제 간식 시장 확대... 소규모 창업도 증가세</li>
+                  <li>반려동물 수제 간식 시장 확대... 소규모 창업도 증가세</li>
+                  <p class="press-feed__note medium-14">
+                    서울경제 언론사에서 직접 편집한 뉴스입니다.
+                  </p>
+                </ul>
+              </div>
+            </section>
+          </section>
+          <!-- 그리드 -->
+          <section class="press-section" aria-label="보기 목록">
+            <ul class="press-grid__list">
+              <li class="press-grid__item">
+                <img src="" alt="서울경제 로고" />
+              </li>
+
+              <li class="press-grid__item">
+                <img src="" alt="서울경제 로고" />
+              </li>
+
+              <li class="press-grid__item">
+                <button class="button-label bg-gray">
+                  <svg aria-hidden="true" viewBox="0 0 18 18">
+                    <path
+                      d="M0 8V0H8V8H0ZM0 18V10H8V18H0ZM10 8V0H18V8H10ZM10 18V10H18V18H10Z"
+                    />
+                  </svg>
+                  <span>해지하기</span>
+                </button>
+              </li>
+            </ul>
+          </section>
+
           <button
             class="press-list__control press-list__control--prev"
             aria-label="이전 목록"
@@ -107,28 +202,6 @@
               />
             </svg>
           </button>
-
-          <!-- 그리드 -->
-          <ul class="press-list__items">
-            <li class="press-list__item">
-              <img src="" alt="서울경제 로고" />
-            </li>
-            <li class="press-list__item">
-              <img src="" alt="서울경제 로고" />
-            </li>
-            <li class="press-list__item">
-              <button class="button-label bg-gray">
-                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M0 8V0H8V8H0ZM0 18V10H8V18H0ZM10 8V0H18V8H10ZM10 18V10H18V18H10ZM2 6H6V2H2V6ZM12 6H16V2H12V6ZM12 16H16V12H12V16ZM2 16H6V12H2V16Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <p>해지하기</p>
-              </button>
-            </li>
-          </ul>
-
           <button
             class="press-list__control press-list__control--next"
             aria-label="다음 목록"

@@ -1,7 +1,7 @@
 body {
   padding: 58px 136px;
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 930px;
 }
 
 /* ================================
@@ -182,7 +182,8 @@ body {
   right: -70px;
 }
 
-.press-list__items {
+/* Grid view */
+.press-grid__list {
   /* ul */
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -193,7 +194,7 @@ body {
   background-color: var(--border-default);
 }
 
-.press-list__item {
+.press-grid__item {
   /* li */
   max-width: 154px;
   height: 96px;
@@ -205,4 +206,114 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* List view */
+.press-tabs {
+  /* tabs container */
+  border: 1px solid var(--border-default);
+  background-color: var(--surface-alt);
+  display: flex;
+}
+
+.press-tabs__item {
+  /* tab button */
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: var(--text-weak);
+  & span {
+    color: var(--text-white-weak);
+  }
+
+  position: relative;
+  &::before {
+    /* 채우기 */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--surface-brand-default);
+    width: 0%;
+    transition: width 0.2s ease;
+    z-index: 0;
+  }
+  &.active {
+    width: 160px;
+    color: var(--text-white-default);
+    background-color: var(--surface-brand-alt);
+    &::before {
+      width: var(--progress); /* 채우기 */
+    }
+  }
+  & > p {
+    position: relative;
+    z-index: 10;
+  }
+}
+
+.press-feed {
+  /* feed container */
+  padding: 24px;
+
+  background-color: var(--surface-default);
+  border: 1px solid var(--border-default);
+  border-top: none;
+}
+
+.press-feed__header {
+  /* header layout */
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.press-feed__logo {
+  /* press logo */
+  height: 20px;
+  width: auto;
+}
+
+.press-feed__time {
+  /* edit time */
+  color: var(--text-default);
+}
+
+.press-feed__container {
+  display: flex;
+  gap: 32px;
+}
+.press-feed__lead {
+  /* main news block */
+}
+
+.press-feed__thumbnail {
+  /* main thumbnail */
+  height: 200px;
+
+  width: auto;
+  max-width: 320px;
+  margin-bottom: 16px;
+}
+
+.press-feed__headline {
+  /* main headline */
+  color: var(--text-strong);
+}
+
+.press-feed__list {
+  /* sub news list */
+}
+
+.press-feed__list li {
+  /* sub news item */
+  margin-bottom: 16px;
+  color: var(--text-bold);
+  list-style: none;
+}
+
+.press-feed__note {
+  /* editor note */
+  color: var(--text-weak);
 }
