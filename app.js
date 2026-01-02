@@ -15,41 +15,47 @@ function initGrid() {
 // 롤링 아이템 생성 함수
 function createNewsItems(barElement, newsData) {
     newsData.forEach((item, index) => {
-        const source = document.createElement('p');
-        source.className = 'rolling-bar__source';
-        source.textContent = item.press;
-        
-        const content = document.createElement('h3');
-        content.className = 'rolling-bar__content';
-        content.textContent = item.headline;
+        const boxElement = document.createElement('div');
+        boxElement.className = 'rolling-bar__box';
+        boxElement.innerHTML = `
+            <p class="rolling-bar__source">${item.press}</p>
+            <h3 class="rolling-bar__content">${item.headline}</h3>
+        `;
 
         if(index !== 0) {
-            source.classList.add('rolling-bar__item--hidden');
-            content.classList.add('rolling-bar__item--hidden');
+            boxElement.classList.add('rolling-bar__item--hidden');
         }
 
-        barElement.appendChild(source);
-        barElement.appendChild(content);
+        barElement.appendChild(boxElement);
     });
 }
 
 // 롤링 설정 함수
 function setupRolling(barElement, totalItems) {
     let currentIndex = 0;
-    const sources = barElement.querySelectorAll('.rolling-bar__source');
-    const contents = barElement.querySelectorAll('.rolling-bar__content');
+    const rollingNews = barElement.querySelectorAll('.rolling-bar__box');
 
     return setInterval(() => {
-        // 현재 뉴스 숨김 (p와 h3 모두)
-        sources[currentIndex].classList.add('rolling-bar__item--hidden');
-        contents[currentIndex].classList.add('rolling-bar__item--hidden');
-        
-        // 다음 뉴스로 이동
+        rollingNews[currentIndex].animate([
+            { transform: 'translateY(0)', opacity: 1 },
+            { transform: 'translateY(-200%)', opacity: 0 }
+        ], {
+            duration: 500,
+            easing: 'ease-in-out'
+        });
+        rollingNews[currentIndex].classList.add('rolling-bar__item--hidden');
+
         currentIndex = (currentIndex + 1) % totalItems;
-        
-        // 다음 뉴스 표시 (p와 h3 모두)
-        sources[currentIndex].classList.remove('rolling-bar__item--hidden');
-        contents[currentIndex].classList.remove('rolling-bar__item--hidden');
+
+        rollingNews[currentIndex].animate([
+            { transform: 'translateY(200%)', opacity: 0 },
+            { transform: 'translateY(0%)', opacity: 1 }
+        ], {
+            duration: 500,
+            easing: 'ease-in-out'
+        });
+
+        rollingNews[currentIndex].classList.remove('rolling-bar__item--hidden');
     }, 5000);
 }
 
