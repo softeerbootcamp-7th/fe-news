@@ -1,10 +1,15 @@
 import newsFilter from "./newsFilter.js";
 import gridNews from "./gridNews.js";
 import listNews from "./listNews.js";
-import setupFilter from "../setup/setupFilter.js";
-import setupViewToggle from "../setup/setupViewToggle.js";
-import setupPagination from "../setup/setupPagination.js";
-import setupSubscribe from "../setup/setupSubscribe.js";
+import setupFilter, { updateFilterUI } from "../setup/setupFilter.js";
+import setupViewToggle, { updateViewUI } from "../setup/setupViewToggle.js";
+import setupPagination, {
+  updatePaginationUI,
+} from "../setup/setupPagination.js";
+import setupSubscribe, {
+  loadSubscribedNews,
+  saveSubscribedNews,
+} from "../setup/setupSubscribe.js";
 import { loadNewsData, paginateNews } from "../utils/newsDataManager.js";
 
 let allNewsData = [];
@@ -26,141 +31,139 @@ export default function newsFeed() {
 }
 
 export async function initNewsFeed(container) {
+  await loadInitialData();
+  subscribedNews = loadSubscribedNews();
+
+  renderCurrentPage(container);
+  setupAllEventListeners(container);
+  updateAllUI(container);
+}
+
+async function loadInitialData() {
   allNewsData = await loadNewsData("/pressData.json");
   paginatedData = paginateNews(allNewsData, 24);
+}
 
-  const { subscribedNews: savedSubs } = setupSubscribe(
-    container,
-    (updatedSubs, filter) => {
-      subscribedNews = updatedSubs;
-      handleSubscribeChange(container, filter);
-    }
-  );
-
-  subscribedNews = savedSubs;
-
-  renderView(container, paginatedData[0]);
-  updateFilterBar(container);
-
+function setupAllEventListeners(container) {
   const filterContainer = container.querySelector(".news-filter-container");
-  
-  setupFilter(filterContainer, (newFilter) => {
-    currentFilter = newFilter;
-    handleFilterChange(container, newFilter);
-  });
 
-  setupViewToggle(filterContainer, (newView) => {
-    currentView = newView;
-    handleViewChange(container);
-  });
+  setupFilter(filterContainer, handleFilterChange.bind(null, container));
+  setupViewToggle(filterContainer, handleViewChange.bind(null, container));
+  setupPagination(container, handlePageChange.bind(null, container));
+  setupSubscribe(container, handleSubscribeChange.bind(null, container));
+}
 
-  setupPagination(container, paginatedData, (newsData, newPage) => {
+function handleFilterChange(container, newFilter) {
+  currentFilter = newFilter;
+  currentPage = 0;
+
+  const filteredData = getFilteredData(currentFilter);
+  paginatedData = paginateNews(filteredData, 24);
+
+  renderCurrentPage(container);
+  updateAllUI(container);
+}
+
+function handleViewChange(container, newView) {
+  currentView = newView;
+
+  renderCurrentPage(container);
+  updateViewUI(container.querySelector(".news-filter-container"), currentView);
+  updatePaginationArrowsVisibility(container);
+}
+
+function handlePageChange(container, direction) {
+  const newPage = direction === "prev" ? currentPage - 1 : currentPage + 1;
+
+  if (newPage >= 0 && newPage < paginatedData.length) {
     currentPage = newPage;
-    renderView(container, newsData);
-  }, currentPage);
+    renderCurrentPage(container);
+    updatePaginationUI(container, currentPage, paginatedData.length);
+  }
+}
+
+function handleSubscribeChange(container, press, filter) {
+  if (subscribedNews.has(press)) {
+    subscribedNews.delete(press);
+  } else {
+    subscribedNews.add(press);
+  }
+
+  saveSubscribedNews(subscribedNews);
+
+  if (filter === "favorite") {
+    repaginateForFavorites();
+  }
+
+  renderCurrentPage(container);
+  updateAllUI(container);
+}
+
+function renderCurrentPage(container) {
+  const gridContainer = container.querySelector("#grid-container");
+  const pageData = paginatedData[currentPage] || [];
+  const validNewsData = Array.isArray(pageData) ? pageData : [];
+
+  gridContainer.innerHTML =
+    currentView === "grid"
+      ? gridNews(validNewsData, subscribedNews, currentFilter)
+      : listNews(validNewsData, subscribedNews, currentFilter);
+}
+
+function updateAllUI(container) {
+  updateFilterBar(container);
+  updatePaginationUI(container, currentPage, paginatedData.length);
+  updatePaginationArrowsVisibility(container);
 }
 
 function updateFilterBar(container) {
-  const filterContainer = container.querySelector('.news-filter-container');
-  
-  if (filterContainer) {
-    const newFilterBar = newsFilter(currentFilter, currentView, subscribedNews.size);
-    filterContainer.outerHTML = newFilterBar;
-    
-    const newFilterContainer = container.querySelector(".news-filter-container");
-    
-    setupFilter(newFilterContainer, (newFilter) => {
-      currentFilter = newFilter;
-      handleFilterChange(container, newFilter);
-    });
+  const filterContainer = container.querySelector(".news-filter-container");
+  if (!filterContainer) return;
 
-    setupViewToggle(newFilterContainer, (newView) => {
-      currentView = newView;
-      handleViewChange(container);
-    });
-  }
+  const newFilterBar = newsFilter(
+    currentFilter,
+    currentView,
+    subscribedNews.size
+  );
+  filterContainer.outerHTML = newFilterBar;
+
+  const newFilterContainer = container.querySelector(".news-filter-container");
+
+  setupFilter(newFilterContainer, handleFilterChange.bind(null, container));
+  setupViewToggle(newFilterContainer, handleViewChange.bind(null, container));
+
+  updateFilterUI(newFilterContainer, currentFilter);
+  updateViewUI(newFilterContainer, currentView);
 }
 
-function renderView(container, newsData) {
-  const gridContainer = container.querySelector("#grid-container");
+function updatePaginationArrowsVisibility(container) {
+  const paginationArrows = container.querySelectorAll(".pagination-arrow");
+  const displayValue = currentView === "grid" ? "flex" : "none";
 
-  if (!Array.isArray(newsData)) {
-    newsData = [];
-  }
-
-  if (currentView === 'grid') {
-    gridContainer.innerHTML = gridNews(newsData, subscribedNews, currentFilter);
-  } else {
-    gridContainer.innerHTML = listNews(newsData, subscribedNews, currentFilter);
-  }
-  
-  const paginationArrows = container.querySelectorAll('.pagination-arrow');
-  paginationArrows.forEach(arrow => {
-    if (currentView === 'grid') {
-      arrow.style.display = 'flex';
-    } else {
-      arrow.style.display = 'none';
-    }
+  paginationArrows.forEach((arrow) => {
+    arrow.style.display = displayValue;
   });
 }
 
-function handleViewChange(container) {
-  const pageData = paginatedData[currentPage] || [];
-  renderView(container, pageData);
+function repaginateForFavorites() {
+  const allItems = paginatedData.flat();
+  const filteredItems = allItems.filter(
+    (item) => item && subscribedNews.has(item.press)
+  );
+
+  const pageSize = 24;
+  paginatedData = Array.from(
+    { length: Math.ceil(filteredItems.length / pageSize) },
+    (_, i) => filteredItems.slice(i * pageSize, (i + 1) * pageSize)
+  );
+
+  if (currentPage >= paginatedData.length && paginatedData.length > 0) {
+    currentPage = paginatedData.length - 1;
+  }
 }
 
-function handleSubscribeChange(container, filter) {
-  if (filter === "favorite") {
-    const allItems = paginatedData.flat();
-    
-    const filteredItems = allItems.filter((item) => {
-      return item && subscribedNews.has(item.press);
-    });
-    
-    const pageSize = 24;
-    const newPaginatedData = [];
-    for (let i = 0; i < filteredItems.length; i += pageSize) {
-      newPaginatedData.push(filteredItems.slice(i, i + pageSize));
-    }
-    
-    if (currentPage >= newPaginatedData.length && newPaginatedData.length > 0) {
-      currentPage = newPaginatedData.length - 1;
-    }
-    
-    paginatedData = newPaginatedData;
-    
-    const pageData = paginatedData[currentPage] || [];
-    renderView(container, pageData);
-
-    setupPagination(container, paginatedData, (newsData, newPage) => {
-      currentPage = newPage;
-      renderView(container, newsData);
-    }, currentPage);
-  } else {
-    const pageData = paginatedData[currentPage] || [];
-    renderView(container, pageData);
-  }
-  
-  updateFilterBar(container);
-}
-
-function handleFilterChange(container, filter) {
-  let filteredData = allNewsData;
-
-  if (filter === "favorite") {
-    filteredData = allNewsData.filter((item) => subscribedNews.has(item.press));
-  }
-
-  paginatedData = paginateNews(filteredData, 24);
-  currentPage = 0;
-
-  const pageData = paginatedData[0] || [];
-  renderView(container, pageData);
-
-  setupPagination(container, paginatedData, (newsData, newPage) => {
-    currentPage = newPage;
-    renderView(container, newsData);
-  }, currentPage);
-  
-  updateFilterBar(container);
+function getFilteredData(filter) {
+  return filter === "favorite"
+    ? allNewsData.filter((item) => subscribedNews.has(item.press))
+    : allNewsData;
 }
