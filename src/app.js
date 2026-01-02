@@ -10,9 +10,7 @@ import { initRolling } from './components/rolling.js'
 /**
  * TODO
  * - [week 1-2 구독 및 롤링 기능]
- * - 구독 호버 레이아웃
- * - 구독 모달 레이아웃
- * - 구독 기능
+ * - 구독 모달 레이아웃 및 기능 구현
  */
 
 let currentPage = 1

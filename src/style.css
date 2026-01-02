@@ -148,15 +148,44 @@ body {
   background: var(--surface-default);
   outline: 1px solid var(--border-default);
   cursor: pointer;
-  list-style-type: none;
+  position: relative;
+  overflow: hidden;
 }
 
 .grid-item.placeholder {
   pointer-events: none;
 }
 
-.grid-item:hover {
-  background-color: var(--surface-alt);
+/* --- 구독 관련 오버레이 및 버튼 --- */
+.grid-item:hover .grid-item-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.grid-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.subscribe-btn {
+  font-family: inherit;
+  height: 24px;
+  padding: 0 6px;
+  background: var(--surface-default);
+  color: var(--text-weak);
+  border-radius: 999px;
+  border: 1px solid var(--border-default);
+  cursor: pointer;
+}
+
+.subscribe-btn.subscribed {
+  background: var(--surface-alt);
 }
 
 .grid-item-image {
