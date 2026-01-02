@@ -16,14 +16,24 @@ export const rolling = {
     const list = column.querySelector('.rolling-news-list')
     const item = newsData[currentIndex % newsData.length]
     
-    list.innerHTML = `
-      <li>
-        <article class="rolling-news-item">
-          <span class="typo-display-bold-14">${item.press || 'Unknown'}</span>
-          <p class="typo-available-medium-14">${item.title}</p>
-        </article>
-      </li>
-    `
+    list.innerHTML = ''
+
+    const li = document.createElement('li')
+    const article = document.createElement('article')
+    article.className = 'rolling-news-item'
+
+    const press = document.createElement('span')
+    press.className = 'typo-display-bold-14'
+    press.textContent = item.press || 'Unknown'
+
+    const title = document.createElement('p')
+    title.className = 'typo-available-medium-14'
+    title.textContent = item.title
+
+    article.appendChild(press)
+    article.appendChild(title)
+    li.appendChild(article)
+    list.appendChild(li)
   },
 
   animateRoll(columnId, isRight = false) {
