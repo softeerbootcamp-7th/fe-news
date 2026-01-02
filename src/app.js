@@ -3,53 +3,48 @@ import { renderNewsGrid } from './components/news-grid/newsGrid.js';
 import { renderNewsstandHeader } from './components/newsstand-header/newsstandHeader.js';
 import { renderNewsTicker } from './components/news-ticker/newsTicker.js';
 import { renderPressHeader } from './components/press-header/pressHeader.js';
-import { store } from './store/index.js';
+import { observeStore } from './utils/observer.js';
+import { shallowEqual } from './utils/compare.js';
 
-function getFilteredPressList() {
-  const state = store.getState();
-  const allPressList = state.allPress;
-
-  if (state.currentTab === 'subscribed') {
-    const subscribedSet = new Set(state.subscribedIds);
-    return allPressList.filter((press) => subscribedSet.has(press.name));
+const selectFilteredPress = (state) => {
+  const { allPress, currentTab, subscribedIds } = state;
+  if (currentTab === 'subscribed') {
+    const subscribedSet = new Set(subscribedIds);
+    return allPress.filter((press) => subscribedSet.has(press.name));
   }
+  return allPress;
+};
 
-  return allPressList;
-}
-
-let previousTab = 'all';
-let previousSubscribedCount = 0;
-
-function renderNewsContent() {
-  const filteredPressList = getFilteredPressList();
+const updateNewsContent = (filteredPressList) => {
   renderPressToDOM(filteredPressList, '.press-content');
   renderNewsGrid(filteredPressList, '.press-content', 'auto');
-}
+};
 
 renderNewsstandHeader('#newsstand-header-container');
 renderNewsTicker('#news-ticker-container');
-renderPressHeader('#press-header-container');
-renderNewsContent();
 
-store.subscribe(() => {
-  const state = store.getState();
-  const currentTab = state.currentTab;
-  const subscribedCount = state.subscribedIds.length;
-  
-  renderPressHeader('#press-header-container');
-  
-  if (currentTab !== previousTab) {
-    previousTab = currentTab;
-    previousSubscribedCount = subscribedCount;
-    renderNewsContent();
-  } else if (currentTab === 'subscribed' && subscribedCount !== previousSubscribedCount) {
-    previousSubscribedCount = subscribedCount;
-    renderNewsContent();
-  } else {
-    previousSubscribedCount = subscribedCount;
-  }
-});
 
-const initialState = store.getState();
-previousTab = initialState.currentTab;
-previousSubscribedCount = initialState.subscribedIds.length;
+// 헤더 영역
+observeStore(
+  (state) => ({ 
+    tab: state.currentTab, 
+    count: state.subscribedIds.length 
+  }),
+  (data) => {
+    renderPressHeader('#press-header-container');
+  },
+  shallowEqual
+);
+
+// 뉴스 컨텐츠 영역
+observeStore(
+  (state) => ({ 
+    currentTab: state.currentTab, 
+    subscribedIds: state.subscribedIds 
+  }),
+  (data, state) => { 
+    const filteredList = selectFilteredPress(state);
+    updateNewsContent(filteredList);
+  },
+  shallowEqual
+);
