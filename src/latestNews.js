@@ -106,9 +106,6 @@ export class LatestNewsView {
   }
 
   pause(side) {
-    const container =
-      side === "left" ? this.leftNewsContainer : this.rightNewsContainer;
-
     if (side === "left") this.leftPaused = true;
     else this.rightPaused = true;
   }
