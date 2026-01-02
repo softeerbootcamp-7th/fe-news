@@ -15,11 +15,11 @@ main section {
     gap: 24px;
 }
 
-.nav-press-container button {
-    color: var(--color-text-weak);
+.unselected {
+    opacity: 0.6;
 }
 
-.nav-press-container button.selected {
+.selected {
     color: var(--color-text-strong);
     /* selected-bold16 */
 }
@@ -44,6 +44,7 @@ main section {
 }
 
 .nav-view-container span {
+    cursor: pointer;
     color: var(--color-text-weak);
 }
 

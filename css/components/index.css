@@ -1,6 +1,7 @@
 @import url('./header.css');
 @import url('./autoRollingNews.css');
 @import url('./mainNavContainer.css');
+@import url('./pressStyling.css');
 
 main {
     width: 930px;
