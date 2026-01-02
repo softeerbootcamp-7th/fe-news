@@ -1,5 +1,3 @@
-import { $ } from "../utils/dom.js";
-
 export async function loadNewsData(url = "/mockData/news.json") {
   const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load news.json: ${res.status}`);
@@ -41,89 +39,81 @@ export async function loadNewsData(url = "/mockData/news.json") {
   return headlines.filter((h) => h.title && h.link);
 }
 
-export function createRollingLane(
-  $el,
-  items,
-  { intervalMs = 5000, initialDelayMs = 0 } = {}
-) {
-  let idx = 0;
-  let timer = null;
-  let nextAt = 0;
-  let running = false;
+export class RollingLane {
+  constructor($el, items, { intervalMs = 5000, initialDelayMs = 0 } = {}) {
+    this.$el = $el;
+    this.items = Array.isArray(items) ? items : [];
+    this.intervalMs = intervalMs;
+    this.initialDelayMs = initialDelayMs;
 
-  function render(isSwitching) {
-    if (!items.length) return;
-    const item = items[idx % items.length];
-    idx += 1;
+    this.idx = 0;
+    this.timer = null;
+    this.nextAt = 0;
+    this.running = false;
 
-    const $source = $el.querySelector(".newsbar__source");
-    const $title = $el.querySelector(".newsbar__title");
+    this._onMouseEnter = () => this.pause();
+    this._onMouseLeave = () => this.resume();
+
+    this.$el.addEventListener("mouseenter", this._onMouseEnter);
+    this.$el.addEventListener("mouseleave", this._onMouseLeave);
+  }
+
+  render(isSwitching) {
+    if (!this.items.length) return;
+    const item = this.items[this.idx % this.items.length];
+    this.idx += 1;
+
+    const $source = this.$el.querySelector(".newsbar__source");
+    const $title = this.$el.querySelector(".newsbar__title");
     if ($source) $source.textContent = item.press || "-";
     if ($title) $title.textContent = item.title;
-    $el.href = item.link || "#";
+    this.$el.href = item.link || "#";
 
     if (isSwitching) {
-      $el.classList.remove("is-switching");
+      this.$el.classList.remove("is-switching");
       // reflow to restart animation
-      void $el.offsetHeight; // eslint-disable-line no-unused-expressions
-      $el.classList.add("is-switching");
+      void this.$el.offsetHeight; // eslint-disable-line no-unused-expressions
+      this.$el.classList.add("is-switching");
     }
   }
 
-  function scheduleNext(delay) {
-    running = true;
-    nextAt = Date.now() + delay;
-    timer = window.setTimeout(() => {
-      render(true);
-      scheduleNext(intervalMs);
+  scheduleNext(delay) {
+    this.running = true;
+    this.nextAt = Date.now() + delay;
+    this.timer = window.setTimeout(() => {
+      this.render(true);
+      this.scheduleNext(this.intervalMs);
     }, delay);
   }
 
-  function start() {
-    if (running) return;
-    render(false);
-    scheduleNext(initialDelayMs || intervalMs);
+  start() {
+    if (this.running) return;
+    this.render(false);
+    this.scheduleNext(this.initialDelayMs || this.intervalMs);
   }
 
-  function pause() {
-    if (!running) return;
-    running = false;
-    $el.classList.add("is-paused");
-    if (timer) window.clearTimeout(timer);
-    timer = null;
+  pause() {
+    if (!this.running) return;
+    this.running = false;
+    this.$el.classList.add("is-paused");
+    if (this.timer) window.clearTimeout(this.timer);
+    this.timer = null;
   }
 
-  function resume() {
-    if (running) return;
-    $el.classList.remove("is-paused");
-    const remaining = Math.max(0, nextAt - Date.now());
-    scheduleNext(remaining || intervalMs);
+  resume() {
+    if (this.running) return;
+    this.$el.classList.remove("is-paused");
+    const remaining = Math.max(0, this.nextAt - Date.now());
+    this.scheduleNext(remaining || this.intervalMs);
   }
 
-  $el.addEventListener("mouseenter", pause);
-  $el.addEventListener("mouseleave", resume);
-
-  return { start };
+  destroy() {
+    if (this.timer) window.clearTimeout(this.timer);
+    this.timer = null;
+    this.running = false;
+    this.$el.removeEventListener("mouseenter", this._onMouseEnter);
+    this.$el.removeEventListener("mouseleave", this._onMouseLeave);
+  }
 }
 
-export async function initRollingNews({ shuffle, maxItems = 120 } = {}) {
-  const all = await loadNewsData();
-  const items = shuffle(all).slice(0, maxItems);
-
-  const left = $("#rolling-left");
-  const right = $("#rolling-right");
-  if (!left || !right) return;
-
-  const mid = Math.floor(items.length / 2) || 1;
-  const laneL = createRollingLane(left, items.slice(0, mid), {
-    intervalMs: 5000,
-    initialDelayMs: 0,
-  });
-  const laneR = createRollingLane(right, items.slice(mid), {
-    intervalMs: 5000,
-    initialDelayMs: 1000,
-  });
-
-  laneL.start();
-  laneR.start();
-}
+// DOM 선택/시작은 Controller가 담당합니다.

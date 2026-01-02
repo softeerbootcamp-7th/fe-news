@@ -1,0 +1,56 @@
+import { $ } from "../../utils/dom.js";
+
+export class SubscriptionsController {
+  constructor({
+    storageKey,
+    badgeSelector = "#sub-count",
+    documentRef = document,
+    localStorageRef = window?.localStorage,
+  } = {}) {
+    this.storageKey = storageKey;
+    this.badgeSelector = badgeSelector;
+    this.document = documentRef;
+    this.localStorage = localStorageRef;
+  }
+
+  getSet() {
+    try {
+      const raw = this.localStorage?.getItem?.(this.storageKey);
+      const parsed = raw ? JSON.parse(raw) : [];
+      const arr = Array.isArray(parsed) ? parsed : [];
+      return new Set(arr.filter((x) => typeof x === "string"));
+    } catch {
+      return new Set();
+    }
+  }
+
+  _saveSet(set) {
+    this.localStorage?.setItem?.(this.storageKey, JSON.stringify([...set]));
+  }
+
+  isSubscribed(filename) {
+    return this.getSet().has(filename);
+  }
+
+  add(filename) {
+    const set = this.getSet();
+    set.add(filename);
+    this._saveSet(set);
+    return set;
+  }
+
+  remove(filename) {
+    const set = this.getSet();
+    set.delete(filename);
+    this._saveSet(set);
+    return set;
+  }
+
+  updateCount() {
+    const $badge = $(this.badgeSelector, this.document);
+    if (!$badge || !this.storageKey) return;
+    const count = this.getSet().size;
+    $badge.textContent = String(count);
+    $badge.setAttribute("aria-label", `구독 수 ${count}`);
+  }
+}
