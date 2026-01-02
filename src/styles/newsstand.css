@@ -159,7 +159,6 @@ body {
   /* list wrapper */
   height: 388px;
 
-  display: grid;
   position: relative;
 }
 
@@ -185,16 +184,25 @@ body {
 
 .press-list__items {
   /* ul */
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1px;
+  padding: 1px;
+  margin: 0;
+  background-color: var(--border-default);
 }
 
 .press-list__item {
   /* li */
-}
-
-.press-list__item img {
-  /* press logo */
-}
-
-.press-list__item--active {
-  /* selected press */
+  max-width: 154px;
+  height: 96px;
+  background-color: var(--surface-default);
+  list-style: none;
+  &:hover {
+    background-color: var(--surface-alt);
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
