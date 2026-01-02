@@ -87,13 +87,16 @@ const reducer = (state, actionType, payload) => {
   switch (actionType) {
     case 'SET_TAB':
       return { ...state, currentTab: payload, currentPage: 0 };
-    case 'SUBSCRIBE':
-      return { ...state, subscribedIds: [...state.subscribedIds, payload] };
-    case 'UNSUBSCRIBE':
-      return {
-        ...state,
-        subscribedIds: state.subscribedIds.filter((id) => id !== payload),
-      };
+    case 'SUBSCRIBE': {
+      const updatedSubscribed = [...state.subscribedIds, payload];
+      const resetPage = state.currentTab === 'subscribed' ? 0 : state.currentPage;
+      return { ...state, subscribedIds: updatedSubscribed, currentPage: resetPage };
+    }
+    case 'UNSUBSCRIBE': {
+      const updatedSubscribed = state.subscribedIds.filter((id) => id !== payload);
+      const resetPage = state.currentTab === 'subscribed' ? 0 : state.currentPage;
+      return { ...state, subscribedIds: updatedSubscribed, currentPage: resetPage };
+    }
     case 'SET_PAGE':
       return { ...state, currentPage: payload };
     case 'NEXT_PAGE':
@@ -107,7 +110,6 @@ const reducer = (state, actionType, payload) => {
 
 export const store = new Store(initialState, reducer);
 
-// Helper methods for accessing specific state properties
 store.getAllPress = function() {
   return this.getState().allPress;
 };

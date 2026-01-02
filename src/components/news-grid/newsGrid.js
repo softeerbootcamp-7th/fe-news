@@ -53,8 +53,8 @@ function renderPage(pageIndex) {
           <img src="${url}" alt="${press.name}" class="news-grid-logo" />
           <button class="news-grid-subscribe-btn ${isSubscribed ? 'is-subscribed' : ''}" 
                   data-press-name="${press.name}"
-                  aria-label="${isSubscribed ? '구독 취소' : '구독하기'}">
-            ${isSubscribed ? `${crossIcon}구독해지` : `${plusIcon}구독하기`}
+                  aria-label="${isSubscribed ? '해지하기' : '구독하기'}">
+            ${isSubscribed ? `${crossIcon}해지하기` : `${plusIcon}구독하기`}
           </button>
         </div>
       `);
@@ -98,28 +98,33 @@ export function renderNewsGrid(pressList, container, theme = 'auto') {
   const pngNames = pressList.map((press) => press.pngName);
   urls = mapPngToUrls(pngNames, theme);
 
-  // 페이지 분할
   pages = [];
   for (let i = 0; i < pressList.length; i += ITEMS_PER_PAGE) {
     pages.push(pressList.slice(i, i + ITEMS_PER_PAGE));
   }
 
-  // 초기 HTML 렌더링
   const initialHtml = `
     <div class="news-grid-page">
       ${renderPage(0)}
     </div>
   `;
 
-  containerElement.className = 'news-grid-container';
+  containerElement.classList.add('news-grid-container');
   containerElement.innerHTML = initialHtml;
 
   pageContainer = containerElement.querySelector('.news-grid-page');
   
-  // 초기 구독 버튼 이벤트 핸들러 연결
   attachSubscribeHandlers();
+  initNewsGridSubscription();
+
+  const parentElement = containerElement.parentElement;
+  const existingPrev = parentElement?.querySelector('.news-grid-prev');
+  const existingNext = parentElement?.querySelector('.news-grid-next');
+  if (existingPrev) existingPrev.remove();
+  if (existingNext) existingNext.remove();
 
   if (pages.length > 1) {
+
     const controlsHtml = `
       <button class="news-grid-prev" aria-label="이전 페이지">
         <img src="./src/icons/icon-left-arrow.svg" alt="이전" />
@@ -129,7 +134,6 @@ export function renderNewsGrid(pressList, container, theme = 'auto') {
       </button>
     `;
 
-    const parentElement = containerElement.parentElement;
     if (parentElement) {
       parentElement.style.position = 'relative';
       parentElement.insertAdjacentHTML('beforeend', controlsHtml);
@@ -142,19 +146,6 @@ export function renderNewsGrid(pressList, container, theme = 'auto') {
       ? parentElement.querySelector('.news-grid-next')
       : null;
 
-    // Store 구독: 상태가 바뀌면 화면 갱신
-    store.subscribe(() => {
-      const state = store.getState();
-      const { currentPage } = state;
-      
-      if (pageContainer) {
-        pageContainer.innerHTML = renderPage(currentPage);
-        attachSubscribeHandlers();
-      }
-      updateButtonVisibility(currentPage, pages.length);
-    });
-
-
     if (prevBtn) {
       prevBtn.addEventListener('click', () => actions.prevPage());
     }
@@ -163,8 +154,42 @@ export function renderNewsGrid(pressList, container, theme = 'auto') {
       nextBtn.addEventListener('click', () => actions.nextPage());
     }
 
-    // 초기 버튼 상태 설정
     const initialState = store.getState();
     updateButtonVisibility(initialState.currentPage, pages.length);
+  } else {
+    prevBtn = null;
+    nextBtn = null;
   }
+}
+
+let unsubscribePageUpdate = null;
+
+function initNewsGridSubscription() {
+  if (unsubscribePageUpdate) {
+    unsubscribePageUpdate();
+  }
+
+  let previousPage = store.getState().currentPage;
+  let previousSubscribedIds = [...store.getState().subscribedIds];
+
+  unsubscribePageUpdate = store.subscribe(() => {
+    const state = store.getState();
+    const { currentPage, subscribedIds, currentTab } = state;
+    
+    const subscribedChanged = 
+      subscribedIds.length !== previousSubscribedIds.length ||
+      subscribedIds.some((id, i) => previousSubscribedIds[i] !== id);
+    
+    if (currentPage !== previousPage && pageContainer) {
+      previousPage = currentPage;
+      previousSubscribedIds = [...subscribedIds];
+      pageContainer.innerHTML = renderPage(currentPage);
+      attachSubscribeHandlers();
+      updateButtonVisibility(currentPage, pages.length);
+    } else if (subscribedChanged && currentTab === 'all' && pageContainer) {
+      previousSubscribedIds = [...subscribedIds];
+      pageContainer.innerHTML = renderPage(currentPage);
+      attachSubscribeHandlers();
+    }
+  });
 }
