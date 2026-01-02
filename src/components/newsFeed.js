@@ -19,6 +19,12 @@ let currentView = "grid";
 let subscribedNews = new Set();
 let currentPage = 0;
 
+let cachedDOM = {
+  container: null,
+  filterContainer: null,
+  gridContainer: null,
+};
+
 export default function newsFeed() {
   return /* html */ `
     <div class="news-feed-container">
@@ -34,9 +40,13 @@ export async function initNewsFeed(container) {
   await loadInitialData();
   subscribedNews = loadSubscribedNews();
 
-  renderCurrentPage(container);
-  setupAllEventListeners(container);
-  updateAllUI(container);
+  cachedDOM.container = container;
+  cachedDOM.filterContainer = container.querySelector(".news-filter-container");
+  cachedDOM.gridContainer = container.querySelector("#grid-container");
+
+  renderCurrentPage();
+  setupAllEventListeners();
+  updateAllUI();
 }
 
 async function loadInitialData() {
@@ -44,45 +54,43 @@ async function loadInitialData() {
   paginatedData = paginateNews(allNewsData, 24);
 }
 
-function setupAllEventListeners(container) {
-  const filterContainer = container.querySelector(".news-filter-container");
-
-  setupFilter(filterContainer, handleFilterChange.bind(null, container));
-  setupViewToggle(filterContainer, handleViewChange.bind(null, container));
-  setupPagination(container, handlePageChange.bind(null, container));
-  setupSubscribe(container, handleSubscribeChange.bind(null, container));
+function setupAllEventListeners() {
+  setupFilter(cachedDOM.filterContainer, handleFilterChange);
+  setupViewToggle(cachedDOM.filterContainer, handleViewChange);
+  setupPagination(cachedDOM.container, handlePageChange);
+  setupSubscribe(cachedDOM.container, handleSubscribeChange);
 }
 
-function handleFilterChange(container, newFilter) {
+function handleFilterChange(newFilter) {
   currentFilter = newFilter;
   currentPage = 0;
 
   const filteredData = getFilteredData(currentFilter);
   paginatedData = paginateNews(filteredData, 24);
 
-  renderCurrentPage(container);
-  updateAllUI(container);
+  renderCurrentPage();
+  updateAllUI();
 }
 
-function handleViewChange(container, newView) {
+function handleViewChange(newView) {
   currentView = newView;
 
-  renderCurrentPage(container);
-  updateViewUI(container.querySelector(".news-filter-container"), currentView);
-  updatePaginationArrowsVisibility(container);
+  renderCurrentPage();
+  updateViewUI(cachedDOM.filterContainer, currentView);
+  updatePaginationArrowsVisibility();
 }
 
-function handlePageChange(container, direction) {
+function handlePageChange(direction) {
   const newPage = direction === "prev" ? currentPage - 1 : currentPage + 1;
 
   if (newPage >= 0 && newPage < paginatedData.length) {
     currentPage = newPage;
-    renderCurrentPage(container);
-    updatePaginationUI(container, currentPage, paginatedData.length);
+    renderCurrentPage();
+    updatePaginationUI(cachedDOM.container, currentPage, paginatedData.length);
   }
 }
 
-function handleSubscribeChange(container, press, filter) {
+function handleSubscribeChange(press, filter) {
   if (subscribedNews.has(press)) {
     subscribedNews.delete(press);
   } else {
@@ -95,49 +103,50 @@ function handleSubscribeChange(container, press, filter) {
     repaginateForFavorites();
   }
 
-  renderCurrentPage(container);
-  updateAllUI(container);
+  renderCurrentPage();
+  updateAllUI();
 }
 
-function renderCurrentPage(container) {
-  const gridContainer = container.querySelector("#grid-container");
+function renderCurrentPage() {
   const pageData = paginatedData[currentPage] || [];
   const validNewsData = Array.isArray(pageData) ? pageData : [];
 
-  gridContainer.innerHTML =
+  cachedDOM.gridContainer.innerHTML =
     currentView === "grid"
       ? gridNews(validNewsData, subscribedNews, currentFilter)
       : listNews(validNewsData, subscribedNews, currentFilter);
 }
 
-function updateAllUI(container) {
-  updateFilterBar(container);
-  updatePaginationUI(container, currentPage, paginatedData.length);
-  updatePaginationArrowsVisibility(container);
+function updateAllUI() {
+  updateFilterBar();
+  updatePaginationUI(cachedDOM.container, currentPage, paginatedData.length);
+  updatePaginationArrowsVisibility();
 }
 
-function updateFilterBar(container) {
-  const filterContainer = container.querySelector(".news-filter-container");
-  if (!filterContainer) return;
+function updateFilterBar() {
+  if (!cachedDOM.filterContainer) return;
 
   const newFilterBar = newsFilter(
     currentFilter,
     currentView,
     subscribedNews.size
   );
-  filterContainer.outerHTML = newFilterBar;
+  cachedDOM.filterContainer.outerHTML = newFilterBar;
 
-  const newFilterContainer = container.querySelector(".news-filter-container");
+  cachedDOM.filterContainer = cachedDOM.container.querySelector(
+    ".news-filter-container"
+  );
 
-  setupFilter(newFilterContainer, handleFilterChange.bind(null, container));
-  setupViewToggle(newFilterContainer, handleViewChange.bind(null, container));
+  setupFilter(cachedDOM.filterContainer, handleFilterChange);
+  setupViewToggle(cachedDOM.filterContainer, handleViewChange);
 
-  updateFilterUI(newFilterContainer, currentFilter);
-  updateViewUI(newFilterContainer, currentView);
+  updateFilterUI(cachedDOM.filterContainer, currentFilter);
+  updateViewUI(cachedDOM.filterContainer, currentView);
 }
 
-function updatePaginationArrowsVisibility(container) {
-  const paginationArrows = container.querySelectorAll(".pagination-arrow");
+function updatePaginationArrowsVisibility() {
+  const paginationArrows =
+    cachedDOM.container.querySelectorAll(".pagination-arrow");
   const displayValue = currentView === "grid" ? "flex" : "none";
 
   paginationArrows.forEach((arrow) => {
