@@ -32,10 +32,18 @@ h1 {
 #subscribed-press {
   display: flex;
 }
+#press-view {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
 #newspaper-icon {
-  width: 24;
-  height: 24;
+  color: var(--text-point);
+}
+#grid-view-icon {
+  color: var(--text-point);
 }
 .auto-rolling-news {
   flex-basis: 50%;
