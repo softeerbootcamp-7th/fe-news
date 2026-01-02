@@ -1,0 +1,11 @@
+{
+    "name": "news-stand",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "start": "npx serve ."
+    },
+    "devDependencies": {
+        "vite": "^7.3.0"
+    }
+}
