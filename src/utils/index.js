@@ -1,1 +1,1 @@
-export { getDayofweek } from './getDayofweek.js';
+export { getDayOfWeek } from './get-day-of-week.js';
