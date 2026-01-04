@@ -66,21 +66,11 @@ function bindTabEvents() {
   })
 }
 
-function bindLogoReload() {
-  const logo = document.querySelector('#logo')
-  if (logo) {
-    logo.addEventListener('click', () => {
-      location.reload()
-    })
-  }
-}
-
 // 초기 페이지 렌더링 및 이벤트 바인딩
 document.addEventListener('DOMContentLoaded', () => {
   displayTodayDate() // 헤더에 오늘 날짜 표시
   rolling.init() // 롤링 뉴스 초기화
   bindTabEvents() // 탭 버튼 이벤트 바인딩
-  bindLogoReload() // 로고 클릭 리로드 바인딩
 
   attachPaginationEvents({
     onPrev: () => {
