@@ -4,7 +4,8 @@ import "./styles/reset.css";
 import { Header } from "./components/Header/Header.js";
 import { RollingSection } from "./components/Rollable/RollingSection.js";
 import { GridSection } from "./components/Main/Grid/GridSection.js";
-import { pageStore, viewStore, subsStore } from "./store/index.js"; // 스토어 가져오기
+import { pageStore, viewStore, subsStore, pressList } from "./store/index.js"; // 스토어 가져오기
+import { MainContents } from "./components/Main/MainContent.js";
 
 const app = document.querySelector("#app");
 
@@ -12,10 +13,8 @@ const app = document.querySelector("#app");
 function render() {
   app.innerHTML = `
       ${Header()}
-      <main>
-        ${RollingSection()}
-        ${GridSection()}
-      </main>
+      ${RollingSection()}
+      ${MainContents()}
     `;
 }
 
@@ -39,6 +38,19 @@ app.addEventListener("click", (e) => {
     return;
   }
 
+  if (target.closest(".subscribe-toggle")) {
+    const toggle = target.closest(".subscribe-toggle");
+    const view = toggle.dataset.view;
+
+    viewStore.setViewOnlySubs(view === "subs");
+  }
+
+  if (target.closest(".view-toggle")) {
+    const toggle = target.closest(".view-toggle");
+    const view = toggle.dataset.view;
+    viewStore.setViewGrid(view === "grid");
+  }
+
   // 다음 페이지 버튼 클릭
   if (target.closest(".nav-button.next")) {
     pageStore.setPage(pageStore.state.currentPage + 1);
@@ -49,10 +61,21 @@ app.addEventListener("click", (e) => {
     pageStore.setPage(pageStore.state.currentPage - 1);
   }
 
-  // 구독 버튼 클릭
-  const subBtn = target.closest(".subscribe-button");
-  if (subBtn) {
-    const pressId = subBtn.dataset.id;
-    subsStore.toggleSub(pressId);
+  // 구독/해제 버튼 클릭
+  if (target.closest(".subscribe-button")) {
+    const subBtn = target.closest(".subscribe-button");
+    if (!subBtn) return;
+    const pressId = parseInt(subBtn.dataset.id);
+    const pressName = subBtn.dataset.name;
+
+    subsStore.setTargetPressId(pressId, pressName);
+  }
+
+  //Alert창에서 동작
+  if (target.closest(".confirm-btn")) {
+    subsStore.toggleSub();
+  }
+  if (target.closest(".cancel-btn")) {
+    subsStore.setTargetPressId(null);
   }
 });

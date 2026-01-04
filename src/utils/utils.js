@@ -20,3 +20,18 @@ export function todayString() {
 
   return dateString;
 }
+
+const STORAGE_KEY = "FE_news_subscribed_presses";
+
+export function loadSavedSubs() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return new Set();
+    return new Set(JSON.parse(raw));
+  } catch {
+    return new Set();
+  }
+}
+export function saveSubscribedIds(set) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify([...set]));
+}

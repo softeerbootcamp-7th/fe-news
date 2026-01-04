@@ -10,6 +10,10 @@
   position: relative;
 }
 
+.press-logo-item.placeholder {
+  cursor: default;
+}
+
 .press-logo-image {
   max-height: 20px;
 }

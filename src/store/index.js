@@ -1,4 +1,4 @@
-import { shuffle } from "../utils/utils";
+import { loadSavedSubs, saveSubscribedIds, shuffle } from "../utils/utils";
 
 function notify(storeName) {
   window.dispatchEvent(new CustomEvent(`${storeName}Change`));
@@ -11,10 +11,12 @@ export const viewStore = {
   },
   setViewOnlySubs(bool) {
     this.state.viewOnlySubs = bool;
+    pageStore.state.currentPage = 0;
     notify("viewStore");
   },
   setViewGrid(bool) {
     this.state.viewGrid = bool;
+    pageStore.state.currentPage = 0;
     notify("viewStore");
   },
 };
@@ -166,7 +168,7 @@ export const pressStore = {
 export const pageStore = {
   state: {
     currentPage: 0,
-    maxPage: pressList.length / 24,
+    maxPage: parseInt(pressList.length / 24),
   },
   setPage(page) {
     if (page < 0 || page > this.state.maxPage) return;
@@ -177,13 +179,29 @@ export const pageStore = {
 
 export const subsStore = {
   state: {
-    subscribedIds: new Set(), // 구독한 언론사의 ID를 저장하는 Sets
+    targetPressId: null,
+    targetPressName: "",
+    subscribedIds: loadSavedSubs(), // 구독한 언론사의 ID를 저장하는 Sets
   },
-  toggleSub(id) {
-    const { subscribedIds } = this.state;
-    if (subscribedIds.has(id)) subscribedIds.delete(id);
-    else subscribedIds.add(id);
+  setTargetPressId(id, name) {
+    if (this.state.targetPressId === id) {
+      this.state.targetPressId = null;
+      this.state.targetPressName = "";
+    } else {
+      this.state.targetPressId = id;
+      this.state.targetPressName = name;
+    }
+    notify("subsStore");
+  },
+  toggleSub() {
+    const { targetPressId, subscribedIds } = this.state;
 
-    notify(subsStore);
+    if (subscribedIds.has(targetPressId)) subscribedIds.delete(targetPressId);
+    else subscribedIds.add(targetPressId);
+
+    saveSubscribedIds(subscribedIds);
+    this.state.targetPressId = null;
+    this.state.targetPressName = "";
+    notify("subsStore");
   },
 };
