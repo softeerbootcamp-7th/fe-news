@@ -16,11 +16,7 @@ export function isSubscribed(id) {
 }
 
 export function toggleSubscribe(id) {
-    if (subscribedIds.has(id)) {
-        subscribedIds.delete(id);
-    } else {
-        subscribedIds.add(id);
-    }
+    subscribedIds.has(id) ? subscribedIds.delete(id) : subscribedIds.add(id);
     save();
 }
 
