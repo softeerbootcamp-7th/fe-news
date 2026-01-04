@@ -1,5 +1,5 @@
 :root {
-    --grayscale_white-alt: rgba(255,255,255,0.7);
+    --grayscale_white-alt: #FFFFFFB3;
     --grayscale_white: #FFFFFF;
     --grayscale_50: #F5F7F9;
     --grayscale_100: #D2DAE0;
@@ -8,7 +8,40 @@
     --grayscale_400: #5F6E76;
     --grayscale_500: #4B5966;
     --grayscale_black: #14212B;
-
     --blue_100: #7890E7;
     --blue_500: #4362D0;
 }
+
+/* light mode */
+:root {
+    --text-strong: var(--grayscale_black);
+    --text-bold: var(--grayscale_500);
+    --text-default: var(--grayscale_400);
+    --text-weak: var(--grayscale_200);
+    --text-white-default: var(--grayscale_white);
+    --text-white-weak: var(--grayscale_white_alt);
+    --text-point: var(--blue_500);
+    --surface-default: var(--grayscale_white);
+    --surface-alt: var(--grayscale_50);
+    --surface-brand-default: var(--blue_500);
+    --surface-brand-alt: var(--blue_100);
+    --border-bold: var(--grayscale_300);
+    --border-default: var(--grayscale_100);
+}
+
+/* dark mode */
+/* :root {
+    --text-strong: var(--grayscale_white);
+    --text-bold: var(--grayscale_50);
+    --text-default: var(--grayscale_100);
+    --text-weak: var(--grayscale_white_alt);
+    --text-white-default: var(--grayscale_white);
+    --text-white-weak: var(--grayscale_white_alt);
+    --text-point: var(--blue_500);
+    --surface-default: var(--grayscale_black);
+    --surface-alt: var(--grayscale_500);
+    --surface-brand-default: var(--blue_500);
+    --surface-brand-alt: var(--blue_100);
+    --border-bold: var(--grayscale_white_alt);
+    --border-default: var(--grayscale_400);
+} */

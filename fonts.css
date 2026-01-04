@@ -1,0 +1,123 @@
+/* Pretendard 폰트 불러오기 */
+@font-face {
+  font-family: 'Pretendard';
+  src: url('./assets/font/woff2/Pretendard-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('./assets/font/woff2/Pretendard-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* -----------------------------
+   Typography Tokens
+-------------------------------*/
+
+/* Display Bold */
+.display-bold24 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: auto;
+}
+
+.display-bold16 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: auto;
+}
+
+.display-bold14 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: auto;
+}
+
+.display-bold12 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: auto;
+}
+
+/* Display Medium */
+.display-medium16 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.display-medium14 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.display-medium12 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: auto;
+}
+
+/* Selected (선택된 항목 강조) */
+.selected-bold16 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: auto;
+}
+
+.selected-bold14 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: auto;
+}
+
+/* Available (선택 가능 항목) */
+.available-medium16 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.available-medium14 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.available-medium12 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: auto;
+}
+
+/* Hover */
+.hover-medium16 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  text-decoration: underline;
+}
+
+.hover-medium14 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: auto;
+  text-decoration: underline;
+}

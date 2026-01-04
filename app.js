@@ -1,57 +1,38 @@
-// import { NewsStand } from "./components/NewsStand.js";
-import { presses } from "./data/presses.js";
-import { renderGrid } from "./grid.js";
+import { renderCurrentDate } from './utils/date.js';
+import { initGrid } from './utils/gridController.js';
+import { initSubscriptionBadge } from './utils/subscriptionController.js';
+import { initSubscriptionTabs } from './utils/subscriptionTabController.js';
+import { initSubscriptionStore } from './utils/subscriptionStore.js';
+import { initViewTabs } from './utils/viewTabController.js';
+import { initRollingTabs } from './rolling/rolling.js';
 
-// const newsGrid = document.getElementById("newsGrid");
-// newsGrid.appendChild(NewsStand());
+function initApp() {
+  // 구독 언론사 저장
+  initSubscriptionStore();
 
-// 날짜 출력
-function getDate() {
-    const now = new Date();
+  // 날짜 렌더링
+  renderCurrentDate('current-date');
 
-    const year = now.getFullYear();
-    const month = now.getMonth() + 1;
-    const date = now.getDate();
+  // 그리드 렌더링
+  initGrid({
+    gridId: 'newsGrid',   // 그리드
+    prevBtnId: 'prevBtn', // 이전 페이지 버튼
+    nextBtnId: 'nextBtn'  // 다음 페이지 버튼
+  });
 
-    const dayNames = ['일','월','화','수','목','금','토'];
-    const day = dayNames[now.getDay()];
+  // 구독 언론사 수 뱃지 개수
+  initSubscriptionBadge({
+    badgeSelector: '.badge'
+  });
 
-    const today = document.getElementById("current-date");
-    today.innerHTML = `${year}. ${month}. ${date}. ${day}요일`;
-}
-getDate();
+  // 전체 언론사 & 구독 언론사 전환
+  initSubscriptionTabs();
 
-let currentPage = 0;
-const grid = document.getElementById('newsGrid');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+  // 리스트 & 그리드 전환(리스트 구현 X)
+  initViewTabs();
 
-function updateArrows(){
-    prevBtn.style.display = currentPage === 0 ? 'none' : 'block';
-    nextBtn.style.display = (currentPage + 1) * 24 >= presses.length ? 'none' : 'block';
-}
-
-function updateView(){
-    renderGrid({
-        container: grid,
-        data: presses,
-        page: currentPage
-    });
-    updateArrows();
+  // 최신 기사 롤링 탭
+  initRollingTabs();
 }
 
-prevBtn.addEventListener('click', () => {
-  if (currentPage > 0) {
-    currentPage--;
-    updateView();
-  }
-});
-
-nextBtn.addEventListener('click', () => {
-  if ((currentPage + 1) * 24 < presses.length) {
-    currentPage++;
-    updateView();
-  }
-});
-
-updateView();
+initApp();

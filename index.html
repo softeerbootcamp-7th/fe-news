@@ -7,6 +7,7 @@
     <script type="module" src="./app.js"></script>
     <link rel="stylesheet" href="color-variables.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
 </head>
 <body>
     <header class="header">
@@ -20,7 +21,7 @@
 
             <!-- 오른쪽 영역 -->
             <div class="header-right">
-                <time id="current-date"></time>
+                <time id="current-date" class="display-medium16"></time>
             </div>
         </div>
     </header>
@@ -28,22 +29,26 @@
     <section class="rolling-tabs">
         <!-- 좌측 탭 -->
         <article class="rolling-tab">
-            <ul class="news-list">
-                <li class="news-article">
-                    <span class="press">연합뉴스</span>
-                    <a href="#" class="news-title">[속보] 도심 공원 '조용한 독서촌' 시범 운영... 시민 호응 이어져</a>
-                </li>
-            </ul>
+            <div class="rolling-viewport">
+                <ul class="news-list">
+                    <li class="news-article">
+                        <span class="press display-bold14"></span>
+                        <a href="#" class="news-title available-medium14"></a>
+                        </li>
+                </ul>
+            </div>
         </article>
 
         <!-- 우측 탭 -->
         <article class="rolling-tab">
-            <ul class="news-list">
-                <li class="news-article">
-                    <span class="press">서울경제</span>
-                    <a href="#" class="news-title">착한 소비 캠페인, 지역 상권 회복에 긍정적 영향</a>
-                </li>
-            </ul>
+            <div class="rolling-viewport">
+                <ul class="news-list">
+                    <li class="news-article">
+                        <span class="press display-bold14"></span>
+                        <a href="#" class="news-title available-medium14"></a>
+                        </li>
+                </ul>
+            </div>
         </article>
     </section>
 
@@ -51,22 +56,22 @@
         <nav class="container-nav">
             <!-- 네비게이션 좌측 탭 -->
             <div class="container-nav-left">
-                <span>전체 언론사</span>
-                <span>
-                    <span>내가 구독한 언론사</span>
-                    <span class="badge" aria-label="구독한 언론사 수">0</span>
-                </span>
+                <span id="allTab" class="nav-tab active selected-bold16">전체 언론사</span>
+                <div id="subscribedTab" class="container-subscribed">
+                    <span class="subscribed-presses nav-tab available-medium16">내가 구독한 언론사</span>
+                    <span class="badge display-medium12" aria-label="구독한 언론사 수">0</span>
+                </div>
             </div>
 
             <!-- 네비게이션 우측 탭 -->
             <div class="container-nav-right">
-                <img src="./logos/list-view.svg" alt="리스트 뷰">
-                <img src="./logos/grid-view.svg" alt="그리드 뷰">
+                <img src="./logos/list-view.svg" class="view-tab" data-view="list" alt="리스트 뷰">
+                <img src="./logos/grid-view.svg" class="view-tab active" data-view="grid" alt="그리드 뷰">
             </div>
         </nav>
 
         <!-- 하단 그리드 -->
-        <section class="grid-container">
+        <div class="grid-container">
             <button class="arrow left" id="prevBtn" aria-lable="이전"></button>
 
             <div class="grid-wrapper">
@@ -74,8 +79,30 @@
             </div>
         
             <button class="arrow right" id="nextBtn" aria-label="다음"></button>
-        </section>
+
+
+            <div class="modal-overlay" id="unsubscribeModal">
+                <div class="modal">
+                    <div class="modal-text-container">
+                        <div class="modal-text-top">
+                            <span class="display-bold16" id="unsubscribeMessage"></span>
+                            <span class="modal-text display-medium16">을(를)</span>
+                        </div>
+                        <span class="modal-text display-medium16">구독해지하시겠습니까?</span>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="modal-btn confirm 
+available-medium16" id="confirmUnsubscribe">예, 해지합니다</button>
+                        <button class="modal-btn cancel 
+available-medium16" id="cancelUnsubscribe">아니오</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </section>
+
+    
 
     <!-- 다크모드 버튼 우측하단에 배치 -->
     <footer>
