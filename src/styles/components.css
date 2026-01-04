@@ -20,17 +20,40 @@ h1 {
   font-size: var(--fs-24);
 }
 
-#newspaper-icon {
-  width: 24;
-  height: 24;
-}
-.auto-rolling-news {
+#badge {
+  width: 20px;
+  height: 20px;
+  background-color: var(--blue-100);
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  width: 461px;
-  padding: 16px;
+  justify-content: center;
+}
+#subscribed-press {
+  display: flex;
+}
+#press-view {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#newspaper-icon {
+  color: var(--text-point);
+}
+#grid-view-icon {
+  color: var(--text-point);
+}
+.auto-rolling-news {
+  flex-basis: 50%;
+  flex-shrink: 1;
+  display: flex;
+  align-items: center;
+
   border: 1px solid #d2dae0;
   background-color: #f5f7f9;
+  padding: 16px;
   gap: 16px;
 }
 .auto-rolling-news-bar {
@@ -79,4 +102,47 @@ h1 {
 }
 .height-space-20 {
   height: 32px;
+}
+.height-space-58 {
+  height: 58px;
+}
+
+.left:hover > .news-headline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.right:hover > .news-headline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.press-logo > .subscribe-btn {
+  display: none;
+}
+
+.press-logo:hover {
+  cursor: pointer;
+  background-color: var(--grayscale-50);
+}
+.press-logo:hover > img {
+  display: none;
+}
+.press-logo:hover > .subscribe-btn {
+  display: block;
+}
+
+.unselected-text {
+  color: var(--text-weak);
+}
+.selected-text {
+  color: var(--text-strong);
+}
+#subscribed-press-btn {
+  color: var(--text-weak);
+}
+
+#main-view {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
 }

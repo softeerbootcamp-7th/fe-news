@@ -1,9 +1,7 @@
-import './style.css'
+import initAutoRollingNewsBar from "./scripts/auto-rolling-news-bar";
+import initGridView from "./scripts/main-view";
+import initHeader from "./scripts/header";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-
-    <h1>Hello World!</h1>
-
-  </div>
-`
+initHeader();
+initAutoRollingNewsBar();
+initGridView();
