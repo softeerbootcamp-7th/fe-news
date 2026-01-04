@@ -1,3 +1,4 @@
+import { animateTranslateY } from "../lib/animation";
 import { createEl } from "../lib/dom";
 import { getRollingData } from "../lib/pressData";
 import { createRollingNewsCard } from "./createRollingNewsCard";
@@ -5,6 +6,7 @@ import { createRollingNewsCard } from "./createRollingNewsCard";
 const ROLLING_NEWS_COUNT = 5;
 const ROLL_INTERVAL = 5000;
 const ROLL_DELAY = 1000;
+const ANIMATION_DURATION = 500;
 
 let leftRollInterval;
 let rightRollInterval;
@@ -57,7 +59,7 @@ const setUpTrack = (track, data, trackCount) => {
     track.appendChild(newsCard);
   });
 
-  return { topIdx: 0, trackData: data, track };
+  return { topIdx: 0, trackData: data, track, isAnimating: false };
 };
 
 // Function to update the content of the bottom card
@@ -70,16 +72,19 @@ const updateBottomCardContent = (li, { pressName, title }) => {
 const roll = (state) => {
   const { trackData, track } = state;
   if (!trackData || !track || trackData.length === 0) return;
+  if (state.isAnimating) return;
 
   const firstLi = track.firstElementChild;
   const rollHeight = firstLi.offsetHeight;
 
-  track.style.transition = "transform 0.5s ease";
-  track.style.transform = `translateY(-${rollHeight}px)`;
-
-  track.addEventListener(
-    "transitionend",
-    () => {
+  track.style.transform = "translateY(0)";
+  animateTranslateY({
+    el: track,
+    from: 0,
+    to: -rollHeight,
+    duration: ANIMATION_DURATION,
+    easing: "easeInOutCubic",
+    onComplete: () => {
       track.style.transition = "none";
       track.style.transform = "translateY(0)";
 
@@ -88,9 +93,9 @@ const roll = (state) => {
       state.topIdx = (state.topIdx + 1) % trackData.length;
       const nextIdx = (state.topIdx + 1) % trackData.length;
       updateBottomCardContent(firstLi, trackData[nextIdx]);
+      state.isAnimating = false;
     },
-    { once: true }
-  );
+  });
 };
 
 // Function to start rolling both tracks
