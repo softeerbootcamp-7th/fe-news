@@ -24,6 +24,17 @@
   justify-content: center;
   overflow: hidden;
   background-color: var(--surface-default);
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.news-grid-item:hover {
+  background-color: var(--surface-alt);
+}
+
+.news-grid-item:hover .news-grid-logo {
+  opacity: 0;
 }
 
 /* press-content를 wrapper로 사용 */
@@ -81,4 +92,43 @@
   max-width: 100%;
   object-fit: contain;
 }
+
+.news-grid-subscribe-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background-color: var(--surface-default);
+  border: 1px solid var(--border-default);
+  border-radius: 999px;
+  color: var(--text-weak);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, background-color 0.2s;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.news-grid-subscribe-btn svg {
+  width: 12px;
+  height: 12px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.news-grid-item:hover .news-grid-subscribe-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 

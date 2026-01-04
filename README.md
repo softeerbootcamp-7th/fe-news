@@ -29,7 +29,12 @@ https://forhyundaisofteer.github.io/fe-news/
     - aria-hidden
     - aria-label
     - role
-  
+
+### 2025/01/02
+- 구독 기능 구현
+  - store 및 reducer 로직 구현
+  - 엣지 케이스 잡기 
+
 ## 진행해야 할 작업
 
 - #press-content 아래에 동적 HTML 삽입
@@ -37,5 +42,5 @@ https://forhyundaisofteer.github.io/fe-news/
 - 공통된 부분들 컴포넌트화
 - CSS 다크 모드 적용
   - [data-theme="dark"]
-- Mock Data 세팅
+- 롤링 구현
 - Dialog 구현

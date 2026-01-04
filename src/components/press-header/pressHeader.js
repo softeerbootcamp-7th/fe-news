@@ -42,5 +42,13 @@ export function renderPressHeader(container, options = {}) {
   `;
 
   containerElement.innerHTML = headerHtml;
+
+  const tabButtons = containerElement.querySelectorAll('.tab-item');
+  tabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const tab = button.getAttribute('data-tab');
+      store.dispatch('SET_TAB', tab);
+    });
+  });
 }
 
