@@ -1,20 +1,80 @@
+:root {
+  --rolling-news-height: 49px;
+  --rolling-news-gap: 12px;
+  --rolling-animation-height: calc(
+    var(--rolling-news-height) + var(--rolling-news-gap)
+  );
+}
 .auto-rolling-news-section {
   display: flex;
   flex-direction: row;
   gap: 8px;
   margin-bottom: 24px;
   margin-inline: 90px;
+  height: var(--rolling-news-height);
+  overflow-y: hidden;
 }
 
+.auto-rolling-news-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rolling-news-gap);
+  flex: 1;
+}
+.auto-rolling-news-wrapper.first {
+  animation: rolling 25s infinite;
+}
+
+.auto-rolling-news-wrapper.second {
+  animation: rolling 25s infinite;
+  animation-delay: 1s;
+}
+@keyframes rolling {
+  0% {
+    transform: translateY(0);
+  }
+  17% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(calc(var(--rolling-animation-height) * -1));
+  }
+  37% {
+    transform: translateY(calc(var(--rolling-animation-height) * -1));
+  }
+  40% {
+    transform: translateY(calc(var(--rolling-animation-height) * -2));
+  }
+  57% {
+    transform: translateY(calc(var(--rolling-animation-height) * -2));
+  }
+  60% {
+    transform: translateY(calc(var(--rolling-animation-height) * -3));
+  }
+  77% {
+    transform: translateY(calc(var(--rolling-animation-height) * -3));
+  }
+  80% {
+    transform: translateY(calc(var(--rolling-animation-height) * -4));
+  }
+  97% {
+    transform: translateY(calc(var(--rolling-animation-height) * -4));
+  }
+  100% {
+    transform: translateY(calc(var(--rolling-animation-height) * -5));
+  }
+}
+.auto-rolling-news-section:hover .auto-rolling-news-wrapper {
+  animation-play-state: paused;
+}
 .auto-rolling-news {
   box-sizing: border-box; /* 패딩과 보더를 너비에 포함시킴 */
-  flex: 1;
-  height: 49px;
+  height: var(--rolling-news-height);
   border: 1px solid var(--border-default);
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 16px;
+  padding: 16px;
   gap: 16px;
   background-color: var(--surface-alt);
 }
