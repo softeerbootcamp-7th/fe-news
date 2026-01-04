@@ -75,6 +75,11 @@
   border-width: 1px;
   border-style: solid;
   padding: 16px;
+  cursor: pointer;
+}
+
+#autoRollingNewsBar > .left:hover .newsTitle {
+  text-decoration: underline;
 }
 
 #autoRollingNewsBar > .left > .press {
@@ -101,6 +106,7 @@
   border-width: 1px;
   border-style: solid;
   padding: 16px;
+  cursor: pointer;
 }
 
 #autoRollingNewsBar > .right > .press {
@@ -116,6 +122,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+#autoRollingNewsBar > .right:hover .newsTitle {
+  text-decoration: underline;
+}
+
 
 #tabAndViewer {
   height: 24px;
