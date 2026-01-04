@@ -14,12 +14,14 @@ export function GridSectionHeader(
               <a class="subscription-toggle ${
                 onlySubscriped ? "" : "is-active"
               }">전체 언론사</a>
-              <a class="subscription-toggle ${
-                onlySubscriped ? "is-active" : ""
-              }">
-                내가 구독한 언론사
+              <div class="subscription-toggle-wrapper">
+                <a class="subscription-toggle ${
+                  onlySubscriped ? "is-active" : ""
+                }">
+                  내가 구독한 언론사
+                </a>
                 ${Badge(subscribedCount, onlySubscriped)}
-              </a>
+              </div>
             </div>
             <div class="view-toggle-buttons">
               <a class="view-toggle ${

@@ -22,7 +22,6 @@
   font-weight: 500;
   color: var(--text-week);
   cursor: pointer;
-  gap: 8px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -31,6 +30,12 @@
 .subscription-toggle.is-active {
   font-weight: bold;
   color: var(--text-strong);
+  text-decoration: none;
+}
+.subscription-toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .view-toggle-buttons {
