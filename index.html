@@ -13,53 +13,47 @@
     <!-- 헤더 영역 -->
     <header class="header">
       <div id="logo">
-        <img src="/assets/icons/logo.svg" alt="뉴스스탠드 로고" width="24" height="24"/>
+        <img src="/src/assets/icons/logo.svg" alt="뉴스스탠드 로고" width="24" height="24"/>
         <h1 class="typo-display-bold-24">뉴스스탠드</h1>
       </div>
       <div>
-        <span class="typo-display-medium-16">시간</span>
+        <span class="typo-display-medium-16"></span>
       </div>
     </header>
 
     <main>
       <!-- 롤링 뉴스 영역 -->
-      <section class="rolling-news">
-        <article class="rolling-news-item">
-          <span class="typo-display-bold-14">연합뉴스</span>
-          <p class="typo-available-medium-14">뉴스내용뉴스내용뉴스내용뉴스내용뉴스내용뉴스내용뉴스내용뉴스내용뉴스내용뉴스내용뉴스내용뉴스내용뉴스내용뉴스내용</p>
-        </article>
-        <article class="rolling-news-item">
-          <span class="typo-display-bold-14">연합뉴스</span>
-          <p class="typo-available-medium-14">뉴스내용</p>
-        </article>
+      <section class="rolling-news" id="rolling-news" role="region" aria-label="Rolling news">
+        <div class="rolling-news-column" id="rolling-left" data-column="left">
+          <ul class="rolling-news-list" role="list"></ul>
+        </div>
+        <div class="rolling-news-column" id="rolling-right" data-column="right">
+          <ul class="rolling-news-list" role="list"></ul>
+        </div>
       </section>
 
       <!-- 언론사 탭 영역 -->
-      <nav class="tabs">
-        <div>
-          <button class="tab-left-btn active typo-selected-bold-16">전체 언론사</button>
-          <button class="tab-left-btn">내가 구독한 언론사</button>
+      <nav class="tabs" aria-label="View and filter options">
+        <div role="tablist" aria-label="Filter">
+          <button class="tab-left-btn active typo-selected-bold-16" role="tab" aria-selected="true" aria-controls="news-list">전체 언론사</button>
+          <button class="tab-left-btn typo-available-medium-16" role="tab" aria-selected="false" aria-controls="news-list">내가 구독한 언론사</button>
         </div>
-        <div>
-          <button class="tab-btn" data-view="list"><img src="/assets/icons/list_icon.svg" alt="List view"/></button>
-          <button class="tab-btn active" data-view="grid"><img src="/assets/icons/grid_icon.svg" alt="Grid view"/></button>
+        <div role="tablist" aria-label="Display mode">
+          <button class="tab-btn" data-view="list" role="tab" aria-selected="false" aria-label="List view"><img src="/src/assets/icons/list_icon.svg" alt="List view"/></button>
+          <button class="tab-btn active" data-view="grid" role="tab" aria-selected="true" aria-label="Grid view"><img src="/src/assets/icons/grid_icon.svg" alt="Grid view"/></button>
         </div>
       </nav>
 
       <!-- 언론사 콘텐츠 영역 -->
-      <section class="container">
+      <section class="container" id="news-list" role="region" aria-label="News articles">
         <div class="grid-wrapper">
           <button id="prev-btn" class="pagination-btn prev-btn" aria-label="Previous page">
-            <img src="/assets/icons/left_arrow.svg" alt="Previous"/>
+            <img src="/src/assets/icons/left_arrow.svg" alt="Previous"/>
           </button>
-          <div id="content" class="grid"></div>
+          <ul id="content" class="grid" role="list"></ul>
           <button id="next-btn" class="pagination-btn next-btn" aria-label="Next page">
-            <img src="/assets/icons/right_arrow.svg" alt="Next"/>
-            </svg>
+            <img src="/src/assets/icons/right_arrow.svg" alt="Next"/>
           </button>
-        </div>
-        <div class="pagination-info">
-          <span id="current-page">1</span> / <span id="total-pages">4</span>
         </div>
       </section>
     </main>
