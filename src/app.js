@@ -1,7 +1,7 @@
 import { articlesData } from "@/dummy/articlesData";
 import { initHeader } from "@/feature/header/header";
 import { LatestNewsView } from "@/feature/latest-news/latestNews.js";
-import { initGridView } from "@/feature/press/grid";
+import { initPressView } from "@/feature/press/press";
 
 // 기본 상단 영역
 initHeader();
@@ -10,6 +10,6 @@ initHeader();
 const latestNewsView = new LatestNewsView(articlesData);
 latestNewsView.initLatestNews();
 
-initGridView();
+initPressView();
 
 // 리스트 영역
