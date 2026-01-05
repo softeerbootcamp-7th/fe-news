@@ -1,11 +1,13 @@
-export const lightModeLogos = Array.from({ length: 24 }, (_, i) => 
-  `public/assets/logos/light_mode_logo/press_logo_${String(i + 1).padStart(3, "0")}.png`
-);
+const LOGO_COUNT = 24;
 
-export const darkModeLogos = Array.from({ length: 24 }, (_, i) => 
-  `public/assets/logos/dark_mode_logo/press_logo_${String(i + 1).padStart(3, "0")}.png`
-);
+export function getLogos(dir, count = LOGO_COUNT) {
+  return Array.from({ length: count }, (_, i) =>
+    `public/assets/logos/${dir}/press_logo_${String(i + 1).padStart(3, "0")}.png`
+  );
+}
 
+export const lightModeLogos = getLogos('light_mode_logo');
+export const darkModeLogos = getLogos('dark_mode_logo');
 /**
  * 컨테이너에 li, img 요소를 생성하여 로고 이미지를 렌더링합니다.
  *
