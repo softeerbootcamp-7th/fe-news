@@ -2,18 +2,25 @@ import { NUMBER_OF_NEWSPAPER } from '@/constants';
 import { fetchNewspaper } from '@/apis';
 import { getRandomNumberList } from '@/utils';
 
+/**
+ * @typedef {import('../types').Newspaper} Newspaper
+ * @returns {Promise<{ newspaperList: Newspaper[] }>} 뉴스 기사 데이터
+ */
 export const getNewspaperForRolling = async () => {
-  const [firstNewspaper, secondNewspaper] = getRandomNumberList({
+  const randomNumberList = getRandomNumberList({
     max: NUMBER_OF_NEWSPAPER,
-    count: 2,
+    count: 10,
   });
-  const [firstNewspaperData, secondNewspaperData] = await Promise.all([
-    fetchNewspaper(`_start=${firstNewspaper}&_limit=1`),
-    fetchNewspaper(`_start=${secondNewspaper}&_limit=1`),
-  ]);
+
+  const newspaperPromsieList = randomNumberList.map((number) =>
+    fetchNewspaper(`_start=${number}&_limit=1`),
+  );
+
+  const newspaperList = await Promise.all(newspaperPromsieList).then((res) =>
+    res.map((item) => item[0]),
+  );
 
   return {
-    firstNewspaperData: firstNewspaperData[0],
-    secondNewspaperData: secondNewspaperData[0],
+    newspaperList,
   };
 };
