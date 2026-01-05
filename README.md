@@ -78,6 +78,13 @@
 
 - [ ] 스쿼드 세션
 
+## 프로젝트 실행 방법
+
+```bash
+npm ci
+npm run dev:all
+```
+
 ## 학습 정리
 
 - [자바스크립트 모듈 시스템의 역사 (CJS, AMD, UMD, ESM)](https://palm-look-7f3.notion.site/esm-ES-modules-2d953533589080cea813cc5481a1bbe8?source=copy_link)
