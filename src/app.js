@@ -1,13 +1,15 @@
-import { LatestNewsView } from "@/latestNews.js";
-
 import { articlesData } from "@/dummy/articlesData";
-import { createHeader } from "@/header/createHeader";
+import { initHeader } from "@/feature/header/header";
+import { LatestNewsView } from "@/feature/latest-news/latestNews.js";
+import { initPressView } from "@/feature/press/press";
 
 // 기본 상단 영역
-createHeader();
+initHeader();
 
 // 뉴스 자동 롤링
-const newArticlesView = new LatestNewsView(articlesData);
-newArticlesView.render();
+const latestNewsView = new LatestNewsView(articlesData);
+latestNewsView.initLatestNews();
+
+initPressView();
 
 // 리스트 영역
