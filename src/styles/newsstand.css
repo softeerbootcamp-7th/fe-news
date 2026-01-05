@@ -204,12 +204,29 @@ body {
   height: 96px;
   background-color: var(--surface-default);
   list-style: none;
-  &:hover {
-    background-color: var(--surface-alt);
-  }
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  & > img {
+    height: 20px;
+    width: auto;
+    display: block;
+  }
+  & > button {
+    display: none;
+  }
+
+  &:hover {
+    background-color: var(--surface-alt);
+    & > img {
+      display: none;
+    }
+    & > button {
+      display: flex;
+    }
+  }
 }
 
 /* List view */
@@ -329,10 +346,6 @@ body {
 .press-feed__headline {
   /* main headline */
   color: var(--text-strong);
-}
-
-.press-feed__list {
-  /* sub news list */
 }
 
 .press-feed__list li {
