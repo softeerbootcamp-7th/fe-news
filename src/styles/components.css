@@ -127,7 +127,14 @@ h1 {
   display: none;
 }
 .press-logo:hover > .subscribe-btn {
+  display: flex;
+}
+
+.press-logo:not(:hover) > img {
   display: block;
+}
+.press-logo:not(:hover) > .subscribe-btn {
+  display: none;
 }
 
 .unselected-text {
@@ -145,4 +152,20 @@ h1 {
   width: 100%;
   flex-direction: column;
   align-items: center;
+}
+
+.subscribe-btn {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  height: 24px;
+  padding-right: 6px;
+  padding-left: 6px;
+  border: 1px solid var(--border-default);
+  background-color: var(--surface-default);
+  border-radius: 999px;
+}
+
+.subscribe-info-txt {
+  padding: 4px;
 }

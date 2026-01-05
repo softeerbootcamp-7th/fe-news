@@ -10,8 +10,13 @@ subscribedPressList =
     ? []
     : subscribedPressData.split(",");
 
+console.log(subscribedPressList);
+
 // 구독중인 언론사 개수 표시하는 배지
 const badge = document.querySelector("#badge");
+badge.addEventListener("click", () => {
+  console.log(subscribedPressList);
+});
 badge.textContent = subscribedPressList.length;
 
 // 최대 4페이지까지만 가능
@@ -25,6 +30,17 @@ const BASE_PATH = "/images/logos/light-mode/";
 // 버튼에 보여질 문구
 const SUBSCRIBE = "구독하기";
 const UNSUBSCRIBE = "해지하기";
+
+// 구독/해제 버튼에 보여질 아이콘
+const PLUS_ICON_SVG =
+  '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">\
+<path d="M9.5 6.49899H6.5V9.49899H5.5V6.49899H2.5V5.49899H5.5V2.49899H6.5V5.49899H9.5V6.49899Z" fill="#4B5966"/>\
+</svg>';
+
+const CROSS_ICON_SVG =
+  '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">\
+<path d="M3.6 9L3 8.4L5.4 6L3 3.6L3.6 3L6 5.4L8.4 3L9 3.6L6.6 6L9 8.4L8.4 9L6 6.6L3.6 9Z" fill="#4B5966"/>\
+</svg>';
 
 // 로고 이미지명들은 아래와 같은 규칙 가지고 있음
 // asset ${n} 1.png -> (n은 1부터 90까지)
@@ -85,9 +101,23 @@ function renderGrid(pageIndex) {
       subscribeBtn.className = "subscribe-btn";
       subscribeBtn.type = "button";
       subscribeBtn.id = `${src.split("/").at(-1)}_btn`;
-      subscribeBtn.textContent = subscribedPressList.includes(subscribeBtn.id)
+      const plusIcon = document.createElement("svg");
+      plusIcon.classList.add("subscribe-btn-icon");
+
+      plusIcon.innerHTML = subscribedPressList.includes(subscribeBtn.id)
+        ? CROSS_ICON_SVG
+        : PLUS_ICON_SVG;
+
+      const subscribeInfoTxt = document.createElement("span");
+      subscribeInfoTxt.classList.add("subscribe-info-txt");
+      subscribeInfoTxt.textContent = subscribedPressList.includes(
+        subscribeBtn.id
+      )
         ? UNSUBSCRIBE
         : SUBSCRIBE;
+
+      subscribeBtn.appendChild(plusIcon);
+      subscribeBtn.appendChild(subscribeInfoTxt);
 
       cell.appendChild(img);
       cell.appendChild(subscribeBtn);
@@ -101,35 +131,44 @@ function renderGrid(pageIndex) {
   updateArrows();
 }
 
-function handleUnSubscribeBtn(targetEl) {
+function handleUnSubscribeBtn(clickedBtnEl) {
   // 구독목록에 있을 때만 구독 목록에서 빼기
-  let idx = subscribedPressList.indexOf(targetEl.id);
+  let idx = subscribedPressList.indexOf(clickedBtnEl.id);
+
   if (idx > -1) {
     subscribedPressList.splice(idx, 1);
     badge.textContent = subscribedPressList.length;
     localStorage.setItem("subscribed-press-list", subscribedPressList);
-    // 구독하기 버튼 -> 해지하기 버튼으로 변경
-    targetEl.textContent = SUBSCRIBE;
+    const infoTxt = clickedBtnEl.querySelector(".subscribe-info-txt");
+    infoTxt.textContent = SUBSCRIBE;
+    const icon = clickedBtnEl.querySelector(".subscribe-btn-icon");
+    icon.innerHTML = PLUS_ICON_SVG;
   }
 }
-function handleSubscribeBtn(targetEl) {
+function handleSubscribeBtn(clickedBtnEl) {
   // 구독목록에 없을 때만 구독 목록에 추가
-  if (!subscribedPressList.includes(targetEl.id)) {
-    subscribedPressList.push(targetEl.id);
+  if (!subscribedPressList.includes(clickedBtnEl.id)) {
+    subscribedPressList.push(clickedBtnEl.id);
     badge.textContent = subscribedPressList.length;
     localStorage.setItem("subscribed-press-list", subscribedPressList);
-    // 구독하기 버튼 -> 해지하기 버튼으로 변경
-    targetEl.textContent = UNSUBSCRIBE;
+    const infoTxt = clickedBtnEl.querySelector(".subscribe-info-txt");
+    infoTxt.textContent = UNSUBSCRIBE;
+    const icon = clickedBtnEl.querySelector(".subscribe-btn-icon");
+    icon.innerHTML = CROSS_ICON_SVG;
+  } else {
+    console.log("handleSubscribeBtn error");
   }
 }
 
-// 이벤트 버블링 활용해 그리드 영역 내 언론사 구독 버튼에 '구독' 함수 적용시키기
+// 이벤트 버블링 활용해 그리드 영역 내 언론사 구독 버튼에 '구독','해지' 함수 적용시키기
 gridEl.addEventListener("click", (e) => {
-  console.log(e);
-  if (e.target.tagName == "BUTTON" && e.target.textContent === SUBSCRIBE)
-    handleSubscribeBtn(e.target);
-  else if (e.target.tagName == "BUTTON" && e.target.textContent === UNSUBSCRIBE)
-    handleUnSubscribeBtn(e.target);
+  const clickedBtnEl = e.target.closest(".subscribe-btn");
+  if (!clickedBtnEl) return;
+  // 버튼의 상태 판단은 버튼 하위 자식인 .subscribe-info-txt" 태그 기준으로
+  const label = clickedBtnEl.querySelector(".subscribe-info-txt")?.textContent;
+
+  if (label === SUBSCRIBE) handleSubscribeBtn(clickedBtnEl);
+  else if (label === UNSUBSCRIBE) handleUnSubscribeBtn(clickedBtnEl);
 });
 
 export default function initGridView() {
