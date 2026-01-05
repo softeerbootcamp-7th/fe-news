@@ -5,7 +5,7 @@ import {
   getEmptyGridItemTemplate,
   getSubscribeButtonTemplate,
   getCancelButtonTemplate,
-} from "@/template/GridItem";
+} from "@/template/GridView";
 import { shuffleArray } from "@/utils/shuffle";
 import { parsePressData } from "@/utils/parse";
 import {
@@ -19,7 +19,7 @@ const NUM_GRID_ROW = 4;
 const NUM_GRID_COL = 6;
 const NUM_GRID_CELL = NUM_GRID_COL * NUM_GRID_ROW;
 
-const gridContainer = document.querySelector(".press-list");
+const gridContainer = document.querySelector(".press-section");
 const prevButton = document.querySelector(".press-list__control--prev");
 const nextButton = document.querySelector(".press-list__control--next");
 
