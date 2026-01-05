@@ -55,6 +55,22 @@ h3 {
   background-color: var(--surface-alt);
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.spinner-container {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .badge {
   /* height: 20px; */
   width: fit-content;
