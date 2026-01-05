@@ -6,6 +6,7 @@ button {
   border: none;
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 p,
 h1,
@@ -145,7 +146,6 @@ dialog {
       outline-offset: -0.5px;
       &:hover {
         text-decoration: underline;
-        cursor: pointer;
       }
       background-color: transparent;
       &.secondary {
