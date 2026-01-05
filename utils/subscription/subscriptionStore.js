@@ -1,4 +1,4 @@
-import { presses } from '../data/presses.js'; // 이름, 로고를 가공한 map import
+import { presses } from '../../data/presses.js'; // 이름, 로고를 가공한 map import
 
 const STORAGE_KEY = 'subscribedPresses';      // localStorage 에서 사용할 키 값
 let subscribed = new Set();                   // 구독 언론사를 저장할 중복불가 Set

@@ -1,6 +1,6 @@
-import { presses } from '../data/presses.js';                   // 가공한 언론사 데이터(이름, 로고)
+import { presses } from '../../data/presses.js';                   // 가공한 언론사 데이터(이름, 로고)
 import { getSubscribedPresses } from './subscriptionStore.js';  // 전체 언론사 중 구독한 언론사만 필터링
-import { setGridData } from './gridController.js';              
+import { setGridData } from '../grid/gridController.js';              
 
 // 전체 그리드, 구독 그리드 전환
 export function initSubscriptionTabs() {

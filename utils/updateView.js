@@ -1,0 +1,29 @@
+import { renderGrid } from "./grid/grid.js";
+import { renderList } from "./list/list.js";
+
+let prevBtn = document.getElementById("prevBtn");
+let nextBtn = document.getElementById("nextBtn");
+
+export function updateView({type, view, currentPage, currentData, itemCount}) {
+    if (type === "GRID") {
+        renderGrid({
+            container: view,
+            data: currentData,
+            page: currentPage
+        });
+    }
+    else if (type === "LIST") {
+        renderList({
+            container: view,
+            data: currentData,
+            page: currentPage
+        });
+    }
+
+    // 페이지 버튼 숨김처리
+    prevBtn.style.visibility = currentPage === 0 ? 'hidden' : 'visible';
+    nextBtn.style.visibility =
+        (currentPage + 1) * itemCount >= currentData.length
+        ? 'hidden'
+        : 'visible';
+}

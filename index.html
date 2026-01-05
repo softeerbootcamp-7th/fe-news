@@ -65,8 +65,8 @@
 
             <!-- 네비게이션 우측 탭 -->
             <div class="container-nav-right">
-                <img src="./logos/list-view.svg" class="view-tab" data-view="list" alt="리스트 뷰">
-                <img src="./logos/grid-view.svg" class="view-tab active" data-view="grid" alt="그리드 뷰">
+                <img src="./logos/list-view.svg" class="view-tab" id="list-view" data-view="list" alt="리스트 뷰">
+                <img src="./logos/grid-view.svg" class="view-tab active" id="grid-view" data-view="grid" alt="그리드 뷰">
             </div>
         </nav>
 
@@ -75,7 +75,7 @@
             <button class="arrow left" id="prevBtn" aria-lable="이전"></button>
 
             <div class="grid-wrapper">
-                <div class="news-grid" id="newsGrid"></div>
+                <div class="news-grid active-grid" id="newsGrid"></div>
             </div>
         
             <button class="arrow right" id="nextBtn" aria-label="다음"></button>

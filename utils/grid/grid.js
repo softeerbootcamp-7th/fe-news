@@ -1,5 +1,5 @@
-import { isSubscribed, toggleSubscribe } from './subscriptionStore.js'; // 구독한 언론사
-import { openUnsubscribeModal } from './modalController.js';            // 구독 해지시 모달
+import { isSubscribed, toggleSubscribe } from '../subscription/subscriptionStore.js'; // 구독한 언론사
+import { openUnsubscribeModal } from '../modalController.js';            // 구독 해지시 모달
 
 const ITEMS_PER_PAGE = 24;  // 그리드 한 페이지 당 언론사 24개 (6 x 4)
 
@@ -7,7 +7,7 @@ export function renderGrid({ container, data, page }) {
   container.innerHTML = '';                           // 그리드 생성 및 업데이트 시 내부 요소 초기화
   const fragment = document.createDocumentFragment(); // 가상 DOM을 생성해 1번만 렌더링
 
-  const start = page * ITEMS_PER_PAGE;                // 
+  const start = page * ITEMS_PER_PAGE;
   const pageItems = data.slice(start, start + ITEMS_PER_PAGE);
 
   for (let i = 0; i < ITEMS_PER_PAGE; i++) {
