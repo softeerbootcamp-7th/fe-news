@@ -1,13 +1,14 @@
 // 구독중인 언론사(png 명 저장) 리스트를 로컬 스토리지의 subscribed-press-list에 저장해 두고 가져온다
 //localStorage.setItem("subscribed-press-list", ["hi", "hello "]);
 
-let subscribedPressList = localStorage.getItem("subscribed-press-list");
+let subscribedPressList = [];
+let subscribedPressData = localStorage.getItem("subscribed-press-list");
 
-console.log(subscribedPressList);
+console.log(subscribedPressData);
 subscribedPressList =
-  subscribedPressList === null || subscribedPressList === ""
+  subscribedPressData === null || subscribedPressData === ""
     ? []
-    : subscribedPressList.split(",");
+    : subscribedPressData.split(",");
 
 // 구독중인 언론사 개수 표시하는 배지
 const badge = document.querySelector("#badge");
@@ -20,6 +21,10 @@ const PAGE_SIZE = 24;
 
 // 로고 이미지들 저장되어 있는 기본 위치 경로
 const BASE_PATH = "/images/logos/light-mode/";
+
+// 버튼에 보여질 문구
+const SUBSCRIBE = "구독하기";
+const UNSUBSCRIBE = "해지하기";
 
 // 로고 이미지명들은 아래와 같은 규칙 가지고 있음
 // asset ${n} 1.png -> (n은 1부터 90까지)
@@ -81,8 +86,8 @@ function renderGrid(pageIndex) {
       subscribeBtn.type = "button";
       subscribeBtn.id = `${src.split("/").at(-1)}_btn`;
       subscribeBtn.textContent = subscribedPressList.includes(subscribeBtn.id)
-        ? "해지하기"
-        : "구독하기";
+        ? UNSUBSCRIBE
+        : SUBSCRIBE;
 
       cell.appendChild(img);
       cell.appendChild(subscribeBtn);
@@ -96,6 +101,17 @@ function renderGrid(pageIndex) {
   updateArrows();
 }
 
+function handleUnSubscribeBtn(targetEl) {
+  // 구독목록에 있을 때만 구독 목록에서 빼기
+  let idx = subscribedPressList.indexOf(targetEl.id);
+  if (idx > -1) {
+    subscribedPressList.splice(idx, 1);
+    badge.textContent = subscribedPressList.length;
+    localStorage.setItem("subscribed-press-list", subscribedPressList);
+    // 구독하기 버튼 -> 해지하기 버튼으로 변경
+    targetEl.textContent = SUBSCRIBE;
+  }
+}
 function handleSubscribeBtn(targetEl) {
   // 구독목록에 없을 때만 구독 목록에 추가
   if (!subscribedPressList.includes(targetEl.id)) {
@@ -103,14 +119,17 @@ function handleSubscribeBtn(targetEl) {
     badge.textContent = subscribedPressList.length;
     localStorage.setItem("subscribed-press-list", subscribedPressList);
     // 구독하기 버튼 -> 해지하기 버튼으로 변경
-    targetEl.textContent = "해지하기";
+    targetEl.textContent = UNSUBSCRIBE;
   }
 }
 
 // 이벤트 버블링 활용해 그리드 영역 내 언론사 구독 버튼에 '구독' 함수 적용시키기
 gridEl.addEventListener("click", (e) => {
   console.log(e);
-  if (e.target.tagName == "BUTTON") handleSubscribeBtn(e.target);
+  if (e.target.tagName == "BUTTON" && e.target.textContent === SUBSCRIBE)
+    handleSubscribeBtn(e.target);
+  else if (e.target.tagName == "BUTTON" && e.target.textContent === UNSUBSCRIBE)
+    handleUnSubscribeBtn(e.target);
 });
 
 export default function initGridView() {
