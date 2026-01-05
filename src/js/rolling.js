@@ -95,12 +95,33 @@ export function rollingHeadLine() {
         });
     }
 
+    function setVisibilityEvent() {
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                if (timers.left) clearTimeout(timers.left);
+                if (timers.right) clearTimeout(timers.right);
+            } else {
+                if (!hoverState.value) {
+                    const leftPress = leftTargetElement.querySelector('.press');
+                    const leftTitle = leftTargetElement.querySelector('.newsTitle');
+                    const rightPress = rightTargetElement.querySelector('.press');
+                    const rightTitle = rightTargetElement.querySelector('.newsTitle');
 
+                    leftPress?.classList.remove('rollup-out', 'rollup-in');
+                    leftTitle?.classList.remove('rollup-out', 'rollup-in');
+                    rightPress?.classList.remove('rollup-out', 'rollup-in');
+                    rightTitle?.classList.remove('rollup-out', 'rollup-in');
 
+                    animateCycle(leftTargetElement, 5000, 'left');
+                    animateCycle(rightTargetElement, 6000, 'right');
+                }
+            }
+        })
     }
     
     initHeadLine();
     setHoverEvent();
+    setVisibilityEvent();
 
     animateCycle(leftTargetElement, 5000, 'left');
     animateCycle(rightTargetElement, 6000, 'right');
