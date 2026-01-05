@@ -1,0 +1,28 @@
+.auto-rolling-news-container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+}
+
+.auto-rolling-news-item {
+    width: 461px;
+    box-sizing: border-box;
+    background-color: var(--color-surface-alt);
+    border: 1px solid var(--color-border-default);
+    color: var(--color-text-default);
+    padding: 16px;
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.auto-rolling-news-item:hover {
+    color: var(--color-text-bold);
+    text-decoration: underline;
+}
+
+.auto-rolling-news-item span:nth-child(1) {
+    color: var(--color-text-strong);
+}

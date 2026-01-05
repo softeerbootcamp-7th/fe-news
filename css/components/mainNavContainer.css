@@ -1,0 +1,53 @@
+main section {
+    width: 100%;
+}
+
+.main-nav-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-press-container {
+    display: flex;
+    gap: 24px;
+}
+
+.unselected {
+    opacity: 0.6;
+}
+
+.selected {
+    color: var(--color-text-strong);
+    /* selected-bold16 */
+}
+
+.published-press-num {
+    box-sizing: border-box;
+    color: var(--color-text-white-default);
+    background-color: var(--color-surface-brand-default);
+    padding: 3px 5px;
+    border-radius: 8px;
+}
+
+.nav-view-container {
+    display: flex;
+    gap: 8px;
+}
+
+.published-press-container {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.nav-view-container span {
+    cursor: pointer;
+    color: var(--color-text-weak);
+}
+
+.nav-view-container span.selected {
+    color: var(--color-text-point);
+}
