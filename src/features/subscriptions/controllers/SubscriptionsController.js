@@ -1,19 +1,16 @@
+import { SELECTORS } from "../../../shared/const/index.js";
 import { renderSubscribedCount } from "../ui/subscriptionsUI.js";
 
 export class SubscriptionsController {
   constructor({
     context,
     store,
-    badgeSelector,
-    // backward compatible
-    documentRef,
+    badgeSelector = SELECTORS.subscribedCountBadge,
   } = {}) {
     const ctx = context ?? {};
-    const selectors = ctx.selectors ?? {};
     this.store = store;
-    this.badgeSelector =
-      badgeSelector ?? selectors.subscribedCountBadge ?? "#sub-count";
-    this.document = ctx.document ?? documentRef ?? document;
+    this.badgeSelector = badgeSelector;
+    this.document = ctx.document ?? document;
   }
 
   getSet() {

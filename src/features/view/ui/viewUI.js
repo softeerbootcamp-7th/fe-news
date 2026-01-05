@@ -1,9 +1,10 @@
+import { SELECTORS } from "../../../shared/const/index.js";
 import { $, $$ } from "../../../shared/lib/index.js";
 
 export function renderViewToggle({
   documentRef = document,
-  logosSelector = "#logos",
-  buttonsSelector = '[data-action="view"]',
+  logosSelector = SELECTORS.logos,
+  buttonsSelector = SELECTORS.viewButtons,
   view,
 } = {}) {
   const $logos = $(logosSelector, documentRef);

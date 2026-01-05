@@ -1,3 +1,4 @@
+import { SELECTORS } from "../../../shared/const/index.js";
 import {
   bindDialogBackdropClose,
   getUnsubscribeDialog,
@@ -7,33 +8,17 @@ import {
 export class UnsubscribeDialogController {
   constructor({
     context,
-    // backward compatible
     documentRef,
     windowRef,
-    dialogId,
-    dialogSelector,
-    pressNameSelector,
+    dialogSelector = SELECTORS.unsubscribeDialog,
+    pressNameSelector = SELECTORS.unsubscribePressName,
   } = {}) {
     const ctx = context ?? {};
     this.document = ctx.document ?? documentRef ?? document;
     this.window = ctx.window ?? windowRef ?? window;
-    const selectors = ctx.selectors ?? {};
-    const dialogSelectorFromId =
-      typeof dialogId === "string" && dialogId
-        ? dialogId.startsWith("#")
-          ? dialogId
-          : `#${dialogId}`
-        : null;
 
-    this.dialogSelector =
-      dialogSelector ??
-      dialogSelectorFromId ??
-      selectors.unsubscribeDialog ??
-      "#unsubscribe-dialog";
-    this.pressNameSelector =
-      pressNameSelector ??
-      selectors.unsubscribePressName ??
-      '[data-role="press-name"]';
+    this.dialogSelector = dialogSelector;
+    this.pressNameSelector = pressNameSelector;
   }
 
   confirm({ pressName } = {}) {
@@ -60,4 +45,5 @@ export class UnsubscribeDialogController {
       $dialog.showModal();
     });
   }
+
 }

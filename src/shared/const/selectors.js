@@ -5,6 +5,7 @@ export const SELECTORS = {
   // Tabs / view toggle
   tabButtons: '[data-action="tab"]',
   viewButtons: '[data-action="view"]',
+  actionTarget: "[data-action]",
 
   // Logos grid
   logos: "#logos",
@@ -22,5 +23,3 @@ export const SELECTORS = {
   rollingLeft: "#rolling-left",
   rollingRight: "#rolling-right",
 };
-
-

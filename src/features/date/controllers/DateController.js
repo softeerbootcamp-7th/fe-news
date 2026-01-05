@@ -1,3 +1,4 @@
+import { SELECTORS } from "../../../shared/const/index.js";
 import { formatKoreanDateLabel } from "../../../shared/lib/index.js";
 import { renderDateText } from "../ui/dateUI.js";
 
@@ -5,14 +6,12 @@ export class DateController {
   constructor({
     context,
     dayNames,
-    dateSelector,
-    documentRef,
+    dateSelector = SELECTORS.date,
   } = {}) {
     const ctx = context ?? {};
-    const selectors = ctx.selectors ?? {};
-    this.document = ctx.document ?? documentRef ?? document;
+    this.document = ctx.document ?? document;
     this.dayNames = dayNames;
-    this.dateSelector = dateSelector ?? selectors.date ?? "#date";
+    this.dateSelector = dateSelector;
   }
 
   render() {

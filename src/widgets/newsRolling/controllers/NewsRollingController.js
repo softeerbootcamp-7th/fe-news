@@ -1,25 +1,22 @@
-import { $, extractHeadlinesFromNewsJson } from "../../../shared/lib/index.js";
+import { SELECTORS } from "../../../shared/const/index.js";
+import { $ } from "../../../shared/lib/index.js";
 import { RollingLane } from "../components/RollingLane.js";
+import { extractHeadlinesFromNewsJson } from "../lib/extractHeadlinesFromJson.js";
 
 export class NewsRollingController {
   constructor({
     context,
     shuffle,
-    leftSelector,
-    rightSelector,
-    documentRef,
-    windowRef,
+    leftSelector = SELECTORS.rollingLeft,
+    rightSelector = SELECTORS.rollingRight,
   } = {}) {
     const ctx = context ?? {};
-    const selectors = ctx.selectors ?? {};
     this.shuffle = shuffle;
-    this.document = ctx.document ?? documentRef ?? document;
-    this.window = ctx.window ?? windowRef ?? window;
+    this.document = ctx.document ?? document;
+    this.window = ctx.window ?? window;
 
-    this.leftSelector =
-      leftSelector ?? selectors.rollingLeft ?? "#rolling-left";
-    this.rightSelector =
-      rightSelector ?? selectors.rollingRight ?? "#rolling-right";
+    this.leftSelector = leftSelector;
+    this.rightSelector = rightSelector;
     this._lanes = [];
   }
 

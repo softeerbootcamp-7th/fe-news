@@ -3,6 +3,7 @@ import {
   dayNames,
   LIGHT_ONLY_FILES,
   LOGO_FILES,
+  SELECTORS,
 } from "../shared/const/index.js";
 import { shuffle } from "../shared/lib/index.js";
 import { createAppContext } from "./AppContext.js";
@@ -92,7 +93,7 @@ export class NewsStandApp {
   async handleClick(e) {
     const target =
       e.target instanceof this.window.Element
-        ? e.target.closest("[data-action]")
+        ? e.target.closest(SELECTORS.actionTarget)
         : null;
     if (!target) return;
 

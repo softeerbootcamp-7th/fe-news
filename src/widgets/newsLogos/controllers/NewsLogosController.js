@@ -1,3 +1,4 @@
+import { SELECTORS } from "../../../shared/const/index.js";
 import {
   buildShuffledLogoLists,
   getLogoFilesForTheme,
@@ -18,29 +19,23 @@ export class NewsLogosController {
     LIGHT_ONLY_FILES,
     DARK_ONLY_FILES,
     subscriptions,
-    logosSelector,
-    tabButtonsSelector,
-    leftSelector,
-    rightSelector,
-    // backward compatible
-    documentRef,
+    logosSelector = SELECTORS.logos,
+    tabButtonsSelector = SELECTORS.tabButtons,
+    leftSelector = SELECTORS.navPrev,
+    rightSelector = SELECTORS.navNext,
   } = {}) {
     const ctx = context ?? {};
-    const selectors = ctx.selectors ?? {};
     this.store = store;
     this.shuffle = shuffle;
     this.LOGO_FILES = LOGO_FILES;
     this.LIGHT_ONLY_FILES = LIGHT_ONLY_FILES;
     this.DARK_ONLY_FILES = DARK_ONLY_FILES;
     this.subscriptions = subscriptions;
-    this.document = ctx.document ?? documentRef ?? document;
-    this.logosSelector = logosSelector ?? selectors.logos ?? "#logos";
-    this.tabButtonsSelector =
-      tabButtonsSelector ?? selectors.tabButtons ?? '[data-action="tab"]';
-    this.leftSelector =
-      leftSelector ?? selectors.navPrev ?? '[data-action="prev"]';
-    this.rightSelector =
-      rightSelector ?? selectors.navNext ?? '[data-action="next"]';
+    this.document = ctx.document ?? document;
+    this.logosSelector = logosSelector;
+    this.tabButtonsSelector = tabButtonsSelector;
+    this.leftSelector = leftSelector;
+    this.rightSelector = rightSelector;
   }
 
   initShuffle() {

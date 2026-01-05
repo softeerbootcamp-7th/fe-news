@@ -1,21 +1,18 @@
+import { SELECTORS } from "../../../shared/const/index.js";
 import { renderViewToggle } from "../ui/viewUI.js";
 
 export class ViewController {
   constructor({
     context,
     store,
-    logosSelector,
-    buttonsSelector,
-    // backward compatible
-    documentRef,
+    logosSelector = SELECTORS.logos,
+    buttonsSelector = SELECTORS.viewButtons,
   } = {}) {
     const ctx = context ?? {};
-    const selectors = ctx.selectors ?? {};
     this.store = store;
-    this.document = ctx.document ?? documentRef ?? document;
-    this.logosSelector = logosSelector ?? selectors.logos ?? "#logos";
-    this.buttonsSelector =
-      buttonsSelector ?? selectors.viewButtons ?? '[data-action="view"]';
+    this.document = ctx.document ?? document;
+    this.logosSelector = logosSelector;
+    this.buttonsSelector = buttonsSelector;
   }
 
   apply(view) {

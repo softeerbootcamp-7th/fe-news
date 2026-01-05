@@ -1,8 +1,9 @@
+import { SELECTORS } from "../../../shared/const/index.js";
 import { $, $$, encodePathSegment } from "../../../shared/lib/index.js";
 
 export function renderActiveTabButtons({
   documentRef = document,
-  selector = '[data-action="tab"]',
+  selector = SELECTORS.tabButtons,
   activeTab,
 } = {}) {
   for (const $btn of $$(selector, documentRef)) {
@@ -15,8 +16,8 @@ export function renderActiveTabButtons({
 
 export function renderNavButtons({
   documentRef = document,
-  leftSelector = '[data-action="prev"]',
-  rightSelector = '[data-action="next"]',
+  leftSelector = SELECTORS.navPrev,
+  rightSelector = SELECTORS.navNext,
   page = 0,
   totalPages = 1,
 } = {}) {
