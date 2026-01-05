@@ -1,26 +1,15 @@
 import data from '@/assets/data/pressData.json' assert{ type: 'json' };
 
-function setHeadLine(element, press, title, wrapper) {
+function updateContent(element, press, title, wrapper) {
     if (wrapper.value === press.length) {
         wrapper.value = 0;
     }
-    element.innerHTML = `${press[wrapper.value]}${title[wrapper.value]}`;
-    wrapper.value += 1;
-}
 
-function repeatRolling(element, press, title, index, state, timer) {
-    if (state.value === false) {
-        setHeadLine(element, press, title, index)
-        timer.value = setTimeout(repeatRolling, 5000, element, press, title, index, state, timer);
-    } else {
-        clearTimeout(timer.value);
-    }
+    element.innerHTML = `${press[wrapper.value]}${title[wrapper.value]}`;
 }
 
 export function rollingHeadLine() {
     function initHeadLine() {
-        setHeadLine(leftTargetElement, pressHtmlString, titleHtmlString, indexWrapper);
-        setHeadLine(rightTargetElement, pressHtmlString, titleHtmlString, indexWrapper);
     }
 
     function setHoverEvent(element, state) {
