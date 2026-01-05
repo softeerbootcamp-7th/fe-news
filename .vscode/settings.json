@@ -1,6 +1,21 @@
 {
+  // 1. 에디터 시각적 줄바꿈 (가로 스크롤 방지)
+  "editor.wordWrap": "on",
+  
+  // 2. 저장할 때 자동으로 포맷팅 (Prettier 실행)
+  "editor.formatOnSave": true,
+  
+  // 3. 저장할 때 자동으로 린트 수정 (ESLint 실행)
   "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
   },
+
+  // 4. 기본 포맷터 지정 (Prettier)
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  
+  // 5. 탭 사이즈 통일 (보통 2칸을 선호)
+  "editor.tabSize": 2,
+  
   "stylelint.validate": ["css"]
 }
