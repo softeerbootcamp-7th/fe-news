@@ -5,7 +5,9 @@ let subscribedPressList = localStorage.getItem("subscribed-press-list");
 
 console.log(subscribedPressList);
 subscribedPressList =
-  subscribedPressList !== null ? subscribedPressList.split(",") : [];
+  subscribedPressList === null || subscribedPressList === ""
+    ? []
+    : subscribedPressList.split(",");
 
 // 구독중인 언론사 개수 표시하는 배지
 const badge = document.querySelector("#badge");
@@ -77,7 +79,11 @@ function renderGrid(pageIndex) {
       const subscribeBtn = document.createElement("button");
       subscribeBtn.className = "subscribe-btn";
       subscribeBtn.type = "button";
-      subscribeBtn.textContent = "구독하기";
+      subscribeBtn.id = `${src.split("/").at(-1)}_btn`;
+      subscribeBtn.textContent = subscribedPressList.includes(subscribeBtn.id)
+        ? "해지하기"
+        : "구독하기";
+
       cell.appendChild(img);
       cell.appendChild(subscribeBtn);
     } else {
@@ -89,6 +95,23 @@ function renderGrid(pageIndex) {
 
   updateArrows();
 }
+
+function handleSubscribeBtn(targetEl) {
+  // 구독목록에 없을 때만 구독 목록에 추가
+  if (!subscribedPressList.includes(targetEl.id)) {
+    subscribedPressList.push(targetEl.id);
+    badge.textContent = subscribedPressList.length;
+    localStorage.setItem("subscribed-press-list", subscribedPressList);
+    // 구독하기 버튼 -> 해지하기 버튼으로 변경
+    targetEl.textContent = "해지하기";
+  }
+}
+
+// 이벤트 버블링 활용해 그리드 영역 내 언론사 구독 버튼에 '구독' 함수 적용시키기
+gridEl.addEventListener("click", (e) => {
+  console.log(e);
+  if (e.target.tagName == "BUTTON") handleSubscribeBtn(e.target);
+});
 
 export default function initGridView() {
   initPages();
