@@ -6,7 +6,8 @@
   align-items: center;
 }
 
-#main-container {
+/* Main Container Styles */
+.ns-main-container {
   outline: 1px solid red;
   padding: 58px 175px;
   width: 1280px;
@@ -14,6 +15,7 @@
   font-size: 24px;
 }
 
+/* Header Styles */
 #title-wrap {
   display: flex;
   justify-content: center;
@@ -21,6 +23,10 @@
   width: 136px;
   height: 29px;
   gap: 8px;
+}
+
+#title-wrap:hover {
+  cursor: pointer;
 }
 
 .ns-header {
@@ -33,30 +39,177 @@
   font-size: 24px;
 }
 
+/* Rolling Card Styles */
 #roll-wrapper {
-  display: flex;
-  width: 930px;
-  height: 49px;
-  gap: 8px;
-  margin-top: 69px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  cursor: pointer;
+  margin-top: 60px;
 }
 
-#rolling-card-wrapper {
+.rolling-list {
+  height: 49px;
+  overflow: hidden;
+  padding: 15px 16px;
+}
+
+.rolling-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rolling-item {
+  height: 40px;
   display: flex;
-  width: 461px;
-  /* padding: 16px; */
   gap: 16px;
-  align-items: center;
-  padding-left: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-#rolling-card-wrapper:hover {
-  cursor: pointer;
-}
-#rolling-card-wrapper:hover p {
+
+.rolling-item:hover .news-headline {
   text-decoration: underline;
 }
 
+/* Controls Styles */
 .ns-controls {
   display: flex;
   justify-content: space-between;
+  height: 22px;
+  margin-top: 30px;
+}
+
+.ns-controls__left {
+  display: flex;
+  align-items: center;
+}
+
+.ns-controls__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ns-tabs {
+  height: 22px;
+}
+.ns-tab-left {
+  display: flex;
+  align-items: center;
+}
+.ns-tab-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ns-tab__badge {
+  width: 20px;
+  height: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ns-tabs {
+  display: flex;
+  width: 240px;
+  gap: 24px;
+}
+
+.ns-tabs > div:hover {
+  cursor: pointer;
+}
+
+.ns-view-toggle--active svg path {
+  fill: var(--color-text-point);
+}
+
+/* Grid Styles */
+
+.ns-press-grid {
+  width: 930px;
+  height: 388px;
+  background-color: #d2dae0;
+  margin-top: 28px;
+  position: relative;
+}
+
+.ns-press-grid__list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  width: 930px;
+  height: 388px;
+  grid-template-columns: repeat(6, 1fr); /* 6열 */
+  padding-right: 1px;
+  padding-bottom: 1px;
+  gap: 1; /* 칸 사이 여백, 필요하면 8px 등으로 변경 */
+}
+
+.ns-press-grid__item {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 154.17px;
+  height: 96.25px;
+}
+
+.ns-press-grid__item img {
+  height: 20px;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.ns-press-grid__item:hover img {
+  opacity: 0;
+}
+
+.ns-press-grid__item:hover {
+  background: #f5f7f9;
+}
+
+.subscribe-btn {
+  position: absolute;
+  top: 36px;
+  left: 41px;
+  width: 72px;
+  height: 24px;
+  padding-right: 6px;
+  padding-left: 6px;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.subscribe-btn:hover {
+  border: 1px solid var(--color-border-bold);
+  color: var(--color-text-bold);
+}
+
+.ns-press-grid__item:hover .subscribe-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ns-grid-nav__btn {
+  position: absolute;
+  top: 45%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.grid__left {
+  left: -100px;
+}
+
+.grid__right {
+  right: -100px;
 }

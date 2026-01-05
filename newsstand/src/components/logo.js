@@ -1,4 +1,4 @@
-export const logo = () => {
+export const getLogo = () => {
   const svgNS = "http://www.w3.org/2000/svg";
   const icon = document.createElementNS(svgNS, "svg");
   icon.setAttribute("width", "24");
