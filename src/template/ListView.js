@@ -1,4 +1,4 @@
-export function PressListView({
+export function getPressListTemplate({
   categoryList,
   category,
   totalPressNum,
