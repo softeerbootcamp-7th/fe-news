@@ -123,9 +123,16 @@
 .ns-tabs > div:hover {
   cursor: pointer;
 }
+.ns-view-toggle svg path {
+  fill: var(--color-text-weak);
+}
 
 .ns-view-toggle--active svg path {
   fill: var(--color-text-point);
+}
+
+.ns-view-toggle:hover {
+  cursor: pointer;
 }
 
 /* Grid Styles */
