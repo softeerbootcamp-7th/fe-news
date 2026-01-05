@@ -1,5 +1,6 @@
 import { articlesData } from "@/dummy/articlesData";
 import {
+  getPressGridContainerTemplate,
   getPressGridItemTemplate,
   getEmptyGridItemTemplate,
   getSubscribeButtonTemplate,
@@ -18,7 +19,7 @@ const NUM_GRID_ROW = 4;
 const NUM_GRID_COL = 6;
 const NUM_GRID_CELL = NUM_GRID_COL * NUM_GRID_ROW;
 
-const gridContainer = document.querySelector(".press-grid__list");
+const gridContainer = document.querySelector(".press-list");
 const prevButton = document.querySelector(".press-list__control--prev");
 const nextButton = document.querySelector(".press-list__control--next");
 
@@ -30,6 +31,7 @@ export function initGridView() {
   pressData = shuffleArray(parsePressData(articlesData));
 
   // 첫 grid 레이아웃 그리기
+  renderGridContainer();
   renderCurrentPage();
 
   // 구독하기 버튼
@@ -99,7 +101,7 @@ function renderGridItems(paginatedData) {
     for (let i = paginatedData.length; i < NUM_GRID_CELL; i++)
       gridContentHTML += getEmptyGridItemTemplate();
 
-  gridContainer.innerHTML = gridContentHTML;
+  gridContainer.firstElementChild.innerHTML = gridContentHTML;
 }
 
 function updateGridItem(pressId) {
@@ -110,4 +112,8 @@ function updateGridItem(pressId) {
   button.outerHTML = isSubscribed(pressId)
     ? getCancelButtonTemplate()
     : getSubscribeButtonTemplate();
+}
+
+function renderGridContainer() {
+  gridContainer.innerHTML = getPressGridContainerTemplate();
 }

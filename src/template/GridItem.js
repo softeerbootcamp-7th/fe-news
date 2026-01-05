@@ -1,3 +1,10 @@
+export function getPressGridContainerTemplate() {
+  return `
+    <ul class="press-grid__list">
+    </ul>
+  `;
+}
+
 export function getPressGridItemTemplate({
   pressId,
   pressName,
