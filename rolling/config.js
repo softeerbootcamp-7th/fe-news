@@ -1,0 +1,9 @@
+const ROLLING_INTERVAL = 5000;
+const ROLLING_TIMEOUT = 1000;
+const ANIMATION_DURATION = 500;
+const ROLLING_BARS_CONFIG = [
+    { key: '0', delay: 0 },
+    { key: '1', delay: ROLLING_TIMEOUT },
+];
+
+export { ROLLING_INTERVAL, ANIMATION_DURATION, ROLLING_BARS_CONFIG };
