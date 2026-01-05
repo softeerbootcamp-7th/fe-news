@@ -6,53 +6,36 @@ export function renderGridView(items) {
   if (!content) return
 
   content.className = 'grid'
-  content.innerHTML = ''
 
-  const fragment = document.createDocumentFragment()
-
-  items.forEach(item => {
-    const gridItem = document.createElement('li')
-    gridItem.className = 'grid-item'
+  const gridItems = items.map(item => {
     const subscribed = subscription.isSubscribed(item.id)
-    
-    const img = document.createElement('img')
-    img.src = item.image
-    img.alt = item.title
-    img.className = 'grid-item-image'
-    gridItem.appendChild(img)
-
-    const div = document.createElement('div')
-    div.className = 'grid-item-overlay'
-    gridItem.appendChild(div)
-
-    const button = document.createElement('button')
-    button.className = `subscribe-btn ${subscribed ? 'subscribed' : ''}`
-    button.dataset.id = item.id
-    button.textContent = subscribed ? '해지하기' : '구독하기'
-    
-    div.appendChild(button)
-    gridItem.appendChild(img)
-    gridItem.appendChild(div)
-
-    const btn = gridItem.querySelector('.subscribe-btn')
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation()
-      subscription.toggle(item.id)
-      const isNowSubscribed = subscription.isSubscribed(item.id)
-      btn.classList.toggle('subscribed', isNowSubscribed)
-      btn.textContent = isNowSubscribed ? '해지하기' : '구독하기'
-    })
-    
-    fragment.appendChild(gridItem)
-  })
+    return `
+      <li class="grid-item">
+        <img src="${item.image}" alt="${item.title}" class="grid-item-image">
+        <div class="grid-item-overlay">
+          <button class="subscribe-btn ${subscribed ? 'subscribed' : ''}" data-id="${item.id}">
+            ${subscribed ? '해지하기' : '구독하기'}
+          </button>
+        </div>
+      </li>
+    `
+  }).join('')
 
   const placeholders = Math.max(0, ITEMS_PER_PAGE - items.length)
-  for (let i = 0; i < placeholders; i += 1) {
-    const placeholder = document.createElement('li')
-    placeholder.className = 'grid-item placeholder'
-    placeholder.setAttribute('aria-hidden', 'true')
-    fragment.appendChild(placeholder)
-  }
+  const placeholderItems = Array(placeholders).fill('<li class="grid-item placeholder" aria-hidden="true"></li>').join('')
 
-  content.appendChild(fragment)
+  content.innerHTML = gridItems + placeholderItems
+
+  content.addEventListener('click', (e) => {
+    const btn = e.target.closest('.subscribe-btn')
+    if (!btn) return
+
+    e.stopPropagation()
+    const itemId = btn.dataset.id
+    subscription.toggle(itemId)
+    
+    const isSubscribed = subscription.isSubscribed(itemId)
+    btn.classList.toggle('subscribed', isSubscribed)
+    btn.textContent = isSubscribed ? '해지하기' : '구독하기'
+  })
 }
