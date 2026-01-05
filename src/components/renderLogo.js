@@ -1,3 +1,6 @@
+import { createBtn } from "./createBtn";
+import { handleSubscribe } from "./subscribePress";
+
 const LOGO_COUNT = 24;
 
 export function getLogos(dir, count = LOGO_COUNT) {
@@ -20,10 +23,26 @@ export function renderLogos(containerSelector, pressLogos) {
   const container = document.querySelector(containerSelector);
   pressLogos.forEach((src) => {
     const li = document.createElement('li');
+
     const img = document.createElement('img');
+    img.className = 'press-logo-img';
     img.src = src;
     img.alt = '언론사 로고';
     li.appendChild(img);
+
+    const subscribeBtn = createBtn('white', 'plus', '구독하기', 'subscribeBtn', handleSubscribe);
+    li.appendChild(subscribeBtn);
+
+    subscribeBtn.style.display = 'none';
+    li.addEventListener('mouseover', () => {
+      img.style.display = 'none';
+      subscribeBtn.style.display = 'flex';
+    });
+    li.addEventListener('mouseleave', () => {
+      img.style.display = 'block';
+      subscribeBtn.style.display = 'none';
+    });
+
     container.appendChild(li);
   });
 }
