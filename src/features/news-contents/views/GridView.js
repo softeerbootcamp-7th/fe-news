@@ -1,5 +1,5 @@
-import { ITEMS_PER_PAGE } from '../utils/pagination.js'
-import { subscription } from '../utils/subscription.js'
+import { ITEMS_PER_PAGE } from '../../../utils/pagination.js'
+import { subscription } from '../../../utils/subscription.js'
 
 export function renderGridView(items) {
   const content = document.getElementById('content')

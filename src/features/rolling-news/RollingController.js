@@ -1,4 +1,4 @@
-import { newsData } from '../data/newsData.js'
+import { newsData } from '../../data/newsData.js'
 
 const ROLLING_INTERVAL = 5000
 const RIGHT_COLUMN_DELAY = 1000
