@@ -1,10 +1,8 @@
 // src/main.js
 import { Header } from "./components/Header.js";
-import {
-  AutoRollingNews,
-  initAutoRolling,
-} from "./components/AutoRollingNews.js";
+import { RollingNews } from "./components/RollingNews.js";
 import { GridContainer } from "./components/GridContainer.js";
+import { NEWS_LISTS } from "./store/dummy.js";
 
 // 앱 상태
 // const state = {
@@ -16,8 +14,8 @@ import { GridContainer } from "./components/GridContainer.js";
 //     .map((_, i) => ({
 //       id: i + 1,
 //       name: `press${i + 1}`,
-//       lightLogo: `/asset/light_mode_logo/press${i + 1}.png`,
-//       darkLogo: `/asset/dark_mode_logo/press${i + 1}.png`,
+//       lightLogo: `/assets/light_mode_logo/press${i + 1}.png`,
+//       darkLogo: `/assets/dark_mode_logo/press${i + 1}.png`,
 //     })),
 // };
 
@@ -25,21 +23,24 @@ import { GridContainer } from "./components/GridContainer.js";
 const render = () => {
   const app = document.getElementById("app");
 
+  const header = Header({ title: "뉴스스탠드" });
+  const rollingNews = RollingNews({
+    newsLists: NEWS_LISTS,
+  });
+  const newsContainer = GridContainer();
+  // state.selectedTab,
+  // state.subscribedPressIds.size,
+  // state.allPresses,
+  // state.isDarkMode
+
   const template = `
-    ${Header({ title: "뉴스스탠드" })}
-    ${AutoRollingNews()}
-    ${
-      GridContainer()
-      // state.selectedTab,
-      // state.subscribedPressIds.size,
-      // state.allPresses,
-      // state.isDarkMode
-    }
+    ${header}
+    ${rollingNews}
+    ${newsContainer}
   `;
 
   app.innerHTML = template;
   // attachEventListeners();
-  // initAutoRolling(); // 롤링 뉴스 초기화
 };
 
 // 이벤트 리스너
@@ -54,7 +55,6 @@ const render = () => {
 //     });
 //   });
 // };
-
 // 다크모드 변경 감지
 window
   .matchMedia("(prefers-color-scheme: dark)")
