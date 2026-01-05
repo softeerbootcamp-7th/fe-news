@@ -1,0 +1,21 @@
+/**
+ * Global Styles
+ * 모든 변수와 기본 스타일을 import
+ */
+
+/* Variables */
+@import './variables/colors.css';
+@import './variables/typography.css';
+@import './variables/object.css';
+@import './variables/spacing.css';
+
+/* Base */
+@import './base/fonts.css';
+@import './base/reset.css';
+
+/* Layout */
+@import './layout/app.css';
+
+/* Components */
+@import './components/header.css';
+@import '../features/latestNews/styles/latestNewsCard.css';

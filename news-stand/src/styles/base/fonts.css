@@ -1,0 +1,10 @@
+/**
+ * Font Face Definitions
+ * 폰트 정의
+ */
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/fonts/Pretendard.woff2') format('woff2');
+  font-display: swap;
+}

@@ -1,0 +1,36 @@
+/**
+ * Typography Variables
+ * 타이포그래피 관련 CSS 변수 정의
+ */
+
+:root {
+  --font-base: 'Pretendard', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', Arial;
+
+  /* Font Weights */
+  --fw-bold: 700;
+  --fw-medium: 500;
+
+  /* Display Bold */
+  --display-bold24: 24px;
+  --display-bold16: 16px;
+  --display-bold14: 14px;
+  --display-bold12: 12px;
+
+  /* Display Medium */
+  --display-medium16: 16px;
+  --display-medium14: 14px;
+  --display-medium12: 12px;
+
+  /* Selected Bold */
+  --selected-bold16: 16px;
+  --selected-bold14: 14px;
+
+  /* Available Medium */
+  --available-medium16: 16px;
+  --available-medium14: 14px;
+  --available-medium12: 12px;
+
+  /* Hover Medium (with underline) */
+  --hover-medium16: 16px;
+  --hover-medium14: 14px;
+}

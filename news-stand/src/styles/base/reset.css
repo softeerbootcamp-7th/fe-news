@@ -1,0 +1,18 @@
+/**
+ * Reset Styles
+ * 기본 스타일 리셋
+ */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-base);
+}

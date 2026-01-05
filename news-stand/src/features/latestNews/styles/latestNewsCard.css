@@ -1,0 +1,56 @@
+/**
+ * News Card Component Styles
+ * 뉴스 카드 컴포넌트 스타일
+ */
+
+.news-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+  margin-top: var(--gap-xl);
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gap-md);
+}
+
+.news-card {
+  width: 461px;
+  height: 49px;
+  border: var(--border-width) solid var(--border-default);
+  background-color: var(--surface-alt);
+}
+
+.card-content {
+  display: flex;
+  gap: var(--gap-md);
+  padding: var(--gap-md);
+}
+
+.card-source {
+  color: var(--text-strong);
+  font-size: var(--display-bold14);
+  font-weight: var(--fw-bold);
+  line-height: 1.2;
+}
+
+.card-title {
+  color: var(--text-default);
+  font-size: var(--hover-medium14);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.card-title:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--text-bold);
+  text-decoration-thickness: var(--border-width);
+}
