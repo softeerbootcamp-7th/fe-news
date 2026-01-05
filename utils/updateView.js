@@ -14,7 +14,9 @@ export function updateView({type, view, currentPage, currentData, itemCount}) {
     }
     else if (type === "LIST") {
         renderList({
-            container: view
+            container: view,
+            data: currentData,
+            page: currentPage
         });
     }
 

@@ -157,7 +157,7 @@ ul, ol {
     margin: 0 auto 80px;
 }
 
-/* 화살표 */
+/* 페이지 화살표 */
 .arrow {
     width: 40px;
     height: 40px;
@@ -193,16 +193,15 @@ ul, ol {
     flex: 1;
 }
 
-.news-grid {
+.news-grid.active-grid{
     display: grid;
-    grid-template-columns: repeat(6, 154px);
-    grid-template-rows: repeat(4, 96px);
-    border: 1px solid #ccc;
+    grid-template-columns: repeat(6, 155px);
+    grid-template-rows: repeat(4, 97px);
 }
 
 .news-item {
     position: relative;
-    border: 1px solid #e0e0e0;
+    box-shadow: 0 0 0 1px var(--border-default);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -250,9 +249,32 @@ ul, ol {
     text-decoration: underline;
 }
 
+/* 리스트 */
+.news-grid.active-list {
+    display: flex;
+    flex-direction: column;
+    width: 930px;
+    height: 388px;
+    box-shadow: 0 0 0 1px var(--border-default);
+}
+
+.category-container {
+    display: flex;
+    background-color: var(--surface-alt);
+    box-shadow: 0 0 0 1px var(--border-default);
+    height: 40px;
+    
+}
+
+.news-category {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 16px;
+}
 
 
-
+/* 모달 */
 .modal-overlay {
     position: absolute;
     inset: 0;

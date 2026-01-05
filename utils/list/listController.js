@@ -4,6 +4,8 @@ import { updateView } from '../updateView.js';
 import { movePrev } from '../page/movePrevPage.js';
 import { moveNext } from '../page/moveNextPage.js';
 
+
+
 let currentPage = 0;
 let currentData = presses;
 
