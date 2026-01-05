@@ -9,3 +9,11 @@ export function parseDateString(datetime) {
 
   return formatted;
 }
+
+export function parsePressData(rawData) {
+  return rawData.map((item, index) => ({
+    id: index,
+    logo: item.logo,
+    name: item.press,
+  }));
+}
