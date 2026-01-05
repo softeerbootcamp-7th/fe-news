@@ -9,6 +9,22 @@ function updateContent(element, press, title, wrapper) {
 }
 
 export function rollingHeadLine() {
+    const bothTargetElement = document.querySelector('#autoRollingNewsBar');
+    const leftTargetElement = document.querySelector('#autoRollingNewsBar .left');
+    const rightTargetElement = document.querySelector('#autoRollingNewsBar .right');
+    
+    const pressHtmlString = data.map(each => `<div class="press">${each.press}</div>`);
+    const titleHtmlString = data.map(each => `<div class="newsTitle">${each.mainTitle}</div>`);
+    
+    let indexWrapper = { value: 0 };
+    
+    const timers = {
+        left: null,
+        right: null
+    };
+
+    const hoverState = { value: false };
+
     function initHeadLine() {
     }
 
@@ -40,24 +56,8 @@ export function rollingHeadLine() {
         });
     }
 
-    const bothTargetElement = document.querySelector('#autoRollingNewsBar');
-    const leftTargetElement = document.querySelector('#autoRollingNewsBar .left');
-    const rightTargetElement = document.querySelector('#autoRollingNewsBar .right');
-    const pressHtmlString = data.map(each => `<div class="press">${each.press}</div>`);
-    const titleHtmlString = data.map(each => `<div class="newsTitle">${each.mainTitle}</div>`);
-    let indexWrapper = {
-        value: 0
-    };
-    const hoverState = {
-        value: false
-    };
 
-    const leftTimer = {
-        value: null
-    }
 
-    const rightTimer = {
-        value: null
     }
     
     setHoverEvent(bothTargetElement, hoverState);
