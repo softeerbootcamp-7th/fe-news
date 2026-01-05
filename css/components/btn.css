@@ -1,0 +1,38 @@
+.btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+    height: 24px;
+    padding: 0 6px;
+
+    color: var(--color-text-weak);
+    border: 1px solid var(--color-border-default);
+    background-color: var(--color-surface-default);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: var(--color-text-bold);
+    border: 1px solid var(--color-border-bold);
+}
+
+.btn-grey {
+    background-color: var(--color-surface-alt);
+}
+
+.btn-icon {
+    color: inherit;
+    display: flex;
+    align-items: center;
+    width: 12px;
+    height: 12px;
+    
+}
+
+.btn-icon svg {
+    width: 12px;
+    height: 12px;
+    color: var(--color-text-weak);
+}

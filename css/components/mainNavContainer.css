@@ -21,7 +21,6 @@ main section {
 
 .selected {
     color: var(--color-text-strong);
-    /* selected-bold16 */
 }
 
 .published-press-num {
@@ -50,4 +49,9 @@ main section {
 
 .nav-view-container span.selected {
     color: var(--color-text-point);
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
 }
