@@ -7,37 +7,42 @@
   margin-inline: 90px;
 }
 
-.subscription-toggle-buttons {
+.subscribe-toggle-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 24px;
 }
-.subscription-toggle:hover {
+.subscribe-toggle:hover {
   text-decoration: underline;
 }
 
-.subscription-toggle {
+.subscribe-toggle {
   font-size: 16px;
   font-weight: 500;
   color: var(--text-week);
   cursor: pointer;
-  gap: 8px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.subscription-toggle.is-active {
+.subscribe-toggle.is-active {
   font-weight: bold;
   color: var(--text-strong);
+  text-decoration: none;
+}
+.subscribe-toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .view-toggle-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 }
 
 .view-toggle {
