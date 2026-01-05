@@ -13,9 +13,7 @@ header {
     gap: 8px;
 }
 
-.icon {
-    width: 24px;
-    height: 24px;
+.header-icon {
     color: var(--color-text-point);
 }
 
