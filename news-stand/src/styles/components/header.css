@@ -1,0 +1,16 @@
+/**
+ * Header Component Styles
+ * 헤더 컴포넌트 스타일
+ */
+
+.title {
+  color: var(--text-strong);
+  font-weight: var(--fw-bold);
+  margin: 0;
+  font-size: var(--display-bold24);
+}
+
+.date {
+  color: var(--text-default);
+  font-size: var(--available-medium14);
+}

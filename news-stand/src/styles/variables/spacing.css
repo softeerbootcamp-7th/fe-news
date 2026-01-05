@@ -1,0 +1,12 @@
+/**
+ * Spacing Variables
+ * 간격 관련 CSS 변수 정의
+ */
+
+:root {
+  --gap-xs: 8px;
+  --gap-sm: 12px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+  --gap-xl: 32px;
+}

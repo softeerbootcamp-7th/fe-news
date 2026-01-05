@@ -1,0 +1,32 @@
+/**
+ * App Layout
+ * 앱 레이아웃 스타일
+ */
+
+#app {
+  width: 930px;
+  height: 388px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#app header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#app main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-xs);
+}
