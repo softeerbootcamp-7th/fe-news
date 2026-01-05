@@ -1,0 +1,258 @@
+/* global style */
+
+/* 어떤 순서로 지정해야 보기가 편할까? */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background-color: inherit;
+  border: none;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 930px;
+  padding: 58px 0 40px;
+  margin: 0 auto;
+}
+
+main {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+:root {
+  /* ⬜ Grayscale */
+  --grayscale-white: #fff;
+  --grayscale-white-alt: rgb(255 255 255 / 70%); /* 투명도 70% */
+  --grayscale-50: #f5f7f9;
+  --grayscale-100: #d2dae0;
+  --grayscale-200: #879298;
+  --grayscale-300: #6e8091;
+  --grayscale-400: #5f6e76;
+  --grayscale-500: #4b5966;
+  --grayscale-black: #14212b;
+
+  /* 🟦 Brand Colors */
+  --blue-100: #7890e7;
+  --blue-500: #4362d0;
+
+  /* 라이트 모드  */
+
+  /* 🔤 텍스트 (Text) */
+  --text-strong: var(--grayscale-black); /* 가장 진한 글자 */
+  --text-bold: var(--grayscale-500); /* 중간 강조 */
+  --text-default: var(--grayscale-400); /* 일반 본문 */
+  --text-weak: var(--grayscale-200); /* 연한 글자 */
+  --text-white-default: var(--grayscale-white);
+  --text-white-weak: var(--grayscale-white-alt);
+  --text-point: var(--blue-500); /* 파란색 강조 글자 */
+
+  /* 🎨 배경/면 (Surface) */
+  --surface-default: var(--grayscale-white); /* 카드나 본문 배경 */
+  --surface-alt: var(--grayscale-50); /* 전체 배경 */
+  --surface-brand-default: var(--blue-500); /* 브랜드 색 배경 (버튼 등) */
+  --surface-brand-alt: var(--blue-100); /* 연한 브랜드 배경 */
+
+  /* 🖼 테두리 (Border) */
+  --border-bold: var(--grayscale-300);
+  --border-default: var(--grayscale-100);
+
+  /* Radius */
+  --radius-100: 8px;
+  --radius-full: 999px;
+
+  /* 테두리 두께 */
+  --border-width: 1px;
+
+  /* Drop Shadow */
+  --shadow-two: 0 4px 2px 0 rgb(20 33 43 / 2%);
+  --shadow-eight: 0 2px 18px 0 rgb(20 33 43 / 8%);
+}
+
+/* 다크 모드 - 추후 학습 예정 */
+
+/*
+1. 왜 @media를 쓰는 가
+2. prefers-color-scheme이 무엇인가
+3. prefers-color-scheme를 왜 사용하는가
+4. prefers-color-scheme이게 왜 dark면 다크 모드인 것인가
+5. prefers-color-scheme: light는 없는 건가.
+등등
+*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* 🔤 텍스트 */
+    --text-strong: var(--grayscale-white);
+    --text-bold: var(--grayscale-50);
+    --text-default: var(--grayscale-400);
+    --text-weak: var(--grayscale-white-alt);
+    --text-point: var(--blue-500); /* 포인트 컬러는 유지하기도 함 */
+
+    /* 🎨 배경/면 */
+    --surface-default: var(--grayscale-black); /* 배경이 어두워짐 */
+    --surface-alt: var(--grayscale-500);
+    --surface-brand-default: var(--blue-500);
+    --surface-brand-alt: var(--blue-100);
+
+    /* 🖼 테두리 */
+    --border-bold: var(--grayscale-white-alt);
+    --border-default: var(--grayscale-400);
+  }
+}
+
+/* 기본 폰트 설정 */
+body {
+  /* Pretendard 폰트가 없으면 시스템 폰트 사용 */
+  font-family:
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    sans-serif;
+  color: var(--text-default); /* 기본 글자색 지정 */
+  background-color: var(--surface-default);
+}
+
+/* 폰트 굵기(Weight) 규칙 
+  Bold = 700 / Medium = 500 / Regular = 400 
+*/
+
+/* === 타이틀용 스타일 (Display) === */
+
+/* Display - Bold (Weight: 700) */
+.display-bold24 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.display-bold16 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.display-bold14 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.display-bold12 {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* Display - Medium (Weight: 500) */
+.display-medium16 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.display-medium14 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.display-medium12 {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Selected (Weight: 700) */
+.selected-bold16 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.selected-bold14 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* Available (Weight: 500, Cursor: Pointer) */
+.available-medium16 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.available-medium14 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.available-medium12 {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+/* Hover States (Weight: 500, Underline) */
+.hover-medium16:hover {
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.hover-medium14:hover {
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+/* 선 두께 */
+.border {
+  border: var(--border-width) solid var(--border-default);
+}
+
+.border-bold {
+  border: var(--border-bold) solid var(--border-bold);
+}
+
+/* Radius */
+.rounded-square {
+  border-radius: var(--radius-100);
+}
+
+.rounded-circle {
+  border-radius: var(--radius-full);
+}
+
+/* Drop shadow */
+.shadow-two {
+  box-shadow: var(--shadow-two);
+}
+
+.shadow-eight {
+  box-shadow: var(--shadow-eight);
+}
