@@ -75,7 +75,7 @@ export class LatestNewsView {
     // setTimeout(() => oldNews.remove(), 500);
   }
 
-  render() {
+  initLatestNews() {
     // 첫 2개의 뉴스 추가
     const leftNews = this.appendLeftNewsElement();
     const rightNews = this.appendRightNewsElement();
