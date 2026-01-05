@@ -9,7 +9,7 @@ export const GridContainer = (
   isDarkMode
 ) => {
   return `
-    <div class="bg-surface-alt mt-8">
+    <main class="bg-surface-alt mt-8">
       ${GridTab(selectedTab, subscribedCount)}
       <div class="relative">
         <button class="absolute top-1/2 translate-y-neg-1/2 w-12 h-12 rounded-full border bg-surface-default cursor-pointer flex items-center justify-center text-default transition-all hover:bg-surface-alt hover:border-bold hover:text-strong left-neg-20" aria-label="이전">
@@ -24,6 +24,6 @@ export const GridContainer = (
           </svg>
         </button>
       </div>
-    </div>
+    </main>
   `;
 };

@@ -1,5 +1,4 @@
-// src/components/Header.js
-export const Header = () => {
+export function Header({ title }) {
   const formatter = new Intl.DateTimeFormat("ko-KR", { weekday: "long" });
   const currentDate = new Date();
   const dateString = currentDate.toLocaleDateString();
@@ -7,8 +6,8 @@ export const Header = () => {
 
   return `
     <header class="flex justify-between">
-      <span class="display-bold24 text-strong"><i class="icon-news"></i> 뉴스스탠드</span>
+      <span class="display-bold24 text-strong"><i class="icon-news"></i>${title}</span>
       <span class="display-medium16">${dateString} ${weekday}</span>
     </header>
   `;
-};
+}

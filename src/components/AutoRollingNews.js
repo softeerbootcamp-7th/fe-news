@@ -50,7 +50,7 @@ export const AutoRollingNews = (
   const newsAreasHtml = newsLists
     .map(
       (list, index) => `
-      <div class="flex-1 bg-surface-alt p-4 rounded-lg h-20 relative overflow-hidden" data-rolling-area data-area-index="${index}" data-original-count="${
+      <div class="flex-1 bg-surface-alt relative overflow-hidden" data-rolling-area data-area-index="${index}" data-original-count="${
         list.length
       }">
         <div class="transition-transform" data-rolling-wrapper>
