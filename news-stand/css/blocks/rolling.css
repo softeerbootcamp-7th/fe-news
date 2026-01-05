@@ -1,0 +1,40 @@
+@import url('../style.css');
+
+.rolling--ul {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 930px;
+  height: 49px;
+  margin: 0 auto;
+}
+
+.rolling--li {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  height: 100%;
+  padding: 12px 20px;
+  overflow: hidden;
+  background-color: var(--surface-alt);
+
+  span {
+    color: var(--text-strong);
+  }
+}
+
+.roller {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+}
+
+/* 수정 */
+.roller > div {
+  display: flex;
+  gap: 15px;
+  height: 49px; /* JS 계산식과 일치해야 함 */
+}

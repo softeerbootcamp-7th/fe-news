@@ -1,25 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-        <title>뉴스스탠드</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <header>뉴스스탠드<time></time></header>
-        <main>
-            <section>
-                <ul class=""></ul>
-            </section>
-            <section class="">
-                <nav aria-labelledby="그리드/리스트"><a>전체 언론사</a><a>내가 구독한 언론사</a></nav>
-                <button>이전</button>
-                <ul></ul>
-                <button>다음</button>
-            </section>
-        </main>
-        
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>뉴스스탠드</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/blocks/grid.css" />
+    <link rel="stylesheet" href="css//blocks/rolling.css" />
+    <link rel="stylesheet" href="css/blocks/header.css" />
+    <link rel="stylesheet" href="css/blocks/nav.css" />
+  </head>
+  <body>
+    <header class="display-bold24">
+      <div class="logo">
+        <img src="./images/icons/newspaper.svg" alt="logo" />
+        뉴스스탠드
+      </div>
+      <time class="display-medium16"></time>
+    </header>
+    <main>
+      <section>
+        <ul id="rolling" class="rolling--ul"></ul>
+      </section>
+      <section>
+        <div class="main--nav">
+          <nav id="grid-menu" aria-labelledby="전체 언론사/구독한 언론사">
+            <button>전체 언론사</button>
+            <button>내가 구독한 언론사</button>
+          </nav>
+          <nav id="grid-layout" aria-labelledby="그리드/리스트">
+            <button>1</button>
+            <button>2</button>
+          </nav>
+        </div>
+        <div class="flex-row">
+          <button id="btn-left">이전</button>
+          <ul id="grid-news" class="grid-layout"></ul>
+          <button id="btn-right">다음</button>
+        </div>
+      </section>
+    </main>
 
+    <script type="module" src="js/app.js"></script>
+  </body>
 </html>
