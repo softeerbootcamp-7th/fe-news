@@ -1,0 +1,9 @@
+@import url('../style.css');
+
+.logo {
+  display: flex;
+  gap: 8px;
+  place-items: center center;
+  height: 29px;
+  color: var(--text-strong);
+}
