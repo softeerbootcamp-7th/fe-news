@@ -212,8 +212,6 @@ body {
     width: 930px;
     height: 388px;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(4, 1fr);
     gap: 0;
     margin: 24px 0 0 0;
     border-right: 1px solid var(--text-text-border-default);
@@ -223,4 +221,11 @@ body {
 .content__grid-item {
     border-top: 1px solid var(--text-text-border-default);
     border-left: 1px solid var(--text-text-border-default);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content__grid-img {
+    height: 20px;
 }

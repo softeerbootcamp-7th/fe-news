@@ -1,15 +1,44 @@
 import rollingNews from './data/rolling_news.json';
+import logoLinks from './data/logo_links.json';
+
+const GRID_COLS = 6;
+const GRID_ROWS = 4;
+
+// shuffle Algorithm -> TODO: utils.js로 분리
+function fisherYatesShuffle(array) {
+    const arr = [...array];
+
+    for(let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+
+    return arr;
+}
 
 // 그리드 초기화 함수
 function initGrid() {
     const grid = document.querySelector('.content__grid');
-    const totalItems = 6 * 4; // 24개
+    grid.style.gridTemplateColumns = `repeat(${GRID_COLS}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${GRID_ROWS}, 1fr)`;
+    const totalCount = GRID_COLS * GRID_ROWS;
     
-    for (let i = 0; i < totalItems; i++) {
+    const originalItems = [...logoLinks.presses];
+
+    // TODO: 페이지네이션 필요
+    const randomItems = fisherYatesShuffle(originalItems).slice(0, totalCount);
+
+    randomItems.forEach((randoms) => {
         const item = document.createElement('div');
         item.className = 'content__grid-item';
+
+        const img = document.createElement('img');
+        img.className = 'content__grid-img';
+        img.src = `${logoLinks.baseUrl}/${randoms.logo}`;
+        item.appendChild(img);
+        
         grid.appendChild(item);
-    }
+    })
 }
 
 // 롤링 아이템 생성 함수
