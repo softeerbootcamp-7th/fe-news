@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fe-news</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="./index.css">
+    <script type="module" src="./app.js"></script>
 </head>
 <body>
     <div class="app">
@@ -19,29 +19,37 @@
             <time class="header__date" datetime="2026-02-12">2026.2.12. 월요일</time>
         </header>
         <section class="rolling-bar" aria-label="속보 뉴스">
-            <article class="rolling-bar__item">
-                <p class="rolling-bar__source">연합뉴스</p>
-                <h3 class="rolling-bar__content">[속보] 도심 공원 '조용한 독서존' 시범 운영...시민 호응 이어져</h3>
-            </article>
-            <article class="rolling-bar__item">
-                <p class="rolling-bar__source">서울경제</p>
-                <h3 class="rolling-bar__content">[속보] 착한 소비 캠페인, 지역 상권 회복에 긍정적 영향</h3>
-            </article>
+            <article class="rolling-bar__item" data-bar="0"></article>
+            <article class="rolling-bar__item" data-bar="1"></article>
         </section>
         <section class="content" aria-label="언론사 목록">
             <header class="content__header">
                 <nav class="content__tabs" aria-label="언론사 필터">
-                    <button class="content__tab content__tab--active" aria-pressed="true">전체 언론사</button>
-                    <button class="content__tab" aria-pressed="false">내가 구독한 언론사</button>
+                    <button class="content__tab content__tab--active" aria-pressed="true">
+                        전체 언론사
+                    </button>
+                    <button class="content__tab" aria-pressed="false">
+                        내가 구독한 언론사
+                        <span class="content__tab-badge">8</span>
+                    </button>
                 </nav>
                 <div class="content__view-modes" role="group" aria-label="보기 방식">
-                    <button class="content__view-mode" aria-label="리스트 보기">리스트 아이콘</button>
-                    <button class="content__view-mode content__view-mode--active" aria-label="그리드 보기" aria-pressed="true">그리드 아이콘</button>
+                    <button class="content__view-mode" 
+                            aria-label="리스트 보기"
+                            data-default-icon="./assets/icons/list-view.svg"
+                            data-active-icon="./assets/icons/list-view-active.svg">
+                        <img src="./assets/icons/list-view.svg" alt="리스트 아이콘">
+                    </button>
+                    <button class="content__view-mode content__view-mode--active" 
+                            aria-label="그리드 보기" 
+                            aria-pressed="true"
+                            data-default-icon="./assets/icons/grid-view.svg"
+                            data-active-icon="./assets/icons/grid-view-active.svg">
+                        <img src="./assets/icons/grid-view-active.svg" alt="그리드 아이콘">
+                    </button>
                 </div>
             </header>
-            <div class="content__grid">
-                그리드 영역 ++++
-            </div>
+            <div class="content__grid"></div>
         </section>
     </div>
 </body>
