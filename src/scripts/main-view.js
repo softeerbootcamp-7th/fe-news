@@ -17,7 +17,54 @@ const badge = document.querySelector("#badge");
 badge.addEventListener("click", () => {
   console.log(subscribedPressList);
 });
+// 구독중인 언론사 수
 badge.textContent = subscribedPressList.length;
+
+// 언론사 선택 탭 바 영역
+const tabButtonbar = document.querySelector("#tab-button-bar");
+// 탭 바 영역에 이벤트 헨들러 달고 이벤트 전이 이용
+tabButtonbar.addEventListener("click", (e) => {
+  console.log(e);
+  // 버튼 요소를 눌렀을 때만 이벤트 실행되도록 제어
+  if (e.target.className.includes("tab-button")) {
+    console.log("include tab bottu");
+    // 사용자가 누른게 '구독한 언론사' 탭이고, 현재 보여지고 있던게 '전체 언론사 탭'이었다면
+    if (
+      e.target.id === SUBSCRIBED_PRESS_TAB_ID &&
+      selectedTabElId === ALL_PRESS_TAB_ID
+    ) {
+      console.log("to subscrived press tab");
+      // 구독한 언론사만 그리드에 보여지는 로직 실행
+      makePageMtrx(true);
+      selectedTabElId = SUBSCRIBED_PRESS_TAB_ID;
+    } else if (
+      // 사용자가 누른게 전체 언론사 탭'이고, 현재 보여지고 있던게 '구독한 언론사' 탭이었다면
+      e.target.id === ALL_PRESS_TAB_ID &&
+      selectedTabElId === SUBSCRIBED_PRESS_TAB_ID
+    ) {
+      console.log("to app press tab");
+      // 전체 언론사 그리드에 보여지는 로직 실행
+      makePageMtrx(false);
+      selectedTabElId = ALL_PRESS_TAB_ID;
+    }
+    console.log(pages);
+
+    renderGrid(pages, 0);
+  }
+});
+
+// 전체언론사 선택 탭 요소
+const ALL_PRESS_TAB_ID = "all-press-tab";
+const SUBSCRIBED_PRESS_TAB_ID = "subscribed-press-tab";
+const allPressTab = document.querySelector(`#${ALL_PRESS_TAB_ID}`);
+// 내가 구독한 언론사 선택 탭 요소
+const subscribedPressTab = document.querySelector(
+  `#${SUBSCRIBED_PRESS_TAB_ID}`
+);
+
+// 현재 선택된 탭 요소 정보(탭 요소의 id)
+// -> default는 전체 언론사 보기
+let selectedTabElId = ALL_PRESS_TAB_ID;
 
 // 최대 4페이지까지만 가능
 const MAX_PAGES = 4;
@@ -70,20 +117,30 @@ function cutLstToMtrx(arr, size) {
   return mtrx;
 }
 
-function initPages() {
-  const logoImgPathList = buildLogoImgPaths();
+// 그리드 화면에 보여줄 언론사 로고 이미지들의 위치 정보 담는 리스트 불러와 24개씩 나눈 2차원 배열인 page에 저장하기
+function makePageMtrx(onlySubscribedPress = false) {
+  let logoImgPathList = buildLogoImgPaths();
+  // 구독중인 애들만 보고 싶다면
+  if (onlySubscribedPress) {
+    // 필터를 통해 구독중인 리스트 안에 있는 언론사만 뽑아 logoImgPathList에 담는다
+    logoImgPathList = logoImgPathList.filter((x) => {
+      const fileName = x.split("/").at(-1);
+      return subscribedPressList.includes(fileName);
+    });
+  }
 
   // 최대 4페이지(=96개)까지만 사용
   const limit = Math.min(logoImgPathList.length, PAGE_SIZE * MAX_PAGES);
-
   pages = cutLstToMtrx(logoImgPathList, 24);
 
   currentPage = 0;
 }
 
 //화면에 그리기
-function renderGrid(pageIndex) {
+function renderGrid(pages, pageIndex) {
+  console.log(pages);
   const items = pages[pageIndex] ?? [];
+  console.log(items);
   gridEl.innerHTML = "";
 
   // 한 페이지는 항상 24칸
@@ -100,7 +157,7 @@ function renderGrid(pageIndex) {
       const subscribeBtn = document.createElement("button");
       subscribeBtn.className = "subscribe-btn";
       subscribeBtn.type = "button";
-      subscribeBtn.id = `${src.split("/").at(-1)}_btn`;
+      subscribeBtn.id = `${src.split("/").at(-1)}`;
       const plusIcon = document.createElement("svg");
       plusIcon.classList.add("subscribe-btn-icon");
 
@@ -128,7 +185,7 @@ function renderGrid(pageIndex) {
     gridEl.appendChild(cell);
   }
 
-  updateArrows();
+  //updateArrows();
 }
 
 function handleUnSubscribeBtn(clickedBtnEl) {
@@ -172,6 +229,6 @@ gridEl.addEventListener("click", (e) => {
 });
 
 export default function initGridView() {
-  initPages();
-  renderGrid(currentPage);
+  makePageMtrx();
+  renderGrid(pages, currentPage);
 }
