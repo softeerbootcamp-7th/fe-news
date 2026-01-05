@@ -1,18 +1,35 @@
 export class UnsubscribeDialogController {
   constructor({
-    documentRef = document,
-    windowRef = window,
+    context,
+    // backward compatible
+    documentRef,
+    windowRef,
     dialogId,
-    pressNameSelector = '[data-role="press-name"]',
+    dialogSelector,
+    pressNameSelector,
   } = {}) {
-    this.document = documentRef;
-    this.window = windowRef;
-    this.dialogId = dialogId;
-    this.pressNameSelector = pressNameSelector;
+    const ctx = context ?? {};
+    this.document = ctx.document ?? documentRef ?? document;
+    this.window = ctx.window ?? windowRef ?? window;
+    const selectors = ctx.selectors ?? {};
+    const dialogSelectorFromId =
+      typeof dialogId === "string" && dialogId
+        ? dialogId.startsWith("#")
+          ? dialogId
+          : `#${dialogId}`
+        : null;
+
+    this.dialogSelector =
+      dialogSelector ??
+      dialogSelectorFromId ??
+      selectors.unsubscribeDialog ??
+      "#unsubscribe-dialog";
+    this.pressNameSelector =
+      pressNameSelector ?? selectors.unsubscribePressName ?? '[data-role="press-name"]';
   }
 
   confirm({ pressName } = {}) {
-    const $dialog = this.document.getElementById(this.dialogId);
+    const $dialog = this.document.querySelector(this.dialogSelector);
     if (!($dialog instanceof this.window.HTMLDialogElement)) {
       return Promise.resolve(
         this.window.confirm(

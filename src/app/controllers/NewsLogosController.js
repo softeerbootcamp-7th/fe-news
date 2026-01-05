@@ -7,6 +7,7 @@ import {
 
 export class NewsLogosController {
   constructor({
+    context,
     state,
     shuffle,
     LOGO_FILES,
@@ -14,12 +15,15 @@ export class NewsLogosController {
     DARK_ONLY_FILES,
     subscribedStorageKey,
     subscriptions,
-    documentRef = document,
-    logosSelector = "#logos",
-    tabButtonsSelector = '[data-action="tab"]',
-    leftSelector = '[data-action="prev"]',
-    rightSelector = '[data-action="next"]',
+    logosSelector,
+    tabButtonsSelector,
+    leftSelector,
+    rightSelector,
+    // backward compatible
+    documentRef,
   } = {}) {
+    const ctx = context ?? {};
+    const selectors = ctx.selectors ?? {};
     this.state = state;
     this.shuffle = shuffle;
     this.LOGO_FILES = LOGO_FILES;
@@ -27,11 +31,13 @@ export class NewsLogosController {
     this.DARK_ONLY_FILES = DARK_ONLY_FILES;
     this.subscribedStorageKey = subscribedStorageKey;
     this.subscriptions = subscriptions;
-    this.document = documentRef;
-    this.logosSelector = logosSelector;
-    this.tabButtonsSelector = tabButtonsSelector;
-    this.leftSelector = leftSelector;
-    this.rightSelector = rightSelector;
+    this.document = ctx.document ?? documentRef ?? document;
+    this.logosSelector = logosSelector ?? selectors.logos ?? "#logos";
+    this.tabButtonsSelector =
+      tabButtonsSelector ?? selectors.tabButtons ?? '[data-action="tab"]';
+    this.leftSelector = leftSelector ?? selectors.navPrev ?? '[data-action="prev"]';
+    this.rightSelector =
+      rightSelector ?? selectors.navNext ?? '[data-action="next"]';
   }
 
   initShuffle() {

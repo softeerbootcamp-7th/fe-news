@@ -2,9 +2,21 @@ import { $ } from "../../utils/dom.js";
 import { loadNewsData, RollingLane } from "../../features/rollingNews.js";
 
 export class NewsRollingController {
-  constructor({ shuffle, documentRef = document } = {}) {
+  constructor({
+    context,
+    shuffle,
+    leftSelector,
+    rightSelector,
+    // backward compatible
+    documentRef,
+  } = {}) {
+    const ctx = context ?? {};
+    const selectors = ctx.selectors ?? {};
     this.shuffle = shuffle;
-    this.document = documentRef;
+    this.document = ctx.document ?? documentRef ?? document;
+    this.leftSelector = leftSelector ?? selectors.rollingLeft ?? "#rolling-left";
+    this.rightSelector =
+      rightSelector ?? selectors.rollingRight ?? "#rolling-right";
     this._lanes = [];
   }
 
@@ -12,8 +24,8 @@ export class NewsRollingController {
     const all = await loadNewsData();
     const items = this.shuffle(all).slice(0, maxItems);
 
-    const left = $("#rolling-left", this.document);
-    const right = $("#rolling-right", this.document);
+    const left = $(this.leftSelector, this.document);
+    const right = $(this.rightSelector, this.document);
     if (!left || !right) return;
 
     const mid = Math.floor(items.length / 2) || 1;

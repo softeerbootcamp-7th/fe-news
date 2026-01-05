@@ -2,13 +2,17 @@ import { $ } from "../../utils/dom.js";
 
 export class DateController {
   constructor({
+    context,
     dayNames,
-    dateSelector = "#date",
-    documentRef = document,
+    dateSelector,
+    // backward compatible
+    documentRef,
   } = {}) {
+    const ctx = context ?? {};
+    const selectors = ctx.selectors ?? {};
+    this.document = ctx.document ?? documentRef ?? document;
     this.dayNames = dayNames;
-    this.dateSelector = dateSelector;
-    this.document = documentRef;
+    this.dateSelector = dateSelector ?? selectors.date ?? "#date";
   }
 
   render() {

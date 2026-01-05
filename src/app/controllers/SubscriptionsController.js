@@ -2,15 +2,20 @@ import { $ } from "../../utils/dom.js";
 
 export class SubscriptionsController {
   constructor({
+    context,
     storageKey,
-    badgeSelector = "#sub-count",
-    documentRef = document,
-    localStorageRef = window?.localStorage,
+    badgeSelector,
+    // backward compatible
+    documentRef,
+    localStorageRef,
   } = {}) {
+    const ctx = context ?? {};
+    const selectors = ctx.selectors ?? {};
     this.storageKey = storageKey;
-    this.badgeSelector = badgeSelector;
-    this.document = documentRef;
-    this.localStorage = localStorageRef;
+    this.badgeSelector =
+      badgeSelector ?? selectors.subscribedCountBadge ?? "#sub-count";
+    this.document = ctx.document ?? documentRef ?? document;
+    this.localStorage = ctx.storage ?? localStorageRef ?? window?.localStorage;
   }
 
   getSet() {

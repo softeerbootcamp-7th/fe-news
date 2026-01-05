@@ -2,19 +2,24 @@ import { $, $$ } from "../../utils/dom.js";
 
 export class ViewController {
   constructor({
+    context,
     state,
     storageKey,
-    documentRef = document,
-    localStorageRef = window?.localStorage,
-    logosSelector = "#logos",
-    buttonsSelector = '[data-action="view"]',
+    logosSelector,
+    buttonsSelector,
+    // backward compatible
+    documentRef,
+    localStorageRef,
   } = {}) {
+    const ctx = context ?? {};
+    const selectors = ctx.selectors ?? {};
     this.state = state;
     this.storageKey = storageKey;
-    this.document = documentRef;
-    this.localStorage = localStorageRef;
-    this.logosSelector = logosSelector;
-    this.buttonsSelector = buttonsSelector;
+    this.document = ctx.document ?? documentRef ?? document;
+    this.localStorage = ctx.storage ?? localStorageRef ?? window?.localStorage;
+    this.logosSelector = logosSelector ?? selectors.logos ?? "#logos";
+    this.buttonsSelector =
+      buttonsSelector ?? selectors.viewButtons ?? '[data-action="view"]';
   }
 
   set(view) {
