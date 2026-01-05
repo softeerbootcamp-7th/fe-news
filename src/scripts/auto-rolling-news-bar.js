@@ -22,6 +22,24 @@ let leftIdx = 0; // 왼쪽에 나올 뉴스헤더라인 들 중 몇번째가 지
 let rightIdx = 0; // 오른쪽에 나올 뉴스헤더라인 들 중 몇번째가 지금 보여질 차례인지
 const PERIOD = 2000; // 롤링 간격
 
+// 롤링 기능의 인터벌 id 저장해두는 변수
+let leftIntervalId;
+let rightIntervalId;
+
+leftEl.addEventListener("mouseenter", () => {
+  stopRollingAll(leftIntervalId, rightIntervalId);
+});
+leftEl.addEventListener("mouseleave", () => {
+  startRollingWithGap(PERIOD);
+});
+
+rightEl.addEventListener("mouseenter", () => {
+  stopRollingAll(leftIntervalId, rightIntervalId);
+});
+rightEl.addEventListener("mouseleave", () => {
+  startRollingWithGap(PERIOD);
+});
+
 // 현재 화면에 나와야 할 뉴스 헤드라인 화면에 보여주는 함수
 function renderLeft() {
   const item = leftNewsList[leftIdx];
@@ -48,20 +66,34 @@ function nextNewsRight() {
 }
 
 // 양쪽 시간차 1초씩 두면서 롤링 시작
-function startRollingWithGap() {
+function startRollingWithGap(period) {
+  stopRollingAll(leftIntervalId, rightIntervalId);
   // 왼쪽 5초마다 step
-  setInterval(nextNewsLeft, PERIOD);
+  leftIntervalId = setInterval(nextNewsLeft, period);
 
   // 오른쪽 5초마다 step
   // 오른쪽은 왼쪽보다 1초 늦게 시작 -> 1초 시간차 생긴다
+  // rightIntervalId = setInterval(nextNewsRight, period);
   setTimeout(() => {
-    setInterval(nextNewsRight, PERIOD);
+    rightIntervalId = setInterval(nextNewsRight, period);
   }, 1000);
+}
+
+// 한쪽 롤링 멈추기
+function stopRolling(intervalId) {
+  clearInterval(intervalId);
+}
+
+// 양쪽 롤링 멈추기
+function stopRollingAll(leftIntervalId, rightIntervalId) {
+  console.log(leftIntervalId, rightIntervalId);
+  if (leftIntervalId) stopRolling(leftIntervalId);
+  if (rightIntervalId) stopRolling(rightIntervalId);
 }
 
 // 초기 설정
 export default function initAutoRollingNewsBar() {
   renderLeft();
   renderRight();
-  startRollingWithGap();
+  startRollingWithGap(PERIOD);
 }
