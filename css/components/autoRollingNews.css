@@ -23,6 +23,21 @@
     text-decoration: underline;
 }
 
-.auto-rolling-news-item span:nth-child(1) {
+.auto-rolling-news-item a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.press {
     color: var(--color-text-strong);
+}
+
+.title {
+    max-width: 360px;
+    margin-left: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
