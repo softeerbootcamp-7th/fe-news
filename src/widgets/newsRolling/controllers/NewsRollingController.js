@@ -21,7 +21,7 @@ export class NewsRollingController {
   }
 
   async start({ maxItems = 120 } = {}) {
-    const res = await fetch("/mockData/news.json", { cache: "no-store" });
+    const res = await fetch("./mockData/news.json");
     if (!res.ok) throw new Error(`Failed to load news.json: ${res.status}`);
     const json = await res.json();
     const all = extractHeadlinesFromNewsJson(json);
