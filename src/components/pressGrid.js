@@ -1,4 +1,5 @@
 import { pressLogos, PER_PAGE } from '../data/press.js';
+import { createSubButton } from './subButton.js';
 import { isSubscribed } from '../state/subscription.js';
 
 let currentTab = 'all';
@@ -45,19 +46,27 @@ export function initPressGrid() {
 function renderPressGrid() {
     grid.innerHTML = '';
 
-    const data = getGridData();    
+    const data = getGridData();
     const start = currentPage * PER_PAGE;
     const items = data.slice(start, start + PER_PAGE);
 
-    items.forEach(({ src }) => {
+    items.forEach(({ id, src, name }) => {
         const li = document.createElement('li');
         li.className = 'provider-item';
 
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = '';
+        const wrapper = document.createElement('div');
+        wrapper.className = 'provider-logo-wrapper';
 
-        li.appendChild(img);
+        const logo = document.createElement('img');
+        logo.src = src;
+        logo.alt = name ?? '';
+        logo.className = 'provider-logo';
+
+        const subButton = createSubButton(id);
+
+        wrapper.appendChild(logo);
+        wrapper.appendChild(subButton);
+        li.appendChild(wrapper);
         grid.appendChild(li);
     });
 
