@@ -1,6 +1,5 @@
 import { renderHeader } from './features/header/Header.js';
 import { renderLatestNews } from './features/latestNews/index.js';
-import './styles/global.css';
 
 async function init() {
   try {
