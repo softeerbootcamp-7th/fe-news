@@ -4,7 +4,6 @@ import { isSubscribed } from '../state/subscription.js';
 
 let currentTab = 'all';
 let currentPage = 0;
-const lastPage = 3;
 
 const grid = document.querySelector('.provider-grid');
 const prevBtn = document.querySelector('.grid-nav-btn--prev');
@@ -47,6 +46,8 @@ function renderPressGrid() {
     grid.innerHTML = '';
 
     const data = getGridData();
+    const lastPage = Math.ceil(data.length / PER_PAGE) - 1;
+
     const start = currentPage * PER_PAGE;
     const items = data.slice(start, start + PER_PAGE);
 
@@ -89,7 +90,10 @@ function goPrev() {
 }
 
 function goNext() {
-    if (currentPage === lastPage) return;
+    const data = getGridData();
+    const lastPage = Math.ceil(data.length / PER_PAGE) - 1;
+
+    if (currentPage >= lastPage) return;
     currentPage++;
     renderPressGrid();
 }
