@@ -268,7 +268,7 @@ img {
 
 @keyframes rollUp {
   from {
-    transform: translateY(2px);
+    transform: translateY(10px);
     opacity: 0.2;
   }
   to {
