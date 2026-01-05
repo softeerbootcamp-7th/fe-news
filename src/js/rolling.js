@@ -26,6 +26,10 @@ export function rollingHeadLine() {
     const hoverState = { value: false };
 
     function initHeadLine() {
+        updateContent(leftTargetElement, pressHtmlString, titleHtmlString, indexWrapper);
+        indexWrapper.value += 1;
+        updateContent(rightTargetElement, pressHtmlString, titleHtmlString, indexWrapper);
+        indexWrapper.value += 1;
     }
 
     function setHoverEvent(element, state) {
