@@ -34,18 +34,20 @@
             </div>
           </div>
         </div>
-        <div>
-          <ul>
-            <li>전체 언론사</li>
-            <li>
-              내가 구독한 언론사
-              <p>9</p>
-            </li>
-          </ul>
-          <div>
-            <button><img src="./public/images/icons/list-view_check.png" alt="리스트" /></button>
-            <button><img src="./public/images/icons/grid-view.png" alt="그리드" /></button>
-          </div>
+        <!-- 뉴스 메인 섹션 -->
+        <div class="news-main-section">
+          <div class="news-section-header">
+            <ul class="news-section-tabs">
+              <li class="active">전체 언론사</li>
+              <li class="my-news">
+                내가 구독한 언론사
+                <p class="badge">9</p>
+              </li>
+            </ul>
+            <div class="news-view-buttons">
+              <button><img src="./public/images/icons/list-view_check.png" alt="리스트" /></button>
+              <button><img src="./public/images/icons/grid-view.png" alt="그리드" /></button>
+            </div>
         </div>
 
         <div>
@@ -89,6 +91,9 @@
           <button>
             <img src="./public/images/icons/right-button.png" alt="오른쪽" />
         </div>
+
+        </div>
+        
       </main>
     </div>
     <script type="module" src="/src/main.js"></script>

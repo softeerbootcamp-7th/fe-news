@@ -1,0 +1,87 @@
+/**
+ * Navigation Styles
+ */
+
+/* 뉴스 메인 섹션 */
+.news-main-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 섹션 헤더 (탭 + 버튼) */
+.news-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: var(--gap-md) 0;
+}
+
+/* 탭 리스트 */
+.news-section-tabs {
+  display: flex;
+  gap: var(--gap-md);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  & li {
+    display: flex;
+    gap: var(--gap-xs);
+    align-items: center;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: var(--available-medium16);
+    font-weight: var(--fw-medium);
+    color: var(--text-default);
+    transition: all 0.2s;
+
+    &.active,
+    &:hover {
+      font-weight: var(--fw-bold);
+      color: var(--text-strong);
+    }
+
+    &.active {
+      font-size: var(--selected-bold16);
+    }
+  }
+}
+
+/* 구독 뱃지 */
+.badge {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--surface-brand-alt);
+  color: var(--text-white-weak);
+  font-size: var(--display-medium12);
+  border-radius: var(--radius-100);
+  margin: var(--gap-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 뷰 토글 버튼 */
+.news-view-buttons {
+  display: flex;
+  gap: var(--gap-xs);
+
+  & button {
+    padding: var(--gap-sm);
+    border: var(--border-width) solid var(--border-default);
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: var(--surface-alt);
+    }
+
+    & img {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+  }
+}
