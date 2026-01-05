@@ -1,3 +1,3 @@
-import { NewsStandApp } from "./src/app/NewsStandApp.js";
+import { NewsStandApp } from "./src/app/App.js";
 
 new NewsStandApp().init();
