@@ -1,9 +1,11 @@
 // 구독중인 언론사(png 명 저장) 리스트를 로컬 스토리지의 subscribed-press-list에 저장해 두고 가져온다
 //localStorage.setItem("subscribed-press-list", ["hi", "hello "]);
 
-let subscribedPressList = localStorage
-  .getItem("subscribed-press-list")
-  .split(",");
+let subscribedPressList = localStorage.getItem("subscribed-press-list");
+
+console.log(subscribedPressList);
+subscribedPressList =
+  subscribedPressList !== null ? subscribedPressList.split(",") : [];
 
 // 구독중인 언론사 개수 표시하는 배지
 const badge = document.querySelector("#badge");
