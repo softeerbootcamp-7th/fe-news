@@ -12,18 +12,64 @@
         background-color: var(--surface-alt);
         border: 1px solid var(--border-default);
         display: flex;
-        flex-grow: 1;
+        flex:1 1 0;
+        flex-shrink: 0;
         gap:1rem;
+        height:49px;
+        min-width:0;
+        overflow: hidden;
         padding:1rem;
+        position: relative;
+
+        &--content {
+            align-items: center;
+            display:flex;
+            gap:1rem;
+            
+            &-wrapper{
+                display:flex;
+                flex-direction: column;
+                gap:2rem;
+                left:0;
+                overflow: hidden;
+                padding:1rem;
+                position: absolute;
+                top:0;
+                width:100%;
+            }
+        }
 
         &--newspaper {
             @include display-bold14;
             color: var(--text-strong);
+            text-wrap: nowrap;
         }
 
         &--title {
             @include available-medium14;
             color: var(--text-default);
+            cursor: pointer;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
+    }
+}
+
+.rollup {
+    animation: rollup-animation 500ms ease-out;
+}
+
+@keyframes rollup-animation {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-49px);
     }
 }

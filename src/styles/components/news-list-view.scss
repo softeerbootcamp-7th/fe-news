@@ -1,0 +1,154 @@
+@use '@/styles/variable.scss' as *;
+@use '@/styles/typography.scss' as *;  
+
+.news-list-view {
+  border: 1px solid var(--border-default);
+        display:flex;
+        flex-direction: column;
+        height:24.25rem;
+        width: 100%;
+
+        &__category-tabs {
+            background-color: var(--surface-alt);
+            border-bottom: 1px solid var(--border-default);
+            display: flex;
+            height:2.5rem;
+            width: 100%;
+
+            &__item {
+                &__button {
+                    @include available-medium14;
+                    align-items: center;
+                    color: var(--text-weak);
+                    display: flex;
+                    height: 100%;
+                    justify-content: center;
+                    padding: 0 1rem;
+
+                    &--selected {
+                        background-color: var(--surface-brand-alt);
+                        justify-content: space-between;
+                        position:relative;
+                        width: 10.375rem;
+
+                        &::after {
+                            animation: category-tab-animation 20000ms ease-out infinite;
+                            background-color: var(--surface-brand-default);
+                            content:'';
+                            height: 100%;
+                            left:0;
+                            position:absolute;
+                            top:0;
+                            width: 0;
+                        }
+
+                        & >span, div  {
+                            color: var(--text-white-default);
+                            z-index: 10;
+
+                            & > span:last-child {
+                                color: var(--text-white-weak);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+  &__newspaper-section {
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    height: 100%;
+    padding: 1.5rem;
+    width: 100%;
+
+    &__header {
+      align-items: center;
+      display: flex;
+      gap: 1rem; 
+
+      &--logo {
+        height: 1.25rem
+      }
+
+      &--time {
+        @include display-medium12;
+        color: var(--text-default);
+      }
+
+      &--button {
+        @include available-medium12;
+        align-items: center;
+        background-color: var(--surface-alt);
+        border: 1px solid var(--border-default);
+        border-radius: var(--radius-full);
+        color: var(--text-weak);
+        display: flex;
+        gap: .125rem;
+        height:1.5rem;
+        padding: .375rem;
+
+        &:hover {
+          background-color: var(--surface-default);
+          border-color: var(--border-bold);
+          color:var(--text-bold);
+        }
+      }
+    }
+
+    &__main {
+      display: flex;
+      gap:2rem;
+
+      &--main-article {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width:20rem;
+
+        &--image {
+          height: 12.5rem;
+          width: 20rem;
+        }
+
+        &--title {
+          @include available-medium16;
+          color: var(--text-strong);
+          word-break: break-all;
+        }
+      }
+
+      &--additional-articles {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        &--titles {
+          color: var(--text-bold);
+          display:flex;
+          flex-direction: column;
+          gap: 1rem;
+          word-break: break-all;
+
+          @include available-medium16;
+        }
+
+        &--edit-info {
+         @include display-medium14;
+         color: var(--text-weak);
+        }
+      }
+    }
+  }
+}
+
+@keyframes category-tab-animation {
+  0% {
+      width: 0;
+  }
+
+  100% {
+      width: 100%;
+  }
+}

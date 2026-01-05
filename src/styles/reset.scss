@@ -13,6 +13,7 @@
 }
 
 html,body {
+  background-color: var(--surface-default);
   font-family: 'Pretendard Variable', sans-serif;
   height: 100%;
   width: 100%;
@@ -27,4 +28,8 @@ button {
 
 li {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
 }

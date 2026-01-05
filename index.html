@@ -1,16 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Newsstand</title>
     <link rel="stylesheet" href="./src/styles/index.scss" />
+    <script type="module" defer src="./src/main.js"></script>
   </head>
   <body>
     <div class="layout__container">
       <div class="layout">
         <header class="header">
-          <div class="header__logo">
+          <a class="header__logo" href="/" blank="_self">
             <svg
               width="24"
               height="24"
@@ -25,23 +26,13 @@
               />
             </svg>
             <h1 class="header__logo--title">뉴스스탠드</h1>
-          </div>
-          <span class="header__date">2026.01.14.수요일</span>
+          </a>
+          <span class="header__date"></span>
         </header>
         <main class="main">
           <section class="rolling-section">
-            <div class="rolling-section__item">
-              <h1 class="rolling-section__item--newspaper">연합뉴스</h1>
-              <p class="rolling-section__item--title">
-                [속보] 도심 공원 ‘조용한 독서존’ 시범 운영… 시민 호응 이어져
-              </p>
-            </div>
-            <div class="rolling-section__item">
-              <h1 class="rolling-section__item--newspaper">서울경제</h1>
-              <p class="rolling-section__item--title">
-                착한 소비 캠페인, 지역 상권 회복에 긍정적 영향
-              </p>
-            </div>
+            <div class="rolling-section__item"></div>
+            <div class="rolling-section__item"></div>
           </section>
           <section class="news-section">
             <div class="news-section__header">
@@ -99,157 +90,157 @@
                 </button>
               </div>
             </div>
-            <div class="news-section__grid-view">
-              <div class="news-section__grid-view__card">
+            <div class="news-grid-view">
+              <div class="news-grid-view__card">
                 <img
-                  src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  src="https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/925.png"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
-              <div class="news-section__grid-view__card">
+              <div class="news-grid-view__card">
                 <img
                   src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png"
-                  class="news-section__grid-view__card--image"
+                  class="news-grid-view__card--image"
                 />
               </div>
             </div>
-            <div class="news-section__list-view">
-              <ul class="news-section__list-view__category-tabs">
+            <div class="news-list-view">
+              <ul class="news-list-view__category-tabs">
                 <li>
                   <button
-                    class="news-section__list-view__category-tabs__item__button news-section__list-view__category-tabs__item__button--selected"
+                    class="news-list-view__category-tabs__item__button news-list-view__category-tabs__item__button--selected"
                   >
                     <span>종합/경제</span>
                     <div>
@@ -259,48 +250,112 @@
                   </button>
                 </li>
                 <li>
-                  <button
-                    class="news-section__list-view__category-tabs__item__button"
-                  >
+                  <button class="news-list-view__category-tabs__item__button">
                     <span>방송/통신</span>
                   </button>
                 </li>
                 <li>
-                  <button
-                    class="news-section__list-view__category-tabs__item__button"
-                  >
+                  <button class="news-list-view__category-tabs__item__button">
                     <span>IT</span>
                   </button>
                 </li>
                 <li>
-                  <button
-                    class="news-section__list-view__category-tabs__item__button"
-                  >
+                  <button class="news-list-view__category-tabs__item__button">
                     <span>영자지</span>
                   </button>
                 </li>
                 <li>
-                  <button
-                    class="news-section__list-view__category-tabs__item__button"
-                  >
+                  <button class="news-list-view__category-tabs__item__button">
                     <span>스포츠/연예</span>
                   </button>
                 </li>
                 <li>
-                  <button
-                    class="news-section__list-view__category-tabs__item__button"
-                  >
+                  <button class="news-list-view__category-tabs__item__button">
                     <span>매거진/전문지</span>
                   </button>
                 </li>
                 <li>
-                  <button
-                    class="news-section__list-view__category-tabs__item__button"
-                  >
+                  <button class="news-list-view__category-tabs__item__button">
                     <span>지역</span>
                   </button>
                 </li>
               </ul>
+              <section class="news-list-view__newspaper-section">
+                <div class="news-list-view__newspaper-section__header">
+                  <img
+                    src="https://s.pstatic.net/static/newsstand/up/2021/0322/nsd21527882.png"
+                    class="news-list-view__newspaper-section__header--logo"
+                  />
+                  <span class="news-list-view__newspaper-section__header--time"
+                    >2026.01.14. 18:53 편집</span
+                  >
+                  <button
+                    class="news-list-view__newspaper-section__header--button"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                    >
+                      <path
+                        d="M9.5 6.49902H6.5V9.49902H5.5V6.49902H2.5V5.49902H5.5V2.49902H6.5V5.49902H9.5V6.49902Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    구독하기
+                  </button>
+                </div>
+                <div class="news-list-view__newspaper-section__main">
+                  <div
+                    class="news-list-view__newspaper-section__main--main-article"
+                  >
+                    <img
+                      src="https://cdn.bloter.net/news/photo/202512/650686_260989_5555.jpg"
+                      class="news-list-view__newspaper-section__main--main-article--image"
+                    />
+                    <span
+                      class="news-list-view__newspaper-section__main--main-article--title"
+                      >동네 빵집 ‘작은 선물 포장 서비스’ 도입… 재방문율
+                      상승</span
+                    >
+                  </div>
+                  <div
+                    class="news-list-view__newspaper-section__main--additional-articles"
+                  >
+                    <ul
+                      class="news-list-view__newspaper-section__main--additional-articles--titles"
+                    >
+                      <li>
+                        반려동물 수제 간식 시장 확대… 소규모 창업도 증가세
+                      </li>
+                      <li>
+                        직장인 대상 ‘점심 산책 구독’ 서비스 등장… 수요 확인 단계
+                      </li>
+                      <li>
+                        프라이빗 키오스크 소프트웨어 개발 ‘신청 급증’… 비용
+                        낮춰야 사용률 상승
+                      </li>
+                      <li>
+                        전자책 시장 ‘국민 소비 패턴 변화’ 대응해야… 대표사례
+                        찾아야
+                      </li>
+                      <li>
+                        자동차 브랜드 ‘타이어 전문 점검 서비스’ 확대… 부품 교체
+                        요청 감소
+                      </li>
+                      <li>
+                        소비자 온라인 쇼핑 패턴 변화 대응해야… 대표사례 찾아야
+                      </li>
+                    </ul>
+                    <span
+                      class="news-list-view__newspaper-section__main--additional-articles--edit-info"
+                      >서울경제 언론사에서 직접 편집한 뉴스입니다.</span
+                    >
+                  </div>
+                </div>
+              </section>
             </div>
           </section>
         </main>

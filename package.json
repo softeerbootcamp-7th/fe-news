@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "json-server --watch server/db.json --port 3000",
     "dev": "vite",
+    "dev:all": "concurrently \"npm run server\" \"npm run dev\"",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.jsx",
     "lint:fix": "eslint . --ext .js,.jsx --fix",
     "lint:style": "stylelint \"**/*.{css,scss}\"",
     "lint:style:fix": "stylelint \"**/*.{css,scss}\" --fix",
+    "format": "prettier --write \"**/*.{js,jsx}\"",
+    "format:fix": "prettier --write \"**/*.{js,jsx}\" --fix",
     "prepare": "husky"
   },
   "repository": {
@@ -28,6 +32,7 @@
   "homepage": "https://github.com/lee0jae330/fe-news#readme",
   "lint-staged": {
     "*.{js,jsx}": [
+      "prettier --write",
       "eslint --fix"
     ],
     "*.{css,scss}": [
@@ -39,11 +44,15 @@
     "@commitlint/config-conventional": "^20.2.0",
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.2",
-    "@stylistic/eslint-plugin": "^5.6.1",
+    "concurrently": "^9.2.1",
     "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
     "husky": "^9.1.7",
+    "json-server": "^1.0.0-beta.3",
     "lint-staged": "^16.2.7",
     "postcss-scss": "^4.0.9",
+    "prettier": "^3.7.4",
     "sass": "^1.97.1",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^39.0.1",

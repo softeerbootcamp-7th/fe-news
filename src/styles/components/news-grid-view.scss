@@ -1,0 +1,28 @@
+@use '@/styles/variable.scss' as *;
+@use '@/styles/typography.scss' as *;  
+
+.news-grid-view {
+  border: 1px solid var(--border-default);
+        border-bottom: none;
+        border-right: none;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        height: 24.25rem;
+        width: 100%;
+
+        &__card {
+            align-items: center;
+            border: 1px solid var(--border-default);
+            border-left: none;
+            border-top: none;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            width: 100%;
+
+            &--image {
+                height: 1.25rem;
+            }
+        }
+}
