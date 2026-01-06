@@ -1,23 +1,37 @@
 // 구독중인 언론사(png 명 저장) 리스트를 로컬 스토리지의 subscribed-press-list에 저장해 두고 가져온다
 //localStorage.setItem("subscribed-press-list", ["hi", "hello "]);
 
+import {
+  addSubscribed,
+  getState,
+  removeSubscribed,
+  setCurrentPageIdx,
+  setPages,
+  setSelectedTabId,
+  setSubscribedList,
+} from "../store/appState";
 import shuffleArray from "../utils/shuffleArray";
 
-let subscribedPressList = [];
-let subscribedPressData = localStorage.getItem("subscribed-press-list");
+function loadSubscribedFromStorage() {
+  const raw = localStorage.getItem("subscribed-press-list");
+  if (!raw) return [];
+  return raw.split(",").filter(Boolean);
+}
 
-subscribedPressList =
-  subscribedPressData === null || subscribedPressData === ""
-    ? []
-    : subscribedPressData.split(",");
+function saveSubscribedToStorage(list) {
+  localStorage.setItem("subscribed-press-list", list.join(","));
+}
+
+// 로컬스토리지에서 구독중인 언론사 정보 가져와 state 에 저장
+setSubscribedList(loadSubscribedFromStorage());
 
 // 구독중인 언론사 개수 표시하는 배지
 const badge = document.querySelector("#badge");
-badge.addEventListener("click", () => {
-  console.log(subscribedPressList);
-});
-// 구독중인 언론사 수
-badge.textContent = subscribedPressList.length;
+
+function renderBadge() {
+  const state = getState();
+  badge.textContent = state.subscribedList.length;
+}
 
 const viewerButtonBar = document.querySelector("#viewer-button");
 viewerButtonBar.addEventListener("click", (e) => {
@@ -38,24 +52,25 @@ const tabButtonbar = document.querySelector("#tab-button-bar");
 tabButtonbar.addEventListener("click", (e) => {
   // 버튼 요소를 눌렀을 때만 이벤트 실행되도록 제어
   if (e.target.className.includes("tab-button")) {
+    const state = getState();
     // 사용자가 누른게 '구독한 언론사' 탭이고, 현재 보여지고 있던게 '전체 언론사 탭'이었다면
     if (
       e.target.id === SUBSCRIBED_PRESS_TAB_ID &&
-      selectedTabElId === ALL_PRESS_TAB_ID
+      state.selectedTabId === ALL_PRESS_TAB_ID
     ) {
       console.log("to subscrived press tab");
       // 구독한 언론사만 그리드에 보여지는 로직 실행
       makePageMtrx(true);
-      selectedTabElId = SUBSCRIBED_PRESS_TAB_ID;
+      setSelectedTabId(SUBSCRIBED_PRESS_TAB_ID);
     } else if (
       // 사용자가 누른게 전체 언론사 탭'이고, 현재 보여지고 있던게 '구독한 언론사' 탭이었다면
       e.target.id === ALL_PRESS_TAB_ID &&
-      selectedTabElId === SUBSCRIBED_PRESS_TAB_ID
+      state.selectedTabId === SUBSCRIBED_PRESS_TAB_ID
     ) {
       console.log("to app press tab");
       // 전체 언론사 그리드에 보여지는 로직 실행
       makePageMtrx(false);
-      selectedTabElId = ALL_PRESS_TAB_ID;
+      setSelectedTabId(ALL_PRESS_TAB_ID);
     }
 
     const tabs = tabButtonbar.querySelectorAll(".tab-button");
@@ -69,7 +84,8 @@ tabButtonbar.addEventListener("click", (e) => {
     e.target.classList.remove("available-medium16");
     e.target.classList.add("is-active-text");
 
-    renderGrid(pages, 0);
+    renderGrid(0);
+    renderBadge();
   }
 });
 
@@ -87,28 +103,34 @@ const alertPositiveBtn = document.querySelector("#unsubscribe-btn");
 const alertNegativeBtn = document.querySelector("#close-btn");
 
 function handleAlertPosiBtn() {
+  const pressId = unsubscribeAlertEl.dataset.pressId;
+
+  removeSubscribed(pressId);
+
+  const state = getState();
+  const { currentPageIdx, selectedTabId } = state;
+  saveSubscribedToStorage(state.subscribedList);
+
+  renderBadge();
+
   const clickedBtnEl = document.querySelector(
     `.subscribe-btn[data-press-id="${unsubscribeAlertEl.dataset.pressId}"]`
   );
-  // 구독목록에 있을 때만 구독 목록에서 빼기
-  let idx = subscribedPressList.indexOf(clickedBtnEl.id);
-  if (idx > -1) {
-    subscribedPressList.splice(idx, 1);
-    badge.textContent = subscribedPressList.length;
-    localStorage.setItem("subscribed-press-list", subscribedPressList);
-    const infoTxt = clickedBtnEl.querySelector(".subscribe-info-txt");
-    infoTxt.textContent = SUBSCRIBE;
-    const icon = clickedBtnEl.querySelector(".subscribe-btn-icon");
-    icon.innerHTML = PLUS_ICON_SVG;
-  }
+
+  const infoTxt = clickedBtnEl.querySelector(".subscribe-info-txt");
+  infoTxt.textContent = SUBSCRIBE;
+  const icon = clickedBtnEl.querySelector(".subscribe-btn-icon");
+  icon.innerHTML = PLUS_ICON_SVG;
 
   // 만약 현재 보고 있는 탭이 내가 구독한 언론사라면 구독 해제 하면 화면에 보여지는 구독 언론사 목록 그리드 내 요소들 바뀌어야 함
-  if (selectedTabElId == SUBSCRIBED_PRESS_TAB_ID) {
+  console.log(selectedTabId);
+  if (selectedTabId == SUBSCRIBED_PRESS_TAB_ID) {
     // 새로 업데이트된 구독 중 언론사 리스트 바탕으로 다시 페이지 구성
     makePageMtrx(true);
+    console.log(state.pages);
     // 페이지 다시 구성했을 때 현재 보고 있던 페이지가 없어지고 그 이전 페이지로 넘어가야 한다면
-    if (pages.length - 1 < currentPageIdx) currentPageIdx -= 1;
-    renderGrid(pages, currentPageIdx);
+    if (state.pages.length - 1 < currentPageIdx) currentPageIdx -= 1;
+    renderGrid(currentPageIdx);
   }
 
   // 구독 해지 모달창 닫기
@@ -131,10 +153,6 @@ function showAlert(alertEl) {
 function closeAlert(alertEl) {
   alertEl.style.visibility = "hidden";
 }
-
-// 현재 선택된 탭 요소 정보(탭 요소의 id)
-// -> default는 전체 언론사 보기
-let selectedTabElId = ALL_PRESS_TAB_ID;
 
 // 최대 4페이지까지만 가능
 const MAX_PAGES = 4;
@@ -184,15 +202,6 @@ function buildSubscribedLogoImgPaths(subscribedPressList) {
 // 그리드 영역 요소 잡기
 const gridEl = document.getElementById("grid-view");
 
-// 현재 몇번째 페이지 보고 있는지
-let currentPageIdx = 0;
-
-// 마지막 페이지의 idx
-let lastPageIdx = 0;
-// 2차원 배열  pages. 한 row 당 24개의 언론사(이미지 path) 가 들어간다
-// n번째 row는 n 번째 페이지에 해당하는 언론사 로고 이미지 path 목록
-let pages = [];
-
 // arr 내부를 size 크기 만큼 잘라서 2차원 배열로 반환하는 함수
 function cutLstToMtrx(arr, size) {
   const mtrx = [];
@@ -204,77 +213,70 @@ function cutLstToMtrx(arr, size) {
 
 // 그리드 화면에 보여줄 언론사 로고 이미지들의 위치 정보 담는 리스트 불러와 24개씩 나눈 2차원 배열인 page에 저장하기
 function makePageMtrx(onlySubscribedPress = false) {
-  let logoImgPathList = [];
-  // 구독중인 애들만 보고 싶다면
-  if (onlySubscribedPress) {
-    logoImgPathList = buildSubscribedLogoImgPaths(subscribedPressList);
-  } else {
-    logoImgPathList = buildLogoImgPaths();
-  }
+  const state = getState();
 
+  let logoImgPathList = onlySubscribedPress
+    ? buildSubscribedLogoImgPaths(state.subscribedList)
+    : buildLogoImgPaths();
   // 최대 4페이지(24*4=96요소) 까지만 가능. 그 이상 요소들은 자른다
   if (logoImgPathList.length > MAX_PAGES * PAGE_SIZE) {
     logoImgPathList = logoImgPathList.slice(0, MAX_PAGES * PAGE_SIZE);
   }
-  pages = cutLstToMtrx(logoImgPathList, 24);
 
-  // 마지막 페이지 idx 를 계산해 저장
-  lastPageIdx = pages.length - 1;
-
-  currentPageIdx = 0;
+  const pages = cutLstToMtrx(logoImgPathList, PAGE_SIZE);
+  setPages({ pages, lastPageIdx: pages.length - 1 });
 }
 
 //화면에 그리기
-function renderGrid(pages, pageIndex) {
+
+function renderGrid(pageIndex) {
+  const state = getState();
   // 현재 보고 있는 페이지 정보는 화면에 그려진 페이지 정보
-  currentPageIdx = pageIndex;
-  const items = pages[pageIndex] ?? [];
+  setCurrentPageIdx(pageIndex);
+
+  const items = state.pages[pageIndex] ?? [];
   gridEl.innerHTML = "";
 
-  // 한 페이지는 항상 24칸
   for (let i = 0; i < PAGE_SIZE; i++) {
     const cell = document.createElement("div");
     cell.className = "press-logo";
 
     const src = items[i];
     if (src) {
+      const id = src.split("/").at(-1);
+
       const img = document.createElement("img");
-      img.id = src.split("/").at(-1);
+      img.id = id;
       img.src = src;
       img.alt = "언론사 로고";
+
       const subscribeBtn = document.createElement("button");
       subscribeBtn.className = "subscribe-btn";
       subscribeBtn.type = "button";
-      subscribeBtn.id = `${src.split("/").at(-1)}`;
-      subscribeBtn.dataset.pressId = subscribeBtn.id;
+      subscribeBtn.id = id;
+      subscribeBtn.dataset.pressId = id;
+
+      const isSubscribed = state.subscribedList.includes(id);
+
       const plusIcon = document.createElement("svg");
       plusIcon.classList.add("subscribe-btn-icon");
-
-      plusIcon.innerHTML = subscribedPressList.includes(subscribeBtn.id)
-        ? CROSS_ICON_SVG
-        : PLUS_ICON_SVG;
+      plusIcon.innerHTML = isSubscribed ? CROSS_ICON_SVG : PLUS_ICON_SVG;
 
       const subscribeInfoTxt = document.createElement("span");
       subscribeInfoTxt.classList.add("subscribe-info-txt");
-      subscribeInfoTxt.textContent = subscribedPressList.includes(
-        subscribeBtn.id
-      )
-        ? UNSUBSCRIBE
-        : SUBSCRIBE;
+      subscribeInfoTxt.textContent = isSubscribed ? UNSUBSCRIBE : SUBSCRIBE;
 
       subscribeBtn.appendChild(plusIcon);
       subscribeBtn.appendChild(subscribeInfoTxt);
 
       cell.appendChild(img);
       cell.appendChild(subscribeBtn);
-    } else {
-      // 더이상 언론사 없으면 그냥 빈 칸 만들어 지도록
     }
-
+    // 더이상 언론사 없으면 그냥 빈 칸 만들어 지도록
     gridEl.appendChild(cell);
   }
 
-  checkArrowShow({ currentPageIdx: currentPageIdx, lastPageIdx: lastPageIdx });
+  checkArrowShow();
 }
 
 function handleUnSubscribeBtn(clickedBtnEl) {
@@ -284,18 +286,18 @@ function handleUnSubscribeBtn(clickedBtnEl) {
   showAlert(unsubscribeAlertEl);
 }
 function handleSubscribeBtn(clickedBtnEl) {
-  // 구독목록에 없을 때만 구독 목록에 추가
-  if (!subscribedPressList.includes(clickedBtnEl.id)) {
-    subscribedPressList.push(clickedBtnEl.id);
-    badge.textContent = subscribedPressList.length;
-    localStorage.setItem("subscribed-press-list", subscribedPressList);
-    const infoTxt = clickedBtnEl.querySelector(".subscribe-info-txt");
-    infoTxt.textContent = UNSUBSCRIBE;
-    const icon = clickedBtnEl.querySelector(".subscribe-btn-icon");
-    icon.innerHTML = CROSS_ICON_SVG;
-  } else {
-    console.log("handleSubscribeBtn error");
-  }
+  const id = clickedBtnEl.id;
+
+  addSubscribed(id);
+
+  const state = getState();
+  saveSubscribedToStorage(state.subscribedList);
+
+  renderBadge();
+
+  // UI 즉시 반영(버튼 텍스트/아이콘)
+  clickedBtnEl.querySelector(".subscribe-info-txt").textContent = UNSUBSCRIBE;
+  clickedBtnEl.querySelector(".subscribe-btn-icon").innerHTML = CROSS_ICON_SVG;
 }
 
 // 이벤트 버블링 활용해 그리드 영역 내 언론사 구독 버튼에 '구독','해지' 함수 적용시키기
@@ -338,48 +340,45 @@ function handleRightArrowShow({ rightArrowEl, toggle }) {
 
 // 현재 페이지 넘버에 따라 왼쪽, 오른쪽 화살표 보여지게/안보여지게 컨트롤 하는 함수
 // currentPageIdx: 현재 페이지 idx, lastPageIdx: 마지막 페이지 idx
-function checkArrowShow({ currentPageIdx, lastPageIdx }) {
-  let leftFlag = 0;
-  let rightFlag = 0;
-  if (currentPageIdx > 0) {
-    // 이전 페이지로 넘어갈 수 있다면
-    leftFlag = 1;
-  }
-  if (lastPageIdx - currentPageIdx > 0) {
-    // 다음 페이지로 넘어갈 수 있다면
-    rightFlag = 1;
-  } else {
-  }
-  if (leftFlag) {
-    handleLeftArrowShow({ leftArrowEl: leftArrowEl, toggle: true });
-  } else {
-    handleLeftArrowShow({ leftArrowEl: leftArrowEl, toggle: false });
-  }
-  if (rightFlag) {
-    handleRightArrowShow({ rightArrowEl: rightArrowEl, toggle: true });
-  } else {
-    handleRightArrowShow({ rightArrowEl: rightArrowEl, toggle: false });
-  }
+function checkArrowShow() {
+  const state = getState();
+  const { currentPageIdx, lastPageIdx } = state;
+
+  handleLeftArrowShow({ leftArrowEl, toggle: currentPageIdx > 0 });
+  handleRightArrowShow({
+    rightArrowEl,
+    toggle: lastPageIdx - currentPageIdx > 0,
+  });
 }
 
 // 그리드 옆 왼쪽 화살표 눌렀을 때 불려지는 함수
 function handleLeftArrowClick() {
-  currentPageIdx -= 1;
-  renderGrid(pages, currentPageIdx);
+  const state = getState();
+  const { currentPageIdx } = state;
+  const nextPageIdx = currentPageIdx - 1;
+  setCurrentPageIdx(nextPageIdx);
+
+  renderGrid(nextPageIdx);
 }
 
 // 그리드 옆 오른쪽 화살표 눌렀을 때 불려지는 함수
 function handleRightArrowClick() {
-  console.log("handlerigt");
-  currentPageIdx += 1;
-  renderGrid(pages, currentPageIdx);
+  const state = getState();
+  const { currentPageIdx } = state;
+
+  const nextPageIdx = currentPageIdx + 1;
+  renderGrid(nextPageIdx);
+  debugger;
 }
 
 leftArrowEl.addEventListener("click", handleLeftArrowClick);
 rightArrowEl.addEventListener("click", handleRightArrowClick);
 
 export default function initGridView() {
+  // 로컬 스토리지에서 데이터 가져와 state에 저장
+  setSubscribedList(loadSubscribedFromStorage());
   makePageMtrx();
-  renderGrid(pages, currentPageIdx);
-  checkArrowShow({ currentPageIdx: currentPageIdx, lastPageIdx: lastPageIdx });
+  renderGrid(0);
+  renderBadge();
+  checkArrowShow();
 }
