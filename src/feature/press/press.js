@@ -43,7 +43,7 @@ export function initPressView(articlesData) {
   });
   // 전체/구독 탭 변경 시 데이터 업데이트
   observeSubscriptionTabStore(() => {
-    filteredData = getFilteredPressData(allPressData);
+    filteredData = filterPressData(allPressData);
     pagination.reset();
     renderPressView();
   });
@@ -57,11 +57,11 @@ export function initPressView(articlesData) {
   updateSubscriptionCount();
 }
 
-function getFilteredPressData(allPressData) {
-  let filteredData = allPressData;
-  if (getSubscriptionTab() === SUBSCRIPTION_TAB.MY)
-    filteredData = allPressData.filter((press) => isSubscribed(press.id));
-  return filteredData;
+function filterPressData(allPressData) {
+  if (getSubscriptionTab() === SUBSCRIPTION_TAB.MY) {
+    return allPressData.filter((p) => isSubscribed(p.id));
+  }
+  return allPressData;
 }
 
 function renderPressView() {
