@@ -146,7 +146,7 @@ body {
     height: 24px;
     padding: 3px;
     color: var(--text-weak);
-    &.selected {
+    &.active {
       color: var(--text-point);
     }
   }

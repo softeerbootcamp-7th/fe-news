@@ -6,7 +6,7 @@ import { observeViewTabStore, setViewTab } from "../../store/viewTab";
 
 export function initPressView() {
   // 그리드/리스트 뷰 조정
-  const [gridViewButton, listViewButton] =
+  const [listViewButton, gridViewButton] =
     document.querySelectorAll(".view-toggle");
 
   gridViewButton.addEventListener("click", () => {
