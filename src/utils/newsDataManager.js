@@ -1,6 +1,4 @@
-import { PAGINATION } from "../constants/constants";
-
-function shuffleArray(array) {
+export function shuffleArray(array) {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -12,11 +10,9 @@ function shuffleArray(array) {
 export async function loadHeadlineNewsData(jsonPath) {
   try {
     const response = await fetch(jsonPath);
-
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
     const data = await response.json();
     return data;
   } catch (error) {
@@ -28,11 +24,9 @@ export async function loadHeadlineNewsData(jsonPath) {
 export async function loadNewsData(jsonPath) {
   try {
     const response = await fetch(jsonPath);
-
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
     const data = await response.json();
     return data;
   } catch (error) {
@@ -41,7 +35,7 @@ export async function loadNewsData(jsonPath) {
   }
 }
 
-export function paginateNews(newsData, pageSize = PAGINATION.GRID_PAGE_SIZE) {
+export function paginateForGrid(newsData, pageSize = 24) {
   const shuffled = shuffleArray(newsData);
   const pages = [];
 
