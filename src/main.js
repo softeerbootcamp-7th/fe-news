@@ -2,7 +2,7 @@
 import { Header } from "./components/Header.js";
 import { RollingNews } from "./components/RollingNews.js";
 import { NewsContainer } from "./components/NewsContainer.js";
-import { NEWS_LISTS, PRESS_LIST } from "./dummy.js";
+import { NEWS_LISTS, PRESS_LIST, SUBSCRIBED_PRESS_IDS } from "./dummy.js";
 import { Store } from "./store/Store.js";
 import {
   PRESS_MODE_TABS,
@@ -20,7 +20,7 @@ import { NewsList } from "./components/NewsList.js";
 // };
 
 const appStore = new Store({
-  subscribedPressIds: [],
+  subscribedPressIds: SUBSCRIBED_PRESS_IDS,
   // 키 이름을 STORE_KEY.PRESS_MODE ("press-mode")와 일치시킴
   [STORE_KEY.PRESS_MODE]: PRESS_MODE_TABS[0],
   [STORE_KEY.VIEW_MODE]: VIEW_MODE_TABS[1],
@@ -75,6 +75,24 @@ document.getElementById("app").addEventListener("click", (e) => {
     }
   }
 });
+
+// 호버시 상태 업데이트
+// document.getElementById("app").addEventListener("mouseover", (e) => {
+//   // 버튼 호버 처리
+//   const buttonTarget = e.target.closest("button");
+//   if (buttonTarget) {
+//     buttonTarget.classList.toggle("border-bold");
+//   }
+//   // 탭 호버 처리
+//   const tabTarget = e.target.closest("[data-tab-group]");
+// });
+
+// document.getElementById("app").addEventListener("mouseout", (e) => {
+//   const buttonTarget = e.target.closest("button");
+//   if (buttonTarget) {
+//     buttonTarget.classList.toggle("border-default");
+//   }
+// });
 
 // 탭 변화에 대한 리스너 추가
 appStore.subscribe((state) => {

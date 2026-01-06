@@ -53,3 +53,5 @@ export const PRESS_LIST = Array(24)
     lightLogo: `/assets/light_mode_logo/press${i + 1}.png`,
     darkLogo: `/assets/dark_mode_logo/press${i + 1}.png`,
   }));
+
+export const SUBSCRIBED_PRESS_IDS = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23];

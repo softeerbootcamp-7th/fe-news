@@ -15,6 +15,12 @@ export const TAB_TYPE = Object.freeze({
   ICON: "icon",
 });
 
+export const ICON_TYPE = Object.freeze({
+  PLUS: "plus",
+  CLOSED: "closed",
+});
+
 export const PRESS_MODE_TABS = [TAB_VALUE.ALL, TAB_VALUE.SUBSCRIBED];
 export const VIEW_MODE_TABS = [TAB_VALUE.LIST, TAB_VALUE.GRID];
 export const VIEW_MODE_ICONS = ["list-view", "grid-view"];
+export const BUTTON_ICONS = [ICON_TYPE.PLUS, ICON_TYPE.CLOSED];

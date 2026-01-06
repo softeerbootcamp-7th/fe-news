@@ -1,4 +1,4 @@
-export const NewsList = (pressList = []) => {
+export const NewsList = ({ pressList = [], isDarkMode = false }) => {
   const gridCells = pressList
     .map(
       (item) => `
