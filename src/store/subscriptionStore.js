@@ -11,13 +11,11 @@ function notify(pressName) {
 }
 
 export function isSubscribed(pressName) {
-  const pressName_str = String(pressName);
-
-  return subscriptionState.get(pressName_str) ?? false;
+  return subscriptionState.get(pressName) ?? false;
 }
 
 export function toggleSubscription(pressName) {
-  const nextValue = !isSubscribed(pressName_str);
+  const nextValue = !isSubscribed(pressName);
   subscriptionState.set(pressName, nextValue);
   notify(pressName);
 }
