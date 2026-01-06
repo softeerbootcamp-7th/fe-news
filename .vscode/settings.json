@@ -1,0 +1,6 @@
+{
+  "editor.matchBrackets": "always",
+  "editor.colorDecorators": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true
+}
