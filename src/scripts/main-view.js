@@ -21,7 +21,6 @@ badge.textContent = subscribedPressList.length;
 const tabButtonbar = document.querySelector("#tab-button-bar");
 // 탭 바 영역에 이벤트 헨들러 달고 이벤트 전이 이용
 tabButtonbar.addEventListener("click", (e) => {
-  console.log(e);
   // 버튼 요소를 눌렀을 때만 이벤트 실행되도록 제어
   if (e.target.className.includes("tab-button")) {
     console.log("include tab bottu");
@@ -44,7 +43,6 @@ tabButtonbar.addEventListener("click", (e) => {
       makePageMtrx(false);
       selectedTabElId = ALL_PRESS_TAB_ID;
     }
-    console.log(pages);
 
     renderGrid(pages, 0);
   }
@@ -152,9 +150,7 @@ function makePageMtrx(onlySubscribedPress = false) {
 function renderGrid(pages, pageIndex) {
   // 현재 보고 있는 페이지 정보는 화면에 그려진 페이지 정보
   currentPageIdx = pageIndex;
-  console.log(pages);
   const items = pages[pageIndex] ?? [];
-  console.log(items);
   gridEl.innerHTML = "";
 
   // 한 페이지는 항상 24칸
