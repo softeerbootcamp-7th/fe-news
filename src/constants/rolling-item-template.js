@@ -15,18 +15,17 @@ export const rollingItemTemplate = ({
   shownNewspaperTitle,
   hiddenNewspaperPress,
   hiddenNewspaperTitle,
-  isRolling = false,
 }) => {
   return `
-  <div class="rolling-section__item--content-wrapper ${isRolling ? 'rollup' : ''}">
-    <div class="rolling-section__item--content">
+  <ul class="rolling-section__item--content-wrapper">
+    <li class="rolling-section__item--content">
       <h1 class="rolling-section__item--newspaper">${shownNewspaperPress}</h1>
       <p class="rolling-section__item--title">${shownNewspaperTitle}</p>
-    </div>
-    <div class="rolling-section__item--content">
+    </li>
+    <li class="rolling-section__item--content">
       <h1 class="rolling-section__item--newspaper">${hiddenNewspaperPress}</h1>
       <p class="rolling-section__item--title">${hiddenNewspaperTitle}</p>
-    </div>
-  </div> 
+    </li>
+  </ul> 
   `;
 };

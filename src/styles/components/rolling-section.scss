@@ -59,17 +59,3 @@
         }
     }
 }
-
-.rollup {
-    animation: rollup-animation 500ms ease-out;
-}
-
-@keyframes rollup-animation {
-    0% {
-        transform: translateY(0);
-    }
-
-    100% {
-        transform: translateY(-49px);
-    }
-}
