@@ -1,19 +1,36 @@
-function createRollingManager() {
-    const timers = new Map();
+function createRollingManager({ rolling_interval, clock_interval }) {
+    const bars = new Map();
+    let clockTime = 0;
+    const slotCount = rolling_interval / clock_interval;
 
-    function register(key, rollingBar, { delay, interval } = {}) {
-        if(timers.has(key)) return;
+    setInterval(() => {
+        const currentSlot = clockTime % slotCount;
+        clockTime++;
 
-        setTimeout(() => {
-            const id = setInterval(() => {
-                rollingBar.tick();
-            }, interval);
+        bars.forEach((state) => {
+            if(state.paused) return;
+            if(state.slot !== currentSlot) return;
 
-            timers.set(key, id);
-        }, delay);
-    }
+            state.rollingBar.tick();
+        });
+    }, clock_interval);
 
-    return { register };
+    function register(key, rollingBar, { delay } = {}) {
+        const state = { rollingBar, paused: false, slot: (delay / clock_interval) };
+        bars.set(key, state);
+    };
+
+    function start(key) {
+        const state = bars.get(key);
+        if(state) state.paused = false;
+    };
+
+    function stop(key) {
+        const state = bars.get(key);
+        if(state) state.paused = true;
+    };
+
+    return { register, start, stop };
 }
 
 export { createRollingManager };

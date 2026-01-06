@@ -1,4 +1,4 @@
-import { ROLLING_INTERVAL, ANIMATION_DURATION, ROLLING_BARS_CONFIG } from './config.js';
+import { ROLLING_INTERVAL, CLOCK_INTERVAL, ANIMATION_DURATION, ROLLING_BARS_CONFIG } from './config.js';
 import { createRollingManager } from './manager.js';
 
 // 롤링 아이템 생성 함수
@@ -23,6 +23,7 @@ function createNewsItems(barElement, newsData) {
     });
 }
 
+// 롤링 애니메이션 함수
 function createRollingAnimator(barElement, items) {
     let currentIndex = 0;
     const nodes = barElement.querySelectorAll('.rolling-bar__box');
@@ -58,7 +59,7 @@ function createRollingAnimator(barElement, items) {
 
 // 롤링바 초기화 함수
 function initRollingBars(rollingNews, { containerSelector }) {
-    const rollingManager = createRollingManager();
+    const rollingManager = createRollingManager({ rolling_interval: ROLLING_INTERVAL, clock_interval: CLOCK_INTERVAL });
 
     ROLLING_BARS_CONFIG.forEach((config, index) => {
         const barElement = document.querySelector(containerSelector);
@@ -76,8 +77,11 @@ function initRollingBars(rollingNews, { containerSelector }) {
 
         const rollingBar = createRollingAnimator(barItemElement, newsData);
 
-        rollingManager.register(config.key, rollingBar, { delay: config.delay, interval: ROLLING_INTERVAL });
-    })
+        rollingManager.register(config.key, rollingBar, { delay: config.delay });
+
+        barItemElement.addEventListener('mouseenter', () => rollingManager.stop(config.key));
+        barItemElement.addEventListener('mouseleave', () => rollingManager.start(config.key));
+    });
 }
 
 export { initRollingBars };
