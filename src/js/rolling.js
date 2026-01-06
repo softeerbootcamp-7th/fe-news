@@ -1,128 +1,145 @@
 import data from '@/assets/data/pressData.json' assert{ type: 'json' };
 
-function updateContent(element, press, title, wrapper) {
-    if (wrapper.value === press.length) {
-        wrapper.value = 0;
+const LEFT_RIGHT_INTERVAL = 1000;
+const ROLL_INTERVAL = 5000;
+
+export class RollingNewsBar {
+    constructor(selector) {
+        this.headlines = [];
+        this.index = 0;
+        this.isPaused = false;
+        this.timers = {
+            left: null,
+            right: null,
+        };
+
+        this.targetElement = document.querySelector(selector);
+        if (this.targetElement) {
+            this.leftPanel = this.targetElement.querySelector('.left');
+            this.rightPanel = this.targetElement.querySelector('.right');
+        }
     }
 
-    element.innerHTML = `${press[wrapper.value]}${title[wrapper.value]}`;
-}
+    init() {
+        if (!this.targetElement) return;
 
-export function rollingHeadLine() {
-    const bothTargetElement = document.querySelector('#autoRollingNewsBar');
-    const leftTargetElement = document.querySelector('#autoRollingNewsBar .left');
-    const rightTargetElement = document.querySelector('#autoRollingNewsBar .right');
-    
-    const pressHtmlString = data.map(each => `<div class="press">${each.press}</div>`);
-    const titleHtmlString = data.map(each => `<div class="newsTitle">${each.mainTitle}</div>`);
-    
-    let indexWrapper = { value: 0 };
-    
-    const timers = {
-        left: null,
-        right: null
-    };
-
-    const hoverState = { value: false };
-
-    function initHeadLine() {
-        updateContent(leftTargetElement, pressHtmlString, titleHtmlString, indexWrapper);
-        indexWrapper.value += 1;
-        updateContent(rightTargetElement, pressHtmlString, titleHtmlString, indexWrapper);
-        indexWrapper.value += 1;
+        this._setHeadlineData();
+        this._initHeadline();
+        this._setHoverEvents();
+        this._scheduleAnimation();
     }
 
-    function animateCycle(element, delay, timerKey) {
-        if (hoverState.value) return;
-
-        timers[timerKey] = setTimeout(() => {
-            if (hoverState.value) return;
-
-            const pressTarget = element.querySelector('.press');
-            const titleTarget = element.querySelector('.newsTitle');
-
-            pressTarget.classList.add('rollup-out');
-            titleTarget.classList.add('rollup-out');
-
-            const handleAnimationEnd = () => {
-                pressTarget.removeEventListener('animationend', handleAnimationEnd);
-
-                pressTarget.classList.remove('rollup-out');
-                titleTarget.classList.remove('rollup-out');
-
-                updateContent(element, pressHtmlString, titleHtmlString, indexWrapper);
-
-                const newPress = element.querySelector('.press');
-                const newTitle = element.querySelector('.newsTitle');
-
-                indexWrapper.value += 1;
-
-                newPress.classList.add('rollup-in');
-                newTitle.classList.add('rollup-in');
-
-                newPress.addEventListener('animationend', () => {
-                    newPress.classList.remove('rollup-in');
-                    newTitle.classList.remove('rollup-in');
-
-                    animateCycle(element, 5000, timerKey);
-                }, { once: true });
-            };
-
-            pressTarget.addEventListener('animationend', handleAnimationEnd);
-        }, delay);
-    }
-
-    function setHoverEvent() {
-        bothTargetElement.addEventListener(('mouseenter'), () => {
-            hoverState.value = true;
-            if (timers.left) clearTimeout(timers.left);
-            if (timers.right) clearTimeout(timers.right);
-        });
-
-        bothTargetElement.addEventListener('mouseleave', () => {
-            hoverState.value = false;
-
-            const leftAnimating = leftTargetElement.querySelector('.rollup-out, .rollup-in');
-            const rightAnimating = rightTargetElement.querySelector('.rollup-out, .rollup-in');
-
-            if (!leftAnimating) {
-                animateCycle(leftTargetElement, 5000, 'left');
-            }
-
-            if (!rightAnimating) {
-                animateCycle(rightTargetElement, 6000, 'right');
-            }
-        });
-    }
-
-    function setVisibilityEvent() {
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                if (timers.left) clearTimeout(timers.left);
-                if (timers.right) clearTimeout(timers.right);
-            } else {
-                if (!hoverState.value) {
-                    const leftPress = leftTargetElement.querySelector('.press');
-                    const leftTitle = leftTargetElement.querySelector('.newsTitle');
-                    const rightPress = rightTargetElement.querySelector('.press');
-                    const rightTitle = rightTargetElement.querySelector('.newsTitle');
-
-                    leftPress?.classList.remove('rollup-out', 'rollup-in');
-                    leftTitle?.classList.remove('rollup-out', 'rollup-in');
-                    rightPress?.classList.remove('rollup-out', 'rollup-in');
-                    rightTitle?.classList.remove('rollup-out', 'rollup-in');
-
-                    animateCycle(leftTargetElement, 5000, 'left');
-                    animateCycle(rightTargetElement, 6000, 'right');
+    _setHeadlineData() {
+        data.forEach(each => {
+            this.headlines.push(
+                {
+                    press: `<div class="press">${each.press}</div>`,
+                    title: `<div class="newsTitle">${each.mainTitle}</div>`,
                 }
-            }
+            )
         })
     }
-    
-    initHeadLine();
-    setHoverEvent();
-    setVisibilityEvent();
 
-    animateCycle(leftTargetElement, 5000, 'left');
-    animateCycle(rightTargetElement, 6000, 'right');
+    _initHeadline() {
+        this._updateContent(this.leftPanel, this._getNextHeadline());
+        this._updateContent(this.rightPanel, this._getNextHeadline());
+    }
+
+    _getNextHeadline() {
+        const headline = this.headlines[this.index];
+        this.index = (this.index + 1) % this.headlines.length;
+
+        return headline;
+    }
+
+    _updateContent(element, headline) {
+        element.innerHTML = `${headline.press}${headline.title}`;
+    }
+
+    _scheduleAnimation() {
+        if (this.isPaused) return;
+        this.timers.left = setTimeout(() => this._animate('left'), ROLL_INTERVAL);
+        this.timers.right = setTimeout(() => this._animate('right'), ROLL_INTERVAL + LEFT_RIGHT_INTERVAL);
+    }
+
+    _addAnimation(element, className) {
+        element.press.classList.add(className);
+        element.title.classList.add(className);
+    }
+
+    _removeAnimation(element, className) {
+        element.press.classList.remove(className);
+        element.title.classList.remove(className);
+    }
+
+    _getInnerElements(panel) {
+        return {
+            press: panel.querySelector('.press'),
+            title: panel.querySelector('.newsTitle'),
+        };
+    }
+
+    _animate(target) {
+        if (this.isPaused) return;
+        const targetPanel = target === 'left' ? this.leftPanel : this.rightPanel;
+        const innerElement = this._getInnerElements(targetPanel);
+
+        this._addAnimation(innerElement, 'rollup-out');
+
+        innerElement.press.addEventListener('animationend', () => {
+            this._removeAnimation(innerElement, 'rollup-out');
+            this._updateContent(targetPanel, this._getNextHeadline());
+
+            const newInnerElement = this._getInnerElements(targetPanel);
+            this._addAnimation(newInnerElement, 'rollup-in');
+            newInnerElement.press.addEventListener('animationend', () => {
+                this._removeAnimation(newInnerElement, 'rollup-in');
+                this.timers[target] = setTimeout(() => this._animate(target), ROLL_INTERVAL);
+            }, { once: true });
+        }, { once: true });
+    }
+
+    _handleMouseEnter() {
+        this.isPaused = true;
+        this._clearTimers();
+    }
+
+    _handleMouseLeave() {
+        this.isPaused = false;
+        
+        const leftAnimating = this.leftPanel.querySelector('.rollup-out, .rollup-in');
+        const rightAnimating = this.rightPanel.querySelector('.rollup-out, .rollup-in');
+
+        if (!leftAnimating) {
+            clearTimeout(this.timers.left);
+            this.timers.left = setTimeout(() => this._animate('left'), ROLL_INTERVAL);
+        }
+        if (!rightAnimating) {
+            clearTimeout(this.timers.right);
+            this.timers.right = setTimeout(() => this._animate('right'), ROLL_INTERVAL + LEFT_RIGHT_INTERVAL);
+        }
+    }
+
+    _handleVisibilityChange() {
+        this.isPaused = document.hidden;
+
+        if (this.isPaused) {
+            this._clearTimers();
+        } else {
+            this._clearTimers();
+            this._scheduleAnimation();
+        }
+    }
+
+    _setHoverEvents() {
+        this.targetElement.addEventListener('mouseenter', () => this._handleMouseEnter());
+        this.targetElement.addEventListener('mouseleave', () => this._handleMouseLeave());
+        document.addEventListener('visibilitychange', () => this._handleVisibilityChange());
+    }
+
+    _clearTimers() {
+        clearTimeout(this.timers.left);
+        clearTimeout(this.timers.right);
+    }
 }
+
