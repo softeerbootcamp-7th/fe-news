@@ -19,6 +19,15 @@ export default defineConfig(eslint.configs.recommended, prettier, {
   rules: {
     'prettier/prettier': 'error',
     'no-console': 'error',
-    'no-unused-vars': 'error',
+    'no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_$',
+        varsIgnorePattern: '^_$',
+        caughtErrorsIgnorePattern: '^_$',
+        destructuredArrayIgnorePattern: '^_$',
+        ignoreRestSiblings: true,
+      },
+    ],
   },
 });
