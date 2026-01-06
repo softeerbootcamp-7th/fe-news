@@ -4,13 +4,10 @@
 let subscribedPressList = [];
 let subscribedPressData = localStorage.getItem("subscribed-press-list");
 
-console.log(subscribedPressData);
 subscribedPressList =
   subscribedPressData === null || subscribedPressData === ""
     ? []
     : subscribedPressData.split(",");
-
-console.log(subscribedPressList);
 
 // 구독중인 언론사 개수 표시하는 배지
 const badge = document.querySelector("#badge");
@@ -89,6 +86,10 @@ const CROSS_ICON_SVG =
 <path d="M3.6 9L3 8.4L5.4 6L3 3.6L3.6 3L6 5.4L8.4 3L9 3.6L6.6 6L9 8.4L8.4 9L6 6.6L3.6 9Z" fill="#4B5966"/>\
 </svg>';
 
+// 그리드 왼쪽, 오른쪽 화살표
+const rightArrowEl = document.querySelector("#chevron-right");
+const leftArrowEl = document.querySelector("#chevron-left");
+
 // 로고 이미지명들은 아래와 같은 규칙 가지고 있음
 // asset ${n} 1.png -> (n은 1부터 90까지)
 // 따라서 이런 문자열 만들고 최종 이미지 경로 텍스트 리스트를 반환하는 함수 만듦
@@ -103,7 +104,10 @@ function buildLogoImgPaths() {
 const gridEl = document.getElementById("grid-view");
 
 // 현재 몇번째 페이지 보고 있는지
-let currentPage = 0;
+let currentPageIdx = 0;
+
+// 마지막 페이지의 idx
+let lastPageIdx = 0;
 // 2차원 배열  pages. 한 row 당 24개의 언론사(이미지 path) 가 들어간다
 // n번째 row는 n 번째 페이지에 해당하는 언론사 로고 이미지 path 목록
 let pages = [];
@@ -133,7 +137,10 @@ function makePageMtrx(onlySubscribedPress = false) {
   const limit = Math.min(logoImgPathList.length, PAGE_SIZE * MAX_PAGES);
   pages = cutLstToMtrx(logoImgPathList, 24);
 
-  currentPage = 0;
+  // 마지막 페이지 idx 를 계산해 저장
+  lastPageIdx = pages.length;
+
+  currentPageIdx = 0;
 }
 
 //화면에 그리기
@@ -228,7 +235,53 @@ gridEl.addEventListener("click", (e) => {
   else if (label === UNSUBSCRIBE) handleUnSubscribeBtn(clickedBtnEl);
 });
 
+// 요소 보이게/안보이게 하는 함수
+// 요소 el, ture/false : 보이게 안보이게
+function handleElShow({ el, toggle }) {
+  if (toggle) {
+    el.style.opacity = "100%";
+  } else {
+    el.style.opacity = "0%";
+  }
+}
+
+// 왼쪽 화살표 보이게/안보이게 하는 함수
+function handleLeftArrowShow({ leftArrowEl, toggle }) {
+  if (toggle) {
+    handleElShow({ el: leftArrowEl, toggle: true });
+  } else {
+    handleElShow({ el: leftArrowEl, toggle: false });
+  }
+}
+// 오른쪽 화살표 보이게/안보이게 하는 함수
+function handleRightArrowShow({ rightArrowEl, toggle }) {
+  if (toggle) {
+    handleElShow({ el: rightArrowEl, toggle: true });
+  } else {
+    handleElShow({ el: rightArrowEl, toggle: false });
+  }
+}
+
+// 현재 페이지 넘버에 따라 왼쪽, 오른쪽 화살표 보여지게/안보여지게 컨트롤 하는 함수
+// currentPageIdx: 현재 페이지 idx, lastPageIdx: 마지막 페이지 idx
+function checkArrowShow({ currentPageIdx, lastPageIdx }) {
+  if (currentPageIdx == 0) {
+    //제일 첫 페이지면 왼쪽 화살표 x
+    handleLeftArrowShow({ leftArrowEl: leftArrowEl, toggle: false });
+    handleRightArrowShow({ rightArrowEl: rightArrowEl, toggle: true });
+  } else if (currentPageIdx == lastPageIdx) {
+    // 마지막 페이지면 오른쪽 화살표 x
+    handleLeftArrowShow({ leftArrowEl: leftArrowEl, toggle: true });
+    handleRightArrowShow({ rightArrowEl: rightArrowEl, toggle: false });
+  } else {
+    // 나머지 페이지는 두 화살표 모두 보여지게
+    handleLeftArrowShow({ leftArrowEl: leftArrowEl, toggle: true });
+    handleRightArrowShow({ rightArrowEl: rightArrowEl, toggle: true });
+  }
+}
+
 export default function initGridView() {
   makePageMtrx();
-  renderGrid(pages, currentPage);
+  renderGrid(pages, currentPageIdx);
+  checkArrowShow({ currentPageIdx: currentPageIdx, lastPageIdx: lastPageIdx });
 }
