@@ -14,11 +14,6 @@ export function initGridView(paginatedPressData) {
   // 첫 grid 레이아웃 그리기
   renderGridContainer();
   renderGridItems(paginatedPressData);
-
-  // 구독 상태 observer 등록
-  observeSubscriptionStore((pressName) => {
-    updateGridItem(pressName);
-  });
 }
 
 function renderGridItems(paginatedData) {
@@ -43,15 +38,15 @@ function renderGridItems(paginatedData) {
   document.querySelector(".press-grid__list").innerHTML = gridContentHTML;
 }
 
-function updateGridItem(pressName) {
-  const li = document.querySelector(`li[data-label="${pressName}"]`);
-  if (!li) return;
-  const button = li.querySelector("button");
-  // 버튼 상태만 갱신
-  button.outerHTML = isSubscribed(pressName)
-    ? getCancelButtonTemplate()
-    : getSubscribeButtonTemplate();
-}
+// function updateGridItem(pressName) {
+//   const li = document.querySelector(`li[data-label="${pressName}"]`);
+//   if (!li) return;
+//   const button = li.querySelector("button");
+//   // 버튼 상태만 갱신
+//   button.outerHTML = isSubscribed(pressName)
+//     ? getCancelButtonTemplate()
+//     : getSubscribeButtonTemplate();
+// }
 
 function renderGridContainer() {
   document.querySelector(".press-section").innerHTML =

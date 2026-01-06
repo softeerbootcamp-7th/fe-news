@@ -53,7 +53,12 @@ export function initPressView(articlesData) {
   });
 
   // 구독/해지 변경 시 뷰 업데이트
-  observeSubscriptionStore(() => updateSubscriptionCount());
+  observeSubscriptionStore(() => {
+    updateSubscriptionCount();
+    filteredData = filterPressData(allPressData);
+    pagination.reset();
+    renderPressView();
+  });
 
   // 초기 설정
   setViewTab(VIEW_TAB.GRID);
