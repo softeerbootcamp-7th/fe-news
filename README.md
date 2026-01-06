@@ -11,16 +11,17 @@
     -   [x] radius
     -   [x] shadow
 -   [ ] 디자인 컴포넌트
-    -   [ ] Button: button
-        -   [ ] (Colors) variant
-        -   [ ] (States) hover
-        -   [ ] (Icon) none, plus, closed, loading (12px, foundation에 등록된 plus, closed 사용)
-        -   [ ] (Text) optional
-    -   [ ] AutoRollingNews: a
-        -   [ ] (States) hover
-        -   [ ] (Flexible)?
-    -   [ ] Logo
-    -   [ ] 시간
+    -   [x] Spacer
+    -   [x] Button: button
+        -   [x] (Colors) variant
+        -   [x] (States) hover
+        -   [x] (Icon) none, plus, closed, loading (12px, foundation에 등록된 plus, closed 사용)
+        -   [x] (Text) optional
+    -   [x] AutoRollingNews: a
+        -   [x] (States) hover
+        -   [x] (Flexible)?
+    -   [x] Logo
+    -   [x] 시간
     -   [ ] Badge: span/ 안에 텍스트, 아이콘 모두 올 수 있으므로 children으로 받기
         -   [ ] children
     -   [ ] Tab (nav? a?)
@@ -31,12 +32,12 @@
 -   [ ] 기능
     -   [ ] 그리드 만들기
         -   [x] grid css 만들기. 반응형이 필요할거다
-        -   [ ] 배열로 언론사 정보를 가져와 렌더링하기
-        -   [ ] hover된 아이템은 배경색을 변경, 구독하기 버튼을 띄운다
+        -   [x] 배열로 언론사 정보를 가져와 렌더링하기
+        -   [x] hover된 아이템은 배경색을 변경, 구독하기 버튼을 띄운다
         -   [ ] 페이지네이션 챱챱
     -   [ ] 구독
         -   [ ] mock api를 만들어서 임시로 추가한다.
-    -   [ ] 롤링
-        -   [ ] 특정시간간격으로 롤링
-        -   [ ] 호버시 스탑
-        -   [ ] 호버해제시 다시 원래 시간 간격 지키며 롤링
+    -   [x] 롤링
+        -   [x] 특정시간간격으로 롤링
+        -   [x] 호버시 스탑
+        -   [x] 호버해제시 다시 원래 시간 간격 지키며 롤링
