@@ -1,6 +1,5 @@
-// src/components/NewsGrid.js
-export const NewsGrid = (newsItems = [], isDarkMode = false) => {
-  const gridCells = newsItems
+export const NewsGrid = (pressList = []) => {
+  const gridCells = pressList
     .map(
       (item) => `
     <div class="flex items-center justify-center border">
