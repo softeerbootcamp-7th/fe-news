@@ -34,7 +34,7 @@ function renderGridItems(paginatedData) {
         pressId: item.id,
         pressName: item.name,
         logoSrc: item.logo.replace("light", currentTheme),
-        isSubscribed: isSubscribed(item.id),
+        isSubscribed: isSubscribed(item.name),
       });
     // empty cell
     else gridContentHTML += getEmptyGridItemTemplate();

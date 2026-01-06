@@ -63,7 +63,7 @@ export function initPressView(articlesData) {
 
 function filterPressData(allPressData) {
   if (getSubscriptionTab() === SUBSCRIPTION_TAB.MY) {
-    return allPressData.filter((p) => isSubscribed(p.id));
+    return allPressData.filter((p) => isSubscribed(p.name));
   }
   return allPressData;
 }
