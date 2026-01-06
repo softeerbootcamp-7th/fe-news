@@ -47,7 +47,6 @@ tabButtonbar.addEventListener("click", (e) => {
     console.log(pages);
 
     renderGrid(pages, 0);
-    debugger;
   }
 });
 
@@ -101,6 +100,13 @@ function buildLogoImgPaths() {
   });
 }
 
+// 구독중인 언론사 로고를 구독 순서대로 이미지 경로 텍스트 리스트 반환하는 함수
+function buildSubscribedLogoImgPaths(subscribedPressList) {
+  return Array.from(subscribedPressList, (x) => {
+    return `${BASE_PATH}${x}`;
+  });
+}
+
 // 그리드 영역 요소 잡기
 const gridEl = document.getElementById("grid-view");
 
@@ -124,14 +130,12 @@ function cutLstToMtrx(arr, size) {
 
 // 그리드 화면에 보여줄 언론사 로고 이미지들의 위치 정보 담는 리스트 불러와 24개씩 나눈 2차원 배열인 page에 저장하기
 function makePageMtrx(onlySubscribedPress = false) {
-  let logoImgPathList = buildLogoImgPaths();
+  let logoImgPathList = [];
   // 구독중인 애들만 보고 싶다면
   if (onlySubscribedPress) {
-    // 필터를 통해 구독중인 리스트 안에 있는 언론사만 뽑아 logoImgPathList에 담는다
-    logoImgPathList = logoImgPathList.filter((x) => {
-      const fileName = x.split("/").at(-1);
-      return subscribedPressList.includes(fileName);
-    });
+    logoImgPathList = buildSubscribedLogoImgPaths(subscribedPressList);
+  } else {
+    logoImgPathList = buildLogoImgPaths();
   }
 
   // 최대 4페이지(=96개)까지만 사용
