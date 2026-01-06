@@ -1,4 +1,5 @@
 import { pressList } from "../../../store";
+import { makeNode } from "../../../utils/utils";
 import { SubscribeBtn } from "../../Shared/SubscribeBtn";
 import "./PressDashboard.css";
 
@@ -35,12 +36,11 @@ export function PressDashboard() {
 
   const currentPressIdx = 1;
   const currontPress = pressList[currentPressIdx];
-  return `
+  const $el = makeNode(`
         <div class="press-dashboard">
               <div class="press-info">
                   <img class="press-logo" src=${currontPress.logo} />
                   <a class="last-edited-time">${newsList.lastEditedTime}편집</a>
-                  ${SubscribeBtn(currontPress, false)}
               </div>
               <div class="press-news-container">
                   <article class="press-cover-news">
@@ -57,7 +57,12 @@ export function PressDashboard() {
                     </a>
                   </div>
               </div>
-
         </div>
-    `;
+    `);
+
+  const $pressLogoImg = $el.querySelector(".press-logo");
+  const $lastEditedTime = $el.querySelector(".last-edited-time");
+  const $pressInfo = $el.querySelector(".press-info");
+  $pressInfo.appendChild(SubscribeBtn(currontPress, true));
+  return $el;
 }

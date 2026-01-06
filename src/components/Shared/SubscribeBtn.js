@@ -4,18 +4,30 @@ import { CloseIcon } from "../icons/CloseIcon";
 import { PlusIcon } from "../icons/PlusIcon";
 import "./SubscribeBtn.css";
 
-export function SubscribeBtn(press, is_subscribed) {
-  const $subscribeBtn = makeNode(`<button class="subscribe-button" data-id=${
-    press.id
-  } data-name=${press.name}>${PlusIcon()} 구독하기
-    </button>`);
-  const $cancleBtn = makeNode(
-    `<button class="subscribe-button" data-id=${press.id} data-name=${
-      press.name
-    }>${CloseIcon()} 구독해제</button>`
+export function SubscribeBtn(press, whiteBg = false) {
+  const $el = makeNode(
+    `<button class="subscribe-button
+    }"></button>`
   );
 
-  const $el = is_subscribed ? $cancleBtn : $subscribeBtn;
+  const render = () => {
+    const { subscribedIds } = store.state;
+    const is_subscribed = subscribedIds.has(press.id);
+
+    $el.innerHTML = is_subscribed
+      ? whiteBg
+        ? CloseIcon()
+        : `${CloseIcon()} 구독해제`
+      : `${PlusIcon()} 구독하기`;
+
+    $el.classList.toggle(
+      "gray-bg",
+      (!whiteBg & is_subscribed) | (whiteBg & !is_subscribed)
+    );
+  };
+
+  window.addEventListener("subsListChange", render);
+  render();
 
   $el.onclick = () => store.setTargetPressId(press.id, press.name);
 
