@@ -37,6 +37,7 @@ export function initGridView(parsedPressData) {
   // 구독하기 버튼
   gridContainer.addEventListener("click", (e) => {
     const pressId = e.target.closest("li").dataset.label;
+    if (!pressId) return;
     toggleSubscription(pressId);
     e.target.closest("button").innerHTML = getLoadingIndicatorTemplate();
   });
