@@ -3,7 +3,11 @@ import { initGridView } from "./grid";
 import { initListView } from "./list";
 import { SUBSCRIPTION_TAB } from "@/types/constant";
 import { VIEW_TAB } from "@/types/constant";
-import { isSubscribed } from "@/store/subscription";
+import {
+  isSubscribed,
+  getSubscriptionCount,
+  observeSubscriptionStore,
+} from "@/store/subscription";
 import {
   getSubscriptionTab,
   observeSubscriptionTabStore,
@@ -51,6 +55,15 @@ export function initPressView(articlesData) {
   observeViewTabStore(() => {
     updateViewTab(parsedPressData);
   });
+
+  updateSubscriptionCount(myViewButton);
+  observeSubscriptionStore(() => {
+    updateSubscriptionCount(myViewButton);
+  });
+}
+
+function updateSubscriptionCount(myViewButton) {
+  myViewButton.querySelector("span").textContent = getSubscriptionCount();
 }
 
 function updateSubscriptionTab(pressData) {

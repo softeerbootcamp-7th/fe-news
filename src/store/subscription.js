@@ -22,3 +22,9 @@ export function toggleSubscription(pressId) {
   subscriptionState.set(pressId_str, nextValue);
   notify(pressId);
 }
+
+export function getSubscriptionCount() {
+  return Array.from(subscriptionState.values()).filter(
+    (value) => value === true
+  ).length;
+}
