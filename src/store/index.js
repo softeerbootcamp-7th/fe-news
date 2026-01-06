@@ -1,25 +1,8 @@
 import { loadSavedSubs, saveSubscribedIds, shuffle } from "../utils/utils";
 
-function notify(storeName) {
-  window.dispatchEvent(new CustomEvent(`${storeName}Change`));
+function notify(targetName) {
+  window.dispatchEvent(new CustomEvent(`${targetName}Change`));
 }
-
-export const viewStore = {
-  state: {
-    viewOnlySubs: false,
-    viewGrid: true,
-  },
-  setViewOnlySubs(bool) {
-    this.state.viewOnlySubs = bool;
-    pageStore.state.currentPage = 0;
-    notify("viewStore");
-  },
-  setViewGrid(bool) {
-    this.state.viewGrid = bool;
-    pageStore.state.currentPage = 0;
-    notify("viewStore");
-  },
-};
 
 export const rollingArticles = [
   {
@@ -154,35 +137,70 @@ export const pressList = pressNames.map((name, i) => {
     name: name,
   };
 });
-export const pressStore = {
+
+export const store = {
   state: {
+    viewOnlySubs: false,
+    viewGrid: true,
     shuffledPressList: shuffle(pressList),
-  },
-
-  reshuffle() {
-    this.state.shuffledPressList = shuffle(pressList);
-    window.dispatchEvent(new Event("pressStoreChange"));
-  },
-};
-
-export const pageStore = {
-  state: {
     currentPage: 0,
     maxPage: parseInt(pressList.length / 24),
-  },
-  setPage(page) {
-    if (page < 0 || page > this.state.maxPage) return;
-    this.state.currentPage = page;
-    notify("pageStore");
-  },
-};
-
-export const subsStore = {
-  state: {
     targetPressId: null,
     targetPressName: "",
     subscribedIds: loadSavedSubs(), // 구독한 언론사의 ID를 저장하는 Sets
   },
+  setViewOnlySubs(bool) {
+    if (this.state.viewOnlySubs === bool) return;
+    this.state.viewOnlySubs = bool;
+    this.state.currentPage = 0;
+    this.setTargetPressId(null, "");
+    this.setMaxPage();
+    notify("viewOnlySubs");
+  },
+  setViewGrid(bool) {
+    if (this.state.viewGrid === bool) return;
+    this.state.viewGrid = bool;
+    this.state.currentPage = 0;
+    this.setTargetPressId(null, "");
+    this.setMaxPage();
+    notify("viewGrid");
+  },
+  /** 언론사 목록 순서 섞는 함수 */
+  reshuffle() {
+    this.state.shuffledPressList = shuffle(pressList);
+    window.dispatchEvent(new Event("pressListOrder"));
+  },
+  setMaxPage() {
+    if (this.state.viewGrid) {
+      if (this.state.viewOnlySubs)
+        //그리드 뷰, 구독한 것만 모이보기
+        this.state.maxPage = parseInt(
+          Array.from(this.state.subscribedIds).length / 24
+        );
+      //그리드 뷰, 전체 보기
+      else this.state.maxPage = parseInt(pressList.length / 24);
+    } else {
+      if (this.state.viewOnlySubs)
+        //리스트 뷰, 구독한 언론사 탭 보기
+        this.state.maxPage = parseInt(
+          Array.from(this.state.subscribedIds).length - 1
+        );
+      //리스트 뷰, 전체 탭 보기
+      else this.state.maxPage = 7 - 1;
+    }
+  },
+  /** page 설정 함수 */
+  setPage(page) {
+    const result = this.state.currentPage + page;
+    if (result < 0 || result > this.state.maxPage) return;
+
+    if (page === 0) this.state.currentPage = 0;
+    else this.state.currentPage = result;
+
+    this.setTargetPressId(null, "");
+    notify("page");
+  },
+  /** 구독/해제 버튼 클릭시 Alert모달에 전달할 언론사 정보 관리 함수 */
   setTargetPressId(id, name) {
     if (this.state.targetPressId === id) {
       this.state.targetPressId = null;
@@ -191,8 +209,9 @@ export const subsStore = {
       this.state.targetPressId = id;
       this.state.targetPressName = name;
     }
-    notify("subsStore");
+    notify("subscribeTarget");
   },
+  /** Alert모달에서 [확인]기능 함수 */
   toggleSub() {
     const { targetPressId, subscribedIds } = this.state;
 
@@ -202,6 +221,7 @@ export const subsStore = {
     saveSubscribedIds(subscribedIds);
     this.state.targetPressId = null;
     this.state.targetPressName = "";
-    notify("subsStore");
+    this.setMaxPage();
+    notify("subsList");
   },
 };

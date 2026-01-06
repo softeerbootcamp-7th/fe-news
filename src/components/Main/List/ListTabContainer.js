@@ -1,5 +1,6 @@
 import { ListTab } from "./ListTab";
 import "./ListSection.css";
+import { makeNode } from "../../../utils/utils";
 
 export function ListTabContainer() {
   const tabNames = [
@@ -11,9 +12,7 @@ export function ListTabContainer() {
     "매거진/전문지",
     "지역",
   ];
-  return `
-    <div class="list-tab-container">
-        ${tabNames.map((t) => ListTab(t, t == "IT")).join("")}
-    </div>
-    `;
+  const $el = makeNode(`<div class="list-tab-container"></div>`);
+  tabNames.forEach((t) => $el.appendChild(ListTab(t, t == "IT")));
+  return $el;
 }

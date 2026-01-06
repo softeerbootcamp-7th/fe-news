@@ -1,6 +1,6 @@
 .subscribe-button {
   height: 24px;
-  padding: 0 6px;
+  padding: 0 5px;
   gap: 2px;
   color: var(--text-weak);
   background-color: var(--surface-default);
@@ -8,7 +8,7 @@
   border-radius: 999px;
   font-size: 12px;
   font-weight: 500;
-
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,4 +20,8 @@
 .subscribe-button svg {
   width: 12px;
   height: 12px;
+}
+
+.gray-bg {
+  background-color: var(--surface-alt);
 }
