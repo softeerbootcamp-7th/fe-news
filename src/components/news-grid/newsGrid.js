@@ -14,22 +14,22 @@ export const actions = {
     const state = store.getState();
     const totalPages = pages.length;
     if (state.currentPage < totalPages - 1) {
-      store.dispatch('NEXT_PAGE');
+      store.dispatch('subscription/NEXT_PAGE');
     }
   },
   prevPage() {
     const state = store.getState();
     if (state.currentPage > 0) {
-      store.dispatch('PREV_PAGE');
+      store.dispatch('subscription/PREV_PAGE');
     }
   },
   toggleSubscribe(pressName) {
     const state = store.getState();
     const isSubscribed = state.subscribedIds.includes(pressName);
     if (isSubscribed) {
-      store.dispatch('UNSUBSCRIBE', pressName);
+      store.dispatch('subscription/UNSUBSCRIBE', pressName);
     } else {
-      store.dispatch('SUBSCRIBE', pressName);
+      store.dispatch('subscription/SUBSCRIBE', pressName);
     }
   },
 };

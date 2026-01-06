@@ -1,13 +1,17 @@
 import { Store } from './store.js';
-import { reducer } from './reducer.js';
-import { pressList } from './pressData.js';
+import subscriptionReducer from './modules/subscription.js';
 
-const initialState = {
-  allPress: pressList, 
-  subscribedIds: [], 
-  currentTab: 'all', 
-  currentPage: 0, 
-};
+// Root Reducer
+function rootReducer(state, actionType, payload) {
+  const action = typeof actionType === 'string' 
+    ? { type: actionType, payload }
+    : actionType || { type: '', payload: undefined };
 
-export const store = new Store(initialState, reducer);
+  return {
+    ...subscriptionReducer(state, action),
+  };
+}
 
+const initialState = subscriptionReducer(undefined, {});
+
+export const store = new Store(initialState, rootReducer);

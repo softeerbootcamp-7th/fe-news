@@ -47,7 +47,7 @@ export function renderPressHeader(container, options = {}) {
   tabButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const tab = button.getAttribute('data-tab');
-      store.dispatch('SET_TAB', tab);
+      store.dispatch('subscription/SET_TAB', tab);
     });
   });
 }
