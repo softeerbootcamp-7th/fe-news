@@ -1,0 +1,15 @@
+button {
+	outline: none;
+}
+
+li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	min-width: 0;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+}
