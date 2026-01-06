@@ -6,9 +6,10 @@ import "./components/subscribePress.js";
 
 const UPDATE_INTERVAL_MS = 60000; // 1 minute
 
-loadSVG();
 updateDate();
 setInterval(updateDate, UPDATE_INTERVAL_MS);
 
 renderLogos('.press-logo-container', pressMap);
 autoRollingNews();
+
+loadSVG();

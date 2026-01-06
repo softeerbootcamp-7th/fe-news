@@ -1,5 +1,3 @@
-import { loadSVG } from "../utils/assetUtils";
-
 /**
  * 공통 스타일이 적용된 버튼 컴포넌트를 생성하는 함수
  * 
@@ -34,6 +32,5 @@ export function createBtn(color = 'white', iconName = 'plus', text, className, o
         });
     }
 
-    loadSVG();
     return button;
 }
