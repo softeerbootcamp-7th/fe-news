@@ -1,17 +1,13 @@
-import { Next } from "../../icons/Next";
-import { Prev } from "../../icons/Previous";
+import { makeNode } from "../../../utils/utils";
 import "./ListSection.css";
 import { ListTabContainer } from "./ListTabContainer";
 import { PressDashboard } from "./PressDashboard";
 
 export function ListSection() {
-  return `
-    <section class="list-section">
-        ${Prev()}
-        <div class="list-container">
+  const $el = makeNode(`
+        <div class="list-section">
           ${ListTabContainer()}
           ${PressDashboard()}
-        </div>
-        ${Next()}
-    </section>`;
+        </div>`);
+  return $el;
 }

@@ -35,3 +35,9 @@ export function loadSavedSubs() {
 export function saveSubscribedIds(set) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify([...set]));
 }
+
+export function makeNode(templateLiteral) {
+  const template = document.createElement("template");
+  template.innerHTML = templateLiteral.trim();
+  return template.content.firstChild;
+}

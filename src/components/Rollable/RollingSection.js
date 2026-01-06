@@ -2,9 +2,10 @@ import "./AutoRollingNews.css";
 
 import { AutoRollingNews } from "./AutoRollingNews.js";
 import { rollingArticles } from "../../store/index.js";
+import { makeNode } from "../../utils/utils.js";
 
 export function RollingSection() {
-  return `
+  const $el = makeNode(`
     <section class="auto-rolling-news-section">
       <div class="auto-rolling-news-wrapper first">
         ${rollingArticles
@@ -27,5 +28,7 @@ export function RollingSection() {
           )}
       </div>
     </section>
-  `;
+  `);
+
+  return $el;
 }

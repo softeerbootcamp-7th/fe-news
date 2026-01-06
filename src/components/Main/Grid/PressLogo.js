@@ -1,20 +1,23 @@
-import { subsStore } from "../../../store";
-import { CloseIcon } from "../../icons/CloseIcon";
-import { PlusIcon } from "../../icons/PlusIcon";
+import { store } from "../../../store";
+import { makeNode } from "../../../utils/utils";
 import { SubscribeBtn } from "../../Shared/SubscribeBtn";
 import "./PressLogo.css";
 
 export function PressLogo(press) {
-  if (!press) return `<div class="press-logo-item placeholder"></div>`;
+  const $el = makeNode(`<div class="press-logo-item"></div>`);
+  if (!press) return $el;
 
-  const { subscribedIds } = subsStore.state;
+  const { subscribedIds } = store.state;
   const is_subscribed = subscribedIds.has(press.id);
-  return `
-    <div class="press-logo-item">
-      <img src=${press.logo} alt="언론사 로고" class="press-logo-image" />
-      <div class="press-logo-overlay">
-        ${SubscribeBtn(press, is_subscribed)}
-      </div>
-    </div>
-  `;
+
+  const $logo =
+    makeNode(`<img src=${press.logo} alt="언론사 로고" class="press-logo-image" />
+      `);
+  $el.appendChild($logo);
+
+  const $containerOnHover = makeNode(`<div class="press-logo-overlay"></div>`);
+  $containerOnHover.appendChild(SubscribeBtn(press, is_subscribed));
+
+  $el.appendChild($containerOnHover);
+  return $el;
 }
