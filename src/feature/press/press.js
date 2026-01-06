@@ -15,8 +15,8 @@ export function initPressView() {
     setViewTab(VIEW_TAB.GRID);
   });
   listViewButton.addEventListener("click", () => {
-    listViewButton.classList.add("selected");
-    gridViewButton.classList.remove("selected");
+    listViewButton.classList.add("active");
+    gridViewButton.classList.remove("active");
     setViewTab(VIEW_TAB.LIST);
   });
 
