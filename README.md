@@ -34,10 +34,18 @@
 ### 3. news-section-header
 
 - [x] HTML 틀 잡기
-- [ ] CSS 적용
+- [x] CSS 적용
 - [ ] 클릭 시 탭 이동
-- [ ] 뷰잉 옵션 이미지 hover CSS
+- [x] 뷰잉 옵션 이미지 hover CSS
 - [ ] 뷰잉 옵션 이미지 탭 전환
+
+### 4. news-grid
+
+- [x] 언론사 정중앙 배치
+- [x] pagination
+  - [x] 좌우 버튼 누르면 그 다음 언론사 페이지 보이기
+  - [x] 최대 4페이지 제한
+  - [x] classList.toggle로 이전/이후 페이지 유무에 따른 버튼 활성화/비활성화
 
 ## 3. 리팩토링
 
