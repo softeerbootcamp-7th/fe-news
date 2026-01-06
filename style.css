@@ -58,6 +58,14 @@ body[data-theme="dark"] {
 	--border-default: var(--color-gs-400);
 }
 
+body {
+	background-color: var(--surface-default);
+}
+
+.surface-default {
+	background-color: var(--surface-default);
+}
+
 .text-strong {
 	color: var(--text-strong);
 }
@@ -356,32 +364,64 @@ body[data-theme="dark"] {
 	justify-content: center;
 }
 
-/* .px-2 {
-	padding-left: 8px;
-	padding-right: 8px;
-}
-.py-4 {
-	padding-top: 16px;
-	padding-bottom: 16px;
+.uncut {
+	white-space: nowrap;
+	flex-shrink: 0;
 }
 
-.pt-1 {
-	padding-top: 4px;
+.line-eclipse {
+	align-items: center;
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
-.pb-2 {
-	padding-bottom: 8px;
-} */
 
-/*
-base
-*/
+/* 1. 기본 숨김 처리 */
+.hidden {
+	display: none;
+}
+
 li {
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	min-width: 0;
 }
 
 ul {
 	padding: 0;
 	margin: 0;
+}
+
+/* 1. 호버 시 기존 콘텐츠(이미지) 숨기기 */
+.news-item:hover .news-item-content {
+	visibility: hidden;
+	opacity: 0;
+}
+
+/* 2. 구독하기 버튼 기본 스타일 (평소엔 숨김) */
+.subscribe-btn {
+	display: none;
+	position: absolute;
+	padding: 6px 12px;
+	font-size: 12px;
+	font-weight: 500;
+	color: #333;
+	background-color: #fff;
+	border: 1px solid #e5e7eb;
+	border-radius: 9999px; /* 알약 모양 */
+	cursor: pointer;
+	z-index: 10;
+}
+
+/* 3. 호버 시 버튼 보이기 */
+.news-item:hover .subscribe-btn {
+	display: block;
+}
+
+/* 버튼 호버 효과 (선택 사항) */
+.subscribe-btn:hover {
+	background-color: #f9fafb;
+	border-color: #d1d5db;
 }
