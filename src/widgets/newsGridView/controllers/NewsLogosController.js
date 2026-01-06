@@ -8,9 +8,9 @@ import {
   renderActiveTabButtons,
   renderLogoGrid,
   renderNavButtons,
-} from "../ui/newsLogosUI.js";
+} from "../ui/newsGridUI.js";
 
-export class NewsLogosController {
+export class NewsGridViewController {
   constructor({
     context,
     store,

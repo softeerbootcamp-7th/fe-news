@@ -9,7 +9,7 @@ import { shuffle } from "../shared/lib/index.js";
 import { createAppContext } from "./AppContext.js";
 import { createNewsStandActions } from "./appActions.js";
 import { DateController } from "../features/date/index.js";
-import { NewsLogosController } from "../widgets/newsLogos/index.js";
+import { NewsGridViewController } from "../widgets/newsGridView/index.js";
 import { NewsRollingController } from "../widgets/newsRolling/index.js";
 import {
   SubscriptionsController,
@@ -56,7 +56,7 @@ export class NewsStandApp {
       context: this.context,
       store: this.store,
     });
-    this.newsLogos = new NewsLogosController({
+    this.newsLogos = new NewsGridViewController({
       context: this.context,
       store: this.store,
       shuffle,
