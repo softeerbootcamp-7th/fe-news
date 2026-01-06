@@ -1,0 +1,5 @@
+export const ROLLING_ANIMATION = {
+  DURATION: 5000,
+  TIME: 500,
+  LFET_RIGHT_DELAY: 1000,
+};
