@@ -1,16 +1,14 @@
 import { SELECTORS } from "../../../shared/const/index.js";
+import { getThemeFolder } from "../../../shared/lib/index.js";
+import { renderActiveTabButtons, renderNavButtons } from "../ui/newsGridUI.js";
 import {
-  buildShuffledLogoLists,
-  getLogoFilesForTheme,
-  getThemeFolder,
-} from "../../../shared/lib/index.js";
-import {
-  renderActiveTabButtons,
-  renderLogoGrid,
-  renderNavButtons,
-} from "../ui/newsGridUI.js";
+  buildLogoCells,
+  getLogoListForState,
+  getPagedItems,
+  initShuffle,
+} from "../lib/newsViewUtils.js";
 
-export class NewsGridViewController {
+export class NewsViewController {
   constructor({
     context,
     store,
@@ -19,6 +17,7 @@ export class NewsGridViewController {
     LIGHT_ONLY_FILES,
     DARK_ONLY_FILES,
     subscriptions,
+    renderNews,
     logosSelector = SELECTORS.logos,
     tabButtonsSelector = SELECTORS.tabButtons,
     leftSelector = SELECTORS.navPrev,
@@ -31,6 +30,7 @@ export class NewsGridViewController {
     this.LIGHT_ONLY_FILES = LIGHT_ONLY_FILES;
     this.DARK_ONLY_FILES = DARK_ONLY_FILES;
     this.subscriptions = subscriptions;
+    this._renderNews = renderNews;
     this.document = ctx.document ?? document;
     this.logosSelector = logosSelector;
     this.tabButtonsSelector = tabButtonsSelector;
@@ -39,13 +39,13 @@ export class NewsGridViewController {
   }
 
   initShuffle() {
-    const shuffledByTheme = buildShuffledLogoLists({
+    initShuffle({
+      store: this.store,
       shuffle: this.shuffle,
       LOGO_FILES: this.LOGO_FILES,
       LIGHT_ONLY_FILES: this.LIGHT_ONLY_FILES,
       DARK_ONLY_FILES: this.DARK_ONLY_FILES,
     });
-    this.store?.setState?.({ shuffledByTheme });
   }
 
   updateNavButtons({ page, totalPages } = {}) {
@@ -74,50 +74,25 @@ export class NewsGridViewController {
     this.render();
   }
 
-  getCurrentLogoList(state) {
-    const theme = state.theme === "dark" ? "dark" : "light";
-    const base =
-      state.shuffledByTheme?.[theme] ??
-      getLogoFilesForTheme({
-        theme,
-        LOGO_FILES: this.LOGO_FILES,
-        LIGHT_ONLY_FILES: this.LIGHT_ONLY_FILES,
-        DARK_ONLY_FILES: this.DARK_ONLY_FILES,
-      });
-
-    const subscribed = this.subscriptions?.getSet?.() ?? new Set();
-    if (state.tab === "subscribed")
-      return base.filter((f) => subscribed.has(f));
-    return base;
-  }
-
   render() {
     const state = this.store?.getState?.() ?? {};
-    const files = this.getCurrentLogoList(state);
-    const subscribed = this.subscriptions?.getSet?.() ?? new Set();
-
-    const logosPerPage = Math.max(1, state.perPage);
-    const totalPages = Math.max(
-      1,
-      Math.min(4, Math.ceil(files.length / logosPerPage))
-    );
-    const nextPage = Math.max(0, Math.min(state.page, totalPages - 1));
-    if (nextPage !== state.page) {
-      this.store?.setState?.({ page: nextPage });
-    }
-
-    const start = nextPage * logosPerPage;
-    const end = start + logosPerPage;
-    const items = files.slice(start, end);
+    const { files, subscribed } = getLogoListForState({
+      state,
+      subscriptions: this.subscriptions,
+      LOGO_FILES: this.LOGO_FILES,
+      LIGHT_ONLY_FILES: this.LIGHT_ONLY_FILES,
+      DARK_ONLY_FILES: this.DARK_ONLY_FILES,
+    });
+    const { items, nextPage, totalPages, logosPerPage } = getPagedItems({
+      state,
+      files,
+      store: this.store,
+    });
 
     const folder = getThemeFolder(state.theme);
-    const shouldPadEmptyCells =
-      state.tab === "subscribed" && state.view === "grid";
-    const cells = shouldPadEmptyCells
-      ? Array.from({ length: logosPerPage }, (_, i) => items[i] ?? null)
-      : items;
+    const cells = buildLogoCells({ state, items, logosPerPage });
 
-    renderLogoGrid({
+    this.renderNews({
       documentRef: this.document,
       selector: this.logosSelector,
       cells,
@@ -126,6 +101,17 @@ export class NewsGridViewController {
     });
 
     this.updateNavButtons({ page: nextPage, totalPages });
+  }
+
+  setRenderNews(renderNews) {
+    this._renderNews = renderNews;
+  }
+
+  renderNews({ documentRef, selector, cells, folder, subscribed } = {}) {
+    if (typeof this._renderNews !== "function") {
+      throw new Error("renderNews must be provided.");
+    }
+    this._renderNews({ documentRef, selector, cells, folder, subscribed });
   }
 
   prevPage() {
