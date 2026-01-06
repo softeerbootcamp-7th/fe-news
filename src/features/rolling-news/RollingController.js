@@ -43,7 +43,7 @@ export const rolling = {
     }, RIGHT_COLUMN_DELAY)
   },
 
-  setupRollingHover() {
+  attachRollingHoverEvents() {
     const rollingSection = document.getElementById('rolling-news')
     if (!rollingSection) return
 
@@ -73,6 +73,6 @@ export const rolling = {
 
   init() {
     this.startRolling()
-    this.setupRollingHover()
+    this.attachRollingHoverEvents()
   }
 }

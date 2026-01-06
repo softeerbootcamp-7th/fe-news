@@ -1,8 +1,8 @@
 import { getPaginatedData, getTotalPages } from '../../utils/pagination.js'
-import { renderGridView } from './views/GridView.js'
-import { renderListView } from './views/ListView.js'
-import { attachPaginationEvents, updatePaginationButtons } from './PaginationController.js'
-import { NewsState } from './state/NewsState.js'
+import { renderGridView } from './views/renderGridView.js'
+import { renderListView } from './views/renderListView.js'
+import { attachPaginationEvents, updatePaginationButtons } from './paginationController.js'
+import { newsState } from './state/newsState.js'
 
 function setActiveTab(viewType) {
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -13,22 +13,22 @@ function setActiveTab(viewType) {
 }
 
 function renderPage(page) {
-  NewsState.setPage(page)
-  const sourceData = NewsState.getCurrentData()
+  newsState.setPage(page)
+  const sourceData = newsState.getCurrentData()
   const totalPages = getTotalPages(sourceData)
   const pageData = getPaginatedData(sourceData, page)
 
-  if (NewsState.currentView === 'grid') {
+  if (newsState.currentView === 'grid') {
     renderGridView(pageData)
   } else {
     renderListView(pageData)
   }
 
-  updatePaginationButtons({ currentPage: NewsState.currentPage, totalPages })
+  updatePaginationButtons({ currentPage: newsState.currentPage, totalPages })
 }
 
 function switchView(viewType) {
-  NewsState.setView(viewType)
+  newsState.setView(viewType)
   setActiveTab(viewType)
   renderPage(1)
 }
@@ -41,20 +41,20 @@ function bindTabEvents() {
   })
 }
 
-export function initViewController() {
+export function initNewsView() {
   bindTabEvents()
   
   attachPaginationEvents({
     onPrev: () => {
-      if (NewsState.currentPage > 1) {
-        renderPage(NewsState.currentPage - 1)
+      if (newsState.currentPage > 1) {
+        renderPage(newsState.currentPage - 1)
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
     },
     onNext: () => {
-      const totalPages = getTotalPages(NewsState.getCurrentData())
-      if (NewsState.currentPage < totalPages) {
-        renderPage(NewsState.currentPage + 1)
+      const totalPages = getTotalPages(newsState.getCurrentData())
+      if (newsState.currentPage < totalPages) {
+        renderPage(newsState.currentPage + 1)
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
     }

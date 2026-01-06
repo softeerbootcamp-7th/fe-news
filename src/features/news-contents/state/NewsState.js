@@ -1,7 +1,7 @@
 import { newsData } from '../../../data/newsData.js'
 import { ITEMS_PER_PAGE } from '../../../utils/pagination.js'
 
-export const NewsState = {
+export const newsState = {
   currentPage: 1,
   currentView: 'grid',
   GRID_PAGE_LIMIT: 4,

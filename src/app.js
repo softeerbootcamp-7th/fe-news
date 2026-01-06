@@ -1,7 +1,7 @@
 import './style.css'
 import { displayTodayDate } from './utils/date.js'
-import { initViewController } from './features/news-contents/ViewController.js'
-import { rolling } from './features/rolling-news/RollingController.js'
+import { initNewsView } from './features/news-contents/newsViewController.js'
+import { rolling } from './features/rolling-news/rollingController.js'
 
 /**
  * TODO
@@ -13,4 +13,4 @@ import { rolling } from './features/rolling-news/RollingController.js'
 
 displayTodayDate() // 헤더에 오늘 날짜 표시
 rolling.init() // 롤링 뉴스 초기화
-initViewController() // 뉴스 콘텐츠 뷰 컨트롤러 초기화
+initNewsView() // 뉴스 콘텐츠 뷰 컨트롤러 초기화
