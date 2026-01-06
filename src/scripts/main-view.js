@@ -27,8 +27,9 @@ viewerButtonBar.addEventListener("click", (e) => {
   const iconBtns = viewerButtonBar.querySelectorAll(".view-type-icon");
 
   iconBtns.forEach((btn) => {
-    btn.classList.toggle("is-active-icon");
+    btn.classList.remove("is-active-icon");
   });
+  el.classList.add("is-active-icon");
 });
 
 // 언론사 선택 탭 바 영역
@@ -60,10 +61,13 @@ tabButtonbar.addEventListener("click", (e) => {
     const tabs = tabButtonbar.querySelectorAll(".tab-button");
 
     tabs.forEach((tab) => {
-      tab.classList.toggle("selected-bold16");
-      tab.classList.toggle("available-medium16");
-      tab.classList.toggle("is-active-text");
+      tab.classList.remove("selected-bold16");
+      tab.classList.add("available-medium16");
+      tab.classList.remove("is-active-text");
     });
+    e.target.classList.add("selected-bold16");
+    e.target.classList.remove("available-medium16");
+    e.target.classList.add("is-active-text");
 
     renderGrid(pages, 0);
   }
@@ -77,6 +81,56 @@ const allPressTab = document.querySelector(`#${ALL_PRESS_TAB_ID}`);
 const subscribedPressTab = document.querySelector(
   `#${SUBSCRIBED_PRESS_TAB_ID}`
 );
+
+const unsubscribeAlertEl = document.querySelector("#unsubscribe-alert");
+const alertPositiveBtn = document.querySelector("#unsubscribe-btn");
+const alertNegativeBtn = document.querySelector("#close-btn");
+
+function handleAlertPosiBtn() {
+  const clickedBtnEl = document.querySelector(
+    `.subscribe-btn[data-press-id="${unsubscribeAlertEl.dataset.pressId}"]`
+  );
+  // 구독목록에 있을 때만 구독 목록에서 빼기
+  let idx = subscribedPressList.indexOf(clickedBtnEl.id);
+  if (idx > -1) {
+    subscribedPressList.splice(idx, 1);
+    badge.textContent = subscribedPressList.length;
+    localStorage.setItem("subscribed-press-list", subscribedPressList);
+    const infoTxt = clickedBtnEl.querySelector(".subscribe-info-txt");
+    infoTxt.textContent = SUBSCRIBE;
+    const icon = clickedBtnEl.querySelector(".subscribe-btn-icon");
+    icon.innerHTML = PLUS_ICON_SVG;
+  }
+
+  // 만약 현재 보고 있는 탭이 내가 구독한 언론사라면 구독 해제 하면 화면에 보여지는 구독 언론사 목록 그리드 내 요소들 바뀌어야 함
+  if (selectedTabElId == SUBSCRIBED_PRESS_TAB_ID) {
+    // 새로 업데이트된 구독 중 언론사 리스트 바탕으로 다시 페이지 구성
+    makePageMtrx(true);
+    // 페이지 다시 구성했을 때 현재 보고 있던 페이지가 없어지고 그 이전 페이지로 넘어가야 한다면
+    if (pages.length - 1 < currentPageIdx) currentPageIdx -= 1;
+    renderGrid(pages, currentPageIdx);
+  }
+
+  // 구독 해지 모달창 닫기
+  closeAlert(unsubscribeAlertEl);
+}
+function handleAlertNegaBtn() {
+  console.log("handleAlertNegaBtn");
+  // 구독 해지 모달창 닫기
+  closeAlert(unsubscribeAlertEl);
+}
+alertPositiveBtn.addEventListener("click", handleAlertPosiBtn);
+alertNegativeBtn.addEventListener("click", handleAlertNegaBtn);
+
+// 알림창 띄우는 함수(=visibility : visible 로 만들어줌)
+function showAlert(alertEl) {
+  alertEl.style.visibility = "visible";
+}
+
+// 알림창 띄우는 함수(=visibility : visible 로 만들어줌)
+function closeAlert(alertEl) {
+  alertEl.style.visibility = "hidden";
+}
 
 // 현재 선택된 탭 요소 정보(탭 요소의 id)
 // -> default는 전체 언론사 보기
@@ -158,8 +212,10 @@ function makePageMtrx(onlySubscribedPress = false) {
     logoImgPathList = buildLogoImgPaths();
   }
 
-  // 최대 4페이지(=96개)까지만 사용
-  const limit = Math.min(logoImgPathList.length, PAGE_SIZE * MAX_PAGES);
+  // 최대 4페이지(24*4=96요소) 까지만 가능. 그 이상 요소들은 자른다
+  if (logoImgPathList.length > MAX_PAGES * PAGE_SIZE) {
+    logoImgPathList = logoImgPathList.slice(0, MAX_PAGES * PAGE_SIZE);
+  }
   pages = cutLstToMtrx(logoImgPathList, 24);
 
   // 마지막 페이지 idx 를 계산해 저장
@@ -190,6 +246,7 @@ function renderGrid(pages, pageIndex) {
       subscribeBtn.className = "subscribe-btn";
       subscribeBtn.type = "button";
       subscribeBtn.id = `${src.split("/").at(-1)}`;
+      subscribeBtn.dataset.pressId = subscribeBtn.id;
       const plusIcon = document.createElement("svg");
       plusIcon.classList.add("subscribe-btn-icon");
 
@@ -221,18 +278,10 @@ function renderGrid(pages, pageIndex) {
 }
 
 function handleUnSubscribeBtn(clickedBtnEl) {
-  // 구독목록에 있을 때만 구독 목록에서 빼기
-  let idx = subscribedPressList.indexOf(clickedBtnEl.id);
-
-  if (idx > -1) {
-    subscribedPressList.splice(idx, 1);
-    badge.textContent = subscribedPressList.length;
-    localStorage.setItem("subscribed-press-list", subscribedPressList);
-    const infoTxt = clickedBtnEl.querySelector(".subscribe-info-txt");
-    infoTxt.textContent = SUBSCRIBE;
-    const icon = clickedBtnEl.querySelector(".subscribe-btn-icon");
-    icon.innerHTML = PLUS_ICON_SVG;
-  }
+  // 해지하고자 하는 언론사 정보(=언론사 이미지 파일명)를 alert창의 요소의 dataset에 저장해줘야함
+  unsubscribeAlertEl.dataset.pressId = clickedBtnEl.id;
+  // 구독 해지할거냐고 묻는 알림창 보이게
+  showAlert(unsubscribeAlertEl);
 }
 function handleSubscribeBtn(clickedBtnEl) {
   // 구독목록에 없을 때만 구독 목록에 추가

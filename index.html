@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/src/styles/components.css" />
     <link rel="stylesheet" href="/src/styles/typography.css" />
     <link rel="stylesheet" href="/src/styles/theme.css" />
+    <link rel="stylesheet" href="/src/styles/object.css" />
   </head>
   <body>
     <div id="page">
@@ -111,7 +112,19 @@
           <img id="chevron-right" src="/icons/RightButton.png" />
         </div>
       </div>
+      <div class="alert" id="unsubscribe-alert">
+        <div class="alert-message display-medium16">
+          <span class="display-bold16">언론사명</span
+          >을(를)<br />구독해지하시겠습니까?
+        </div>
+        <div class="buttons">
+          <button class="clean-button" id="unsubscribe-btn">
+            예 해지합니다</button
+          ><button class="clean-button" id="close-btn">아니오</button>
+        </div>
+      </div>
     </div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
