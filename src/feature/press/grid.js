@@ -7,18 +7,13 @@ import {
 } from "@/template/GridView";
 import {
   isSubscribed,
-  toggleSubscription,
   observeSubscriptionStore,
 } from "@/store/subscriptionStore";
-import { getLoadingIndicatorTemplate } from "@/template/Loading";
 
 export function initGridView(paginatedPressData) {
   // 첫 grid 레이아웃 그리기
   renderGridContainer();
   renderGridItems(paginatedPressData);
-
-  // 구독하기 버튼 이벤트 등록
-  addClickEvents();
 
   // 구독 상태 observer 등록
   observeSubscriptionStore((pressName) => {

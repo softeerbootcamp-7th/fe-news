@@ -5,6 +5,7 @@ import { VIEW_TAB } from "@/types/constant";
 import {
   isSubscribed,
   getSubscriptionCount,
+  toggleSubscription,
   observeSubscriptionStore,
 } from "@/store/subscriptionStore";
 import {
@@ -20,6 +21,7 @@ import {
 import { createPaginationController } from "./pagination";
 import { initGridView } from "./grid";
 import { initListView } from "./list";
+import { getLoadingIndicatorTemplate } from "@/template/Loading";
 
 // 상태
 let filteredData = [];
@@ -35,6 +37,8 @@ export function initPressView(articlesData) {
   addSubscriptionTabEvents();
   // 페이지네이션 버튼
   addPaginationEvents();
+  // 구독 해지 다이얼로그 버튼
+  addSubscribeEvents();
 
   // 그리드/리스트 변경 시 뷰 업데이트
   observeViewTabStore(() => {
@@ -135,5 +139,44 @@ function addPaginationEvents() {
   nextButton.addEventListener("click", () => {
     pagination.next();
     renderPressView();
+  });
+}
+
+function addSubscribeEvents() {
+  const pressSection = document.querySelector(".press-section");
+  const dialog = document.querySelector(".press-list__dialog");
+  const [positiveButton, negativeButton] =
+    dialog.querySelectorAll(".dialog-button");
+
+  // 구독/해지 버튼
+  pressSection.addEventListener("click", (e) => {
+    const pressName = e.target.closest("li").dataset.label;
+    if (!pressName) return;
+    const button = e.target.closest("button");
+    if (!button) return;
+
+    if (isSubscribed(pressName)) {
+      // 해지버튼: 다이얼로그 표시
+      dialog.querySelector("strong").textContent = pressName;
+      dialog.showModal();
+    } else {
+      // 구독버튼: 구독
+      button.innerHTML = getLoadingIndicatorTemplate();
+      toggleSubscription(pressName);
+    }
+  });
+
+  // 구독 해지 후 다이얼로그 닫기
+  positiveButton.addEventListener("click", () => {
+    const pressName = positiveButton
+      .closest("dialog")
+      .querySelector("strong").textContent;
+    toggleSubscription(pressName);
+    dialog.close();
+  });
+
+  // 다이얼로그 닫기
+  negativeButton.addEventListener("click", () => {
+    dialog.close();
   });
 }
