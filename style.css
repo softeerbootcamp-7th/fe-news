@@ -102,6 +102,16 @@ body {
 	-webkit-mask-image: url("/assets/grid-view.svg");
 }
 
+.icon-plus {
+	mask-image: url("/assets/plus.svg");
+	-webkit-mask-image: url("/assets/plus.svg");
+}
+
+.icon-closed {
+	mask-image: url("/assets/closed.svg");
+	-webkit-mask-image: url("/assets/closed.svg");
+}
+
 .bg-default {
 	background-color: var(--surface-default);
 }
@@ -113,6 +123,9 @@ body {
 }
 .bg-point {
 	background-color: var(--text-point);
+}
+.bg-bold {
+	background-color: var(--text-bold);
 }
 .bg-weak {
 	background-color: var(--text-weak);
@@ -326,6 +339,16 @@ body {
 	margin: 0;
 }
 
+.p-x-2 {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.p-y-1 {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
 .p-0 {
 	padding: 0;
 }
@@ -346,6 +369,12 @@ body {
 }
 .w-6 {
 	width: 24px;
+}
+.w-3 {
+	width: 12px;
+}
+.h-3 {
+	height: 12px;
 }
 .h-6 {
 	height: 24px;
@@ -382,37 +411,10 @@ body {
 	display: none;
 }
 
-li {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	min-width: 0;
-}
-
-ul {
-	padding: 0;
-	margin: 0;
-}
-
 /* 1. 호버 시 기존 콘텐츠(이미지) 숨기기 */
 .news-item:hover .news-item-content {
 	visibility: hidden;
 	opacity: 0;
-}
-
-/* 2. 구독하기 버튼 기본 스타일 (평소엔 숨김) */
-.subscribe-btn {
-	display: none;
-	position: absolute;
-	padding: 6px 12px;
-	font-size: 12px;
-	font-weight: 500;
-	color: #333;
-	background-color: #fff;
-	border: 1px solid #e5e7eb;
-	border-radius: 9999px; /* 알약 모양 */
-	cursor: pointer;
-	z-index: 10;
 }
 
 /* 3. 호버 시 버튼 보이기 */
@@ -420,8 +422,31 @@ ul {
 	display: block;
 }
 
-/* 버튼 호버 효과 (선택 사항) */
-.subscribe-btn:hover {
+.subscribe-btn:hover:hover {
 	background-color: #f9fafb;
 	border-color: #d1d5db;
+}
+
+.hover\:bg-gs-300:hover {
+	background-color: var(--color-gs-300);
+}
+
+.hover\:border-bold:hover {
+	border: 1px solid var(--border-bold);
+}
+
+.hover\:border-default:hover {
+	border: 1px solid var(--border-default);
+}
+
+.hover\:text-bold:hover {
+	color: var(--text-bold);
+}
+
+.group:hover .group-hover\:text-bold {
+	color: var(--text-bold);
+}
+
+.group:hover .group-hover\:bg-bold {
+	background-color: var(--text-bold);
 }
