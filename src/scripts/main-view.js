@@ -47,6 +47,7 @@ tabButtonbar.addEventListener("click", (e) => {
     console.log(pages);
 
     renderGrid(pages, 0);
+    debugger;
   }
 });
 
@@ -138,13 +139,15 @@ function makePageMtrx(onlySubscribedPress = false) {
   pages = cutLstToMtrx(logoImgPathList, 24);
 
   // 마지막 페이지 idx 를 계산해 저장
-  lastPageIdx = pages.length;
+  lastPageIdx = pages.length - 1;
 
   currentPageIdx = 0;
 }
 
 //화면에 그리기
 function renderGrid(pages, pageIndex) {
+  // 현재 보고 있는 페이지 정보는 화면에 그려진 페이지 정보
+  currentPageIdx = pageIndex;
   console.log(pages);
   const items = pages[pageIndex] ?? [];
   console.log(items);
@@ -192,7 +195,7 @@ function renderGrid(pages, pageIndex) {
     gridEl.appendChild(cell);
   }
 
-  //updateArrows();
+  checkArrowShow({ currentPageIdx: currentPageIdx, lastPageIdx: lastPageIdx });
 }
 
 function handleUnSubscribeBtn(clickedBtnEl) {
@@ -239,9 +242,9 @@ gridEl.addEventListener("click", (e) => {
 // 요소 el, ture/false : 보이게 안보이게
 function handleElShow({ el, toggle }) {
   if (toggle) {
-    el.style.opacity = "100%";
+    el.style.visibility = "visible";
   } else {
-    el.style.opacity = "0%";
+    el.style.visibility = "hidden";
   }
 }
 
@@ -265,20 +268,44 @@ function handleRightArrowShow({ rightArrowEl, toggle }) {
 // 현재 페이지 넘버에 따라 왼쪽, 오른쪽 화살표 보여지게/안보여지게 컨트롤 하는 함수
 // currentPageIdx: 현재 페이지 idx, lastPageIdx: 마지막 페이지 idx
 function checkArrowShow({ currentPageIdx, lastPageIdx }) {
-  if (currentPageIdx == 0) {
-    //제일 첫 페이지면 왼쪽 화살표 x
-    handleLeftArrowShow({ leftArrowEl: leftArrowEl, toggle: false });
-    handleRightArrowShow({ rightArrowEl: rightArrowEl, toggle: true });
-  } else if (currentPageIdx == lastPageIdx) {
-    // 마지막 페이지면 오른쪽 화살표 x
-    handleLeftArrowShow({ leftArrowEl: leftArrowEl, toggle: true });
-    handleRightArrowShow({ rightArrowEl: rightArrowEl, toggle: false });
+  let leftFlag = 0;
+  let rightFlag = 0;
+  if (currentPageIdx > 0) {
+    // 이전 페이지로 넘어갈 수 있다면
+    leftFlag = 1;
+  }
+  if (lastPageIdx - currentPageIdx > 0) {
+    // 다음 페이지로 넘어갈 수 있다면
+    rightFlag = 1;
   } else {
-    // 나머지 페이지는 두 화살표 모두 보여지게
+  }
+  if (leftFlag) {
     handleLeftArrowShow({ leftArrowEl: leftArrowEl, toggle: true });
+  } else {
+    handleLeftArrowShow({ leftArrowEl: leftArrowEl, toggle: false });
+  }
+  if (rightFlag) {
     handleRightArrowShow({ rightArrowEl: rightArrowEl, toggle: true });
+  } else {
+    handleRightArrowShow({ rightArrowEl: rightArrowEl, toggle: false });
   }
 }
+
+// 그리드 옆 왼쪽 화살표 눌렀을 때 불려지는 함수
+function handleLeftArrowClick() {
+  currentPageIdx -= 1;
+  renderGrid(pages, currentPageIdx);
+}
+
+// 그리드 옆 오른쪽 화살표 눌렀을 때 불려지는 함수
+function handleRightArrowClick() {
+  console.log("handlerigt");
+  currentPageIdx += 1;
+  renderGrid(pages, currentPageIdx);
+}
+
+leftArrowEl.addEventListener("click", handleLeftArrowClick);
+rightArrowEl.addEventListener("click", handleRightArrowClick);
 
 export default function initGridView() {
   makePageMtrx();
