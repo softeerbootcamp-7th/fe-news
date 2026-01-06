@@ -1,3 +1,4 @@
+import '@/components/NewsBar/style.css';
 
 export const NewsBar = () => {
     return `

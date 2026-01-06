@@ -1,4 +1,5 @@
-import { getDate } from '@/js/Date.js';
+import '@/components/Header/style.css';
+import { getDate } from '@/js/date';
 import TitleLogo from '@/assets/images/light_mode_logo/title_logo.png';
 
 export const Header = () => {

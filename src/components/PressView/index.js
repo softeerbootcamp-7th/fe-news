@@ -1,7 +1,8 @@
-import GridView from '@/assets/images/light_mode_logo/grid-view.png';
-import ListView from '@/assets/images/light_mode_logo/list-view.png';
-import LeftButton from '@/assets/images/light_mode_logo/LeftButton.png';
-import RightButton from '@/assets/images/light_mode_logo/RightButton.png';
+import '@/components/PressView/style.css';
+import GridView from '@/assets/images/light_mode_logo/grid_view.png';
+import ListView from '@/assets/images/light_mode_logo/list_view.png';
+import LeftButton from '@/assets/images/light_mode_logo/left_button.png';
+import RightButton from '@/assets/images/light_mode_logo/right_button.png';
 
 export const PressView = () => {
     return `
