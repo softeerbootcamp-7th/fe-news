@@ -38,33 +38,39 @@
             <section class="provider-section" aria-label="news providers">
                 <!-- 탭 영역 -->
                 <div class="provider-tab" aria-label="news tab">
-                    <div class="provider-tab-text">
-                        <p class="tab-item tab-all tab-item--active" role="tab">전체 언론사</p>
-                        <div class="tab-subscribe" role="tab">
-                            <p class="tab-item tab-subscribed">내가 구독한 언론사</p>
+                    <!-- textTab -->
+                    <div class="text-tab-group" role="tablist">
+                        <button class="text-tab text-tab--all text-tab--active" data-tab="all">
+                            전체 언론사
+                        </button>
+                        <button class="text-tab text-tab--subscribed" data-tab="subscribed">
+                            내가 구독한 언론사
                             <span class="sub-badge">0</span>
-                        </div>
+                        </button>
                     </div>
-                    <div class="provider-tab-icon">
-                        <div class="provider-tab-icon">
-                            <button class="view-logo list-view">
-                                <img src="./src/assets/list-view.svg" alt="리스트 뷰" />
-                            </button>
-                            <button class="view-logo grid-view view-logo--active">
-                                <img src="./src/assets/grid-view.svg" alt="그리드 뷰" />
-                            </button>
-                        </div>
+
+                    <!-- iconTab -->
+                    <div class="icon-tab-group" role="tablist">
+                        <button class="icon-tab icon-tab--list" data-view="list">
+                            <img src="./src/assets/list-view.svg" alt="리스트 뷰" />
+                        </button>
+                        <button class="icon-tab icon-tab--grid icon-tab--active" data-view="grid">
+                            <img src="./src/assets/grid-view.svg" alt="그리드 뷰" />
+                        </button>
                     </div>
                 </div>
 
-                <!-- 언론사 그리드 -->
-                <div class="provider-grid-wrapper" aria-label="news grid">
-                    <button class="grid-nav-btn grid-nav-btn--prev" aria-label="이전 페이지">
-                        <img src="./src/assets/left-arrow.svg" alt="이전 페이지 버튼" />
+                <!-- View 영역 -->
+                <div class="provider-view">
+                    <button class="nav-btn nav-btn--prev" aria-label="이전 페이지">
+                        <img src="./src/assets/left-arrow.svg" alt="" />
                     </button>
-                    <ul class="provider-grid"></ul>
-                    <button class="grid-nav-btn grid-nav-btn--next" aria-label="다음 페이지">
-                        <img src="./src/assets/right-arrow.svg" alt="다음 페이지 버튼" />
+                    <div class="provider-view__content">
+                        <ul class="provider-grid view view--grid view--active"></ul>
+                        <ul class="provider-list view view--list"></ul>
+                    </div>
+                    <button class="nav-btn nav-btn--next" aria-label="다음 페이지">
+                        <img src="./src/assets/right-arrow.svg" alt="" />
                     </button>
                 </div>
             </section>
