@@ -10,7 +10,7 @@
  * @param {RollingItemTemplateParams} rollingItemTemplateParams
  * @returns {string} rollingItem
  */
-export const rollingItemTemplate = ({
+export const ROLLING_ITEM_TEMPLATE = ({
   shownNewspaperPress,
   shownNewspaperTitle,
   hiddenNewspaperPress,
