@@ -1,6 +1,8 @@
 // 구독중인 언론사(png 명 저장) 리스트를 로컬 스토리지의 subscribed-press-list에 저장해 두고 가져온다
 //localStorage.setItem("subscribed-press-list", ["hi", "hello "]);
 
+import shuffleArray from "../utils/shuffleArray";
+
 let subscribedPressList = [];
 let subscribedPressData = localStorage.getItem("subscribed-press-list");
 
@@ -111,10 +113,11 @@ const leftArrowEl = document.querySelector("#chevron-left");
 // asset ${n} 1.png -> (n은 1부터 90까지)
 // 따라서 이런 문자열 만들고 최종 이미지 경로 텍스트 리스트를 반환하는 함수 만듦
 function buildLogoImgPaths() {
-  return Array.from({ length: TOTAL_LOGOS }, (x, i) => {
+  let result = Array.from({ length: TOTAL_LOGOS }, (x, i) => {
     const n = i + 1;
     return `${BASE_PATH}asset ${n} 1.png`;
   });
+  return shuffleArray(result);
 }
 
 // 구독중인 언론사 로고를 구독 순서대로 이미지 경로 텍스트 리스트 반환하는 함수
