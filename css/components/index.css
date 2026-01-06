@@ -3,6 +3,7 @@
 @import url('./mainNavContainer.css');
 @import url('./pressStyling.css');
 @import url('./btn.css');
+@import url('./alert.css');
 
 main {
     width: 930px;
