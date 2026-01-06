@@ -1,9 +1,9 @@
 import '@/assets/css/style.css'
-import { Header } from '@/components/Header.js';
-import { PressView } from '@/components/PressView.js';
-import { NewsBar } from '@/components/NewsBar.js';
-import { rollingHeadLine } from '@/js/Rolling';
-import { addCell } from '@/js/Cell.js';
+import { Header } from '@/components/Header';
+import { PressView } from '@/components/PressView';
+import { NewsBar } from '@/components/NewsBar';
+import { rollingHeadLine } from '@/js/rolling';
+import { addCell } from '@/js/cell';
 
 
 const app = document.getElementById('app');
