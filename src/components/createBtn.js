@@ -1,4 +1,4 @@
-import { loadSVG } from "../utils/lodeSVG";
+import { loadSVG } from "../utils/assetUtils";
 
 /**
  * 공통 스타일이 적용된 버튼 컴포넌트를 생성하는 함수
