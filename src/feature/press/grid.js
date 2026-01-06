@@ -49,18 +49,16 @@ export function initGridView(parsedPressData) {
   // 양옆 화살표 버튼
   prevButton.addEventListener("click", () => {
     currentPage--;
-    updateArrowVisibility();
     renderCurrentPage();
   });
   nextButton.addEventListener("click", () => {
     currentPage++;
-    updateArrowVisibility();
     renderCurrentPage();
   });
 }
 
 function getPageCount(pressData) {
-  return Math.ceil(pressData.length / NUM_GRID_CELL);
+  return Math.ceil(pressData.length / NUM_GRID_CELL) || 1;
 }
 
 function getPaginationData(pageNum, pressData) {
@@ -79,6 +77,7 @@ function updateArrowVisibility() {
 function renderCurrentPage() {
   const paginatedData = getPaginationData(currentPage, pressData);
   renderGridItems(paginatedData);
+  updateArrowVisibility();
 }
 
 function renderGridItems(paginatedData) {
