@@ -14,8 +14,6 @@ export function handleSubscribe() {
 
         applySubscribedStyle(isSubscribed, btn);
     })
-
-  loadSVG();
 }
 
 const applySubscribedStyle = (isSubscribed, btn) => {
@@ -39,6 +37,7 @@ const applySubscribedStyle = (isSubscribed, btn) => {
         text.textContent = '구독하기';
         icon.dataset.svg = './public/assets/icons/plus.svg';
     }
+    loadSVG();
 }
 
 function updateCount() {

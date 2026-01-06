@@ -1,5 +1,5 @@
 import { subscribePressStore } from "../stores/subscribePressStore";
-import { LOGO_COUNT_PER_PAGE, pressMap } from "../utils/assetUtils";
+import { loadSVG, LOGO_COUNT_PER_PAGE, pressMap } from "../utils/assetUtils";
 import { createBtn } from "./createBtn";
 
 export const renderGrid = () => {
@@ -15,6 +15,7 @@ export const renderGrid = () => {
     subscribedPressBtn.classList.add('unselected');
 
     renderAllPress('.press-logo-container', pressMap);
+    loadSVG();
   });
 
   subscribedPressBtn.addEventListener('click', () => {
@@ -24,6 +25,7 @@ export const renderGrid = () => {
     allPressBtn.classList.add('unselected');
 
     renderSubscribedPress('.press-logo-container', pressMap);
+    loadSVG();
   });
 }
 
