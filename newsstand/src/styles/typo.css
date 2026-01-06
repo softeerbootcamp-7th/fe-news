@@ -56,7 +56,6 @@
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-s);
   line-height: var(--line-height-22);
-  color: var(--color-text-white-weak);
 }
 
 /* === selected / available / hover 상태 텍스트 === */
@@ -91,7 +90,6 @@
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-m);
   line-height: var(--line-height-22);
-  color: var(--color-text-weak);
 }
 
 .typo-available-medium14 {
@@ -121,6 +119,10 @@
 }
 .text-point {
   color: var(--color-text-point);
+}
+
+.text-white-weak {
+  color: var(--color-text-white-weak);
 }
 
 /* white 텍스트 (dark surface 위) */

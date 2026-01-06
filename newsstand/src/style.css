@@ -181,26 +181,24 @@
 }
 
 .subscribe-btn {
+  padding-right: 6px;
+  padding-left: 6px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.subscribe-btn-grid {
   position: absolute;
   top: 36px;
   left: 41px;
   width: 72px;
   height: 24px;
-  padding-right: 6px;
-  padding-left: 6px;
-  border-radius: 999px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
-  cursor: pointer;
 }
 
-.subscribe-btn:hover {
-  border: 1px solid var(--color-border-bold);
-  color: var(--color-text-bold);
-}
-
-.ns-press-grid__item:hover .subscribe-btn {
+.ns-press-grid__item:hover .subscribe-btn-grid {
   opacity: 1;
   pointer-events: auto;
 }
@@ -219,4 +217,96 @@
 
 .grid__right {
   right: -100px;
+}
+
+/**
+  * 리스트 스타일
+  */
+
+.ns-press-list {
+  margin-top: 24px;
+}
+
+.ns-press-list__nav {
+  height: 40px;
+}
+
+.ns-press-list__nav-list {
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.ns-press-list__nav-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.ns-press-list__content-container {
+  width: 930px;
+  height: 348px;
+}
+
+.ns-press-list__content-wrapper {
+  height: 348px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ns-press-list__content-header {
+  width: 882px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  .ns-press-list__content-header-icon {
+    width: 51px;
+    height: 20px;
+  }
+}
+.ns-press-list__content {
+  height: 260px;
+  width: 882px;
+}
+
+.ns-press-list__main-news {
+  height: 260px;
+  width: 320px;
+  float: left;
+}
+.ns-press-list__main-news-image {
+  width: 320px;
+  height: 200px;
+}
+
+.ns-press-list__sub-news {
+  width: 530px;
+  height: 245px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  float: left;
+  margin-left: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ns-press-list__sub-news-title {
+  text-overflow: ellipsis;
+  .article-link {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.ns-press-list__sub-news-title:hover {
+  text-decoration: underline;
 }
