@@ -25,3 +25,7 @@ export const getVisiblePresses = (state, PRESS_LIST) => {
       : PRESS_LIST;
   return list;
 };
+
+export const loadJson = (url) => {
+  return fetch(url).then((response) => response.json());
+};
