@@ -1,7 +1,7 @@
 import { createEl } from "../lib/dom";
 import { createHeader } from "./createHeader";
 import { createNewsContents } from "./createNewsContents";
-import { createRolling } from "./createRolling";
+import { createRolling } from "./Rolling/createRolling";
 
 export const createPage = () => {
   const main = createEl("div", "ns-main-container");

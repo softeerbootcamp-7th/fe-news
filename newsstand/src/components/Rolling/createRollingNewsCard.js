@@ -1,4 +1,4 @@
-import { createEl } from "../lib/dom";
+import { createEl } from "../../lib/dom";
 
 export const createRollingNewsCard = (title = "연합뉴스", text = "dummy") => {
   const rollingCard = createEl(

@@ -2,7 +2,7 @@ import { createStore } from "./createStore";
 
 const initialState = {
   tab: "all", // "all" | "subscriptions"
-  view: "grid", // "grid" | "list"
+  view: "list", // "grid" | "list"
   subscribedPresses: [],
   page: 1,
 };

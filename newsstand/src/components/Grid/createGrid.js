@@ -1,7 +1,7 @@
 // src/components/pressGrid.js
-import { createEl } from "../lib/dom";
-import { getGridData } from "../lib/pressData";
-import { actions } from "../state/store";
+import { createEl } from "../../lib/dom";
+import { getGridData } from "../../lib/pressData";
+import { actions } from "../../state/store";
 import { createGridCardList } from "./createGridCard";
 
 export const createGrid = (state) => {

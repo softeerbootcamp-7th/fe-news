@@ -1,7 +1,8 @@
 import { createEl, render } from "../lib/dom";
 import { store } from "../state/store";
 import { createControls } from "./createControls";
-import { createGrid } from "./createGrid";
+import { createGrid } from "./Grid/createGrid";
+import { createList } from "./List/createList";
 
 export const createNewsContents = () => {
   const contentWrapper = createEl("div", "", "");
@@ -19,6 +20,9 @@ export const createNewsContents = () => {
 
 const createContents = (state) => {
   const frag = document.createDocumentFragment();
-  frag.append(createControls(), createGrid(state));
+  frag.append(
+    createControls(),
+    state.view === "grid" ? createGrid(state) : createList()
+  );
   return frag;
 };

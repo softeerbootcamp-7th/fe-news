@@ -20,6 +20,7 @@ export const createControls = () => {
 
 const controlViews = (wrapper, viewState, setView) => {
   const viewToggles = wrapper.querySelectorAll(".ns-view-toggle");
+  setActiveViewUI(viewState, viewToggles);
   viewToggles.forEach((toggle) => {
     toggle.addEventListener("click", () => {
       const isGridView = toggle.classList.contains("ns-view-grid");
@@ -41,6 +42,18 @@ const controlTabs = (wrapper, tabState, setTab) => {
       if (tabState === nextTab) return;
       setTab(nextTab);
     });
+  });
+};
+
+const setActiveViewUI = (viewState, allView) => {
+  const isGrid = viewState === "grid";
+
+  allView.forEach((viewEl) => {
+    const isGridView = viewEl.classList.contains("ns-view-grid");
+    const isActive = (isGrid && isGridView) || (!isGrid && !isGridView);
+
+    viewEl.classList.toggle("ns-view-toggle--active", isActive);
+    viewEl.setAttribute("aria-pressed", String(isActive));
   });
 };
 
@@ -73,7 +86,7 @@ const createControlsMarkup = (subscriptionLenghth) => `
           >
           내가 구독한 언론사
              <span
-              class="ns-tab__badge typo-display-medium12 surface-brand-alt"
+              class="ns-tab__badge typo-display-medium12 text-white-weak surface-brand-alt"
               aria-label="구독한 언론사 수"
             >
               ${subscriptionLenghth}
@@ -94,7 +107,7 @@ const createControlsMarkup = (subscriptionLenghth) => `
           </svg>
         </div>
         <div
-          class="ns-view-toggle ns-view-toggle--active ns-view-grid"
+          class="ns-view-toggle ns-view-grid"
           type="button"
           aria-pressed="true"
           aria-label="그리드로 보기"

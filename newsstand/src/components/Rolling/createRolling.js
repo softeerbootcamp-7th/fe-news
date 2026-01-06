@@ -1,6 +1,6 @@
-import { animateTranslateY } from "../lib/animation";
-import { createEl } from "../lib/dom";
-import { getRollingData } from "../lib/pressData";
+import { animateTranslateY } from "../../lib/animation";
+import { createEl } from "../../lib/dom";
+import { getRollingData } from "../../lib/pressData";
 import { createRollingNewsCard } from "./createRollingNewsCard";
 
 const ROLLING_NEWS_COUNT = 5;
