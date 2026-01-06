@@ -26,9 +26,9 @@ const nextButton = document.querySelector(".press-list__control--next");
 let currentPage = 0;
 let pressData = [];
 
-export function initGridView() {
-  // dummy 데이터 파싱 {id, logo, name}
-  pressData = shuffleArray(parsePressData(articlesData));
+export function initGridView(parsedPressData) {
+  // 데이터 셔플
+  pressData = shuffleArray(parsedPressData);
 
   // 첫 grid 레이아웃 그리기
   renderGridContainer();

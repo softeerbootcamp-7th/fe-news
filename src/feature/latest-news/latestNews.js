@@ -2,8 +2,8 @@ export class LatestNewsView {
   static ROLL_INTERVAL_MS = 5000;
   static ROLL_OFFSET_MS = 1000;
 
-  constructor(newsData) {
-    this.data = newsData;
+  constructor() {
+    this.data = [];
     this.leftIndex = 0;
     this.rightIndex = 1;
     this.lastIndex = 1;
@@ -75,7 +75,10 @@ export class LatestNewsView {
     // setTimeout(() => oldNews.remove(), 500);
   }
 
-  initLatestNews() {
+  initLatestNews(newsData) {
+    // 데이터 초기화
+    this.data = newsData;
+
     // 첫 2개의 뉴스 추가
     const leftNews = this.appendLeftNewsElement();
     const rightNews = this.appendRightNewsElement();
