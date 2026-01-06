@@ -3,6 +3,7 @@ import { VIEW_TAB } from "@/types/constant";
 const NUM_GRID_ROW = 4;
 const NUM_GRID_COL = 6;
 const GRID_SIZE = NUM_GRID_ROW * NUM_GRID_COL;
+const MAX_PAGE = 4;
 
 export function createPaginationController() {
   let currentPage = 0;
@@ -23,7 +24,7 @@ export function createPaginationController() {
     },
 
     next(data) {
-      currentPage++;
+      if (currentPage < 3) currentPage++;
     },
 
     prev() {
@@ -50,7 +51,7 @@ export function createPaginationController() {
       const totalPages = strategy.getTotalPages(data);
       return {
         showPrev: currentPage > 0,
-        showNext: currentPage < totalPages - 1,
+        showNext: currentPage < Math.min(totalPages, MAX_PAGE) - 1,
       };
     },
   };
