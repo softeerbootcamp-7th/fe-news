@@ -1,0 +1,21 @@
+@use '@/styles/variable.scss' as *;
+@use '@/styles/typography.scss' as *;  
+
+.subscribe-button {
+  @include available-medium12;
+        align-items: center;
+        background-color: var(--surface-alt);
+        border: 1px solid var(--border-default);
+        border-radius: var(--radius-full);
+        color: var(--text-weak);
+        display: flex;
+        gap: .125rem;
+        height:1.5rem;
+        padding: .375rem;
+
+        &:hover {
+          background-color: var(--surface-default);
+          border-color: var(--border-bold);
+          color:var(--text-bold);
+        }
+}
