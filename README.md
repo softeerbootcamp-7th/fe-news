@@ -12,11 +12,11 @@
     -   [x] shadow
 -   [ ] 디자인 컴포넌트
     -   [x] Spacer
-    -   [ ] Button: button
-        -   [ ] (Colors) variant
-        -   [ ] (States) hover
-        -   [ ] (Icon) none, plus, closed, loading (12px, foundation에 등록된 plus, closed 사용)
-        -   [ ] (Text) optional
+    -   [x] Button: button
+        -   [x] (Colors) variant
+        -   [x] (States) hover
+        -   [x] (Icon) none, plus, closed, loading (12px, foundation에 등록된 plus, closed 사용)
+        -   [x] (Text) optional
     -   [x] AutoRollingNews: a
         -   [x] (States) hover
         -   [x] (Flexible)?
