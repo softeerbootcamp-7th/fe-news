@@ -1,9 +1,7 @@
-import { ROLLING_INTERVAL } from './config.js';
-
 function createRollingManager() {
     const timers = new Map();
 
-    function register(key, rollingBar, { delay = 0, interval = ROLLING_INTERVAL } = {}) {
+    function register(key, rollingBar, { delay, interval } = {}) {
         if(timers.has(key)) return;
 
         setTimeout(() => {

@@ -1,24 +1,14 @@
 import rollingNews from './data/rolling_news.json';
 import logoLinks from './data/logo_links.json';
-import { initRollingBar } from './rolling';
+import { initRollingBars } from './rolling';
+import { fisherYatesShuffle } from './utils';
 
 const GRID_COLS = 6;
 const GRID_ROWS = 4;
 
-// shuffle Algorithm -> TODO: utils.js로 분리
-function fisherYatesShuffle(array) {
-    const arr = [...array];
-
-    for(let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-
-    return arr;
-}
-
 // 그리드 초기화 함수
-function initGrid(gridElement, baseClass) {
+function initGrid({ containerSelector }) {
+    const gridElement = document.querySelector(containerSelector);
     gridElement.style.gridTemplateColumns = `repeat(${GRID_COLS}, 1fr)`;
     gridElement.style.gridTemplateRows = `repeat(${GRID_ROWS}, 1fr)`;
     const totalCount = GRID_COLS * GRID_ROWS;
@@ -30,10 +20,10 @@ function initGrid(gridElement, baseClass) {
 
     randomItems.forEach((randoms) => {
         const item = document.createElement('div');
-        item.className = `${baseClass}-item`;
+        item.className = `content__grid-item`;
 
         const img = document.createElement('img');
-        img.className = `${baseClass}-img`;
+        img.className = `content__grid-img`;
         img.src = `${logoLinks.baseUrl}/${randoms.logo}`;
         item.appendChild(img);
         
@@ -43,8 +33,6 @@ function initGrid(gridElement, baseClass) {
 
 // 초기화 실행
 document.addEventListener('DOMContentLoaded', () => {
-    const contentGrid = document.querySelector('.content__grid');
-    initGrid(contentGrid, 'content__grid');
-    
-    initRollingBar(rollingNews);
+    initGrid({ containerSelector: '.content__grid' });
+    initRollingBars(rollingNews, { containerSelector: '.rolling-bar' });
 });
