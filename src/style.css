@@ -100,6 +100,17 @@ body {
   color: var(--text-strong);
 }
 
+@keyframes rolling-slide-up-a {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-34px); }
+}
+
+@keyframes rolling-slide-up-b {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-34px); }
+}
+
+
 @keyframes rolling-slide-up {
   from {
     transform: translateY(0px);

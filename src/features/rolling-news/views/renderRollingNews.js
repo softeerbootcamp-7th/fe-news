@@ -1,3 +1,11 @@
+// 애니메이션을 리플로우 없이 재시작하도록 처리
+function restartAnimationNoReflow(wrapper) {
+  const flip = wrapper.dataset.flip === "1";
+  wrapper.dataset.flip = flip ? "0" : "1";
+
+  wrapper.style.animation = `${flip ? "rolling-slide-up-a" : "rolling-slide-up-b"} 0.5s ease`;
+}
+
 export function renderRollingNews(columnId, currentIndex, data) {
   const column = document.getElementById(columnId)
   if (!column) return currentIndex
@@ -21,9 +29,7 @@ export function renderRollingNews(columnId, currentIndex, data) {
   rows[1].querySelector('p').textContent = nxt.description
 
   // 애니메이션 재시작
-  wrapper.style.animation = 'none'
-  void wrapper.offsetHeight
-  wrapper.style.animation = 'rolling-slide-up 0.5s ease'
+  restartAnimationNoReflow(wrapper);
 
   wrapper.addEventListener('animationend', () => {
     const afterIdx = (idx + 1) % itemLen
