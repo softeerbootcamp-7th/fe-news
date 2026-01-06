@@ -6,7 +6,7 @@
  * @param {LogoImageTemplateParams} logoImageTemplateParams
  * @returns
  */
-export const LOGO_IMAGE_TEMPLATE = ({ logoUrl, className }) => {
+export const logoImageTemplate = ({ logoUrl, className }) => {
   return `
   <img
     src="${logoUrl}"

@@ -1,6 +1,6 @@
 import { PLUS } from '../svgs';
 
-export const SUBSCRIBE_BUTTON_TEMPLATE = () => {
+export const subscribeButtonTemplate = () => {
   return `
   <button class="subscribe-button">
     ${PLUS}

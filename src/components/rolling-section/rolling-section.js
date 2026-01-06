@@ -1,6 +1,7 @@
 import { getNewspaperForRolling } from '@/models';
 import { setRollingAnimation } from '@/utils';
-import { rollingItemTemplate, ROLLING_ANIMATION } from '@/constants';
+import { ROLLING_ANIMATION } from '@/constants';
+import { rollingItemTemplate } from '@/templates';
 
 /**
  * @typedef {import('../../types').Newspaper} Newspaper

@@ -1,4 +1,4 @@
-import { LOGO_IMAGE_TEMPLATE } from './logo-image-template.js';
+import { logoImageTemplate } from './logo-image-template.js';
 
 /**
  * @typedef {import('../../types').Newspaper} Newspaper
@@ -10,10 +10,10 @@ import { LOGO_IMAGE_TEMPLATE } from './logo-image-template.js';
  * @param {GridItemTemplateParams} gridItemTemplateParams
  * @returns
  */
-export const GRID_ITEM_TEMPLATE = ({ logoUrl, index }) => {
+export const gridItemTemplate = ({ logoUrl, index }) => {
   return `
   <div class="news-grid-view__card" data-index="${index}">
-    ${LOGO_IMAGE_TEMPLATE({ logoUrl, className: 'news-grid-view__card--image' })}
+    ${logoImageTemplate({ logoUrl, className: 'news-grid-view__card--image' })}
   </div>
   `;
 };
