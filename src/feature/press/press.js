@@ -158,7 +158,7 @@ function addSubscribeEvents() {
     if (isSubscribed(pressName)) {
       // 해지버튼: 다이얼로그 표시
       dialog.querySelector("strong").textContent = pressName;
-      dialog.showModal();
+      dialog.setAttribute("open", "");
     } else {
       // 구독버튼: 구독
       button.innerHTML = getLoadingIndicatorTemplate();
@@ -172,11 +172,11 @@ function addSubscribeEvents() {
       .closest("dialog")
       .querySelector("strong").textContent;
     toggleSubscription(pressName);
-    dialog.close();
+    dialog.removeAttribute("open");
   });
 
   // 다이얼로그 닫기
   negativeButton.addEventListener("click", () => {
-    dialog.close();
+    dialog.removeAttribute("open");
   });
 }
