@@ -72,6 +72,10 @@ h1 {
   display: flex;
   gap: 24px;
 }
+
+.tab-button {
+  color: var(--text-weak);
+}
 #tab-and-viewer {
   display: flex;
   width: 930px;
@@ -144,9 +148,6 @@ h1 {
 .selected-text {
   color: var(--text-strong);
 }
-#subscribed-press-tab {
-  color: var(--text-weak);
-}
 
 #main-view {
   display: flex;
@@ -169,4 +170,8 @@ h1 {
 
 .subscribe-info-txt {
   padding: 4px;
+}
+
+.is-active-text {
+  color: var(--text-strong);
 }

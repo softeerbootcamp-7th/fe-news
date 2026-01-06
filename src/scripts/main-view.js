@@ -23,7 +23,6 @@ const tabButtonbar = document.querySelector("#tab-button-bar");
 tabButtonbar.addEventListener("click", (e) => {
   // 버튼 요소를 눌렀을 때만 이벤트 실행되도록 제어
   if (e.target.className.includes("tab-button")) {
-    console.log("include tab bottu");
     // 사용자가 누른게 '구독한 언론사' 탭이고, 현재 보여지고 있던게 '전체 언론사 탭'이었다면
     if (
       e.target.id === SUBSCRIBED_PRESS_TAB_ID &&
@@ -44,11 +43,22 @@ tabButtonbar.addEventListener("click", (e) => {
       selectedTabElId = ALL_PRESS_TAB_ID;
     }
 
+    const tabs = tabButtonbar.querySelectorAll(".tab-button");
+
+    tabs.forEach((tab) => {
+      tab.classList.remove("selected-bold16");
+      tab.classList.add("available-medium16");
+      tab.classList.toggle("is-active-text");
+    });
+
+    e.target.classList.remove("available-medium16");
+    e.target.classList.add("selected-bold16");
+
     renderGrid(pages, 0);
   }
 });
 
-// 전체언론사 선택 탭 요소
+// 전체언론사 선택 탭 요소 id
 const ALL_PRESS_TAB_ID = "all-press-tab";
 const SUBSCRIBED_PRESS_TAB_ID = "subscribed-press-tab";
 const allPressTab = document.querySelector(`#${ALL_PRESS_TAB_ID}`);
