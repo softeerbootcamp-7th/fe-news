@@ -1,4 +1,5 @@
-import { getNewspaperForRolling, setRollingAnimation } from '@/models';
+import { getNewspaperForRolling } from '@/models';
+import { setRollingAnimation } from '@/utils';
 import { rollingItemTemplate, ROLLING_ANIMATION } from '@/constants';
 
 /**
