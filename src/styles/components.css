@@ -43,7 +43,12 @@ h1 {
 #newspaper-icon {
   color: var(--text-point);
 }
-#grid-view-icon {
+
+.view-type-icon {
+  color: var(--text-weak);
+}
+
+.is-active-icon {
   color: var(--text-point);
 }
 .auto-rolling-news {

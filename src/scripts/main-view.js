@@ -17,6 +17,18 @@ badge.addEventListener("click", () => {
 // 구독중인 언론사 수
 badge.textContent = subscribedPressList.length;
 
+const viewerButtonBar = document.querySelector("#viewer-button");
+viewerButtonBar.addEventListener("click", (e) => {
+  const el = e.target.closest("svg");
+  if (!el) return;
+
+  const iconBtns = viewerButtonBar.querySelectorAll(".view-type-icon");
+
+  iconBtns.forEach((btn) => {
+    btn.classList.toggle("is-active-icon");
+  });
+});
+
 // 언론사 선택 탭 바 영역
 const tabButtonbar = document.querySelector("#tab-button-bar");
 // 탭 바 영역에 이벤트 헨들러 달고 이벤트 전이 이용
@@ -46,13 +58,10 @@ tabButtonbar.addEventListener("click", (e) => {
     const tabs = tabButtonbar.querySelectorAll(".tab-button");
 
     tabs.forEach((tab) => {
-      tab.classList.remove("selected-bold16");
-      tab.classList.add("available-medium16");
+      tab.classList.toggle("selected-bold16");
+      tab.classList.toggle("available-medium16");
       tab.classList.toggle("is-active-text");
     });
-
-    e.target.classList.remove("available-medium16");
-    e.target.classList.add("selected-bold16");
 
     renderGrid(pages, 0);
   }
