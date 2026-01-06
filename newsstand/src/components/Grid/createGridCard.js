@@ -1,5 +1,6 @@
 import { createEl } from "../../lib/dom";
 import { store, actions } from "../../state/store";
+import { CLOSE_ICON, createIconButton, PLUS_ICON } from "../buttons";
 
 const PRESS_PER_PAGE = 24;
 
@@ -41,20 +42,27 @@ const createGridCard = (press) => {
         ${
           subscribed
             ? `
-              <button type="button" class="subscribe-btn surface-alt typo-available-medium12 border-default text-weak"   data-action="unsubscribe">
-                x 해지하기
-              </button>`
+            ${createIconButton(
+              CLOSE_ICON,
+              "subscribe-btn-grid",
+              "unsubscribe",
+              "구독해제"
+            )}
+              `
             : `
-              <button type="button" class="subscribe-btn surface-alt typo-available-medium12 border-default text-weak"  data-action="subscribe">
-                + 구독하기
-              </button>`
+            ${createIconButton(
+              PLUS_ICON,
+              "subscribe-btn-grid",
+              "subscribe",
+              "구독하기"
+            )}
+              `
         }
         
       </div>
     `
   );
 
-  //
   item.addEventListener("click", (e) => {
     const subscribeBtn = e.target.closest("[data-action='subscribe']");
     const unsubscribeBtn = e.target.closest("[data-action='unsubscribe']");

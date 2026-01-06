@@ -86,7 +86,7 @@ const createControlsMarkup = (subscriptionLenghth) => `
           >
           내가 구독한 언론사
              <span
-              class="ns-tab__badge typo-display-medium12 surface-brand-alt"
+              class="ns-tab__badge typo-display-medium12 text-white-weak surface-brand-alt"
               aria-label="구독한 언론사 수"
             >
               ${subscriptionLenghth}
