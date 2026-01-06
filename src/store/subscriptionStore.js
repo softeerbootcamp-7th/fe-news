@@ -6,21 +6,20 @@ export function observeSubscriptionStore(listener) {
   return () => listeners.delete(listener);
 }
 
-function notify(pressId) {
-  listeners.forEach((listener) => listener(pressId));
+function notify(pressName) {
+  listeners.forEach((listener) => listener(pressName));
 }
 
-export function isSubscribed(pressId) {
-  const pressId_str = String(pressId);
+export function isSubscribed(pressName) {
+  const pressName_str = String(pressName);
 
-  return subscriptionState.get(pressId_str) ?? false;
+  return subscriptionState.get(pressName_str) ?? false;
 }
 
-export function toggleSubscription(pressId) {
-  const pressId_str = String(pressId);
-  const nextValue = !isSubscribed(pressId_str);
-  subscriptionState.set(pressId_str, nextValue);
-  notify(pressId);
+export function toggleSubscription(pressName) {
+  const nextValue = !isSubscribed(pressName_str);
+  subscriptionState.set(pressName, nextValue);
+  notify(pressName);
 }
 
 export function getSubscriptionCount() {
