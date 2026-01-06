@@ -2,8 +2,9 @@
 // 리스트는 미구현으로 실제 전환기능 없음
 // 아이콘 색깔 변경 작업만 존재
 
-import { initGrid } from './grid/gridController.js';
-import { initList } from './list/listController.js';
+import { initGridEvents, showGrid } from './grid/gridController.js';
+import { initListEvents, showList } from './list/listController.js';
+import { setPageMode } from './page/pageController.js';
 
 let listView, gridView, viewElement;
 
@@ -15,27 +16,37 @@ export function initViewTabs({listId, gridId}) {
     viewElement = document.getElementById('newsGrid');
 
     // 리스트 실행
+    let listInitiated = false;
     listView.addEventListener('click', () => {
-        // 리스트 렌더링
+        // 아이콘 변동
         viewElement.classList.remove('active-grid');
         viewElement.classList.add('active-list');
-        initList({
-            viewId: 'newsGrid',
-            prevBtnId: 'prevBtn', // 이전 페이지 버튼
-            nextBtnId: 'nextBtn'  // 다음 페이지 버튼
-        });
+
+        // 리스트 렌더링
+        setPageMode('LIST');
+        if (!listInitiated) {
+            listInitiated = true;
+            initListEvents({
+                viewId: 'newsGrid',
+                prevBtnId: 'prevBtn', // 이전 페이지 버튼
+                nextBtnId: 'nextBtn'  // 다음 페이지 버튼
+            });
+        }
+        else
+            showList();
+
+
     });
 
     // 그리드 실행
     gridView.addEventListener('click', () => {
-        // 그리드 렌더링
+        // 아이콘 변동
         viewElement.classList.remove('active-list');
         viewElement.classList.add('active-grid');
-        initGrid({
-            viewId: 'newsGrid',   // 그리드
-            prevBtnId: 'prevBtn', // 이전 페이지 버튼
-            nextBtnId: 'nextBtn'  // 다음 페이지 버튼
-        });
+
+        // 그리드 렌더링
+        setPageMode('GRID');
+        showGrid();
     });
 
     // 선택한 DOM에 active 설정

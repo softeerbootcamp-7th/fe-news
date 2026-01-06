@@ -3,9 +3,12 @@ import { initSubscriptionBadge } from './utils/subscription/subscriptionControll
 import { initSubscriptionTabs } from './utils/subscription/subscriptionTabController.js';
 import { initSubscriptionStore } from './utils/subscription/subscriptionStore.js';
 import { initViewTabs } from './utils/viewTabController.js';
-import { initGrid } from './utils/grid/gridController.js';
+
+import { initGridEvents } from './utils/grid/gridController.js';
+
 import { initRollingTabs } from './rolling/rolling.js';
 
+import { initPageController } from './utils/page/pageController.js';
 
 function initApp() {
   // 구독 언론사 저장
@@ -29,10 +32,16 @@ function initApp() {
   });
 
   // 초기 그리드 상태
-  initGrid({
+  initGridEvents({
     viewId: 'newsGrid',
     prevBtnId: 'prevBtn', // 이전 페이지 버튼
     nextBtnId: 'nextBtn'  // 다음 페이지 버튼
+  });
+  
+  // 페이지 컨트롤러
+  initPageController({
+    prevBtnId: 'prevBtn',
+    nextBtnId: 'nextBtn'
   });
 
   // 최신 기사 롤링 탭

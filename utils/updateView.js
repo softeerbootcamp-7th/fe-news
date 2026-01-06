@@ -1,8 +1,10 @@
 import { renderGrid } from "./grid/grid.js";
-import { renderList } from "./list/list.js";
+import { renderList, updateList } from "./list/list.js";
 
 let prevBtn = document.getElementById("prevBtn");
 let nextBtn = document.getElementById("nextBtn");
+
+let viewUpdate = document.getElementById('news-list-container');
 
 export function updateView({type, view, currentPage, currentData, itemCount}) {
     if (type === "GRID") {
@@ -12,11 +14,16 @@ export function updateView({type, view, currentPage, currentData, itemCount}) {
             page: currentPage
         });
     }
-    else if (type === "LIST") {
+    else if (type === "LIST-INIT") {
         renderList({
             container: view,
             data: currentData,
             page: currentPage
+        });
+    }
+    else if (type === "LIST-UPDATE") {
+        updateList({
+            container: viewUpdate
         });
     }
 
