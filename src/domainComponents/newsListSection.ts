@@ -1,4 +1,5 @@
 import mockNews from "../../assets/mock_news.json";
+import { renderButton } from "../components/button";
 import { renderNewsItem } from "./newsItem";
 
 const NEWS_LIST_LENGTH = 24;
@@ -125,11 +126,11 @@ function updateGrid(container) {
 function enhanceWithSubscription(liDOM, pressName, container) {
 	liDOM.classList.add("news-item");
 
-	// 호버 시 나타날 버튼
-	const isSubscribed = subscribedPresses.has(pressName);
-	const subscribeBtn = document.createElement("button");
-	subscribeBtn.className = "subscribe-btn";
-	subscribeBtn.textContent = isSubscribed ? "구독해지" : "+ 구독하기";
+	const subscribeBtn = renderButton({
+		children: "구독하기",
+		variant: "primary",
+		icon: "plus",
+	});
 
 	subscribeBtn.onclick = (e) => {
 		e.stopPropagation();
