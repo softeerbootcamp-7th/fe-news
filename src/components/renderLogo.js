@@ -1,37 +1,73 @@
+import { subscribePressStore } from "../stores/subscribePressStore";
 import { createBtn } from "./createBtn";
 
 /**
- * 컨테이너에 li, img 요소를 생성하여 로고 이미지를 렌더링합니다.
+ * 컨테이너에 li, img, button 요소를 생성하여 언론사 로고를 렌더링합니다.
  *
- * @function renderLogos
- * @param {string} containerSelector - 이미지를 추가할 컨테이너의 CSS 선택자
- * @param {string[]} pressLogos - 로고 이미지 경로 배열
- * @returns {void}
+ * @param {string} containerSelector 
+ * @param {Map} pressMapData - Key: ID, Value: { name, logo }
  */
-export function renderLogos(containerSelector, pressLogos) {
+export function renderLogos(containerSelector, pressMapData) {
   const container = document.querySelector(containerSelector);
-  pressLogos.forEach((src) => {
+  container.innerHTML = '';
+
+  const fragment = document.createDocumentFragment();
+
+  pressMapData.forEach((press, pressId) => {
     const li = document.createElement('li');
 
     const img = document.createElement('img');
     img.className = 'press-logo-img';
-    img.src = src;
-    img.alt = '언론사 로고';
+    img.src = press.logo;
+    img.alt = `${press.name} 로고`;
     li.appendChild(img);
 
-    const subscribeBtn = createBtn('white', 'plus', '구독하기', 'subscribeBtn', handleSubscribe);
+    const subscribeBtn = createSubscribeBtn(pressId);
     li.appendChild(subscribeBtn);
 
-    subscribeBtn.style.display = 'none';
-    li.addEventListener('mouseover', () => {
-      img.style.display = 'none';
-      subscribeBtn.style.display = 'flex';
-    });
-    li.addEventListener('mouseleave', () => {
-      img.style.display = 'block';
-      subscribeBtn.style.display = 'none';
-    });
+    handleHoverPressItem(li, img, subscribeBtn);
 
-    container.appendChild(li);
+    fragment.appendChild(li);
   });
+  
+  container.appendChild(fragment);
+}
+
+const createSubscribeBtn = (pressId) => {
+    const { subscribedPressIdList } = subscribePressStore.getState();
+    const isSubscribed = subscribedPressIdList.includes(pressId);
+
+    const btnText = isSubscribed ? '해지하기' : '구독하기';
+    const btnIcon = isSubscribed ? 'closed' : 'plus'; 
+    const btnColor = isSubscribed ? 'grey' : 'white';
+
+    const btn = createBtn(
+      btnColor, 
+      btnIcon, 
+      btnText, 
+      'subscribe-btn', 
+      () => handleClickSubscribeBtn(pressId)
+    );
+
+    btn.dataset.pressId = pressId;
+    btn.style.display = 'none';
+
+    return btn;
+  }
+
+const handleHoverPressItem = (liEl, imgEl, btnEl) => {
+  liEl.addEventListener('mouseover', () => {
+    imgEl.style.display = 'none';
+    btnEl.style.display = 'flex';
+  });
+  liEl.addEventListener('mouseleave', () => {
+    imgEl.style.display = 'flex';
+    btnEl.style.display = 'none';
+  });
+}
+
+const handleClickSubscribeBtn = (pressId) => {
+  const { subscribedPressIdList: currentList } = subscribePressStore.getState();
+  const actionType = currentList.includes(pressId) ? 'UNSUBSCRIBE' : 'SUBSCRIBE';
+  subscribePressStore.dispatch({ type: actionType, payload: pressId });
 }
