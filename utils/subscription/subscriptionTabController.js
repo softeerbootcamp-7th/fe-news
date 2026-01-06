@@ -1,6 +1,7 @@
 import { presses } from '../../data/presses.js';                   // 가공한 언론사 데이터(이름, 로고)
 import { getSubscribedPresses } from './subscriptionStore.js';  // 전체 언론사 중 구독한 언론사만 필터링
-import { setGridData } from '../grid/gridController.js';              
+import { setGridData } from '../grid/gridController.js';           
+import { getPageMode } from '../page/pageController.js';   
 
 // 전체 그리드, 구독 그리드 전환
 export function initSubscriptionTabs() {
@@ -17,7 +18,12 @@ export function initSubscriptionTabs() {
     allTab.classList.remove('available-medium16');
     subscribedTab.classList.remove('selected-bold16');
     subscribedTab.classList.add('available-medium16');
-    setGridData(presses); // 전체 언론사를 그리드에 배치
+    if (getPageMode() === 'GRID') {
+      setGridData(presses); // 전체 언론사를 그리드에 배치
+    }
+    else if (getPageMode() === 'LIST') {
+      console.log('list-all');
+    }
   });
 
   subscribedTab.addEventListener('click', () => {
@@ -28,7 +34,12 @@ export function initSubscriptionTabs() {
     subscribedTab.classList.remove('available-medium16');
     allTab.classList.remove('selected-bold16');
     allTab.classList.add('available-medium16');
-    setGridData(getSubscribedPresses());  // 구독한 언론사만 그리드에 배치
+    if (getPageMode() === 'GRID') {
+      setGridData(getSubscribedPresses());  // 구독한 언론사만 그리드에 배치
+    }
+    else if (getPageMode() === 'LIST') {
+      console.log('list-subscribed');
+    }
   });
 }
 

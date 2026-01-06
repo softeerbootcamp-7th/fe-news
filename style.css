@@ -249,6 +249,12 @@ ul, ol {
     text-decoration: underline;
 }
 
+
+
+
+
+
+
 /* 리스트 */
 .news-grid.active-list {
     display: flex;
@@ -268,9 +274,17 @@ ul, ol {
 
 .news-category {
     display: flex;
+    gap: 50px;
+    justify-content: space-between;
     align-items: center;
     height: 40px;
     padding: 0 16px;
+    cursor: pointer;
+    color: var(--text-weak);
+}
+.news-category.active {
+    background-color: var(--surface-brand-alt);
+    color: var(--text-white-default);
 }
 
 
