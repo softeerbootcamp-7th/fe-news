@@ -5,7 +5,7 @@ export const newsData = [
     description: 'React의 새로운 버전이 출시되었습니다. 주요 기능을 알아보세요.',
     image: '/assets/light_mode_logo/asset 0 1.png',
     date: '2025-12-27',
-    press: '서울경제'
+    press: '동아일보'
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export const newsData = [
     description: 'Vue 팀이 Vue 4의 새로운 기능을 공개했습니다.',
     image: '/assets/light_mode_logo/asset 1 1.png',
     date: '2025-12-26',
-    press: '조선일보'
+    press: '중앙일보'
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export const newsData = [
     description: 'TypeScript의 최신 업데이트 사항을 확인하세요.',
     image: '/assets/light_mode_logo/asset 2 1.png',
     date: '2025-12-25',
-    press: '뉴시스'
+    press: '한겨레'
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ export const newsData = [
     description: 'Vite의 빌드 성능이 더욱 향상되었습니다.',
     image: '/assets/light_mode_logo/asset 3 1.png',
     date: '2025-12-24',
-    press: 'YTN'
+    press: '경향신문'
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ export const newsData = [
     description: 'Next.js의 새로운 버전에서 확인할 수 있는 기능들을 살펴봅시다.',
     image: '/assets/light_mode_logo/asset 4 1.png',
     date: '2025-12-23',
-    press: 'YTN'
+    press: '서울신문'
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ export const newsData = [
     description: '새로운 Web API 표준이 정의되었습니다.',
     image: '/assets/light_mode_logo/asset 5 1.png',
     date: '2025-12-22',
-    press: '중앙일보'
+    press: '조선일보'
   },
   {
     id: 7,
@@ -61,7 +61,7 @@ export const newsData = [
     description: '최신 보안 패치가 릴리스되었습니다.',
     image: '/assets/light_mode_logo/asset 7 1.png',
     date: '2025-12-20',
-    press: '한겨레'
+    press: '연합뉴스'
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ export const newsData = [
     description: 'CSS의 최신 기능들을 알아봅시다.',
     image: '/assets/light_mode_logo/asset 8 1.png',
     date: '2025-12-19',
-    press: '서울신문'
+    press: '서울경제'
   },
   {
     id: 10,
@@ -77,7 +77,7 @@ export const newsData = [
     description: 'WebAssembly의 새로운 기능과 활용법.',
     image: '/assets/light_mode_logo/asset 9 1.png',
     date: '2025-12-18',
-    press: '동아일보'
+    press: '헤럴드경제'
   },
   {
     id: 11,
@@ -85,7 +85,7 @@ export const newsData = [
     description: 'GraphQL 생태계의 최신 발전 소식입니다.',
     image: '/assets/light_mode_logo/asset 10.png',
     date: '2025-12-17',
-    press: 'KBS'
+    press: '파이낸셜뉴스'
   },
   {
     id: 12,
@@ -93,7 +93,7 @@ export const newsData = [
     description: 'Docker를 효과적으로 사용하는 방법을 배우세요.',
     image: '/assets/light_mode_logo/asset 11 1.png',
     date: '2025-12-16',
-    press: 'JTBC'
+    press: '매일경제'
   },
   {
     id: 13,
@@ -101,7 +101,7 @@ export const newsData = [
     description: 'Kubernetes의 오토스케일링 기능 설명입니다.',
     image: '/assets/light_mode_logo/asset 12 1.png',
     date: '2025-12-15',
-    press: '뉴시스'
+    press: '아이뉴스24'
   },
   {
     id: 14,
@@ -109,7 +109,7 @@ export const newsData = [
     description: 'AWS에 추가된 새로운 서비스를 소개합니다.',
     image: '/assets/light_mode_logo/asset 13 1.png',
     date: '2025-12-14',
-    press: '서울경제'
+    press: '딜사이트'
   },
   {
     id: 15,
@@ -117,7 +117,7 @@ export const newsData = [
     description: 'Firebase의 새로운 기능과 개선 사항입니다.',
     image: '/assets/light_mode_logo/asset 14 1.png',
     date: '2025-12-13',
-    press: '경향신문'
+    press: '지디넷'
   },
   {
     id: 16,
@@ -125,7 +125,7 @@ export const newsData = [
     description: 'Python의 최신 버전의 특징을 알아봅시다.',
     image: '/assets/light_mode_logo/asset 15 1.png',
     date: '2025-12-12',
-    press: 'YTN'
+    press: '테크월드'
   },
   {
     id: 17,
@@ -133,7 +133,7 @@ export const newsData = [
     description: 'Java 21의 주요 기능을 소개합니다.',
     image: '/assets/light_mode_logo/asset 16 1.png',
     date: '2025-12-11',
-    press: '조선일보'
+    press: '아이티동아'
   },
   {
     id: 18,
@@ -141,7 +141,7 @@ export const newsData = [
     description: 'Rust를 선택해야 하는 이유들입니다.',
     image: '/assets/light_mode_logo/asset 17 1.png',
     date: '2025-12-10',
-    press: '서울신문'
+    press: '컴퓨터월드'
   },
   {
     id: 19,
@@ -149,7 +149,7 @@ export const newsData = [
     description: 'Go 언어의 성능과 장점을 알아봅시다.',
     image: '/assets/light_mode_logo/asset 19 1.png',
     date: '2025-12-09',
-    press: '연합뉴스'
+    press: '바이라인네트워크'
   },
   {
     id: 20,
@@ -157,7 +157,7 @@ export const newsData = [
     description: 'AI 개발을 위한 최신 도구들을 소개합니다.',
     image: '/assets/light_mode_logo/asset 2 1.png',
     date: '2025-12-08',
-    press: '동아일보'
+    press: '뉴스1'
   },
   {
     id: 21,
@@ -165,7 +165,7 @@ export const newsData = [
     description: '인기 있는 머신러닝 라이브러리의 비교입니다.',
     image: '/assets/light_mode_logo/asset 20 1.png',
     date: '2025-12-07',
-    press: '서울신문'
+    press: '내일경제'
   },
   {
     id: 22,
@@ -173,7 +173,7 @@ export const newsData = [
     description: '클라우드로의 마이그레이션 전략을 배우세요.',
     image: '/assets/light_mode_logo/asset 21 1.png',
     date: '2025-12-06',
-    press: '뉴시스'
+    press: '이데일리'
   },
   {
     id: 23,
@@ -181,7 +181,7 @@ export const newsData = [
     description: '최신 보안 위협과 대응 방안입니다.',
     image: '/assets/light_mode_logo/asset 22 1.png',
     date: '2025-12-05',
-    press: '경향신문'
+    press: '네이버뉴스'
   },
   {
     id: 24,
@@ -189,7 +189,7 @@ export const newsData = [
     description: 'DevOps를 위한 최고의 관행들입니다.',
     image: '/assets/light_mode_logo/asset 23 1.png',
     date: '2025-12-04',
-    press: 'SBS'
+    press: '다음뉴스'
   },
   {
     id: 25,
@@ -197,7 +197,7 @@ export const newsData = [
     description: '마이크로서비스 설계의 핵심 패턴들입니다.',
     image: '/assets/light_mode_logo/asset 24 1.png',
     date: '2025-12-03',
-    press: 'YTN'
+    press: '구글뉴스'
   },
   {
     id: 26,
@@ -205,7 +205,7 @@ export const newsData = [
     description: '효율적인 API 설계 방법을 배우세요.',
     image: '/assets/light_mode_logo/asset 25 1.png',
     date: '2025-12-02',
-    press: 'KBS'
+    press: '카카오뉴스'
   },
   {
     id: 27,
@@ -213,7 +213,7 @@ export const newsData = [
     description: 'REST와 GraphQL의 비교 분석입니다.',
     image: '/assets/light_mode_logo/asset 27 1.png',
     date: '2025-12-01',
-    press: '중앙일보'
+    press: '라인뉴스'
   },
   {
     id: 28,
@@ -221,7 +221,7 @@ export const newsData = [
     description: 'JWT 보안 관리 방법을 알아봅시다.',
     image: '/assets/light_mode_logo/asset 28 1.png',
     date: '2025-11-30',
-    press: 'YTN'
+    press: '포털뉴스'
   },
   {
     id: 29,
@@ -229,7 +229,7 @@ export const newsData = [
     description: 'OAuth 2.0을 통한 인증 방식입니다.',
     image: '/assets/light_mode_logo/asset 29 1.png',
     date: '2025-11-29',
-    press: 'SBS'
+    press: '웹진뉴스'
   },
   {
     id: 30,
@@ -237,7 +237,7 @@ export const newsData = [
     description: '데이터베이스 쿼리 최적화 기법입니다.',
     image: '/assets/light_mode_logo/asset 31 1.png',
     date: '2025-11-28',
-    press: '동아일보'
+    press: '기술블로그'
   },
   {
     id: 31,
@@ -245,7 +245,7 @@ export const newsData = [
     description: 'NoSQL과 SQL 데이터베이스 비교입니다.',
     image: '/assets/light_mode_logo/asset 32 1.png',
     date: '2025-11-27',
-    press: 'YTN'
+    press: '개발자뉴스'
   },
   {
     id: 32,
@@ -253,7 +253,7 @@ export const newsData = [
     description: 'Redis를 활용한 효율적인 캐싱입니다.',
     image: '/assets/light_mode_logo/asset 34 1.png',
     date: '2025-11-26',
-    press: 'YTN'
+    press: '프로그래밍뉴스'
   },
   {
     id: 33,
@@ -261,7 +261,7 @@ export const newsData = [
     description: '비동기 처리를 위한 메시지 큐입니다.',
     image: '/assets/light_mode_logo/asset 35 1.png',
     date: '2025-11-25',
-    press: '서울경제'
+    press: '소프트웨어뉴스'
   },
   {
     id: 34,
@@ -269,7 +269,7 @@ export const newsData = [
     description: '자동화된 배포 파이프라인 구성입니다.',
     image: '/assets/light_mode_logo/asset 36 1.png',
     date: '2025-11-24',
-    press: '한겨레'
+    press: '클라우드뉴스'
   },
   {
     id: 35,
@@ -277,7 +277,7 @@ export const newsData = [
     description: 'GitHub Actions로 자동화하기입니다.',
     image: '/assets/light_mode_logo/asset 37 1.png',
     date: '2025-11-23',
-    press: '한겨레'
+    press: '깃허브뉴스'
   },
   {
     id: 36,
@@ -285,7 +285,7 @@ export const newsData = [
     description: 'Jenkins를 이용한 CI 구축입니다.',
     image: '/assets/light_mode_logo/asset 38 1.png',
     date: '2025-11-22',
-    press: '경향신문'
+    press: '개발자커뮤니티'
   },
   {
     id: 37,
@@ -293,7 +293,7 @@ export const newsData = [
     description: 'Infrastructure as Code로 관리하기입니다.',
     image: '/assets/light_mode_logo/asset 39 1.png',
     date: '2025-11-21',
-    press: '중앙일보'
+    press: '인프라뉴스'
   },
   {
     id: 38,
@@ -301,7 +301,7 @@ export const newsData = [
     description: 'Ansible로 서버 구성 자동화하기입니다.',
     image: '/assets/light_mode_logo/asset 40 1.png',
     date: '2025-11-20',
-    press: '뉴시스'
+    press: '시스템뉴스'
   },
   {
     id: 39,
@@ -309,7 +309,7 @@ export const newsData = [
     description: 'ELK 스택을 이용한 모니터링입니다.',
     image: '/assets/light_mode_logo/asset 41 1.png',
     date: '2025-11-19',
-    press: '한겨레'
+    press: '모니터링뉴스'
   },
   {
     id: 40,
@@ -317,7 +317,7 @@ export const newsData = [
     description: 'Prometheus로 시스템 메트릭 수집입니다.',
     image: '/assets/light_mode_logo/asset 42 1.png',
     date: '2025-11-18',
-    press: '경향신문'
+    press: '분석뉴스'
   },
   {
     id: 41,
@@ -325,7 +325,7 @@ export const newsData = [
     description: 'Grafana로 시각화된 모니터링입니다.',
     image: '/assets/light_mode_logo/asset 43 1.png',
     date: '2025-11-17',
-    press: '서울경제'
+    press: '시각화뉴스'
   },
   {
     id: 42,
@@ -333,7 +333,7 @@ export const newsData = [
     description: '효율적인 로드 밸런싱 전략입니다.',
     image: '/assets/light_mode_logo/asset 44 1.png',
     date: '2025-11-16',
-    press: '동아일보'
+    press: '네트워크뉴스'
   },
   {
     id: 43,
@@ -341,7 +341,7 @@ export const newsData = [
     description: 'CDN을 이용한 콘텐츠 배포입니다.',
     image: '/assets/light_mode_logo/asset 45 1.png',
     date: '2025-11-15',
-    press: 'YTN'
+    press: 'CDN뉴스'
   },
   {
     id: 44,
@@ -349,7 +349,7 @@ export const newsData = [
     description: '웹 사이트 성능 개선 기법입니다.',
     image: '/assets/light_mode_logo/asset 46 1.png',
     date: '2025-11-14',
-    press: 'JTBC'
+    press: '웹뉴스'
   },
   {
     id: 45,
@@ -357,7 +357,7 @@ export const newsData = [
     description: '검색 엔진 최적화 방법입니다.',
     image: '/assets/light_mode_logo/asset 47 1.png',
     date: '2025-11-13',
-    press: '조선일보'
+    press: '검색뉴스'
   },
   {
     id: 46,
@@ -365,6 +365,6 @@ export const newsData = [
     description: 'Progressive Web App 개발하기입니다.',
     image: '/assets/light_mode_logo/asset 48 1.png',
     date: '2025-11-12',
-    press: '서울신문'
+    press: '앱뉴스'
   },
 ]
