@@ -1,7 +1,8 @@
 @use '@/styles/variable.scss' as *;
 @use '@/styles/typography.scss' as *;  
 
-.subscribe-button {
+.subscribe-button,
+.unsubscribe-button {
   @include available-medium12;
         align-items: center;
         background-color: var(--surface-alt);
@@ -18,4 +19,15 @@
           border-color: var(--border-bold);
           color:var(--text-bold);
         }
+
+        &--no-text {
+          align-items: center;
+          border-radius: var(--radius-full);
+          display: flex;
+          height: 1.5rem;
+          justify-content: center;
+          padding:0;
+          width: 1.5rem;
+        }
 }
+
