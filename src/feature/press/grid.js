@@ -9,7 +9,7 @@ import {
   isSubscribed,
   toggleSubscription,
   observeSubscriptionStore,
-} from "@/store/subscription";
+} from "@/store/subscriptionStore";
 import { getLoadingIndicatorTemplate } from "@/template/Loading";
 
 export function initGridView(paginatedPressData) {
