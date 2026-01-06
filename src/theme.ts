@@ -1,3 +1,5 @@
+import { renderButton } from "./components/button";
+
 export const ThemeManager = {
 	init() {
 		const savedTheme =
@@ -25,17 +27,17 @@ export const ThemeManager = {
 
 export function renderThemeToggle() {
 	const container = document.createElement("div");
-	container.classList.add("theme-toggle-container");
 
-	const button = document.createElement("button");
-	button.type = "button";
-	button.className = "theme-toggle-btn";
-	button.innerText = "테마 전환";
+	const $button = renderButton({
+		children: "테마 전환",
+		variant: "primary",
+		icon: "plus",
+	});
 
-	button.addEventListener("click", () => {
+	$button.addEventListener("click", () => {
 		ThemeManager.toggle();
 	});
 
-	container.append(button);
+	container.append($button);
 	return container;
 }
