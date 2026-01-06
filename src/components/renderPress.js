@@ -72,6 +72,14 @@ const renderSubscribedPress = (containerSelector, pressMapData) => {
   container.appendChild(fragment);
 }
 
+// '내가 구독한 언론사' 메뉴에서, subscribedPressIdList가 변경될 때마다 다시 렌더링
+subscribePressStore.subscribe(() => {
+  const subscribedTab = document.querySelector('.subscribed-press-container');
+  if (subscribedTab && subscribedTab.classList.contains('selected')) {
+    renderSubscribedPress('.press-logo-container', pressMap);
+  }
+});
+
 const createListItem = (press, pressId) => {
     const liEl = document.createElement('li');
 
