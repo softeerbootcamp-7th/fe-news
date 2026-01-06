@@ -1,5 +1,6 @@
 import { subscribePressStore } from "../stores/subscribePressStore";
 import { loadSVG, LOGO_COUNT_PER_PAGE, pressMap } from "../utils/assetUtils";
+import { waitForAlert } from "./alert";
 import { createBtn } from "./createBtn";
 
 export const renderGrid = () => {
@@ -132,8 +133,14 @@ const handleHoverPressItem = (liEl, imgEl, btnEl) => {
   });
 }
 
-const handleClickSubscribeBtn = (pressId) => {
+const handleClickSubscribeBtn = async (pressId) => {
   const { subscribedPressIdList: currentList } = subscribePressStore.getState();
   const actionType = currentList.includes(pressId) ? 'UNSUBSCRIBE' : 'SUBSCRIBE';
+
+  if (actionType === 'UNSUBSCRIBE') {
+    const isConfirmed = await waitForAlert();
+    if (!isConfirmed) return;
+  }
+  
   subscribePressStore.dispatch({ type: actionType, payload: pressId });
-}
+};
