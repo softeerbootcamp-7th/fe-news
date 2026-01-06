@@ -74,6 +74,7 @@
           <div id="viewer-button">
             <!-- 리스트 보기 아이콘 -->
             <svg
+              data-view-mode="list"
               class="view-type-icon"
               id="list-view-icon"
               width="24"
@@ -89,6 +90,7 @@
             </svg>
             <!-- 그리드 보기 아이콘 -->
             <svg
+              data-view-mode="grid"
               class="view-type-icon is-active-icon"
               id="grid-view-icon"
               width="24"
@@ -106,10 +108,16 @@
         </div>
         <div class="height-space-20"></div>
         <div id="press-view">
-          <img id="chevron-left" src="/icons/LeftButton.png" />
+          <div id="grid-mode-view-wrapper">
+            <div id="grid-mode-view" hidden>
+              <img id="chevron-left" src="/icons/LeftButton.png" />
 
-          <div id="grid-view"></div>
-          <img id="chevron-right" src="/icons/RightButton.png" />
+              <div id="grid-view"></div>
+              <img id="chevron-right" src="/icons/RightButton.png" />
+            </div>
+          </div>
+
+          <div id="list-mode-view" hidden>리스트뷰입니다</div>
         </div>
       </div>
       <div class="alert" id="unsubscribe-alert">

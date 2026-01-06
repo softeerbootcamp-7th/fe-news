@@ -9,6 +9,7 @@ import {
   setPages,
   setSelectedTabId,
   setSubscribedList,
+  setViewMode,
 } from "../store/appState";
 import shuffleArray from "../utils/shuffleArray";
 
@@ -36,7 +37,14 @@ function renderBadge() {
 const viewerButtonBar = document.querySelector("#viewer-button");
 viewerButtonBar.addEventListener("click", (e) => {
   const el = e.target.closest("svg");
+  const { viewMode } = getState();
   if (!el) return;
+
+  // 만약 현재 보기 모드랑 새로 누른 보기 모드랑 같으면 변화 필요 없기 때문에 함수 종료
+  if (viewMode === el.dataset.viewMode) return;
+
+  // 현재 보기 모드 state에 내용 적용
+  setViewMode(el.dataset.viewMode);
 
   const iconBtns = viewerButtonBar.querySelectorAll(".view-type-icon");
 
@@ -44,7 +52,32 @@ viewerButtonBar.addEventListener("click", (e) => {
     btn.classList.remove("is-active-icon");
   });
   el.classList.add("is-active-icon");
+
+  // 보기 모드에 맞는 메인 뷰 보기 출력
+  renderMainView();
 });
+
+function renderMainView() {
+  const { viewMode } = getState();
+  console.log("renderMainView viewMode =", viewMode);
+  if (viewMode == "grid") renderGridView();
+  else if (viewMode == "list") renderListView();
+}
+
+function renderGridView() {
+  console.log("renderGridView");
+  const gridModeView = document.querySelector("#grid-mode-view-wrapper");
+  gridModeView.hidden = false;
+  const listModeView = document.querySelector("#list-mode-view");
+  listModeView.hidden = true;
+}
+function renderListView() {
+  console.log("renderListView");
+  const gridModeView = document.querySelector("#grid-mode-view-wrapper");
+  gridModeView.hidden = true;
+  const listModeView = document.querySelector("#list-mode-view");
+  listModeView.hidden = false;
+}
 
 // 언론사 선택 탭 바 영역
 const tabButtonbar = document.querySelector("#tab-button-bar");
@@ -178,8 +211,8 @@ const CROSS_ICON_SVG =
 </svg>';
 
 // 그리드 왼쪽, 오른쪽 화살표
-const rightArrowEl = document.querySelector("#chevron-right");
-const leftArrowEl = document.querySelector("#chevron-left");
+let rightArrowEl = document.querySelector("#chevron-right");
+let leftArrowEl = document.querySelector("#chevron-left");
 
 // 로고 이미지명들은 아래와 같은 규칙 가지고 있음
 // asset ${n} 1.png -> (n은 1부터 90까지)
@@ -349,6 +382,7 @@ function checkArrowShow() {
     rightArrowEl,
     toggle: lastPageIdx - currentPageIdx > 0,
   });
+  debugger;
 }
 
 // 그리드 옆 왼쪽 화살표 눌렀을 때 불려지는 함수
@@ -379,6 +413,7 @@ export default function initGridView() {
   setSubscribedList(loadSubscribedFromStorage());
   makePageMtrx();
   renderGrid(0);
+  renderMainView();
   renderBadge();
   checkArrowShow();
 }
