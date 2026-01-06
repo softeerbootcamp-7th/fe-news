@@ -55,23 +55,50 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: background-color 0.2s ease;
 
       & img {
         max-width: var(--news-item-logo-max-size);
         max-height: var(--news-item-logo-max-size);
         object-fit: contain;
-        transition: transform 0.2s ease;
+        transition: opacity 0.2s ease;
       }
 
       /* Suscribe Button */
       & .subscribe-btn {
         position: absolute;
-        bottom: var(--btn-subscribe-position-bottom);
-        right: var(--btn-subscribe-position-right);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: var(--btn-subscribe-width);
         height: var(--btn-subscribe-height);
         gap: var(--btn-subscribe-icon-gap);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--surface-brand-default);
+        color: var(--text-white-default);
+        border: none;
+        border-radius: var(--radius-50);
+        cursor: pointer;
+        font-size: var(--display-bold12);
+      }
+
+      /* Hover State */
+      &:hover {
+        background-color: var(--surface-alt);
+
+        & img {
+          opacity: 0;
+        }
+
+        & .subscribe-btn {
+          opacity: 1;
+          pointer-events: auto;
+        }
       }
     }
   }

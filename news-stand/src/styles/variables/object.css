@@ -10,6 +10,7 @@
   /* ---- Radius ---- */
   --radius-full: 999px;
   --radius-100: 8px;
+  --radius-50: 4px;
 
   /* ---- Shadow ---- */
   --shadow-elevation-1: 0 2px 4px rgba(20, 33, 43, 0.1);
