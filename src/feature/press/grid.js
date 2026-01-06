@@ -26,6 +26,8 @@ const nextButton = document.querySelector(".press-list__control--next");
 let currentPage = 0;
 let pressData = [];
 
+let isBound = false;
+
 export function initGridView(parsedPressData) {
   // 데이터 셔플
   pressData = shuffleArray(parsedPressData);
@@ -34,6 +36,19 @@ export function initGridView(parsedPressData) {
   renderGridContainer();
   renderCurrentPage();
 
+  // 버튼 이벤트 등록
+  if (!isBound) {
+    addEvents();
+    isBound = true;
+  }
+
+  // 구독 상태 observer 등록
+  observeSubscriptionStore((pressId) => {
+    updateGridItem(pressId);
+  });
+}
+
+function addEvents() {
   // 구독하기 버튼
   gridContainer.addEventListener("click", (e) => {
     const pressId = e.target.closest("li").dataset.label;
@@ -41,11 +56,6 @@ export function initGridView(parsedPressData) {
     toggleSubscription(pressId);
     e.target.closest("button").innerHTML = getLoadingIndicatorTemplate();
   });
-  // 구독 상태 observer 등록
-  observeSubscriptionStore((pressId) => {
-    updateGridItem(pressId);
-  });
-
   // 양옆 화살표 버튼
   prevButton.addEventListener("click", () => {
     currentPage--;
