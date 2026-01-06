@@ -20,8 +20,17 @@ export function initSystemTheme({
   const initial = applyTheme(themeFromMediaQuery(mql));
   if (typeof onChange === "function") onChange(initial);
 
+  if (!mql) return () => {};
+
   const handler = (e) => {
     const next = applyTheme(themeFromMediaQuery(e));
     if (typeof onChange === "function") onChange(next);
   };
+
+  if (typeof mql.addEventListener === "function") {
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }
+
+  return () => {};
 }

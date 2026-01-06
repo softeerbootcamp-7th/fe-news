@@ -1,9 +1,3 @@
-export const STORAGE_KEYS = {
-  THEME: "fe-news.theme",
-  VIEW: "fe-news.view",
-  SUBSCRIBED_PRESS: "fe-news.subscribedPress", // string[] (logo filename 기반)
-};
-
 export const LOGO_FILES = [
   "008 1.png",
   "032 1.png",
