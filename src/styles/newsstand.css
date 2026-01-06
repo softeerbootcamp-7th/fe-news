@@ -232,7 +232,8 @@ body {
 /* List view */
 .press-tabs {
   /* tabs container */
-  border: 1px solid var(--border-default);
+  outline: 1px solid var(--border-default);
+  outline-offset: -1px;
   background-color: var(--surface-alt);
   display: flex;
   width: 100%;
@@ -288,7 +289,6 @@ body {
 .press-feed {
   /* feed container */
   padding: 24px;
-
   background-color: var(--surface-default);
   border: 1px solid var(--border-default);
   border-top: none;
