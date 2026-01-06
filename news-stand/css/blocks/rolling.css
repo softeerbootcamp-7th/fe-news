@@ -37,4 +37,8 @@
   display: flex;
   gap: 15px;
   height: 49px; /* JS 계산식과 일치해야 함 */
+
+  div {
+    height: 98px;
+  }
 }
