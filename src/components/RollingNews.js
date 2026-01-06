@@ -27,7 +27,7 @@ function RollingArea({ newsList }) {
     .map(
       (news) => `
             <div class="rolling-item flex gap-4 p-4">
-              <span class="display-bold14 text-strong">${news.press}</span>
+              <span class="display-bold14 text-strong single-line">${news.press}</span>
               <span class="available-medium14 text-default truncate">${news.title}</span>
             </div>
           `
@@ -35,7 +35,7 @@ function RollingArea({ newsList }) {
     .join("");
 
   return `
-          <div class="rolling-area flex-1 bg-surface-alt overflow-hidden h-12">
+          <div class="rolling-area flex-1 bg-surface-alt overflow-hidden h-12 border-default ">
             <div class="rolling-wrapper">
               ${newsAreaHtml}
             </div>
@@ -57,7 +57,7 @@ const initAutoRollingForArea = (areaIndex) => {
   wrapper.appendChild(firstClone);
 
   let currentIndex = 0;
-  const itemHeight = 48;
+  const itemHeight = items[0].getBoundingClientRect().height;
   const totalItems = items.length;
 
   setInterval(() => {
