@@ -1,5 +1,4 @@
-import { parsePressData } from "@/utils/parse";
-import { shufflePressData } from "@/utils/shuffle";
+import { parsePressData, shufflePressData } from "@/utils/parse";
 import { SUBSCRIPTION_TAB } from "@/types/constant";
 import { VIEW_TAB } from "@/types/constant";
 import {
