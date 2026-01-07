@@ -158,9 +158,9 @@ export const store = {
     targetPressName: "",
     subscribedIds: loadSavedSubs(), // 구독한 언론사의 ID를 저장하는 Sets
 
-    currentTabIndex: 0,
     currentPressNumber: 0,
     timerId: null,
+    pressData: [],
   },
   setViewOnlySubs(bool) {
     if (this.state.viewOnlySubs === bool) return;
@@ -168,7 +168,6 @@ export const store = {
     this.state.currentPage = 0;
     this.setTargetPressId(null, "");
     this.clearTimerId();
-    this.state.currentTabIndex = 0;
     this.state.currentPressNumber = 0;
     this.setMaxPage();
     notify("viewOnlySubs");
@@ -179,7 +178,6 @@ export const store = {
     this.state.currentPage = 0;
     this.setTargetPressId(null, "");
     this.clearTimerId();
-    this.state.currentTabIndex = 0;
     this.state.currentPressNumber = 0;
     this.setMaxPage();
     notify("viewGrid");
@@ -248,8 +246,8 @@ export const store = {
    *
    */
   setCurrentTabIndex(index) {
-    if (index < 0 || index > this.state.maxPage) return;
-    this.state.currentPage = index;
+    if (index < 0 || index > this.state.maxPage) this.state.currentPage = 0;
+    else this.state.currentPage = index;
 
     this.setCurrentPressNumber(0);
     notify("page");
@@ -269,5 +267,9 @@ export const store = {
   clearTimerId() {
     clearTimeout(this.state.timerId);
     this.state.timerId = null;
+  },
+  setPressData(data) {
+    this.state.pressData = data;
+    notify("pressData");
   },
 };
