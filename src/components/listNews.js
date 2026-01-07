@@ -1,4 +1,5 @@
 import "../style/listNews.css";
+import pagination, { nextButton } from "./pagination";
 
 export default function listNews(
   pressData = null,
@@ -21,11 +22,7 @@ export default function listNews(
   return /* html */ `
     <section class="list-news-section">
       <div class="list-pagination-wrapper">
-        <button class="pagination-arrow prev" aria-label="이전 언론사">
-          <svg width="56" height="100%" viewBox="0 0 56 100" fill="none">
-            <path d="M40 25 L16 50 L40 75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
+        ${pagination()}
         
         <div class="list-content-container">
           ${createCategoryTabs(
@@ -37,11 +34,7 @@ export default function listNews(
           ${createPressContent(pressData, subscribedNews)}
         </div>
         
-        <button class="pagination-arrow next" aria-label="다음 언론사">
-          <svg width="56" height="100%" viewBox="0 0 56 100" fill="none">
-            <path d="M16 25 L40 50 L16 75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
+        ${nextButton()}
       </div>
     </section>
   `;
