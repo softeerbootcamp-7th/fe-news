@@ -20,7 +20,7 @@ function showGridOverlay(event, gridElement, overlay) {
     const itemRect = gridItem.getBoundingClientRect();
     const gridRect = gridElement.getBoundingClientRect();
 
-    updatePosition(overlay, itemRect, gridRect);
+    updateOverlayPosition(overlay, itemRect, gridRect);
 
     overlay.classList.remove('grid__overlay--hidden');
 }
