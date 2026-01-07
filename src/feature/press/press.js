@@ -1,5 +1,5 @@
 import { parsePressData } from "@/utils/parse";
-import { shuffleArray } from "@/utils/shuffle";
+import { shufflePressData } from "@/utils/shuffle";
 import { SUBSCRIPTION_TAB } from "@/types/constant";
 import { VIEW_TAB } from "@/types/constant";
 import {
@@ -29,7 +29,8 @@ const pagination = createPaginationController();
 
 export function initPressView(articlesData) {
   // dummy 데이터 파싱 및 셔플
-  const allPressData = shuffleArray(parsePressData(articlesData)); // {id, name, logo}
+  const allPressData = parsePressData(articlesData); // {id, name, logo}
+  filteredData = allPressData;
 
   // 그리드/리스트 버튼
   addViewTabEvents();
@@ -41,15 +42,17 @@ export function initPressView(articlesData) {
   addSubscribeEvents();
 
   // 그리드/리스트 변경 시 뷰 업데이트
-  observeViewTabStore(() => {
-    pagination.setStrategy(getViewTab());
-    renderPressView();
+  observeViewTabStore((viewTab) => {
+    pagination.setStrategy(viewTab);
+    updateViewTab(viewTab);
+    createPressView();
   });
   // 전체/구독 탭 변경 시 데이터 업데이트
-  observeSubscriptionTabStore(() => {
+  observeSubscriptionTabStore((subscriptionTab) => {
     filteredData = filterPressData(allPressData);
     pagination.reset();
-    renderPressView();
+    updateSubscriptionTab(subscriptionTab);
+    createPressView();
   });
 
   // 구독/해지 변경 시 뷰 업데이트
@@ -57,11 +60,12 @@ export function initPressView(articlesData) {
     updateSubscriptionCount();
     filteredData = filterPressData(allPressData);
     pagination.reset();
-    renderPressView();
+    createPressView();
   });
 
   // 초기 설정
-  setViewTab(VIEW_TAB.GRID);
+  // setViewTab(VIEW_TAB.GRID);
+  setViewTab(VIEW_TAB.LIST);
   setSubscriptionTab(SUBSCRIPTION_TAB.ALL);
   updateSubscriptionCount();
 }
@@ -73,17 +77,21 @@ function filterPressData(allPressData) {
   return allPressData;
 }
 
-function renderPressView() {
-  // 그리드/리스트 뷰
-  const paginatedData = pagination.getPageData(filteredData);
-  const { showPrev, showNext } = pagination.getArrowState(filteredData);
+function createPressView() {
+  // 그리드/리스트 뷰에 따른 셔플
+  const viewTab = getViewTab();
+  const shuffledData = shufflePressData(viewTab, filteredData);
 
-  switch (getViewTab()) {
+  const paginatedData = pagination.getPageData(shuffledData);
+  const { showPrev, showNext } = pagination.getArrowState(shuffledData);
+  const currentPage = pagination.getCurrentPage();
+
+  switch (viewTab) {
     case VIEW_TAB.GRID:
       initGridView(paginatedData);
       break;
     case VIEW_TAB.LIST:
-      initListView();
+      initListView(paginatedData, currentPage);
       break;
   }
 
@@ -166,7 +174,7 @@ function addPaginationEvents() {
 
   nextButton.addEventListener("click", () => {
     pagination.next();
-    renderPressView();
+    createPressView();
   });
 }
 

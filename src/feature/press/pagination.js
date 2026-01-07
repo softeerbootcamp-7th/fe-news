@@ -3,7 +3,7 @@ import { VIEW_TAB } from "@/types/constant";
 const NUM_GRID_ROW = 4;
 const NUM_GRID_COL = 6;
 const GRID_SIZE = NUM_GRID_ROW * NUM_GRID_COL;
-const MAX_PAGE = 4;
+const GRID_MAX_PAGE = 4;
 
 export function createPaginationController() {
   let currentPage = 0;
@@ -23,8 +23,8 @@ export function createPaginationController() {
       currentPage = 0;
     },
 
-    next(data) {
-      if (currentPage < 3) currentPage++;
+    next() {
+      currentPage++;
     },
 
     prev() {
@@ -48,11 +48,14 @@ export function createPaginationController() {
     getArrowState(data) {
       if (!strategy) return { showPrev: false, showNext: false };
 
-      const totalPages = strategy.getTotalPages(data);
       return {
         showPrev: currentPage > 0,
-        showNext: currentPage < Math.min(totalPages, MAX_PAGE) - 1,
+        showNext: currentPage < strategy.getTotalPages(data) - 1,
       };
+    },
+
+    getTotalPages(data) {
+      return strategy.getTotalPages(data);
     },
   };
 }
@@ -60,7 +63,7 @@ export function createPaginationController() {
 function createGridPaginationStrategy() {
   return {
     getTotalPages(data) {
-      return Math.ceil(data.length / GRID_SIZE) || 1;
+      return Math.min(GRID_MAX_PAGE, Math.ceil(data.length / GRID_SIZE) || 1);
     },
 
     getPageSlice(data, page) {
@@ -79,11 +82,11 @@ function createGridPaginationStrategy() {
 function createListPaginationStrategy() {
   return {
     getTotalPages(data) {
-      return 1;
+      return data.length;
     },
 
     getPageSlice(data, page) {
-      return data;
+      return data[page];
     },
 
     getPageSize() {

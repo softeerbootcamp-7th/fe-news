@@ -9,7 +9,7 @@ export function observeViewTabStore(listener) {
 }
 
 function notify() {
-  listeners.forEach((listener) => listener());
+  listeners.forEach((listener) => listener(viewTabName));
 }
 
 export function getViewTab() {
