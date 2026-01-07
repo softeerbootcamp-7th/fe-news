@@ -260,18 +260,18 @@ body {
     position: absolute;
     inset: 0;
     background-color: var(--surface-brand-default);
-    width: 0%;
-    transition: transform 0.2s ease;
+    width: 100%;
     z-index: 0;
+    transform-origin: left;
+    animation: progress 20s linear infinite;
+    animation-play-state: paused;
   }
   &.active {
     min-width: 160px;
     color: var(--text-white-default);
     background-color: var(--surface-brand-alt);
     &::before {
-      width: 100%;
-      transform-origin: left;
-      transform: scaleX(var(--progress)); /* 채우기 */
+      animation-play-state: running;
     }
     & svg {
       width: 14px;
@@ -288,6 +288,15 @@ body {
   &:hover:not(.active) {
     cursor: pointer;
     text-decoration: underline;
+  }
+}
+
+@keyframes progress {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
   }
 }
 

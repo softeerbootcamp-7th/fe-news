@@ -32,7 +32,7 @@ import { getLoadingIndicatorTemplate } from "@/template/Loading";
 let shuffledData = [];
 let filteredData = [];
 let slideTimeoutId = null;
-const SLIDE_INTERVAL_MS = 3000;
+const SLIDE_INTERVAL_MS = 20000;
 const pagination = createPaginationController();
 
 export function initPressView(articlesData) {

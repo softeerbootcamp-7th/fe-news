@@ -21,7 +21,6 @@ export function getNavTemplate({
     ? `
     <button
       class="press-tabs__item active"
-      style="--progress: ${totalPress ? currentPress / totalPress : "0.93"}"
       aria-current="true"
     >
       <p class="display-bold-14">${navName}</p>
