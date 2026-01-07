@@ -261,7 +261,7 @@ body {
     inset: 0;
     background-color: var(--surface-brand-default);
     width: 0%;
-    transition: width 0.2s ease;
+    transition: transform 0.2s ease;
     z-index: 0;
   }
   &.active {
@@ -269,7 +269,9 @@ body {
     color: var(--text-white-default);
     background-color: var(--surface-brand-alt);
     &::before {
-      width: var(--progress); /* 채우기 */
+      width: 100%;
+      transform-origin: left;
+      transform: scaleX(var(--progress)); /* 채우기 */
     }
     & svg {
       width: 14px;
