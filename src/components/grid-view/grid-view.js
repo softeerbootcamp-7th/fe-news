@@ -1,32 +1,41 @@
 import { NEWS_SECTION_STATE } from '@/constants';
 import { Observer } from '@/libs';
-import { getNewspaperForGrid } from '@/models';
 import { newsSectionStore } from '@/stores';
+import { gridViewTemplate } from '@/templates';
 
 import { SubscribedGridView } from './subscribed-grid-view';
 import { TotalGridView } from './total-grid-view';
 
 /**
+ * @typedef {import('../../types').Newspaper} Newspaper
+ *
+ * @typedef {Object} GridViewParams
+ * @property {Newspaper[]} newspaperList
+ *
+ * @param {GridViewParams} gridViewParams
  * @returns {{cleanup: () => void}}
  */
-export const GridView = async () => {
+export const GridView = async ({ newspaperList }) => {
   let cleanupFunctions = null;
-  const { newspaperList: totalNewspaperList } = await getNewspaperForGrid();
+
+  const createGridView = () => {
+    const $newsSection = document.querySelector('.news-section');
+    $newsSection.insertAdjacentHTML('beforeend', gridViewTemplate());
+  };
 
   const updateGridView = () => {
     const { type, view } = newsSectionStore.getState();
-    if (view === NEWS_SECTION_STATE.VIEW.LIST) {
-      cleanupFunctions?.();
-      cleanupFunctions = null;
-      return;
-    }
 
     cleanupFunctions?.();
     cleanupFunctions = null;
 
+    if (view === NEWS_SECTION_STATE.VIEW.LIST) {
+      return;
+    }
+
     if (type === NEWS_SECTION_STATE.TYPE.TOTAL) {
       const { cleanup: cleanupTotalGridView } = TotalGridView({
-        newspaperList: totalNewspaperList,
+        newspaperList,
       });
       cleanupFunctions = cleanupTotalGridView;
     } else {
@@ -38,8 +47,26 @@ export const GridView = async () => {
   const observer = new Observer(updateGridView);
   newsSectionStore.subscribe(observer);
 
+  createGridView();
+
   const { cleanup: cleanupTotalGridView } = TotalGridView({
-    newspaperList: totalNewspaperList,
+    newspaperList,
   });
   cleanupFunctions = cleanupTotalGridView;
+
+  return {
+    cleanup: () => {
+      cleanupFunctions?.();
+      cleanupFunctions = null;
+      if (observer) {
+        newsSectionStore.unsubscribe(observer);
+      }
+      const $gridViewWrapper = document.querySelector(
+        '.news-grid-view__wrapper',
+      );
+      if ($gridViewWrapper) {
+        $gridViewWrapper.remove();
+      }
+    },
+  };
 };
