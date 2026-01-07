@@ -229,3 +229,15 @@ body {
 .content__grid-img {
     height: 20px;
 }
+
+.grid__overlay {
+    outline: 1px solid red;
+    position: absolute;
+    pointer-events: none;
+    width: 155px;
+    height: 97px;
+}
+
+.grid__overlay--hidden {
+    opacity: 0;
+}
