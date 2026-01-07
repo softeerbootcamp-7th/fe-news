@@ -3,6 +3,7 @@ import {
   getNavTemplateEnd,
   getNavTemplate,
   getPressContentTemplate,
+  getEmptyContentTemplate,
 } from "@/template/ListView";
 import { CATEGORY_LIST } from "@/types/constant";
 import { isSubscribed, getSubscribedList } from "@/store/subscriptionStore";
@@ -32,10 +33,12 @@ export function initListView(paginatedData, currentPage) {
     )
     .join("");
   html += getNavTemplateEnd();
-  html += getPressContentTemplate({
-    ...paginatedData,
-    isSubscribed: isSubscribed(paginatedData.name),
-  });
+  if (paginatedData)
+    html += getPressContentTemplate({
+      ...paginatedData,
+      isSubscribed: isSubscribed(paginatedData.name),
+    });
+  else html += getEmptyContentTemplate();
 
   console.log();
   listContainer.innerHTML = html;

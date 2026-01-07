@@ -103,3 +103,11 @@ export function getPressContentTemplate({
       </div>
     </section>`;
 }
+
+export function getEmptyContentTemplate() {
+  return `
+    <div style="padding: 16px">
+      <span>구독한 언론사가 없습니다.</span>
+    </div>
+    `;
+}
