@@ -5,6 +5,10 @@ const initialState = {
   view: "list", // "grid" | "list"
   subscribedPresses: [],
   page: 1,
+  listCategoryIdx: 0,
+  listPressIdx: 0,
+  isLoading: false,
+  listPressData: null,
 };
 
 export const store = createStore(initialState);
@@ -29,6 +33,20 @@ export const actions = {
     });
   },
 
+  setCategoryIdx(idx) {
+    store.setState((prev) =>
+      prev.listCategoryIdx === idx
+        ? prev
+        : { ...prev, listCategoryIdx: idx, listPressIdx: 0 }
+    );
+  },
+
+  setPressIdx(idx) {
+    store.setState((prev) =>
+      prev.listPressIdx === idx ? prev : { ...prev, listPressIdx: idx }
+    );
+  },
+
   setSubscribe(press) {
     store.setState((prev) => {
       const nextIds = [...prev.subscribedPresses, press];
@@ -43,5 +61,17 @@ export const actions = {
       );
       return { ...prev, subscribedPresses: nextIds };
     });
+  },
+
+  setLoading(l) {
+    store.setState((prev) =>
+      prev.isLoading === l ? prev : { ...prev, isLoading: l }
+    );
+  },
+
+  setListPressData(data) {
+    store.setState((prev) =>
+      prev.listPressData === data ? prev : { ...prev, listPressData: data }
+    );
   },
 };
