@@ -6,6 +6,9 @@ function restartAnimationNoReflow(wrapper) {
   wrapper.style.animation = `${flip ? "rolling-slide-up-a" : "rolling-slide-up-b"} 0.5s ease`;
 }
 
+// TODO: 함수 분리하기
+// TODO: 데이터 description -> mainTitle 로 변경하기
+
 export function renderRollingNews(columnId, currentIndex, data) {
   const column = document.getElementById(columnId)
   if (!column) return currentIndex
