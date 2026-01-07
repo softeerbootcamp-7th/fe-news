@@ -1,0 +1,37 @@
+/**
+ * Component Dimension Variables
+ * 컴포넌트별 고정 크기 변수 정의
+ */
+
+:root {
+  /* ---- Layout Dimensions ---- */
+  --layout-main-width: 930px;
+  --layout-main-height: 388px;
+
+  /* ---- Badge ---- */
+  --badge-size: 20px;
+
+  /* ---- View Toggle Buttons ---- */
+  --view-toggle-btn-size: 20px;
+
+  /* ---- News Card (Latest News) ---- */
+  --news-card-width: 461px;
+  --news-card-height: 49px;
+
+  /* ---- News Grid Navigation ---- */
+  --news-grid-nav-offset: 70px;
+
+  /* ---- News Grid Item ---- */
+  --news-grid-item-width: 24px;
+  --news-grid-item-height: 40px;
+
+  /* ---- Subscribe Button ---- */
+  --btn-subscribe-width: 72px;
+  --btn-subscribe-height: 24px;
+  --btn-subscribe-position-bottom: 10px;
+  --btn-subscribe-position-right: 10px;
+  --btn-subscribe-icon-gap: 2px;
+
+  /* ---- News Grid Item Logo ---- */
+  --news-item-logo-max-size: 50%;
+}

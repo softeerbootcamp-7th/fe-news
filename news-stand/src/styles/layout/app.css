@@ -4,8 +4,8 @@
  */
 
 #app {
-  width: 930px;
-  height: 388px;
+  width: var(--layout-main-width);
+  height: var(--layout-main-height);
   display: flex;
   flex-direction: column;
   justify-content: center;

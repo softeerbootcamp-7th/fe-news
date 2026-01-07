@@ -1,0 +1,78 @@
+/**
+ * News Grid Styles
+ */
+
+.news-grid-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .nav-button {
+    position: absolute;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    transition: opacity 0.3s ease-in-out;
+
+    & img {
+      width: var(--news-grid-item-width);
+      height: var(--news-grid-item-height);
+      display: block;
+    }
+
+    &.prev {
+      left: calc(-1 * var(--news-grid-nav-offset));
+    }
+
+    &.next {
+      right: calc(-1 * var(--news-grid-nav-offset));
+    }
+
+    /* Disabled State */
+    &.disabled {
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+
+  & .news-grid {
+    width: 100%;
+    height: var(--layout-main-height);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: var(--border-width);
+    border: var(--border-width) solid var(--border-default);
+
+    & .news-item {
+      position: relative;
+      background-color: var(--surface-default);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      & img {
+        max-width: var(--news-item-logo-max-size);
+        max-height: var(--news-item-logo-max-size);
+        object-fit: contain;
+        transition: transform 0.2s ease;
+      }
+
+      /* Suscribe Button */
+      & .subscribe-btn {
+        position: absolute;
+        bottom: var(--btn-subscribe-position-bottom);
+        right: var(--btn-subscribe-position-right);
+        width: var(--btn-subscribe-width);
+        height: var(--btn-subscribe-height);
+        gap: var(--btn-subscribe-icon-gap);
+      }
+    }
+  }
+}

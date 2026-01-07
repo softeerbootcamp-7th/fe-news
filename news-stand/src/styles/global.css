@@ -8,6 +8,7 @@
 @import './variables/typography.css';
 @import './variables/object.css';
 @import './variables/spacing.css';
+@import './variables/components.css';
 
 /* Base */
 @import './base/fonts.css';
@@ -19,3 +20,5 @@
 /* Components */
 @import './components/header.css';
 @import '../features/latestNews/styles/latestNewsCard.css';
+@import '../features/navigation/styles/navigation.css';
+@import '../features/newsGrid/styles/newsGrid.css';
