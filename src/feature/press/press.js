@@ -6,6 +6,7 @@ import {
   getSubscriptionCount,
   toggleSubscription,
   observeSubscriptionStore,
+  getSubscriptionDate,
 } from "@/store/subscriptionStore";
 import {
   getSubscriptionTab,
@@ -23,12 +24,14 @@ import { initListView } from "./list";
 import { getLoadingIndicatorTemplate } from "@/template/Loading";
 
 // 상태
+let shuffledData = [];
 let filteredData = [];
 const pagination = createPaginationController();
 
 export function initPressView(articlesData) {
   // dummy 데이터 파싱 및 셔플
   const allPressData = parsePressData(articlesData); // {id, name, logo}
+  shuffledData = allPressData;
   filteredData = allPressData;
 
   // 그리드/리스트 버튼
@@ -43,12 +46,15 @@ export function initPressView(articlesData) {
   // 그리드/리스트 변경 시 뷰 업데이트
   observeViewTabStore((viewTab) => {
     pagination.setStrategy(viewTab);
+    if (getSubscriptionTab() === SUBSCRIPTION_TAB.ALL)
+      shuffledData = shufflePressData(viewTab, allPressData); // 셔플
+    filteredData = filterPressData(shuffledData);
     updateViewTab(viewTab);
     createPressView();
   });
   // 전체/구독 탭 변경 시 데이터 업데이트
   observeSubscriptionTabStore((subscriptionTab) => {
-    filteredData = filterPressData(allPressData);
+    filteredData = filterPressData(shuffledData);
     pagination.reset();
     updateSubscriptionTab(subscriptionTab);
     createPressView();
@@ -57,8 +63,7 @@ export function initPressView(articlesData) {
   // 구독/해지 변경 시 뷰 업데이트
   observeSubscriptionStore(() => {
     updateSubscriptionCount();
-    filteredData = filterPressData(allPressData);
-    pagination.reset();
+    filteredData = filterPressData(shuffledData);
     createPressView();
   });
 
@@ -69,23 +74,26 @@ export function initPressView(articlesData) {
   updateSubscriptionCount();
 }
 
-function filterPressData(allPressData) {
+function filterPressData(shuffledData) {
   if (getSubscriptionTab() === SUBSCRIPTION_TAB.MY) {
-    return allPressData.filter((p) => isSubscribed(p.name));
+    return shuffledData
+      .filter(({ name }) => isSubscribed(name))
+      .sort((a, b) => {
+        const dateA = getSubscriptionDate(a.name);
+        const dateB = getSubscriptionDate(b.name);
+        return new Date(dateA) - new Date(dateB); // 구독 오래된 순
+      });
   }
-  return allPressData;
+  return shuffledData;
 }
 
 function createPressView() {
-  // 그리드/리스트 뷰에 따른 셔플
-  const viewTab = getViewTab();
-  const shuffledData = shufflePressData(viewTab, filteredData);
-
-  const paginatedData = pagination.getPageData(shuffledData);
-  const { showPrev, showNext } = pagination.getArrowState(shuffledData);
+  // 그리드/리스트 뷰
+  const paginatedData = pagination.getPageData(filteredData);
+  const { showPrev, showNext } = pagination.getArrowState(filteredData);
   const currentPage = pagination.getCurrentPage();
 
-  switch (viewTab) {
+  switch (getViewTab()) {
     case VIEW_TAB.GRID:
       initGridView(paginatedData);
       break;
