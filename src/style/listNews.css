@@ -95,6 +95,7 @@
   transition: all 0.2s;
   white-space: nowrap;
   position: relative;
+  overflow: hidden;
 }
 
 .category-tab:not(.active):hover {
@@ -106,6 +107,8 @@
   color: white;
   font-weight: 700;
   background: #7890E7;
+  position: relative;
+  transition: background-color 0.1s linear;
 }
 
 .category-tab.active:hover {
@@ -117,6 +120,8 @@
   flex-direction: row;
   align-items: center;
   gap: 3rem;
+  position: relative;
+  z-index: 2;
 }
 
 .category-tab .tab-name {
