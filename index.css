@@ -236,8 +236,39 @@ body {
     pointer-events: none;
     width: 155px;
     height: 97px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .grid__overlay--hidden {
     opacity: 0;
+}
+
+.component__button {
+    height: 24px;
+    border: 1px solid var(--text-text-border-default);
+    border-radius: 999px;
+    padding-right: 6px;
+    padding-left: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--text-text-weak-default);
+    gap: 2px;
+    cursor: pointer;
+}
+
+.component__button-content {
+    font-size: var(--font-size-12);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-text-weak);
+    padding-right: 4px;
+    text-align: center;
+}
+
+.component__button-img {
+    width: 12px;
+    height: 12px;
+    color: var(--text-text-weak);
 }

@@ -1,6 +1,7 @@
 import { GRID_COLS, GRID_ROWS } from "./config.js";
 import logoLinks from '../data/logo_links.json';
 import { fisherYatesShuffle } from '../utils';
+import { createSubscribeButton } from '../components/button.js';
 
 // 오버레이 너비, 높이, 위치 계산하는 함수
 function updateOverlayPosition(itemStyle, overlay, itemRect, gridRect) {
@@ -34,13 +35,10 @@ function hiddenGridOverlay(overlay) {
     overlay.classList.add('grid__overlay--hidden');
 }
 
-// 그리드 초기화 함수
-function initGrid({ containerSelector }) {
-    const gridElement = document.querySelector(containerSelector);
-    gridElement.style.gridTemplateColumns = `repeat(${GRID_COLS}, 1fr)`;
-    gridElement.style.gridTemplateRows = `repeat(${GRID_ROWS}, 1fr)`;
+// 그리드 아이템 생성 함수
+function renderGridItems(gridElement) {
     const totalCount = GRID_COLS * GRID_ROWS;
-    
+
     const originalItems = [...logoLinks.presses];
 
     // TODO: 페이지네이션 필요
@@ -57,8 +55,19 @@ function initGrid({ containerSelector }) {
         
         gridElement.appendChild(item);
     })
+}
+
+// 그리드 초기화 함수
+function initGrid({ containerSelector }) {
+    const gridElement = document.querySelector(containerSelector);
+    gridElement.style.gridTemplateColumns = `repeat(${GRID_COLS}, 1fr)`;
+    gridElement.style.gridTemplateRows = `repeat(${GRID_ROWS}, 1fr)`;
+    
+    renderGridItems(gridElement);
 
     const overlay = document.querySelector('.grid__overlay');
+    const overlaybutton = createSubscribeButton({ label: "구독하기", onClick: () => {} });
+    overlay.appendChild(overlaybutton);
 
     gridElement.addEventListener('mouseover', (event) => showGridOverlay(event, gridElement, overlay));
     gridElement.addEventListener('mouseleave', () => hiddenGridOverlay(overlay));
