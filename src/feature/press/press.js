@@ -31,6 +31,8 @@ import { getLoadingIndicatorTemplate } from "@/template/Loading";
 // 상태
 let shuffledData = [];
 let filteredData = [];
+let slideTimeoutId = null;
+const SLIDE_INTERVAL_MS = 3000;
 const pagination = createPaginationController();
 
 export function initPressView(articlesData) {
@@ -95,6 +97,7 @@ function filterPressData(shuffledData) {
 function createPressView() {
   // 그리드/리스트 뷰
   const paginatedData = pagination.getPageData(filteredData);
+  if (slideTimeoutId) clearTimeout(slideTimeoutId);
 
   switch (getViewTab()) {
     case VIEW_TAB.GRID:
@@ -105,6 +108,7 @@ function createPressView() {
       const currentIndex = parseCategoryIndex(shuffledData, currentPage);
       initListView(paginatedData, currentIndex);
       addNavEvents();
+      startSlidingAnimation();
       break;
   }
 
@@ -184,11 +188,15 @@ function addPaginationEvents() {
   prevButton.addEventListener("click", () => {
     pagination.prev();
     createPressView();
+
+    startSlidingAnimation();
   });
 
   nextButton.addEventListener("click", () => {
     pagination.next();
     createPressView();
+
+    startSlidingAnimation();
   });
 }
 
@@ -238,11 +246,11 @@ function addNavEvents() {
   navContainer.addEventListener("click", (e) => {
     const navButton = e.target.closest(".press-tabs__item");
     const label = navButton.firstElementChild.textContent;
-    updatePage(label);
+    updatePageByNav(label);
   });
 }
 
-function updatePage(label) {
+function updatePageByNav(label) {
   let page = 0;
   switch (getSubscriptionTab()) {
     case SUBSCRIPTION_TAB.ALL:
@@ -255,4 +263,20 @@ function updatePage(label) {
   }
   pagination.setPage(page);
   createPressView();
+}
+function startSlidingAnimation() {
+  if (slideTimeoutId) {
+    clearTimeout(slideTimeoutId);
+  }
+
+  slideTimeoutId = setTimeout(() => {
+    if (
+      pagination.getCurrentPage() >=
+      pagination.getTotalPages(filteredData) - 1
+    ) {
+      pagination.reset();
+    } else pagination.next();
+
+    createPressView();
+  }, SLIDE_INTERVAL_MS);
 }
