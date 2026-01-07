@@ -1,4 +1,4 @@
-import { getSubscribedCount } from '../state/subscription.js';
+import { getSubscribedCount } from '../store/subscription.js';
 
 export function initSubscriptionBadge() {
   const badge = document.querySelector('.sub-badge');

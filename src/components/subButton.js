@@ -1,4 +1,4 @@
-import { isSubscribed, toggleSubscribe } from '../state/subscription.js';
+import { isSubscribed, toggleSubscribe } from '../store/subscription.js';
 import { initSubscriptionBadge } from './subBadge.js';
 
 const BUTTON_TEXT = {
