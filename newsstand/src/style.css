@@ -229,6 +229,15 @@
 
 .ns-press-list__nav {
   height: 40px;
+  position: relative;
+}
+
+.ns-list-nav__btn {
+  position: absolute;
+  top: 160px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .ns-press-list__nav-list {

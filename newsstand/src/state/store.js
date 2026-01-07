@@ -33,17 +33,11 @@ export const actions = {
     });
   },
 
-  setCategoryIdx(idx) {
+  setListIdx({ categoryIdx, pressIdx }) {
     store.setState((prev) =>
-      prev.listCategoryIdx === idx
+      prev.listCategoryIdx === categoryIdx && prev.listPressIdx === pressIdx
         ? prev
-        : { ...prev, listCategoryIdx: idx, listPressIdx: 0 }
-    );
-  },
-
-  setPressIdx(idx) {
-    store.setState((prev) =>
-      prev.listPressIdx === idx ? prev : { ...prev, listPressIdx: idx }
+        : { ...prev, listCategoryIdx: categoryIdx, listPressIdx: pressIdx }
     );
   },
 
