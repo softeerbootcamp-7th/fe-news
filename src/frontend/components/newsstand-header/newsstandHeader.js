@@ -8,7 +8,7 @@ export function renderNewsstandHeader(container, options = {}) {
   const headerHtml = `
     <header class="newsstand-header">
       <h2 class="newstand-title">
-        <img src="./src/icons/icon-news.png" alt="" aria-hidden="true" width="24" height="24" />
+        <img src="/icons/icon-news.png" alt="" aria-hidden="true" width="24" height="24" />
         <span class="newstand-text">뉴스스탠드</span>
       </h2>
       <time class="newstand-date" datetime="${dateTime}">

@@ -127,10 +127,10 @@ export function renderNewsGrid(pressList, container, theme = 'auto') {
 
     const controlsHtml = `
       <button class="news-grid-prev" aria-label="이전 페이지">
-        <img src="./src/icons/icon-left-arrow.svg" alt="이전" />
+        <img src="/icons/icon-left-arrow.svg" alt="이전" />
       </button>
       <button class="news-grid-next" aria-label="다음 페이지">
-        <img src="./src/icons/icon-right-arrow.svg" alt="다음" />
+        <img src="/icons/icon-right-arrow.svg" alt="다음" />
       </button>
     `;
 

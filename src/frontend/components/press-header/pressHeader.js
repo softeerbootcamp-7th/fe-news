@@ -32,10 +32,10 @@ export function renderPressHeader(container, options = {}) {
       </div>
       <div class="tab-controls">
         <button type="button" class="btn-list" aria-label="리스트 보기">
-          <img src="./src/icons/icon-list.svg" alt="" aria-hidden="true" />
+          <img src="/icons/icon-list.svg" alt="" aria-hidden="true" />
         </button>
         <button type="button" class="btn-grid" aria-label="그리드 보기">
-          <img src="./src/icons/icon-grid.svg" alt="" aria-hidden="true" />
+          <img src="/icons/icon-grid.svg" alt="" aria-hidden="true" />
         </button>
       </div>
     </header>

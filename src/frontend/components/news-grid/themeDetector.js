@@ -2,7 +2,7 @@
 export function getCurrentTheme() {
   // const htmlTheme = document.documentElement.getAttribute('data-theme');
   // 다크모드 완성할 때 까지 light로 설정
-  const htmlTheme = 'light';
+  return 'light';
   if (htmlTheme === 'dark' || htmlTheme === 'light') {
     return htmlTheme;
   }

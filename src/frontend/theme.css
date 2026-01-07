@@ -32,9 +32,28 @@
   --border-default: var(--grayscale-100);
 }
 
-/* Semantic Tokens - Dark Mode */
+/* 명시적으로 라이트모드 설정 */
+[data-theme='light'] {
+  --text-strong: var(--grayscale-black);
+  --text-bold: var(--grayscale-500);
+  --text-default: var(--grayscale-400);
+  --text-weak: var(--grayscale-200);
+  --text-white-default: var(--grayscale-white);
+  --text-white-weak: var(--grayscale-white-alt);
+  --text-point: var(--blue-500);
+
+  --surface-default: var(--grayscale-white);
+  --surface-alt: var(--grayscale-50);
+  --surface-brand-default: var(--blue-500);
+  --surface-brand-alt: var(--blue-100);
+
+  --border-bold: var(--grayscale-300);
+  --border-default: var(--grayscale-100);
+}
+
+/* Semantic Tokens - Dark Mode (data-theme이 없을 때만 시스템 설정 따름) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --text-strong: var(--grayscale-white);
     --text-bold: var(--grayscale-50);
     --text-default: var(--grayscale-100);
