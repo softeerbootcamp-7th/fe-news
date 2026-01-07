@@ -3,7 +3,7 @@ import {
   initContext,
   initControllers,
 } from "./lib/appBindings.js";
-import { initApp } from "./lib/runtimes/appRuntime.js";
+import { initApp } from "./lib/appRuntime.js";
 
 export class NewsStandApp {
   constructor({ documentRef = document, windowRef = window } = {}) {

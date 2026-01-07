@@ -1,4 +1,4 @@
-import { bindEvents } from "../appEvents.js";
+import { bindEvents } from "./appEvents.js";
 
 export function setThemeInState(app, theme) {
   app.store.setState({ theme });

@@ -6,7 +6,7 @@ import {
 } from "../../shared/const/index.js";
 import { shuffle } from "../../shared/lib/index.js";
 import { createAppContext } from "../AppContext.js";
-import { createNewsStandActions } from "./actions/appActions.js";
+import { createNewsStandActions } from "./appActions.js";
 import { DateController } from "../../features/date/index.js";
 
 import { NewsRollingController } from "../../widgets/newsRolling/index.js";
@@ -22,7 +22,7 @@ import {
   renderLogoGrid,
   renderLogoList,
 } from "../../widgets/newsView/index.js";
-import { setThemeInState } from "./runtimes/appRuntime.js";
+import { setThemeInState } from "./appRuntime.js";
 import { handleClick, bindEvents, unbindEvents } from "./appEvents.js";
 import { setViewFromTarget } from "./runtimes/viewRuntime.js";
 
