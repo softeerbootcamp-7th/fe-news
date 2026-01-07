@@ -105,32 +105,55 @@ function addSubscriptionTabEvents() {
   const [allViewButton, myViewButton] =
     document.querySelectorAll(".press-news__tab");
   allViewButton.addEventListener("click", () => {
-    allViewButton.classList.add("active");
-    myViewButton.classList.remove("active");
     setSubscriptionTab(SUBSCRIPTION_TAB.ALL);
   });
   myViewButton.addEventListener("click", () => {
-    myViewButton.classList.add("active");
-    allViewButton.classList.remove("active");
     setSubscriptionTab(SUBSCRIPTION_TAB.MY);
   });
 }
+
+function updateSubscriptionTab(subscriptionTab) {
+  const [allViewButton, myViewButton] =
+    document.querySelectorAll(".press-news__tab");
+  switch (subscriptionTab) {
+    case SUBSCRIPTION_TAB.ALL:
+      allViewButton.classList.add("active");
+      myViewButton.classList.remove("active");
+      break;
+    case SUBSCRIPTION_TAB.MY:
+      myViewButton.classList.add("active");
+      allViewButton.classList.remove("active");
+      break;
+  }
+}
+
 function addViewTabEvents() {
   // 그리드/리스트 뷰 버튼
   const [listViewButton, gridViewButton] =
     document.querySelectorAll(".view-toggle");
-
   gridViewButton.addEventListener("click", () => {
-    gridViewButton.classList.add("active");
-    listViewButton.classList.remove("active");
     setViewTab(VIEW_TAB.GRID);
   });
   listViewButton.addEventListener("click", () => {
-    listViewButton.classList.add("active");
-    gridViewButton.classList.remove("active");
     setViewTab(VIEW_TAB.LIST);
   });
 }
+
+function updateViewTab(viewTab) {
+  const [listViewButton, gridViewButton] =
+    document.querySelectorAll(".view-toggle");
+  switch (viewTab) {
+    case VIEW_TAB.GRID:
+      gridViewButton.classList.add("active");
+      listViewButton.classList.remove("active");
+      break;
+    case VIEW_TAB.LIST:
+      listViewButton.classList.add("active");
+      gridViewButton.classList.remove("active");
+      break;
+  }
+}
+
 function addPaginationEvents() {
   // 페이지네이션 양옆 화살표
   const prevButton = document.querySelector(".press-list__control--prev");
@@ -138,7 +161,7 @@ function addPaginationEvents() {
 
   prevButton.addEventListener("click", () => {
     pagination.prev();
-    renderPressView();
+    createPressView();
   });
 
   nextButton.addEventListener("click", () => {
