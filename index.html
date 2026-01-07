@@ -36,28 +36,25 @@
           </section>
           <section class="news-section">
             <div class="news-section__header">
-              <div class="news-section__header__tabs">
-                <button>
-                  <span
-                    class="news-section__header__tabs__item--total--text news-section__header__tabs__item--total--text--selected"
-                    >전체 언론사</span
-                  >
+              <div class="news-section__header__buttons">
+                <button
+                  data-type="total"
+                  class="news-section__header__buttons__item--total news-section__header__buttons__item--total--selected"
+                >
+                  전체 언론사
                 </button>
-                <button class="news-section__header__tabs__item--subscribed">
-                  <span
-                    class="news-section__header__tabs__item--subscribed--text"
-                    >내가 구독한 언론사</span
-                  >
-                  <div
-                    class="news-section__header__tabs__item--subscribed--number"
-                  >
-                    0
-                  </div>
+                <button
+                  data-type="subscribed"
+                  class="news-section__header__buttons__item--subscribed"
+                >
+                  내가 구독한 언론사
+                  <div>0</div>
                 </button>
               </div>
               <div class="news-section__header__view-toggle-group">
                 <button
-                  class="news-section__header__view-toggle-group__item--unselected"
+                  data-view="list"
+                  class="news-section__header__view-toggle-group__item"
                 >
                   <svg
                     width="24"
@@ -73,7 +70,8 @@
                   </svg>
                 </button>
                 <button
-                  class="news-section__header__view-toggle-group__item--selected"
+                  data-view="grid"
+                  class="news-section__header__view-toggle-group__item news-section__header__view-toggle-group__item--selected"
                 >
                   <svg
                     width="24"
