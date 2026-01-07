@@ -4,7 +4,7 @@ import { subscribedNewspaperStore } from '@/stores';
 export const SubscribedNewsNumber = () => {
   const updateSubscribedNewsNumber = () => {
     const $subscribedNewsNumber = document.querySelector(
-      '.news-section__header__tabs__item--subscribed--number',
+      '[data-type="subscribed"] > div',
     );
     $subscribedNewsNumber.innerHTML =
       subscribedNewspaperStore.getSubscribedNewsNumber();
