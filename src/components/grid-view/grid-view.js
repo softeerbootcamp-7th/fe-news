@@ -49,10 +49,15 @@ export const GridView = async ({ newspaperList }) => {
 
   createGridView();
 
-  const { cleanup: cleanupTotalGridView } = TotalGridView({
-    newspaperList,
-  });
-  cleanupFunctions = cleanupTotalGridView;
+  if (newsSectionStore.getState().type === NEWS_SECTION_STATE.TYPE.TOTAL) {
+    const { cleanup: cleanupTotalGridView } = TotalGridView({
+      newspaperList,
+    });
+    cleanupFunctions = cleanupTotalGridView;
+  } else {
+    const { cleanup: cleanupSubscribedGridView } = SubscribedGridView();
+    cleanupFunctions = cleanupSubscribedGridView;
+  }
 
   return {
     cleanup: () => {
