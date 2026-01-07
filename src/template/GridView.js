@@ -2,6 +2,7 @@ import {
   getSubscribeButtonTemplate,
   getCancelButtonTemplate,
 } from "@/template/SubscribeButton";
+import { VIEW_TAB } from "@/types/constant";
 
 export function getPressGridContainerTemplate() {
   return `
@@ -19,7 +20,11 @@ export function getPressGridItemTemplate({
   return `
     <li class="press-grid__item" data-label="${pressName}">
       <img src="${logoSrc}" alt="${pressName}" />
-      ${isSubscribed ? getCancelButtonTemplate() : getSubscribeButtonTemplate()}
+      ${
+        isSubscribed
+          ? getCancelButtonTemplate(VIEW_TAB.GRID)
+          : getSubscribeButtonTemplate(VIEW_TAB.GRID)
+      }
     </li>
     
   `;

@@ -2,6 +2,7 @@ import {
   getCancelButtonTemplate,
   getSubscribeButtonTemplate,
 } from "@/template/SubscribeButton";
+import { VIEW_TAB } from "@/types/constant";
 
 export function getNavTemplateStart() {
   return `<nav class="press-tabs" aria-label="언론사 카테고리">`;
@@ -20,7 +21,7 @@ export function getNavTemplate({
     ? `
     <button
       class="press-tabs__item active"
-      style="--progress: 20%"
+      style="--progress: 93%"
       aria-current="true"
     >
       <p class="display-bold-14">${navName}</p>
@@ -70,8 +71,8 @@ export function getPressContentTemplate({
         </time>
         ${
           isSubscribed
-            ? getCancelButtonTemplate()
-            : getSubscribeButtonTemplate()
+            ? getCancelButtonTemplate(VIEW_TAB.LIST)
+            : getSubscribeButtonTemplate(VIEW_TAB.LIST)
         }
       </header>
       <div class="press-feed__container">
