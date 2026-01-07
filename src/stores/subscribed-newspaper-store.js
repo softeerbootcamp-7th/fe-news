@@ -49,6 +49,14 @@ class SubscribedNewspaperStore extends Subject {
   getSubscribedNewsNumber() {
     return this.getState().newspaperMap.size;
   }
+
+  /**
+   *
+   * @returns {Newspaper[]}
+   */
+  getSubscribedNewspaperList() {
+    return Array.from(this.getState().newspaperMap.values());
+  }
 }
 
 export const subscribedNewspaperStore = new SubscribedNewspaperStore();
