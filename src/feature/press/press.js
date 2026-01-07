@@ -1,4 +1,8 @@
-import { parsePressData, shufflePressData } from "@/utils/parse";
+import {
+  parsePressData,
+  shufflePressData,
+  parseCategoryIndex,
+} from "@/utils/parse";
 import { SUBSCRIPTION_TAB } from "@/types/constant";
 import { VIEW_TAB } from "@/types/constant";
 import {
@@ -90,19 +94,20 @@ function filterPressData(shuffledData) {
 function createPressView() {
   // 그리드/리스트 뷰
   const paginatedData = pagination.getPageData(filteredData);
-  const { showPrev, showNext } = pagination.getArrowState(filteredData);
-  const currentPage = pagination.getCurrentPage();
 
   switch (getViewTab()) {
     case VIEW_TAB.GRID:
       initGridView(paginatedData);
       break;
     case VIEW_TAB.LIST:
-      initListView(paginatedData, currentPage);
+      const currentPage = pagination.getCurrentPage();
+      const currentIndex = parseCategoryIndex(shuffledData, currentPage);
+      initListView(paginatedData, currentIndex);
       break;
   }
 
   // 좌우 페이지네이션 화살표
+  const { showPrev, showNext } = pagination.getArrowState(filteredData);
   const prevButton = document.querySelector(".press-list__control--prev");
   const nextButton = document.querySelector(".press-list__control--next");
   prevButton.classList.toggle("hidden", !showPrev);

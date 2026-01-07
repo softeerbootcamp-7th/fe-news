@@ -10,21 +10,24 @@ import { isSubscribed, getSubscribedList } from "@/store/subscriptionStore";
 import { getSubscriptionTab } from "@/store/subscriptionTabStore";
 import { SUBSCRIPTION_TAB } from "@/types/constant";
 
-export function initListView(paginatedData, currentPage) {
+export function initListView(paginatedData, currentIndex) {
   // 첫 list 레이아웃 그리기
   const listContainer = document.querySelector(".press-section");
 
-  const navList = getNavList(paginatedData);
-  let selectedNav = navList[0];
+  const navList = getNavList();
 
   let html = "";
   html += getNavTemplateStart();
-  html += getNavList()
+  html += navList
     .map((nav) =>
       getNavTemplate({
-        selected: nav === selectedNav,
+        selected:
+          nav ===
+          (getSubscriptionTab() === SUBSCRIPTION_TAB.ALL
+            ? paginatedData.category
+            : paginatedData.name),
         navName: nav,
-        currentPress: currentPage + 1,
+        currentPress: currentIndex + 1,
         totalPress:
           getSubscriptionTab() === SUBSCRIPTION_TAB.ALL
             ? paginatedData.totalPage
@@ -42,6 +45,11 @@ export function initListView(paginatedData, currentPage) {
 
   console.log();
   listContainer.innerHTML = html;
+}
+
+export function updateNavButton(currentIndex) {
+  const activeNav = document.querySelector(".press-tabs__item active");
+  activeNav.style.setProperty("--progress", `${currentIndex}%`);
 }
 
 function getNavList() {
