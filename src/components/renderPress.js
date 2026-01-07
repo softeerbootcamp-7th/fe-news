@@ -4,6 +4,7 @@ import { waitForAlert } from "./alert";
 import { createBtn } from "./createBtn";
 
 export const renderGrid = () => {
+  console.log(pressMap);
   renderAllPress('.press-logo-container', pressMap);
 
   const allPressBtn = document.querySelector('.all-press-container');
@@ -138,6 +139,9 @@ const handleClickSubscribeBtn = async (pressId) => {
   const actionType = currentList.includes(pressId) ? 'UNSUBSCRIBE' : 'SUBSCRIBE';
 
   if (actionType === 'UNSUBSCRIBE') {
+    const pressNameEl = document.querySelector('.alert-press-name');
+    pressNameEl.textContent = pressMap.get(pressId).name;
+    
     const isConfirmed = await waitForAlert();
     if (!isConfirmed) return;
   }
