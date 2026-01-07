@@ -2,13 +2,8 @@ import {
   getPressGridContainerTemplate,
   getPressGridItemTemplate,
   getEmptyGridItemTemplate,
-  getSubscribeButtonTemplate,
-  getCancelButtonTemplate,
 } from "@/template/GridView";
-import {
-  isSubscribed,
-  observeSubscriptionStore,
-} from "@/store/subscriptionStore";
+import { isSubscribed } from "@/store/subscriptionStore";
 
 export function initGridView(paginatedPressData) {
   // 첫 grid 레이아웃 그리기
