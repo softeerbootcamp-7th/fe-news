@@ -1,18 +1,48 @@
 import { ListTab } from "./ListTab";
 import "./ListSection.css";
 import { makeNode } from "../../../utils/utils";
+import { fetchPressListPerCategory } from "../../../mockServer/mockServer";
+import { store } from "../../../store";
 
 export function ListTabContainer() {
-  const tabNames = [
-    "종합/경제",
-    "방송/통신",
-    "IT",
-    "영자지",
-    "스포츠/연예",
-    "매거진/전문지",
-    "지역",
-  ];
   const $el = makeNode(`<div class="list-tab-container"></div>`);
-  tabNames.forEach((t) => $el.appendChild(ListTab(t, t == "IT")));
+
+  const fetchAndRenderCategoryTabs = () => {
+    fetchPressListPerCategory().then((pressListPerCategory) => {
+      console.log(pressListPerCategory);
+      renderCategoryTabs(pressListPerCategory);
+    });
+  };
+  const renderCategoryTabs = (pressListPerCategory) => {
+    $el.innerHTML = "";
+    pressListPerCategory.forEach((category, index) => {
+      const listTabPram = {
+        tabIndex: index,
+        category: category,
+        pressId: null,
+      };
+      $el.appendChild(ListTab(listTabPram));
+    });
+  };
+  const renderSubscribedPressTabs = () => {
+    const { subscribedIds } = store.state;
+    $el.innerHTML = "";
+    Array.from(subscribedIds).forEach((id, index) => {
+      const listTabPram = {
+        tabIndex: index,
+        category: {},
+        pressId: id,
+      };
+      $el.appendChild(ListTab(listTabPram));
+    });
+  };
+  const render = () => {
+    const { viewOnlySubs } = store.state;
+    viewOnlySubs ? renderSubscribedPressTabs() : fetchAndRenderCategoryTabs();
+  };
+
+  window.addEventListener("viewOnlySubsChange", render);
+  render();
+
   return $el;
 }
