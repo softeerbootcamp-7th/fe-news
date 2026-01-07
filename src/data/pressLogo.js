@@ -1,4 +1,4 @@
-import pressData from '../data/pressData.json'
+import pressData from '../data/pressData.json';
 
 export const TOTAL_PRESS = 96;
 export const PER_PAGE = 24;
