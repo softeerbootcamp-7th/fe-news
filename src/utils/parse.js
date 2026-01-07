@@ -70,7 +70,7 @@ function shufflePressDataByCategory(pressData) {
 
 export function parseCategoryIndex(shuffledPressData, currentPage) {
   let currentCategory = shuffledPressData[currentPage].category;
-  let lastPrevCategoryIndex = 0;
+  let lastPrevCategoryIndex = -1;
   for (let i = currentPage; i >= 0; i--) {
     if (shuffledPressData[i].category !== currentCategory) {
       lastPrevCategoryIndex = i;
