@@ -318,6 +318,7 @@ body {
   gap: 32px;
 }
 .press-feed__lead {
+  max-width: 320px;
   /* main news block */
   &:hover {
     cursor: pointer;

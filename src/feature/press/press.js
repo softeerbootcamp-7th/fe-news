@@ -178,7 +178,7 @@ function addSubscribeEvents() {
 
   // 구독/해지 버튼
   pressSection.addEventListener("click", (e) => {
-    const pressName = e.target.closest("li").dataset.label;
+    const pressName = e.target.closest("[data-label]").dataset.label;
     if (!pressName) return;
     const button = e.target.closest("button");
     if (!button) return;
