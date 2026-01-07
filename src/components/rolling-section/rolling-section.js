@@ -46,7 +46,7 @@ export const RollingSection = async () => {
 
   const $rollingSection = document.querySelector('.rolling-section');
 
-  $rollingSection.addEventListener('mouseover', (event) => {
+  const handleMouseOver = (event) => {
     if (event.target.classList.contains('rolling-section__item--title')) {
       cancelAnimationFrame(leftFrameId);
       leftCurrentShownIndex = leftAnimation.currentShownIndex;
@@ -59,9 +59,9 @@ export const RollingSection = async () => {
       clearTimeout(rightTimeout);
       rightTimeout = null;
     }
-  });
+  };
 
-  $rollingSection.addEventListener('mouseout', (event) => {
+  const handleMouseOut = (event) => {
     if (event.target.classList.contains('rolling-section__item--title')) {
       leftAnimation = setRollingAnimation({
         shownIndex: leftCurrentShownIndex,
@@ -80,7 +80,10 @@ export const RollingSection = async () => {
         rightFrameId = requestAnimationFrame(rightAnimation.animation);
       }, ROLLING_ANIMATION.LFET_RIGHT_DELAY);
     }
-  });
+  };
+
+  $rollingSection.addEventListener('mouseover', handleMouseOver);
+  $rollingSection.addEventListener('mouseout', handleMouseOut);
 
   const $rollingContentWrapper = document.createElement('ul');
   $rollingContentWrapper.classList.add(
@@ -113,4 +116,11 @@ export const RollingSection = async () => {
   rightTimeout = setTimeout(() => {
     rightFrameId = requestAnimationFrame(rightAnimation.animation);
   }, ROLLING_ANIMATION.LFET_RIGHT_DELAY);
+
+  return {
+    cleanup: () => {
+      $rollingSection.removeEventListener('mouseover', handleMouseOver);
+      $rollingSection.removeEventListener('mouseout', handleMouseOut);
+    },
+  };
 };
