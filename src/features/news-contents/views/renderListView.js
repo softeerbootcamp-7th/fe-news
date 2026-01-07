@@ -3,17 +3,27 @@ export function renderListView(items) {
   if (!content) return
 
   content.className = 'list'
-
+  
+  // TODO: 리스트 UI 작업 필요
   const listItems = items.map(item => `
     <li class="list-item" role="article">
-      <img src="${item.image}" alt="${item.title}" class="list-item-image">
-      <div class="list-item-content">
+      <div class="press-info">
+        <img src="${item.image}" alt="${item.title}" width="44" height="20">
+        <span class="press-name">${item.date}</span>
+      </div>
+      <div class="press-contents">
         <div>
-          <h3 class="list-item-title">${item.title}</h3>
-          <p class="list-item-description">${item.description}</p>
+          <img src="${item.image}" alt="${item.title}" class="list-item-image">
+          <p>${item.description}</p>
         </div>
-        <div class="list-item-meta">
-          <time class="list-item-date" datetime="${item.date}">${item.date}</time>
+        <div class="list-item-content">
+          <div>
+            <h3 class="list-item-title">${item.title}</h3>
+            <p class="list-item-description">${item.description}</p>
+          </div>
+          <div class="list-item-meta">
+            <time class="list-item-date" datetime="${item.date}">${item.date}</time>
+          </div>
         </div>
       </div>
     </li>

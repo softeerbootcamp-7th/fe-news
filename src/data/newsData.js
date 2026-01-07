@@ -1,3 +1,19 @@
+import { fetchPressData } from "../services/fetchPressData"
+
+// 수정 중...
+// TODO: fetchPressData 비동기 처리 + 사용하는 데이터만 추출하도록 수정하기
+// TODO: 바꾸면 newsData 및 logo 파일 제거
+
+// const pressData = fetchPressData()
+
+// const ROLLING_NEWS_SIZE = 5
+// export const ROLLING_LEFT_DATA = pressData.slice(0, ROLLING_NEWS_SIZE).map((item, idx) => ({press: item.press, mainTitle: item.mainTitle}))
+// export const ROLLING_RIGHT_DATA = pressData.slice(ROLLING_NEWS_SIZE, ROLLING_NEWS_SIZE * 2).map((item, idx) => ({press: item.press, mainTitle: item.mainTitle}))
+
+// export const pressListData = pressData.map((item) => ({press: item.press, logo: item.logo}))
+
+// export const rollingNewsData = pressData.slice(0, 10)
+
 export const newsData = [
   {
     id: 1,

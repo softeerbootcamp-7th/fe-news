@@ -19,21 +19,21 @@ export const subscription = {
     return this.cache
   },
 
-  toggle(newsId) {
+  toggle(newsPress) {
     const subscriptions = this.get()
     
-    if (subscriptions.has(newsId)) {
-      subscriptions.delete(newsId)
+    if (subscriptions.has(newsPress)) {
+      subscriptions.delete(newsPress)
     } else {
-      subscriptions.add(newsId)
+      subscriptions.add(newsPress)
     }
     
     this.save(subscriptions)
     return subscriptions
   },
 
-  isSubscribed(newsId) {
-    return this.get().has(newsId)
+  isSubscribed(newsPress) {
+    return this.get().has(newsPress)
   },
 
   clear() {

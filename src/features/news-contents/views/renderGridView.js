@@ -2,13 +2,14 @@ import { ITEMS_PER_PAGE } from '../../../utils/pagination.js'
 import { subscription } from '../../../utils/subscription.js'
 import { modal } from '../../../utils/modal.js'
 
+// TODO: image -> logo, title -> press, id -> press 로 변경 필요
 function gridViewTemplate(item){
   const subscribed = subscription.isSubscribed(item.id)
   return `
     <li class="grid-item">
       <img src="${item.image}" alt="${item.title}" class="grid-item-image">
       <div class="grid-item-overlay">
-        <button class="subscribe-btn ${subscribed ? 'subscribed' : ''}" data-id="${item.id}" data-press="${item.press}">
+        <button class="subscribe-btn ${subscribed ? 'subscribed' : ''}" data-press="${item.press}">
           ${subscribed ? '해지하기' : '구독하기'}
         </button>
       </div>
@@ -25,26 +26,33 @@ function onClickSubscribe(e) {
 
   e.stopPropagation()
   
-  const itemId = btn.dataset.id
   const itemPress = btn.dataset.press
-  const isSubscribed = subscription.isSubscribed(itemId)
+  const isSubscribed = subscription.isSubscribed(itemPress)
 
   modal.open()
   const modalBox = document.querySelector('.modal-content')
   const modalTitle = document.createElement('h3')
   modalTitle.className = 'typo-display-bold-16'
   modalTitle.innerText = isSubscribed ? `${itemPress}를\n구독해지하시겠습니까?` : `${itemPress}를\n구독하시겠습니까?`
-  const modalButton = document.createElement('button')
-  modalButton.textContent = isSubscribed ? '네, 해지합니다.' : '네, 구독합니다.'
-  modalButton.addEventListener('click', () => {
+  const buttonContainer = document.createElement('div')
+  const okButton = document.createElement('button')
+  const cancelButton = document.createElement('button')
+  okButton.textContent = isSubscribed ? '네, 해지합니다.' : '네, 구독합니다.'
+  okButton.addEventListener('click', () => {
     btn.textContent = isSubscribed ? '구독하기' : '해지하기'
     btn.classList.toggle('subscribed', isSubscribed)
-    subscription.toggle(itemId)
+    subscription.toggle(itemPress)
     modal.close()
   })
+  cancelButton.textContent = '아니요'
+  cancelButton.addEventListener('click', () => {
+    modal.close()
+  })
+  buttonContainer.appendChild(okButton)
+  buttonContainer.appendChild(cancelButton)
   modalBox.innerHTML = ''
   modalBox.appendChild(modalTitle)
-  modalBox.appendChild(modalButton)
+  modalBox.appendChild(buttonContainer)
 }
 
 export function renderGridView(items) {
