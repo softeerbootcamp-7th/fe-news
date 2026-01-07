@@ -223,6 +223,7 @@ function addSubscribeEvents() {
       // 구독버튼: 구독
       button.innerHTML = getLoadingIndicatorTemplate();
       toggleSubscription(pressName);
+      setSubscriptionTab(SUBSCRIPTION_TAB.MY);
     }
   });
 
