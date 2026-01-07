@@ -231,7 +231,7 @@ body {
 }
 
 .grid__overlay {
-    outline: 1px solid red;
+    background-color: var(--text-text-surface-alt);
     position: absolute;
     pointer-events: none;
     width: 155px;

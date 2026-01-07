@@ -3,24 +3,28 @@ import logoLinks from '../data/logo_links.json';
 import { fisherYatesShuffle } from '../utils';
 
 // 오버레이 너비, 높이, 위치 계산하는 함수
-function updateOverlayPosition(overlay, itemRect, gridRect) {
-    const nextWidth = itemRect.width;
-    const nextHeight = itemRect.height;
+function updateOverlayPosition(itemStyle, overlay, itemRect, gridRect) {
+    const { borderLeftWidth, borderTopWidth, borderRightWidth, borderBottomWidth } = itemStyle;
+    const borderLeft = parseFloat(borderLeftWidth);
+    const borderTop = parseFloat(borderTopWidth);
+    const borderRight = parseFloat(borderRightWidth);
+    const borderBottom = parseFloat(borderBottomWidth);
 
-    if(overlay.offsetWidth !== nextWidth) overlay.style.width = `${nextWidth}px`;
-    if(overlay.offsetHeight !== nextHeight) overlay.style.height = `${nextHeight}px`;
-    overlay.style.transform = `translate(${itemRect.left - gridRect.left}px, ${itemRect.top - gridRect.top}px)`;
+    overlay.style.transform = `translate(${itemRect.left - gridRect.left + borderLeft}px, ${itemRect.top - gridRect.top + borderTop}px)`;
+    overlay.style.width = `${itemRect.width - borderLeft - borderRight}px`;
+    overlay.style.height = `${itemRect.height - borderTop - borderBottom}px`;
 }
 
 // 오버레이 보여주는 함수
 function showGridOverlay(event, gridElement, overlay) {
     const gridItem = event.target.closest('.content__grid-item');
     if (!gridItem) return;
-    
+
+    const computedStyle = getComputedStyle(gridItem);
     const itemRect = gridItem.getBoundingClientRect();
     const gridRect = gridElement.getBoundingClientRect();
 
-    updateOverlayPosition(overlay, itemRect, gridRect);
+    updateOverlayPosition(computedStyle, overlay, itemRect, gridRect);
 
     overlay.classList.remove('grid__overlay--hidden');
 }
