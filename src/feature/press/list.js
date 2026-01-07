@@ -47,11 +47,6 @@ export function initListView(paginatedData, currentIndex) {
   listContainer.innerHTML = html;
 }
 
-export function updateNavButton(currentIndex) {
-  const activeNav = document.querySelector(".press-tabs__item active");
-  activeNav.style.setProperty("--progress", `${currentIndex}%`);
-}
-
 function getNavList() {
   switch (getSubscriptionTab()) {
     case SUBSCRIPTION_TAB.ALL:
