@@ -1,17 +1,7 @@
 import { GRID_CONSTANTS } from '@/constants';
-
-const pickRandomLogo = (cellCount, logoCount) => {
-    const newsBrandList = [];
-
-    for (let i = 1; i <= cellCount; i += 1) {
-        newsBrandList.push(Math.floor(Math.random() * logoCount));
-    }
-
-    return newsBrandList;
-}
+import { pickRandomNumberList } from '@/utils/randomPicker';
 
 const createCellHTML = (press) => {
-    const path = `images/light_mode_logo/light_brand_logo_${press}.png`
     const path = GRID_CONSTANTS.NEWS_BRAND_LIST[press];
     return `
         <img class="grid-cell" src="${path}">
@@ -19,7 +9,11 @@ const createCellHTML = (press) => {
 }
 
 export function renderGrid(target = '#viewArea .center') {
-    const pressList = pickRandomLogo(GRID_CONSTANTS.CELL_COUNT, GRID_CONSTANTS.LOGO_COUNT);
+    const param = {
+        count: GRID_CONSTANTS.CELL_COUNT,
+        range: GRID_CONSTANTS.LOGO_COUNT,
+    }
+    const pressList = pickRandomNumberList(param);
     const htmlString = pressList.map(createCellHTML).join('');
 
     const targetElement = document.querySelector(target);
