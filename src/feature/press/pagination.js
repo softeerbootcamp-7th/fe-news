@@ -31,6 +31,10 @@ export function createPaginationController() {
       currentPage--;
     },
 
+    setPage(page) {
+      currentPage = page;
+    },
+
     getCurrentPage() {
       return currentPage;
     },

@@ -80,6 +80,12 @@ export function parseCategoryIndex(shuffledPressData, currentPage) {
   return currentPage - lastPrevCategoryIndex - 1;
 }
 
+export function parseFirstPageInCategory(shuffledPressData, categoryName) {
+  for (let i = 0; i < shuffledPressData.length; i++) {
+    if (shuffledPressData[i].category === categoryName) return i;
+  }
+}
+
 // export function parsePressData(rawData) {
 //   const categoryMap = new Map(); // 빠른 검색
 //   rawData.forEach((item) => {

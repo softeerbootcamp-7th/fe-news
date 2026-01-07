@@ -2,6 +2,7 @@ import {
   parsePressData,
   shufflePressData,
   parseCategoryIndex,
+  parseFirstPageInCategory,
 } from "@/utils/parse";
 import { SUBSCRIPTION_TAB } from "@/types/constant";
 import { VIEW_TAB } from "@/types/constant";
@@ -103,6 +104,7 @@ function createPressView() {
       const currentPage = pagination.getCurrentPage();
       const currentIndex = parseCategoryIndex(shuffledData, currentPage);
       initListView(paginatedData, currentIndex);
+      addNavEvents();
       break;
   }
 
@@ -229,4 +231,28 @@ function addSubscribeEvents() {
   negativeButton.addEventListener("click", () => {
     dialog.removeAttribute("open");
   });
+}
+
+function addNavEvents() {
+  const navContainer = document.querySelector(".press-tabs");
+  navContainer.addEventListener("click", (e) => {
+    const navButton = e.target.closest(".press-tabs__item");
+    const label = navButton.firstElementChild.textContent;
+    updatePage(label);
+  });
+}
+
+function updatePage(label) {
+  let page = 0;
+  switch (getSubscriptionTab()) {
+    case SUBSCRIPTION_TAB.ALL:
+      page = parseFirstPageInCategory(filteredData, label);
+
+      break;
+    case SUBSCRIPTION_TAB.MY:
+      page = filteredData.findIndex((press) => press.name === label);
+      break;
+  }
+  pagination.setPage(page);
+  createPressView();
 }
