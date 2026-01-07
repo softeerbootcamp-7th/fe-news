@@ -106,7 +106,11 @@ dialog {
   &:not([open]) {
     display: none; /* flex 때문에 기본 속성이 무시되므로 다시 선언 */
   }
+  background-color: var(--surface-default);
 
+  &::backdrop {
+    background: none;
+  }
   filter: drop-shadow(0px 4px 2px rgba(20, 33, 43, 0.02))
     drop-shadow(0px 2px 18px rgba(20, 33, 43, 0.08));
 

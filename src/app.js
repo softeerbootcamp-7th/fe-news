@@ -7,9 +7,9 @@ import { initPressView } from "@/feature/press/press";
 initHeader();
 
 // 뉴스 자동 롤링
-const latestNewsView = new LatestNewsView(articlesData);
-latestNewsView.initLatestNews();
+const latestNewsView = new LatestNewsView();
+latestNewsView.initLatestNews(articlesData);
 
-initPressView();
+initPressView(articlesData);
 
 // 리스트 영역

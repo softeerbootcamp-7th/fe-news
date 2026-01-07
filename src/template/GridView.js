@@ -12,7 +12,7 @@ export function getPressGridItemTemplate({
   isSubscribed,
 }) {
   return `
-    <li class="press-grid__item" data-label="${pressId}">
+    <li class="press-grid__item" data-label="${pressName}">
       <img src="${logoSrc}" alt="${pressName}" />
       ${isSubscribed ? getCancelButtonTemplate() : getSubscribeButtonTemplate()}
     </li>
