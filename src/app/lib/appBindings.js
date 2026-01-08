@@ -1,9 +1,4 @@
-import {
-  DARK_ONLY_FILES,
-  dayNames,
-  LIGHT_ONLY_FILES,
-  LOGO_FILES,
-} from "../../shared/const/index.js";
+import { dayNames } from "../../shared/const/index.js";
 import { shuffle } from "../../shared/lib/index.js";
 import { createAppContext } from "../AppContext.js";
 import { createNewsStandActions } from "./appActions.js";
@@ -50,9 +45,6 @@ export function initControllers(app) {
     context: app.context,
     store: app.store,
     shuffle,
-    LOGO_FILES,
-    LIGHT_ONLY_FILES,
-    DARK_ONLY_FILES,
     subscriptions: app.subscriptions,
     renderNews: (args) => {
       if (app.store.getState().view === "list") {

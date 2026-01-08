@@ -6,7 +6,7 @@ export function setThemeInState(app, theme) {
 
 export async function initNewsStandApp(app) {
   app.date.render();
-  app.newsView.initShuffle();
+  await app.newsView.initShuffle();
   app.newsView.setTab("all");
   if (typeof app.renderNewsForView === "function") {
     app.newsView.setRenderNews(

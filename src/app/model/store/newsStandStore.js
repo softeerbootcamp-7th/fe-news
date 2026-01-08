@@ -14,23 +14,17 @@ export function getInitialNewsStandState(overrides = {}) {
     theme: "light",
     view: "grid",
     tab: "all", // "all" | "subscribed"
-    shuffledByTheme: {
-      light: null,
-      dark: null,
-    },
+    pressList: [],
+    shuffledPress: [],
     subscribedPress: new Set(),
     newsList: { ...DEFAULT_NEWSLIST_STATE },
-  };
-
-  const shuffledByTheme = {
-    light: overrides.shuffledByTheme?.light ?? base.shuffledByTheme.light,
-    dark: overrides.shuffledByTheme?.dark ?? base.shuffledByTheme.dark,
   };
 
   return {
     ...base,
     ...overrides,
-    shuffledByTheme,
+    pressList: overrides.pressList ?? base.pressList,
+    shuffledPress: overrides.shuffledPress ?? base.shuffledPress,
     subscribedPress: overrides.subscribedPress ?? base.subscribedPress,
     newsList: {
       ...base.newsList,
