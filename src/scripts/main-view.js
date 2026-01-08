@@ -3,6 +3,7 @@
 
 import {
   addSubscribed,
+  getCurrentPageIdx,
   getState,
   removeSubscribed,
   setCurrentPageIdx,
@@ -41,7 +42,6 @@ const viewerButtonBar = document.querySelector("#viewer-button");
 // 뷰 모드(그리드, 리스트) 선택 아이콘 클릭 시 이벤트 리스너
 viewerButtonBar.addEventListener("click", (e) => {
   handleChangeViewMode(e);
-  const state = getState();
 });
 
 function renderMainView() {
@@ -65,20 +65,22 @@ function handleChangeViewMode(e) {
 
   const newViewMode = el.dataset.viewMode;
 
-  if (newViewMode == "list") {
-    showListView();
-
-    setLastPageIdx(getPressCntByCtg(getCategoryList()[0]) - 1);
-  } else if (newViewMode == "grid") {
-    showGridView();
-    setLastPageIdx(pages.length - 1);
-  }
-
   // 바뀐 뷰모드 state에 저장
   setViewMode(newViewMode);
 
   // 가장 처음 페이지 보일 수 있도록
   setCurrentPageIdx(0);
+
+  if (newViewMode == "list") {
+    setLastPageIdx(getPressCntByCtg(getCategoryList()[0]) - 1);
+    renderListView();
+    showListView();
+  } else if (newViewMode == "grid") {
+    setLastPageIdx(pages.length - 1);
+    renderGrid(getCurrentPageIdx());
+    showGridView();
+  }
+
   // 양쪽 화살표 보여질지 결정
   renderArrowEls();
 

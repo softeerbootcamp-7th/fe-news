@@ -16,6 +16,10 @@ export function setViewMode(mode) {
 
 export const getState = () => state;
 
+export function getCurrentPageIdx(idx) {
+  return state.currentPageIdx;
+}
+
 export function setSubscribedList(list) {
   state.subscribedList = Array.isArray(list) ? list : [];
 }
