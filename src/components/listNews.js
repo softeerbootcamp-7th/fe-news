@@ -31,8 +31,7 @@ export default function listNews(
             currentCategory,
             currentPosition,
             totalInCategory,
-            subscribedNews,
-            pressData
+            currentFilter
           )}
           ${createPressContent(pressData, subscribedNews, currentFilter)}
         </div>
@@ -48,11 +47,8 @@ function createCategoryTabs(
   activeCategory,
   currentPosition,
   total,
-  subscribedNews,
-  pressData
+  currentFilter
 ) {
-  const isSubscribed = subscribedNews.has(pressData.press);
-
   const tabs = categories
     .map((category) => {
       const isActive = category === activeCategory;
@@ -69,7 +65,7 @@ function createCategoryTabs(
           <div class="tab-content">
             <span class="tab-name">${category}</span>
             ${
-              isSubscribed
+              currentFilter === "favorite"
                 ? `>`
                 : `<span class="tab-count">${currentPosition} / ${total}</span>`
             }
