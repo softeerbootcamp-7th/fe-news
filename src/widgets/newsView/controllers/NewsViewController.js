@@ -84,7 +84,6 @@ export class NewsViewController {
     const { items, nextPage, totalPages, logosPerPage } = getPagedItems({
       state,
       files,
-      store: this.store,
     });
 
     const cells = buildLogoCells({ state, items, logosPerPage });

@@ -23,16 +23,13 @@ export function getLogoListForState({
   return { files, subscribed };
 }
 
-export function getPagedItems({ state, files, store } = {}) {
+export function getPagedItems({ state, files } = {}) {
   const logosPerPage = Math.max(1, state.perPage);
   const totalPages = Math.max(
     1,
     Math.min(4, Math.ceil(files.length / logosPerPage))
   );
   const nextPage = Math.max(0, Math.min(state.page, totalPages - 1));
-  if (nextPage !== state.page) {
-    store?.setState?.({ page: nextPage });
-  }
 
   const start = nextPage * logosPerPage;
   const end = start + logosPerPage;
