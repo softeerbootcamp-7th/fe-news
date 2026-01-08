@@ -1,15 +1,15 @@
-import { ITEMS_PER_PAGE } from '../../../utils/pagination.js'
+import { ITEMS_PER_PAGE } from '../../../constants/constants.js'
 import { subscription } from '../../../utils/subscription.js'
 import { modal } from '../../../utils/modal.js'
 
 // TODO: image -> logo, title -> press, id -> press 로 변경 필요
 function gridViewTemplate(item){
-  const subscribed = subscription.isSubscribed(item.id)
+  const subscribed = subscription.isSubscribed(item.press)
   return `
     <li class="grid-item">
-      <img src="${item.image}" alt="${item.title}" class="grid-item-image">
+      <img src="${item.logo}" alt="${item.press}" class="grid-item-image">
       <div class="grid-item-overlay">
-        <button class="subscribe-btn ${subscribed ? 'subscribed' : ''}" data-press="${item.press}">
+        <button class="subscribe-btn ${subscribed ? 'subscribed' : ''}" data-id="${item.id}" data-press="${item.press}">
           ${subscribed ? '해지하기' : '구독하기'}
         </button>
       </div>
@@ -26,8 +26,9 @@ function onClickSubscribe(e) {
 
   e.stopPropagation()
   
+  const itemId = btn.dataset.id
   const itemPress = btn.dataset.press
-  const isSubscribed = subscription.isSubscribed(itemPress)
+  const isSubscribed = subscription.isSubscribed(itemId)
 
   modal.open()
   const modalBox = document.querySelector('.modal-content')
@@ -41,7 +42,7 @@ function onClickSubscribe(e) {
   okButton.addEventListener('click', () => {
     btn.textContent = isSubscribed ? '구독하기' : '해지하기'
     btn.classList.toggle('subscribed', isSubscribed)
-    subscription.toggle(itemPress)
+    subscription.toggle(itemId)
     modal.close()
   })
   cancelButton.textContent = '아니요'

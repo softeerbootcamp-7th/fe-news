@@ -8,13 +8,13 @@ export function renderListView(items) {
   const listItems = items.map(item => `
     <li class="list-item" role="article">
       <div class="press-info">
-        <img src="${item.image}" alt="${item.title}" width="44" height="20">
-        <span class="press-name">${item.date}</span>
+        <img src="${item.logo}" alt="${item.press}" width="44" height="20">
+        <span class="press-name">${item.time}</span>
       </div>
       <div class="press-contents">
         <div>
-          <img src="${item.image}" alt="${item.title}" class="list-item-image">
-          <p>${item.description}</p>
+          <img src="${item.mainImg}" alt="${item.mainTitle}" class="list-item-image">
+          <p>${item.mainTitle}</p>
         </div>
         <div class="list-item-content">
           <div>

@@ -2,7 +2,8 @@ import { getPaginatedData, getTotalPages } from '../../utils/pagination.js'
 import { renderGridView } from './views/renderGridView.js'
 import { renderListView } from './views/renderListView.js'
 import { attachPaginationEvents, updatePaginationButtons } from './paginationController.js'
-import { newsState } from './state/newsState.js'
+import { newsState } from '../../stores/newsState.js'
+import { ITEMS_PER_PAGE } from '../../constants/constants.js'
 
 function setActiveTab(viewType) {
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -15,8 +16,8 @@ function setActiveTab(viewType) {
 function renderPage(page) {
   newsState.setPage(page)
   const sourceData = newsState.getCurrentData()
-  const totalPages = getTotalPages(sourceData)
-  const pageData = getPaginatedData(sourceData, page)
+  const totalPages = getTotalPages(sourceData, ITEMS_PER_PAGE)
+  const pageData = getPaginatedData(sourceData, page, ITEMS_PER_PAGE)
 
   if (newsState.currentView === 'grid') {
     renderGridView(pageData)
@@ -24,7 +25,7 @@ function renderPage(page) {
     renderListView(pageData)
   }
 
-  updatePaginationButtons({ currentPage: newsState.currentPage, totalPages })
+  updatePaginationButtons({ currentPage: newsState.currentPage, totalPages, })
 }
 
 function switchView(viewType) {
@@ -41,7 +42,9 @@ function bindTabEvents() {
   })
 }
 
-export function initNewsView() {
+export async function initNewsView() {
+  await newsState.init()
+
   bindTabEvents()
   
   attachPaginationEvents({
@@ -52,7 +55,7 @@ export function initNewsView() {
       }
     },
     onNext: () => {
-      const totalPages = getTotalPages(newsState.getCurrentData())
+      const totalPages = getTotalPages(newsState.getCurrentData(), ITEMS_PER_PAGE)
       if (newsState.currentPage < totalPages) {
         renderPage(newsState.currentPage + 1)
         window.scrollTo({ top: 0, behavior: 'smooth' })
