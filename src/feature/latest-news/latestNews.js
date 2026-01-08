@@ -131,8 +131,10 @@ export class LatestNewsView {
     news.classList.add("latest-news__item");
     const press = document.createElement("p");
     press.textContent = this.data[dataIndex].press;
-    const title = document.createElement("h3");
+    const title = document.createElement("a");
+    title.target = "_blank"; // 새창에서 열기
     title.textContent = this.data[dataIndex].mainTitle;
+    title.href = this.data[dataIndex].mainLink;
     news.appendChild(press);
     news.appendChild(title);
 

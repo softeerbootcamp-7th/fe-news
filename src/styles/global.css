@@ -16,6 +16,11 @@ ul {
   margin: 0;
   padding: 0;
 }
+a {
+  text-decoration: none;
+  height: fit-content;
+  color: inherit;
+}
 
 .button-label {
   display: flex;
