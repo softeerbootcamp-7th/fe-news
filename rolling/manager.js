@@ -1,21 +1,36 @@
-import { ROLLING_INTERVAL } from './config.js';
+function createRollingManager({ rolling_interval, clock_interval }) {
+    const bars = new Map();
+    let clockTime = 0;
+    const slotCount = rolling_interval / clock_interval;
 
-function createRollingManager() {
-    const timers = new Map();
+    setInterval(() => {
+        const currentSlot = clockTime % slotCount;
+        clockTime++;
 
-    function register(key, rollingBar, { delay = 0, interval = ROLLING_INTERVAL } = {}) {
-        if(timers.has(key)) return;
+        bars.forEach((state) => {
+            if(state.paused) return;
+            if(state.slot !== currentSlot) return;
 
-        setTimeout(() => {
-            const id = setInterval(() => {
-                rollingBar.tick();
-            }, interval);
+            state.rollingBar.tick();
+        });
+    }, clock_interval);
 
-            timers.set(key, id);
-        }, delay);
-    }
+    function register(key, rollingBar, { delay } = {}) {
+        const state = { rollingBar, paused: false, slot: (delay / clock_interval) };
+        bars.set(key, state);
+    };
 
-    return { register };
+    function start(key) {
+        const state = bars.get(key);
+        if(state) state.paused = false;
+    };
+
+    function stop(key) {
+        const state = bars.get(key);
+        if(state) state.paused = true;
+    };
+
+    return { register, start, stop };
 }
 
 export { createRollingManager };

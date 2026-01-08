@@ -1,38 +1,30 @@
-import { ANIMATION_DURATION, ROLLING_BARS_CONFIG } from './config.js';
+import { ROLLING_INTERVAL, CLOCK_INTERVAL, ANIMATION_DURATION, ROLLING_BARS_CONFIG } from './config.js';
 import { createRollingManager } from './manager.js';
-
-function splitNewsByBars(news, barCount) {
-    const chunkSize = Math.ceil(news.length / barCount);
-    const chunks = [];
-  
-    for (let i = 0; i < barCount; i++) {
-      const start = i * chunkSize;
-      const end = start + chunkSize;
-      chunks.push(news.slice(start, end));
-    }
-  
-    return chunks;
-}
 
 // 롤링 아이템 생성 함수
 function createNewsItems(barElement, newsData) {
     newsData.forEach((item, index) => {
         const boxElement = document.createElement('div');
         boxElement.className = 'rolling-bar__box';
-        boxElement.innerHTML = `
-            <p class="rolling-bar__source">${item.press}</p>
-            <h3 class="rolling-bar__content">${item.headline}</h3>
-        `;
+
+        const source = document.createElement('p');
+        source.className = 'rolling-bar__source';
+        source.textContent = item.press;
+
+        const content = document.createElement('h3');
+        content.className = 'rolling-bar__content';
+        content.textContent = item.headline;
 
         if(index !== 0) {
             boxElement.classList.add('rolling-bar__item--hidden');
         }
-
+        boxElement.append(source, content);
         barElement.appendChild(boxElement);
     });
 }
 
-function createRollingBar(barElement, items) {
+// 롤링 애니메이션 함수
+function createRollingAnimator(barElement, items) {
     let currentIndex = 0;
     const nodes = barElement.querySelectorAll('.rolling-bar__box');
 
@@ -66,28 +58,30 @@ function createRollingBar(barElement, items) {
 }
 
 // 롤링바 초기화 함수
-function initRollingBar(rollingNews) {
-    const rollingManager = createRollingManager();
-    
-    const barConfigs = ROLLING_BARS_CONFIG;
-    const newsChunks = splitNewsByBars(rollingNews, barConfigs.length);  
+function initRollingBars(rollingNews, { containerSelector }) {
+    const rollingManager = createRollingManager({ rolling_interval: ROLLING_INTERVAL, clock_interval: CLOCK_INTERVAL });
 
     ROLLING_BARS_CONFIG.forEach((config, index) => {
-        const selector = `.rolling-bar__item[data-bar="${config.key}"]`;
-        const barElement = document.querySelector(selector);
-        if(!barElement) return;
+        const barElement = document.querySelector(containerSelector);
 
-        const newsData = newsChunks[index] ?? [];
+        const barItemElement = document.createElement('article');
+        barItemElement.className = 'rolling-bar__item';
+        barItemElement.dataset.bar = config.key;
+
+        barElement.appendChild(barItemElement);
+
+        const newsData = rollingNews[index] ?? [];
         if(newsData.length === 0) return;
 
-        createNewsItems(barElement, newsData);
+        createNewsItems(barItemElement, newsData);
 
-        const rollingBar = createRollingBar(barElement, newsData);
+        const rollingBar = createRollingAnimator(barItemElement, newsData);
 
-        rollingManager.register(config.key, rollingBar, {
-            delay: config.delay,
-        });
-    })
+        rollingManager.register(config.key, rollingBar, { delay: config.delay });
+
+        barItemElement.addEventListener('mouseenter', () => rollingManager.stop(config.key));
+        barItemElement.addEventListener('mouseleave', () => rollingManager.start(config.key));
+    });
 }
 
-export { initRollingBar };
+export { initRollingBars };
