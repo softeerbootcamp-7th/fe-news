@@ -2,6 +2,7 @@ import { store, actions } from "../../state/store";
 import { PRESS_CATEGORIES } from "../../lib/pressData";
 import { createEl } from "../../lib/dom.js";
 import { createAutoPager } from "./createAutoPager.js";
+import { animateProgressBar } from "../../lib/animation.js";
 
 const LIST_DELAY_MS = 20000;
 
@@ -63,17 +64,27 @@ const createListNav = (currentCategory, totalPresses, autoPager) => {
 };
 
 const createNavItem = (categoryIdx, isActive, totalPresses, autoPager) => {
+  const category = PRESS_CATEGORIES[categoryIdx];
   const navItem = createEl(
     "li",
-    "ns-press-list__nav-item typo-available-medium14",
-    `${PRESS_CATEGORIES[categoryIdx]}${
-      isActive
-        ? `<span class="ns-press-list__nav-item--active-indicator">${
-            store.getState().listPressIdx + 1
-          }/${totalPresses}</span>`
-        : ""
-    }`
+    `ns-press-list__nav-item typo-available-medium14 ${
+      isActive && "surface-brand-alt"
+    }`,
+    `<span>${category}</span>`
   );
+
+  if (isActive) {
+    navItem.innerHTML = activeNavItemMarkup(
+      category,
+      store.getState().listPressIdx,
+      totalPresses
+    );
+    navItem.classList.add("ns-press-list__nav-item--active");
+    animateProgressBar({
+      el: navItem.querySelector(".ns-press-list__nav-item--active-bar"),
+      duration: LIST_DELAY_MS,
+    });
+  }
 
   navItem.addEventListener("click", () => {
     autoPager.stop();
@@ -81,3 +92,13 @@ const createNavItem = (categoryIdx, isActive, totalPresses, autoPager) => {
   });
   return navItem;
 };
+
+const activeNavItemMarkup = (category, listPressIdx, totalPresses) => `
+  <span class="ns-press-list__nav-item--active-bar surface-brand-default" aria-hidden="true"></span>
+  <span class="text-white-default position-relative typo-selected-bold14">${category}</span>
+  <span class="ns-press-list__nav-item--active-indicator position-relative typo-display-bold12">
+    <p class="text-white-default">${listPressIdx + 1}</p>
+    <p class="text-white-weak">/</p>
+    <p class="text-white-weak">${totalPresses}</p>
+  </span>
+`;
