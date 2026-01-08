@@ -22,6 +22,11 @@ export class AutoPageTimer {
     this.animate();
   }
 
+  /**
+   * requestAnimationFrame 콜백으로 전달되므로 화살표 함수로 작성
+   * 일반 함수는 콜백 전달 시 this 컨텍스트가 유실되어
+   * this.isRunning, this.startTime 등 인스턴스 속성에 접근 불가
+   */
   animate = (timestamp) => {
     if (!this.isRunning || this.isPaused) {
       return;
