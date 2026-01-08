@@ -40,15 +40,18 @@ function bindListViewEvents() {
 }
 
 function onClickCategoryBtn(e) {
+  const { selectedCtg } = getListModeState();
   const categoryBtn = e.target.closest(".category-btn");
   if (!categoryBtn) return; // 클릭된게 카테고리 버튼이 아니면 리스너 그냥 종료
   // 선택된 카테고리 버튼 내용으로 현재 선택된 카테고리 state정보 변경
-  const selectedCtg = categoryBtn.textContent;
-  setSelectedCtg(selectedCtg);
+  const newSelectedCtg = categoryBtn.dataset.category;
+  // 선택되어 있는 카테고리랑 새로 누릉 카테고리가 같은거라면 굳이 재랜더링 할 필요 없음
+  if (selectedCtg == newSelectedCtg) return;
+  setSelectedCtg(newSelectedCtg);
   // 현재 보고 있는 페이지 번호 0으로 설정
   setCurrentPageIdx(0);
   // 가장 마지막 페이지 idx는 현재 카테고리의 언론사 개수-1
-  setLastPageIdx(getPressCntByCtg(selectedCtg) - 1);
+  setLastPageIdx(getPressCntByCtg(newSelectedCtg) - 1);
   renderListView();
   renderArrowEls();
 }

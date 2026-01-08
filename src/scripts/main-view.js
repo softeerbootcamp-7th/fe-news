@@ -148,6 +148,7 @@ tabButtonbar.addEventListener("click", (e) => {
 
     renderGrid(0);
     renderBadge();
+    renderArrowEls();
   }
 });
 
