@@ -11,6 +11,11 @@ import setupSubscribe, {
   saveSubscribedNews,
 } from "../setup/setupSubscribe.js";
 import {
+  setupAutoPage,
+  restartAutoPage,
+  cleanupAutoPage,
+} from "../setup/setupAutoPage.js";
+import {
   loadNewsData,
   paginateForGrid,
   shuffleArray,
@@ -99,6 +104,10 @@ function handleViewChange(newView) {
   const previousView = currentView;
   currentView = newView;
 
+  if (previousView === "list") {
+    cleanupAutoPage();
+  }
+
   if (newView === "list" && previousView === "grid") {
     initializeListView();
   } else if (newView === "grid" && previousView === "list") {
@@ -107,6 +116,12 @@ function handleViewChange(newView) {
 
   renderCurrentView();
   updateAllUI();
+
+  if (newView === "list") {
+    setTimeout(() => {
+      setupAutoPage(cachedDOM.container, handlePageChange, 20000);
+    }, 100);
+  }
 }
 
 function handlePageChange(direction) {
@@ -114,6 +129,7 @@ function handlePageChange(direction) {
     handleGridPageChange(direction);
   } else {
     handleListPageChange(direction);
+    restartAutoPage();
   }
 }
 
@@ -141,6 +157,8 @@ async function handleSubscribeChange(press, filter) {
 
     await new Promise((resolve) => setTimeout(resolve, 500));
 
+    cleanupAutoPage();
+
     currentFilter = "favorite";
     currentView = "list";
 
@@ -152,6 +170,10 @@ async function handleSubscribeChange(press, filter) {
 
     renderCurrentView();
     updateAllUI();
+
+    setTimeout(() => {
+      setupAutoPage(cachedDOM.container, handlePageChange, 20000);
+    }, 100);
   } else {
     subscribedNews.delete(press);
     saveSubscribedNews(subscribedNews);
@@ -162,6 +184,10 @@ async function handleSubscribeChange(press, filter) {
 
     renderCurrentView();
     updateAllUI();
+
+    if (currentView === "list") {
+      restartAutoPage();
+    }
   }
 }
 
@@ -298,6 +324,8 @@ function handleCategoryChange(newCategory) {
     listState.currentPressIndex = 0;
     renderCurrentView();
     updatePaginationState();
+
+    restartAutoPage();
   }
 }
 
@@ -370,6 +398,8 @@ function renderListView() {
       nextArrow.disabled = false;
       nextArrow.style.visibility = "visible";
     }
+
+    setupAutoPage(cachedDOM.container, handlePageChange, 20000);
   }, 0);
 }
 
