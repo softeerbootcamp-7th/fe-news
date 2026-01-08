@@ -1,52 +1,39 @@
-// 애니메이션을 리플로우 없이 재시작하도록 처리
-function restartAnimationNoReflow(wrapper) {
-  const flip = wrapper.dataset.flip === "1";
-  wrapper.dataset.flip = flip ? "0" : "1";
+export function renderRollingNews(columnId, curIndex, rollingData) {
+  const column = document.getElementById(columnId);
+  if (!column) return curIndex;
 
-  wrapper.style.animation = `${flip ? "rolling-slide-up-a" : "rolling-slide-up-b"} 0.5s ease`;
+  const wrapper = column.querySelector(".rolling-wrapper");
+  const itemLen = rollingData?.length;
+  if (!wrapper || !itemLen) return curIndex;
+
+  const rows = wrapper.querySelectorAll("div > div");
+
+  const idx = curIndex;
+  const nextIdx = idx + 1 < itemLen ? idx + 1 : 0;
+  const nextNextIdx = nextIdx + 1 < itemLen ? nextIdx + 1 : 0;
+
+  // 1. 뉴스 한 세트 내용 업데이트
+  setRow(rows[0], rollingData[idx]);
+  setRow(rows[1], rollingData[nextIdx]);
+
+  // 2. 롤링 애니메이션 시작
+  wrapper.style.animation = "rolling-slide-up 0.5s ease";
+
+  // 3. 애니메이션 종료 후 다음 뉴스 세트 내용 업데이트
+  wrapper.addEventListener(
+    "animationend",
+    () => {
+      setRow(rows[0], items[nextIdx]);
+      setRow(rows[1], items[nextNextIdx]);
+      wrapper.style.animation = "none";
+    },
+    { once: true }
+  );
 }
 
-// TODO: 함수 분리하기
-// TODO: 데이터 description -> mainTitle 로 변경하기
-
-export function renderRollingNews(columnId, currentIndex, data) {
-  const column = document.getElementById(columnId)
-  if (!column) return currentIndex
-
-  const wrapper = column.querySelector('.rolling-wrapper')
-  const items = Array.isArray(data) ? data : []
-  const itemLen = items.length
-  if (!wrapper || !itemLen) return currentIndex
-
-  const idx = ((currentIndex % itemLen) + itemLen) % itemLen
-  const nextIdx = (idx + 1) % itemLen
-
-  const cur = items[idx]
-  const nxt = items[nextIdx]
-
-  // 뉴스 내용 텍스트 업데이트
-  const rows = wrapper.querySelectorAll('div > div')
-  rows[0].querySelector('span').textContent = cur.press
-  rows[0].querySelector('p').textContent = cur.mainTitle
-  rows[1].querySelector('span').textContent = nxt.press
-  rows[1].querySelector('p').textContent = nxt.mainTitle
-
-  // 애니메이션 재시작
-  restartAnimationNoReflow(wrapper);
-
-  wrapper.addEventListener('animationend', () => {
-    const afterIdx = (idx + 1) % itemLen
-    const afterNextIdx = (afterIdx + 1) % itemLen
-    const afterCur = items[afterIdx] || {}
-    const afterNext = items[afterNextIdx] || {}
-
-    rows[0].querySelector('span').textContent = afterCur.press
-    rows[0].querySelector('p').textContent = afterCur.mainTitle
-    rows[1].querySelector('span').textContent = afterNext.press
-    rows[1].querySelector('p').textContent = afterNext.mainTitle
-
-    wrapper.style.animation = 'none'
-  }, { once: true })
-
-  return nextIdx
+function setRow(rowEl, item = {}) {
+  const pressEl = rowEl.querySelector("span");
+  const titleEl = rowEl.querySelector("p");
+  if (pressEl) pressEl.textContent = item.press ?? "";
+  if (titleEl) titleEl.textContent = item.mainTitle ?? "";
 }
