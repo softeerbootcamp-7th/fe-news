@@ -7,8 +7,16 @@ export function createSubAlert(pressId) {
   alert.classList.add('sub-alert');
 
   const message = document.createElement('p');
-  message.className = 'alert-message';
-  message.textContent = `${pressId}을(를) 구독 해지하시겠습니까?`;
+  message.className = 'message';
+
+  const pressName = document.createElement('strong');
+  pressName.className = 'press-name';
+  pressName.textContent = pressId;
+
+  message.append(
+    pressName,
+    '을(를)\n구독 해지하시겠습니까?'
+  );
 
   const confirmButton = document.createElement('button');
   confirmButton.className = 'confirm-button';
@@ -27,11 +35,15 @@ export function createSubAlert(pressId) {
     alert.remove();
   });
 
+  const messageWrapper = document.createElement('div'); 
+  messageWrapper.className = 'alert-meassage';
+  messageWrapper.appendChild(message);
+
   const buttonWrapper = document.createElement('div');
   buttonWrapper.className = 'alert-buttons';
   buttonWrapper.append(confirmButton, cancelButton);
 
-  alert.append(message, buttonWrapper);
+  alert.append(messageWrapper, buttonWrapper);
   document.body.appendChild(alert);
 
   setTimeout(() => {
