@@ -30,6 +30,7 @@
   align-items: flex-start;
   gap: 16px;
   cursor: pointer;
+  width: 320px;
 }
 .press-cover-news:hover .press-cover-img {
   animation: empathize 0.2s forwards;
@@ -52,8 +53,11 @@
 .press-cover-title {
   display: flex;
   flex-direction: column;
+  text-align: left;
   font-size: 16px;
   color: var(--text-strong);
+  width: 100%;
+  word-break: keep-all;
 }
 .press-side-container {
   display: flex;

@@ -44,7 +44,7 @@ export function PressDashboard() {
 
     $pressLogoImg.src = pressList[currentPressId].logo;
     $lastEditedTime.textContent = `${newsData.lastEditedTime} 편집`;
-    $pressCoverImg.src = newsData.coverImg + newsData.id;
+    $pressCoverImg.src = newsData.coverImg;
     $pressCoverTitle.textContent = newsData.coverNewsTitle;
     $pressCoverTitle.href = newsData.coverNewsLink;
 
