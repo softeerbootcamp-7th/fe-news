@@ -30,6 +30,7 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
         </div>
     `);
   $el.onclick = () => {
+    if (prevActivated) return;
     isThisCategoryTab
       ? store.setCurrentTabIndex(tabIndex) //카테고리 탭이라면 따로 관리하는 currentTabIndex를 바꾸자.
       : store.jumpPressId(tabIndex); // 언론사 탭이라면 페이지를 바꿔야함. 로직이 그럼
