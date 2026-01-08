@@ -4,7 +4,7 @@ import { CloseIcon } from "../icons/CloseIcon";
 import { PlusIcon } from "../icons/PlusIcon";
 import "./SubscribeBtn.css";
 
-export function SubscribeBtn(press, whiteBg = false) {
+export function SubscribeBtn(pressId, whiteBg = false) {
   const $el = makeNode(
     `<button class="subscribe-button
     }"></button>`
@@ -12,7 +12,7 @@ export function SubscribeBtn(press, whiteBg = false) {
 
   const render = () => {
     const { subscribedIds } = store.state;
-    const is_subscribed = subscribedIds.has(press.id);
+    const is_subscribed = subscribedIds.has(pressId);
 
     $el.innerHTML = is_subscribed
       ? whiteBg
@@ -29,7 +29,7 @@ export function SubscribeBtn(press, whiteBg = false) {
   window.addEventListener("subsListChange", render);
   render();
 
-  $el.onclick = () => store.setTargetPressId(press.id, press.name);
+  $el.onclick = () => store.setTargetPressId(pressId);
 
   return $el;
 }

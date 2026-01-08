@@ -27,8 +27,16 @@ export function MainContents() {
             ${Next()}
             </button>`);
 
-  $pagePrev.onclick = () => store.setPage(-1);
-  $pageNext.onclick = () => store.setPage(1);
+  $pagePrev.onclick = () => {
+    const { viewGrid, viewOnlySubs } = store.state;
+    if (!viewGrid && !viewOnlySubs) store.setCurrentPressNumber(-1);
+    else store.setPage(-1);
+  };
+  $pageNext.onclick = () => {
+    const { viewGrid, viewOnlySubs } = store.state;
+    if (!viewGrid && !viewOnlySubs) store.setCurrentPressNumber(1);
+    else store.setPage(1);
+  };
 
   $contentWrapper.append(Alert(), $pagePrev, GridSection(), $pageNext);
 

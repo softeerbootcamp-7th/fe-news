@@ -9,8 +9,8 @@ export function ListTabContainer() {
 
   const fetchAndRenderCategoryTabs = () => {
     fetchPressListPerCategory().then((pressListPerCategory) => {
-      console.log(pressListPerCategory);
       renderCategoryTabs(pressListPerCategory);
+      savePressNumberArray(pressListPerCategory);
     });
   };
   const renderCategoryTabs = (pressListPerCategory) => {
@@ -35,6 +35,12 @@ export function ListTabContainer() {
       };
       $el.appendChild(ListTab(listTabPram));
     });
+  };
+  const savePressNumberArray = (pressListPerCategory) => {
+    const tempArr = pressListPerCategory.map((category) => {
+      return category.pressNames.length;
+    });
+    store.setPressNumPerTab(tempArr);
   };
   const render = () => {
     const { viewOnlySubs } = store.state;

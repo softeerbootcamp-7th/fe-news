@@ -150,15 +150,21 @@ export const tabNames = [
 export const store = {
   state: {
     viewOnlySubs: false,
-    viewGrid: true,
+    viewGrid: false,
     shuffledPressList: shuffle(pressList),
     currentPage: 0,
-    maxPage: parseInt(pressList.length / 24),
+    maxPage: Math.ceil(pressList.length / 24),
     targetPressId: null,
     targetPressName: "",
     subscribedIds: loadSavedSubs(), // 구독한 언론사의 ID를 저장하는 Sets
 
-    currentPressNumber: 0,
+    currentPressNumber: 0, // 없애버릴 것
+
+    // List view에서 추가되는 변수들 _ 언론사 순서는 page 변수 재사용
+    currentPressId: 0, //현재 언론사의 id 저장
+    currentTabIndex: 0, //현재 카테고리 인덱스 지정. ?-> page를 0으로? 아님 배열이 있으니 0~72중 해당 값으로?
+
+    pressNumPerTab: [0, 0, 0, 0, 0, 0, 0], // 카테고리별 언론사 개수 목록. fetch해서 받아오고 넣기
     timerId: null,
     pressData: [],
   },
@@ -188,23 +194,27 @@ export const store = {
     window.dispatchEvent(new Event("pressListOrder"));
   },
   setMaxPage() {
+    const prevPage = this.state.currentPage;
+    let nextMaxPage = 0;
     if (this.state.viewGrid) {
       if (this.state.viewOnlySubs)
         //그리드 뷰, 구독한 것만 모이보기
-        this.state.maxPage = parseInt(
-          Array.from(this.state.subscribedIds).length / 24
-        );
+        nextMaxPage =
+          Math.ceil(Array.from(this.state.subscribedIds).length / 24) - 1;
       //그리드 뷰, 전체 보기
-      else this.state.maxPage = parseInt(pressList.length / 24);
+      else nextMaxPage = Math.ceil(pressList.length / 24);
     } else {
       if (this.state.viewOnlySubs)
         //리스트 뷰, 구독한 언론사 탭 보기
-        this.state.maxPage = parseInt(
+        nextMaxPage = Math.ceil(
           Array.from(this.state.subscribedIds).length - 1
         );
       //리스트 뷰, 전체 탭 보기
-      else this.state.maxPage = 7 - 1;
+      else nextMaxPage = 7 - 1;
     }
+    this.state.maxPage = nextMaxPage;
+    if (prevPage > nextMaxPage) this.state.currentPage = nextMaxPage;
+    notify("page");
   },
   /** page 설정 함수 */
   setPage(page) {
@@ -219,13 +229,13 @@ export const store = {
     notify("page");
   },
   /** 구독/해제 버튼 클릭시 Alert모달에 전달할 언론사 정보 관리 함수 */
-  setTargetPressId(id, name) {
+  setTargetPressId(id) {
     if (this.state.targetPressId === id) {
       this.state.targetPressId = null;
       this.state.targetPressName = "";
     } else {
       this.state.targetPressId = id;
-      this.state.targetPressName = name;
+      this.state.targetPressName = pressNames[id];
     }
     notify("subscribeTarget");
   },
@@ -253,11 +263,16 @@ export const store = {
     notify("page");
   },
   setCurrentPressNumber(number) {
-    if ((number !== 0) & (number !== 1)) return;
+    if ((number !== 0) & (number !== 1) & (number !== -1)) return;
 
     if (number === 0) this.state.currentPressNumber = 0;
     else if (number === 1)
       this.state.currentPressNumber = this.state.currentPressNumber + 1;
+    else if (number === -1) {
+      if (this.state.currentPressNumber === 0) {
+        this.setCurrentTabIndex(this.state.currentPage - 1);
+      } else this.state.currentPressNumber = this.state.currentPressNumber - 1;
+    }
 
     notify("currentPressNumber");
   },
@@ -271,5 +286,19 @@ export const store = {
   setPressData(data) {
     this.state.pressData = data;
     notify("pressData");
+  },
+  //카테고리별 언론사 개수 저장 함수
+  setPressNumPerTab(arr) {
+    if (arr.length !== tabNames.length) return;
+    this.state.pressNumPerTab = arr;
+
+    notify("pressNumPerTab");
+  },
+
+  //list뷰에서 보여주고 있는 언론사 id 변경 함수
+  setCurrentPressId(id) {
+    this.state.currentPressId = id;
+
+    notify("currentPressId");
   },
 };
