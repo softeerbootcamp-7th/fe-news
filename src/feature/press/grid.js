@@ -4,16 +4,11 @@ import {
   getEmptyGridItemTemplate,
 } from "@/template/GridView";
 import { isSubscribed } from "@/store/subscriptionStore";
-import { observeTheme } from "@/feature/header/theme";
 
 export function initGridView(paginatedPressData) {
   // 첫 grid 레이아웃 그리기
   renderGridContainer();
   renderGridItems(paginatedPressData);
-
-  observeTheme(() => {
-    renderGridItems(paginatedPressData); // 다크모드 로고
-  });
 }
 
 function renderGridItems(paginatedData) {

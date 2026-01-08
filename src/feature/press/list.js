@@ -9,15 +9,9 @@ import { CATEGORY_LIST } from "@/types/constant";
 import { isSubscribed, getSubscribedList } from "@/store/subscriptionStore";
 import { getSubscriptionTab } from "@/store/subscriptionTabStore";
 import { SUBSCRIPTION_TAB } from "@/types/constant";
-import { observeTheme } from "@/feature/header/theme";
 
 export function initListView(paginatedData, currentIndex) {
   renderListView(paginatedData, currentIndex);
-
-  // 다크모드 로고
-  observeTheme(() => {
-    renderListView(paginatedData, currentIndex);
-  });
 }
 
 function renderListView(paginatedData, currentIndex) {
