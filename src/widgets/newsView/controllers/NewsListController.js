@@ -1,4 +1,11 @@
-import { pressNameFromFilename } from "../../../shared/lib/index.js";
+import {
+  ensurePressData,
+  getAllItems,
+  getCategoryMeta,
+  getCategoryOrder,
+  getPressItem,
+  normalizePressLogo,
+} from "../../../shared/lib/index.js";
 import { NEWSLIST_DURATION_MS } from "../../../shared/const/index.js";
 import {
   getNewsListState,
@@ -7,13 +14,6 @@ import {
   setNewsListPressIndex,
   setNewsListSubscriptionIndex,
 } from "../../../app/model/store/newsListStore.js";
-import {
-  ensureNewsData,
-  getCategoryMeta,
-  getCategoryOrder,
-  getPressItem,
-  getAllItems,
-} from "../lib/newsListData.js";
 import {
   renderNewsListView,
   renderTabs,
@@ -64,15 +64,8 @@ function getSubscribedEntries() {
   let fallbackIndex = 0;
   const fallbackPool = getAllItems();
   for (const key of runtime.subscribed) {
-    let press = key;
+    const press = key;
     let item = getPressItem(press);
-    if (!item) {
-      const derived = pressNameFromFilename(key);
-      if (getPressItem(derived)) {
-        press = derived;
-        item = getPressItem(derived);
-      }
-    }
 
     if (!item && fallbackPool.length) {
       item = fallbackPool[fallbackIndex % fallbackPool.length];
@@ -127,6 +120,7 @@ function getCategoryModel() {
 }
 
 function getPanelModel(activeTab, subscribedModel, categoryModel) {
+  const theme = runtime.store?.getState?.().theme ?? "light";
   if (activeTab === "subscribed") {
     const entry = subscribedModel.entries[subscribedModel.activeIndex];
     return {
@@ -135,6 +129,7 @@ function getPanelModel(activeTab, subscribedModel, categoryModel) {
       isSubscribed: entry?.press
         ? runtime.subscribed.has(entry.press)
         : false,
+      logoUrl: normalizePressLogo(entry?.item?.logo ?? "", theme),
       related: Array.isArray(entry?.item?.relatedArticles)
         ? entry.item.relatedArticles.slice(0, 6)
         : [],
@@ -160,6 +155,7 @@ function getPanelModel(activeTab, subscribedModel, categoryModel) {
     item: item ?? null,
     pressName,
     isSubscribed: pressName ? runtime.subscribed.has(pressName) : false,
+    logoUrl: normalizePressLogo(item?.logo ?? "", theme),
     related: Array.isArray(item?.relatedArticles)
       ? item.relatedArticles.slice(0, 6)
       : [],
@@ -215,7 +211,7 @@ export function renderLogoList({
   runtime.selector = selector;
   runtime.subscribed = subscribed;
   runtime.store = store;
-  ensureNewsData()
+  ensurePressData()
     .then((data) => {
       if (data?.categoryOrder?.length) {
         setNewsListCategoryOrder(runtime.store, data.categoryOrder);

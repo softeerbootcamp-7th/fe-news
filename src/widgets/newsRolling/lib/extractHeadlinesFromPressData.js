@@ -3,7 +3,7 @@
  * - DOM 접근/이벤트/타이머/네트워크(fetch)는 app 레이어(Controller)에서 처리합니다.
  */
 
-export function extractHeadlinesFromNewsJson(json) {
+export function extractHeadlinesFromPressData(json) {
   if (!Array.isArray(json)) return [];
 
   const headlines = [];
