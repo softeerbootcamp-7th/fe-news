@@ -1,12 +1,12 @@
-import { shuffle } from "../../../shared/lib/index.js";
-import { NEWSLIST_CATEGORIES } from "../../../shared/const/index.js";
+import { NEWSLIST_CATEGORIES } from "../const/index.js";
 
 const runtime = {
   dataPromise: null,
-  byCategory: new Map(),
+  items: [],
   byPress: new Map(),
-  allItems: [],
+  byCategory: new Map(),
   categoryOrder: [],
+  pressList: [],
 };
 
 function buildCategoryOrder(byCategory) {
@@ -18,12 +18,33 @@ function buildCategoryOrder(byCategory) {
   ];
 }
 
-export function ensureNewsData({ fetchFn = fetch } = {}) {
+function buildPressList(byPress) {
+  return [...byPress.entries()].map(([press, item]) => ({
+    press,
+    logo: item?.logo ?? "",
+  }));
+}
+
+export function normalizePressLogo(logoUrl, theme) {
+  if (!logoUrl) return "";
+  if (theme === "dark") {
+    return logoUrl.replace("/light/", "/dark/");
+  }
+  if (theme === "light") {
+    return logoUrl.replace("/dark/", "/light/");
+  }
+  return logoUrl;
+}
+
+export function ensurePressData({
+  fetchFn = fetch,
+  url = "./mockData/pressData.json",
+} = {}) {
   if (runtime.dataPromise) return runtime.dataPromise;
-  runtime.dataPromise = fetchFn("./mockData/news.json")
+  runtime.dataPromise = fetchFn(url)
     .then((res) => {
       if (!res.ok) {
-        throw new Error(`Failed to load news.json: ${res.status}`);
+        throw new Error(`Failed to load pressData.json: ${res.status}`);
       }
       return res.json();
     })
@@ -35,42 +56,40 @@ export function ensureNewsData({ fetchFn = fetch } = {}) {
         if (!byCategory.has(category)) byCategory.set(category, []);
         byCategory.get(category).push(item);
         const press = String(item.press || "").trim();
-        if (press) byPress.set(press, item);
+        if (press && !byPress.has(press)) {
+          byPress.set(press, item);
+        }
       }
 
-      for (const [category, items] of byCategory) {
-        byCategory.set(category, shuffle(items));
-      }
-
+      runtime.items = rows;
       runtime.byCategory = byCategory;
       runtime.byPress = byPress;
-      runtime.allItems = rows;
       runtime.categoryOrder = buildCategoryOrder(byCategory);
+      runtime.pressList = buildPressList(byPress);
       return {
+        items: runtime.items,
         byCategory,
         byPress,
-        allItems: rows,
         categoryOrder: runtime.categoryOrder,
+        pressList: runtime.pressList,
       };
     })
     .catch((error) => {
       console.error(error);
+      runtime.items = [];
       runtime.byCategory = new Map();
       runtime.byPress = new Map();
-      runtime.allItems = [];
       runtime.categoryOrder = [];
+      runtime.pressList = [];
       return {
+        items: runtime.items,
         byCategory: runtime.byCategory,
         byPress: runtime.byPress,
-        allItems: runtime.allItems,
         categoryOrder: runtime.categoryOrder,
+        pressList: runtime.pressList,
       };
     });
   return runtime.dataPromise;
-}
-
-export function getCategoryOrder() {
-  return runtime.categoryOrder ?? [];
 }
 
 export function getCategoryMeta(category) {
@@ -78,10 +97,18 @@ export function getCategoryMeta(category) {
   return { items, total: items.length };
 }
 
+export function getCategoryOrder() {
+  return runtime.categoryOrder ?? [];
+}
+
 export function getPressItem(press) {
   return runtime.byPress.get(press);
 }
 
 export function getAllItems() {
-  return runtime.allItems ?? [];
+  return runtime.items ?? [];
+}
+
+export function getPressList() {
+  return runtime.pressList ?? [];
 }
