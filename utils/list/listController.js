@@ -24,17 +24,29 @@ export function showList() {
     render();
 }
 
+function render() {
+    updateView({
+        type: "LIST-INIT",
+        view: list,
+        currentPage: currentPage,
+        currentData: currentData
+    });
+}
+
+// 페이지 넘길때마다 호출
 export function handleListPrev() {
     console.log('listPrev');
+    update();
 }
 
 export function handleListNext() {
     console.log('listNext');
+    update();
 }
 
-function render() {
+function update() {
     updateView({
-        type: "LIST-INIT",
+        type: "LIST-UPDATE",
         view: list,
         currentPage: currentPage,
         currentData: currentData

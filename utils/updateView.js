@@ -4,8 +4,6 @@ import { renderList, updateList } from "./list/list.js";
 let prevBtn = document.getElementById("prevBtn");
 let nextBtn = document.getElementById("nextBtn");
 
-let viewUpdate = document.getElementById('news-list-container');
-
 export function updateView({type, view, currentPage, currentData, itemCount}) {
     if (type === "GRID") {
         renderGrid({
@@ -22,6 +20,8 @@ export function updateView({type, view, currentPage, currentData, itemCount}) {
         });
     }
     else if (type === "LIST-UPDATE") {
+        let viewUpdate = document.getElementById('news-list-container');
+
         updateList({
             container: viewUpdate
         });

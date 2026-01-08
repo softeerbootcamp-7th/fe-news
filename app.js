@@ -10,42 +10,46 @@ import { initRollingTabs } from './rolling/rolling.js';
 
 import { initPageController } from './utils/page/pageController.js';
 
+import { loadNews } from './store/newsStore.js';
+
 function initApp() {
-  // 구독 언론사 저장
-  initSubscriptionStore();
+    loadNews().then(() => {
+        // 구독 언론사 저장
+        initSubscriptionStore();
 
-  // 날짜 렌더링
-  renderCurrentDate('current-date');
+        // 날짜 렌더링
+        renderCurrentDate('current-date');
 
-  // 구독 언론사 수 뱃지 개수
-  initSubscriptionBadge({
-    badgeSelector: '.badge'
-  });
+        // 구독 언론사 수 뱃지 개수
+        initSubscriptionBadge({
+            badgeSelector: '.badge'
+        });
 
-  // 전체 언론사 & 구독 언론사 전환
-  initSubscriptionTabs(); // 따라가면 setGridData? 그거때문에 그리드로 생성됨 > 거기서 전달 파라미터를 추가해서 수정하면 됨
+        // 전체 언론사 & 구독 언론사 전환
+        initSubscriptionTabs(); // 따라가면 setGridData? 그거때문에 그리드로 생성됨 > 거기서 전달 파라미터를 추가해서 수정하면 됨
 
-  // 리스트 & 그리드 전환
-  initViewTabs({
-    listId: 'list-view',
-    gridId: 'grid-view'
-  });
+        // 리스트 & 그리드 전환
+        initViewTabs({
+            listId: 'list-view',
+            gridId: 'grid-view'
+        });
 
-  // 초기 그리드 상태
-  initGridEvents({
-    viewId: 'newsGrid',
-    prevBtnId: 'prevBtn', // 이전 페이지 버튼
-    nextBtnId: 'nextBtn'  // 다음 페이지 버튼
-  });
-  
-  // 페이지 컨트롤러
-  initPageController({
-    prevBtnId: 'prevBtn',
-    nextBtnId: 'nextBtn'
-  });
+        // 초기 그리드 상태
+        initGridEvents({
+            viewId: 'newsGrid',
+            prevBtnId: 'prevBtn', // 이전 페이지 버튼
+            nextBtnId: 'nextBtn'  // 다음 페이지 버튼
+        });
+        
+        // 페이지 컨트롤러
+        initPageController({
+            prevBtnId: 'prevBtn',
+            nextBtnId: 'nextBtn'
+        });
 
-  // 최신 기사 롤링 탭
-  initRollingTabs();
+        // 최신 기사 롤링 탭
+        initRollingTabs();
+    });
 }
 
 initApp();
