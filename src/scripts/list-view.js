@@ -1,12 +1,14 @@
+import { getState, setCurrentPageIdx, setLastPageIdx } from "../store/appState";
 import {
   addPressDataToPressDataByCtg,
   getCategoryList,
   getListModeState,
   getPressCntByCtg,
-  getShowingPressData,
+  selectPressByCategoryAndIndex,
   setSelectedCtg,
 } from "../store/listModeState";
 import { escapeAttr, escapeHtml } from "../utils/escapeAttr";
+import { renderArrowEls } from "./main-view";
 
 export function initListModeState() {
   fetch("/data/news-detail.mok.json")
@@ -34,24 +36,36 @@ export function initListView() {
 function bindListViewEvents() {
   const listViewEl = document.querySelector("#list-view");
   // 바뀌지 않는 요소(list-view 요소)에 리스너 단다. 그 요소 내부에 있는 것들은 innerHtml바뀌면서 돔에서 사라졌다가 생겼다 하지만 그 상위 list-view 요소는 그대로 남아 있음
-  listViewEl.addEventListener("click", (e) => {
-    console.log(bindListViewEvents);
-    const categoryBtn = e.target.closest(".category-btn");
-    if (!categoryBtn) return; // 클릭된게 카테고리 버튼이 아니면 리스너 그냥 종료
-    // 선택된 카테고리 버튼 내용으로 현재 선택된 카테고리 state정보 변경
-    setSelectedCtg(categoryBtn.textContent);
-    renderListView();
-  });
+  listViewEl.addEventListener("click", onClickCategoryBtn);
 }
 
-function renderListView() {
+function onClickCategoryBtn(e) {
+  const categoryBtn = e.target.closest(".category-btn");
+  if (!categoryBtn) return; // 클릭된게 카테고리 버튼이 아니면 리스너 그냥 종료
+  // 선택된 카테고리 버튼 내용으로 현재 선택된 카테고리 state정보 변경
+  const selectedCtg = categoryBtn.textContent;
+  setSelectedCtg(selectedCtg);
+  // 현재 보고 있는 페이지 번호 0으로 설정
+  setCurrentPageIdx(0);
+  // 가장 마지막 페이지 idx는 현재 카테고리의 언론사 개수-1
+  setLastPageIdx(getPressCntByCtg(selectedCtg) - 1);
+  renderListView();
+  renderArrowEls();
+}
+
+export function renderListView() {
   const listViewEl = document.querySelector("#list-view");
-  const listModeState = getListModeState();
+  const { pressDataByCtg, selectedCtg } = getListModeState();
   // 상단바에 뜰 카테고리 종류 리스트
   const categoryList = getCategoryList();
 
+  const { currentPageIdx } = getState();
+
   // 현재 리스트뷰 영역내에 메인으로 보여져야할 언론사 정보 가져오기
-  const showingPressData = getShowingPressData();
+  const showingPressData = selectPressByCategoryAndIndex(
+    selectedCtg,
+    currentPageIdx
+  );
 
   // 미구독 중이면 구독하기 버튼 나와야 하고
   // 구독중이면 해지하는 x버튼 나와야 함
@@ -64,19 +78,19 @@ function renderListView() {
           (c) => `
           <button
             class="category-btn available-medium14 clean-button ${
-              c === listModeState.selectedCtg ? "is-active" : ""
+              c === selectedCtg ? "is-active" : ""
             }"
             data-action="change-category"
             data-category="${escapeAttr(c)}"
-            aria-pressed="${c === listModeState.selectedCtg}"
+            aria-pressed="${c === selectedCtg}"
           >${
-            c === listModeState.selectedCtg // 선택된 카테고리의 경우
+            c === selectedCtg // 선택된 카테고리의 경우
               ? `<span >
               ${escapeHtml(c)}
               </span >
               <div>
             ${
-              listModeState.showingPressIdx + 1
+              currentPageIdx + 1
             } / <span id='press-total-cnt'>${getPressCntByCtg(c)}</span>
             </div>
             

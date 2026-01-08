@@ -6,12 +6,15 @@ import {
   getState,
   removeSubscribed,
   setCurrentPageIdx,
+  setLastPageIdx,
   setPages,
   setSelectedTabId,
   setSubscribedList,
   setViewMode,
 } from "../store/appState";
+import { getCategoryList, getPressCntByCtg } from "../store/listModeState";
 import shuffleArray from "../utils/shuffleArray";
+import { renderListView } from "./list-view";
 
 function loadSubscribedFromStorage() {
   const raw = localStorage.getItem("subscribed-press-list");
@@ -35,44 +38,68 @@ function renderBadge() {
 }
 
 const viewerButtonBar = document.querySelector("#viewer-button");
+// 뷰 모드(그리드, 리스트) 선택 아이콘 클릭 시 이벤트 리스너
 viewerButtonBar.addEventListener("click", (e) => {
-  const el = e.target.closest("svg");
+  handleChangeViewMode(e);
+  const state = getState();
+});
+
+function renderMainView() {
   const { viewMode } = getState();
+  console.log("renderMainView viewMode =", viewMode);
+  if (viewMode == "grid") showGridView();
+  else if (viewMode == "list") showListView();
+  const state = getState();
+  renderArrowEls();
+}
+
+// 뷰 보기 모드(그리드 <-> 리스트) 변환 시 호출되는 함수
+function handleChangeViewMode(e) {
+  const { viewMode, currentPageIdx, lastPageIdx, pages } = getState();
+
+  const el = e.target.closest("svg");
   if (!el) return;
 
   // 만약 현재 보기 모드랑 새로 누른 보기 모드랑 같으면 변화 필요 없기 때문에 함수 종료
   if (viewMode === el.dataset.viewMode) return;
 
-  // 현재 보기 모드 state에 내용 적용
-  setViewMode(el.dataset.viewMode);
+  const newViewMode = el.dataset.viewMode;
 
+  if (newViewMode == "list") {
+    showListView();
+
+    setLastPageIdx(getPressCntByCtg(getCategoryList()[0]) - 1);
+  } else if (newViewMode == "grid") {
+    showGridView();
+    setLastPageIdx(pages.length - 1);
+  }
+
+  // 바뀐 뷰모드 state에 저장
+  setViewMode(newViewMode);
+
+  // 가장 처음 페이지 보일 수 있도록
+  setCurrentPageIdx(0);
+  // 양쪽 화살표 보여질지 결정
+  renderArrowEls();
+
+  // 아래는 아이콘 css 변경
   const iconBtns = viewerButtonBar.querySelectorAll(".view-type-icon");
 
   iconBtns.forEach((btn) => {
     btn.classList.remove("is-active-icon");
   });
   el.classList.add("is-active-icon");
-
-  // 보기 모드에 맞는 메인 뷰 보기 출력
-  renderMainView();
-});
-
-function renderMainView() {
-  const { viewMode } = getState();
-  console.log("renderMainView viewMode =", viewMode);
-  if (viewMode == "grid") renderGridView();
-  else if (viewMode == "list") renderListView();
 }
 
-function renderGridView() {
-  console.log("renderGridView");
+function showGridView() {
+  console.log("showGridView");
   const gridModeView = document.querySelector("#grid-view-wrapper");
   gridModeView.hidden = false;
   const listModeView = document.querySelector("#list-view");
   listModeView.hidden = true;
 }
-function renderListView() {
-  console.log("renderListView");
+function showListView() {
+  console.log("showListView");
   const gridModeView = document.querySelector("#grid-view-wrapper");
   gridModeView.hidden = true;
   const listModeView = document.querySelector("#list-view");
@@ -180,7 +207,7 @@ alertNegativeBtn.addEventListener("click", handleAlertNegaBtn);
 // showUnsubscribeAlrert : 구독해지 알림창 띄우는 함수
 function showUnsubscribeAlert(unsubscribeAlertEl, pressName) {
   unsubscribeAlertEl.querySelector("span").textContent = pressName;
-  unsubscribeAlertEl.style.visibility = "visible";
+  showAlert(unsubscribeAlertEl);
 }
 
 // 알림창 띄우는 함수(=visibility : visible 로 만들어줌)
@@ -314,8 +341,6 @@ function renderGrid(pageIndex) {
     // 더이상 언론사 없으면 그냥 빈 칸 만들어 지도록
     gridEl.appendChild(cell);
   }
-
-  checkArrowShow();
 }
 
 function handleUnSubscribeBtn(clickedBtnEl) {
@@ -379,7 +404,7 @@ function handleRightArrowShow({ rightArrowEl, toggle }) {
 
 // 현재 페이지 넘버에 따라 왼쪽, 오른쪽 화살표 보여지게/안보여지게 컨트롤 하는 함수
 // currentPageIdx: 현재 페이지 idx, lastPageIdx: 마지막 페이지 idx
-function checkArrowShow() {
+export function renderArrowEls() {
   const state = getState();
   const { currentPageIdx, lastPageIdx } = state;
 
@@ -393,20 +418,24 @@ function checkArrowShow() {
 // 그리드 옆 왼쪽 화살표 눌렀을 때 불려지는 함수
 function handleLeftArrowClick() {
   const state = getState();
-  const { currentPageIdx } = state;
+  const { currentPageIdx, viewMode } = state;
   const nextPageIdx = currentPageIdx - 1;
   setCurrentPageIdx(nextPageIdx);
-
-  renderGrid(nextPageIdx);
+  if (viewMode == "grid") renderGrid(nextPageIdx);
+  else if (viewMode == "list") renderListView();
+  renderArrowEls();
 }
 
 // 그리드 옆 오른쪽 화살표 눌렀을 때 불려지는 함수
 function handleRightArrowClick() {
   const state = getState();
-  const { currentPageIdx } = state;
+  const { currentPageIdx, viewMode } = state;
 
   const nextPageIdx = currentPageIdx + 1;
-  renderGrid(nextPageIdx);
+  setCurrentPageIdx(nextPageIdx);
+  if (viewMode == "grid") renderGrid(nextPageIdx);
+  else if (viewMode == "list") renderListView();
+  renderArrowEls();
 }
 
 leftArrowEl.addEventListener("click", handleLeftArrowClick);
@@ -419,5 +448,5 @@ export default function initGridView() {
   renderGrid(0);
   renderMainView();
   renderBadge();
-  checkArrowShow();
+  renderArrowEls();
 }

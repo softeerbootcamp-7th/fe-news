@@ -3,17 +3,16 @@ const listModeState = {
   // 카테고리 별로 언론사 데이터 리스트 분리해둔 맵객체
   pressDataByCtg: {},
   selectedCtg: "매거진/전문지", // 현재 선택중인 카테고리 분야
-  showingPressIdx: 0, // 카테고리 내에서 보고있는 언론사의 idx
 };
 
 export function getListModeState() {
   return listModeState;
 }
 
-// 현재 보여져야 할 신문데이터 정보 반환하는 함수
-export function getShowingPressData() {
-  const { pressDataByCtg, selectedCtg, showingPressIdx } = listModeState;
-  return pressDataByCtg[selectedCtg]?.[showingPressIdx] ?? null;
+// 특정 언론사 정보 반환하는 함수
+export function selectPressByCategoryAndIndex(category, idx) {
+  const { pressDataByCtg } = listModeState;
+  return pressDataByCtg[category]?.[idx] ?? null;
 }
 
 // 해당 카테고리의 전체 신문사 갯수 반환하는 함수
