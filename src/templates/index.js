@@ -1,9 +1,13 @@
-export { gridItemTemplate } from './grid-item-template.js';
-export { gridViewTemplate } from './grid-view-template.js';
-export { leftArrowButtonTemplate } from './left-arrow-button-template.js';
-export { logoImageTemplate } from './logo-image-template.js';
-export { rightArrowButtonTemplate } from './right-arrow-button-template.js';
-export { rollingItemTemplate } from './rolling-item-template.js';
-export { subscribeButtonTemplate } from './subscribe-button-template.js';
-export { unsubscribeButtonTemplate } from './unsubscribe-button-template.js';
-export { unsubscriptionModalTemplate } from './unsubscription-modal-template.js';
+export {
+  leftArrowButtonTemplate,
+  rightArrowButtonTemplate,
+} from './arrow-button';
+export { gridItemTemplate, gridViewTemplate } from './grid-view';
+export { listViewTemplate } from './list-view';
+export { logoImageTemplate } from './logo-image-template';
+export { rollingItemTemplate } from './rolling-item';
+export {
+  subscribeButtonTemplate,
+  unsubscribeButtonTemplate,
+} from './subscription-button';
+export { unsubscriptionModalTemplate } from './unsubscription-modal';
