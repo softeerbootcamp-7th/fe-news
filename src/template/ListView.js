@@ -23,10 +23,10 @@ export function getNavTemplate({
       class="press-tabs__item active"
       aria-current="true"
     >
-      <p class="display-bold-14">${navName}</p>
+      <p class="press-tabs__title">${navName}</p>
       ${
         totalPress
-          ? `<p class="display-bold-12">
+          ? `<p class="press-tabs__description">
             ${currentPress}<span> / ${totalPress} </span>
           </p>`
           : `<svg
@@ -44,7 +44,7 @@ export function getNavTemplate({
   `
     : `
     <button class="press-tabs__item">
-      <p class="press-tabs__title medium-14">${navName}</p>
+      <p class="press-tabs__title">${navName}</p>
     </button>
   `;
 }
@@ -64,7 +64,7 @@ export function getPressContentTemplate({
         <img src="${logo}" alt="${name}" class="press-feed__logo" />
         <time
           datetime="${time}"
-          class="press-feed__time medium-12"
+          class="press-feed__time"
         >
           ${time} 편집
         </time>
@@ -82,20 +82,20 @@ export function getPressContentTemplate({
             alt="메인 뉴스 썸네일"
             class="press-feed__thumbnail"
           />
-          <h3 class="press-feed__headline medium-16">
+          <h3 class="press-feed__headline">
             ${mainNews.title}
           </h3>
         </article>
 
         <!-- 서브 뉴스 -->
-        <ul class="press-feed__list medium-16">
+        <ul class="press-feed__list">
           <li>${subNews[0].title}</li>
           <li>${subNews[1].title}</li>
           <li>${subNews[2].title}</li>
           <li>${subNews[3].title}</li>
           <li>${subNews[4].title}</li>
           <li>${subNews[5].title}</li>
-          <p class="press-feed__note medium-14">
+          <p class="press-feed__note">
             ${name} 언론사에서 직접 편집한 뉴스입니다.
           </p>
         </ul>

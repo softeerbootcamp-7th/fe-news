@@ -128,11 +128,10 @@ export class LatestNewsView {
   createNewsElement(dataIndex) {
     // 특정 데이터로 뉴스 요소 생성
     const news = document.createElement("article");
+    news.classList.add("latest-news__item");
     const press = document.createElement("p");
-    press.classList.add("display-bold-14");
     press.textContent = this.data[dataIndex].press;
     const title = document.createElement("h3");
-    title.classList.add("medium-14");
     title.textContent = this.data[dataIndex].mainTitle;
     news.appendChild(press);
     news.appendChild(title);

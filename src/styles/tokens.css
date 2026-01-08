@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/font/PretendardVariable.woff2") format("woff2");
+  font-display: swap;
+}
+
 /* =========================
    Typography Tokens
 ========================= */
@@ -21,6 +27,27 @@
   /* Line Heights */
   --line-height-auto: normal;
   --line-height-22: 22px;
+}
+
+/* =========================
+   Typography System Tokens
+========================= */
+:root {
+  --bold24: var(--font-weight-bold) var(--font-size-24) /
+    var(--line-height-auto) var(--font-family-base);
+  --bold16: var(--font-weight-bold) var(--font-size-16) /
+    var(--line-height-auto) var(--font-family-base);
+  --bold14: var(--font-weight-bold) var(--font-size-14) /
+    var(--line-height-auto) var(--font-family-base);
+  --bold12: var(--font-weight-bold) var(--font-size-12) /
+    var(--line-height-auto) var(--font-family-base);
+
+  --medium16: var(--font-weight-medium) var(--font-size-16) /
+    var(--line-height-22) var(--font-family-base);
+  --medium14: var(--font-weight-medium) var(--font-size-14) /
+    var(--line-height-auto) var(--font-family-base);
+  --medium12: var(--font-weight-medium) var(--font-size-12) /
+    var(--line-height-auto) var(--font-family-base);
 }
 
 /* =========================
