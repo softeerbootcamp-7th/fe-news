@@ -16,7 +16,33 @@ export class LatestNewsView {
     this.rightLastRoll = performance.now() + LatestNewsView.ROLL_OFFSET_MS; // 오른쪽 1초 시간차
     this.leftPaused = false;
     this.rightPaused = false;
+    this.rafId = null;
+  }
+
+  initLatestNews(newsData) {
+    // 데이터 초기화
+    this.data = newsData;
+
+    // 첫 2개의 뉴스 추가
+    const leftNews = this.appendLeftNewsElement();
+    const rightNews = this.appendRightNewsElement();
+    leftNews.style.transform = "translateY(0)";
+    rightNews.style.transform = "translateY(0)";
+
+    // 롤링 애니메이션 시작
+    this.initRolling();
+  }
+
+  initRolling() {
     this.rafId = requestAnimationFrame(this.loop.bind(this));
+
+    // 탭 복귀 시 시간차 되살리기
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") {
+        this.leftLastRoll = performance.now();
+        this.rightLastRoll = performance.now() + LatestNewsView.ROLL_OFFSET_MS;
+      }
+    });
   }
 
   loop(timestamp) {
@@ -73,17 +99,6 @@ export class LatestNewsView {
       oldNews.remove();
     });
     // setTimeout(() => oldNews.remove(), 500);
-  }
-
-  initLatestNews(newsData) {
-    // 데이터 초기화
-    this.data = newsData;
-
-    // 첫 2개의 뉴스 추가
-    const leftNews = this.appendLeftNewsElement();
-    const rightNews = this.appendRightNewsElement();
-    leftNews.style.transform = "translateY(0)";
-    rightNews.style.transform = "translateY(0)";
   }
 
   appendLeftNewsElement() {
