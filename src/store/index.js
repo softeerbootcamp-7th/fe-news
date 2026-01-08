@@ -150,15 +150,13 @@ export const tabNames = [
 export const store = {
   state: {
     viewOnlySubs: false,
-    viewGrid: false,
+    viewGrid: true,
     shuffledPressList: shuffle(pressList),
     currentPage: 0,
     maxPage: Math.ceil(pressList.length / 24),
     targetPressId: null,
     targetPressName: "",
     subscribedIds: loadSavedSubs(), // 구독한 언론사의 ID를 저장하는 Sets
-
-    currentPressNumber: 0, // 없애버릴 것
 
     // List view에서 추가되는 변수들 _ 언론사 순서는 page 변수 재사용
     currentPressId: 0, //현재 언론사의 id 저장
@@ -174,7 +172,7 @@ export const store = {
     this.state.currentPage = 0;
     this.setTargetPressId(null, "");
     this.clearTimerId();
-    this.state.currentPressNumber = 0;
+    this.state.currentPressId = 0;
     this.setMaxPage();
     notify("viewOnlySubs");
   },
@@ -184,7 +182,7 @@ export const store = {
     this.state.currentPage = 0;
     this.setTargetPressId(null, "");
     this.clearTimerId();
-    this.state.currentPressNumber = 0;
+    this.state.currentPressId = 0;
     this.setMaxPage();
     notify("viewGrid");
   },
@@ -224,7 +222,6 @@ export const store = {
     if (page === 0) this.state.currentPage = 0;
     else this.state.currentPage = result;
 
-    this.setCurrentPressNumber(0);
     this.setTargetPressId(null, "");
     notify("page");
   },
@@ -256,27 +253,90 @@ export const store = {
    *
    */
   setCurrentTabIndex(index) {
-    if (index < 0 || index > this.state.maxPage) this.state.currentPage = 0;
-    else this.state.currentPage = index;
+    if (index < 0 || index > this.state.maxPage) this.state.currentTabIndex = 0;
+    else this.state.currentTabIndex = index;
 
-    this.setCurrentPressNumber(0);
-    notify("page");
+    this.setCurrentPressId(0);
+    notify("tabIndex");
   },
-  setCurrentPressNumber(number) {
+  goBackTabIndex() {
+    const targetIndex = (this.state.currentTabIndex + 6) % 7;
+    this.state.currentTabIndex = targetIndex;
+
+    this.state.currentPressId = this.state.pressNumPerTab[targetIndex] - 1;
+  },
+
+  /**
+   *  리스트 뷰 탭 이동 핵심 함수야!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   */
+  setCurrentPressId(number) {
+    const prevPressId = this.state.currentPressId;
     if ((number !== 0) & (number !== 1) & (number !== -1)) return;
 
-    if (number === 0) this.state.currentPressNumber = 0;
-    else if (number === 1)
-      this.state.currentPressNumber = this.state.currentPressNumber + 1;
-    else if (number === -1) {
-      if (this.state.currentPressNumber === 0) {
-        this.setCurrentTabIndex(this.state.currentPage - 1);
-      } else this.state.currentPressNumber = this.state.currentPressNumber - 1;
+    if (number === 0) this.state.currentPressId = 0;
+    else if (number === 1) {
+      /**
+       * 다음 페이지 눌렀다!! 늘리자!!!!
+       */
+      if (this.state.viewOnlySubs) {
+        //구독한 언론사가 탭인 뷰
+        if (prevPressId >= Array.from(this.state.subscribedIds).length) {
+          // 구독한 언론사가 탭인 뷰에서 늘리려는데, 마지막 구독한 언론사라면? 0으로 돌아가자
+          this.state.currentPressId = 0;
+        } else {
+          // 구독한 언론사가 탭인 뷰에서 늘리려는데 마지막이 아니야? 그냥 늘려
+          this.state.currentPressId = prevPressId + 1;
+        }
+      } else {
+        //카테고리가 탭인 뷰
+        if (
+          prevPressId >=
+          this.state.pressNumPerTab[this.state.currentTabIndex] - 1
+        ) {
+          // 카테고리 뷰에서 늘리고 있는데, 마지막 언론사라면? 카테고리 인덱스 늘리고, 0으로 가야지!
+          this.setCurrentTabIndex(this.state.currentTabIndex + 1);
+          this.state.currentPressId = 0;
+        } else {
+          //카테고리 뷰에서 늘리는데, 마지막 언론사가 아니면? 그냥 다음거 보여주면 됨
+          this.state.currentPressId = prevPressId + 1;
+        }
+      }
+    } else if (number === -1) {
+      /**
+       * 이전 페이지 눌렀다!! 줄이자!!!!
+       */
+      if (this.state.viewOnlySubs) {
+        //구독한 언론사가 탭인 뷰
+        if (prevPressId === 0) {
+          // 구독한 언론사가 탭인 뷰에서 줄이려는데, 첫번째 구독한 언론사라면? 마지막으로 보내자
+          this.state.currentPressId =
+            Array.from(this.state.subscribedIds).length - 1;
+        } else {
+          // 구독한 언론사가 탭인 뷰에서 줄이려는데 첫번째 아니야? 그냥 줄여
+          this.state.currentPressId = prevPressId - 1;
+        }
+      } else {
+        //카테고리가 탭인 뷰
+        if (prevPressId === 0) {
+          // 카테고리 뷰에서 줄이고 있는데, 첫번째 언론사라면? 마지막의 마지막으로 가야지!
+          this.goBackTabIndex();
+        } else {
+          //카테고리 뷰에서 줄이는데, 첫번째 언론사가 아니면? 그냥 이전거 보여주면 됨
+          this.state.currentPressId = prevPressId - 1;
+        }
+      }
     }
 
-    notify("currentPressNumber");
+    notify("currentPressId");
+  },
+  jumpPressId(index) {
+    this.state.currentPressId = index;
+    notify("currentPressId");
   },
   setTimerId(id) {
+    if (this.state.timerId !== null) {
+      this.clearTimerId();
+    }
     this.state.timerId = id;
   },
   clearTimerId() {
@@ -294,11 +354,8 @@ export const store = {
 
     notify("pressNumPerTab");
   },
-
-  //list뷰에서 보여주고 있는 언론사 id 변경 함수
-  setCurrentPressId(id) {
-    this.state.currentPressId = id;
-
-    notify("currentPressId");
+  setCurrentPressIdAfterCheck(orderingId, targetNum) {
+    if (orderingId !== this.state.currentPressId) return;
+    this.setCurrentPressId(targetNum);
   },
 };

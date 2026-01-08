@@ -16,11 +16,8 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
   const { subscribedIds } = store.state;
   const isThisCategoryTab = pressId === null;
   let prevActivated = false;
-  const maxPressIndex = isThisCategoryTab
-    ? category.pressIdList.length - 1
-    : Array.from(subscribedIds).length - 1;
 
-  const repeatTime = 500;
+  const repeatTime = 3000;
 
   const pressName = isThisCategoryTab
     ? ""
@@ -32,7 +29,9 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
         </div>
     `);
   $el.onclick = () => {
-    store.setCurrentTabIndex(tabIndex);
+    isThisCategoryTab
+      ? store.setCurrentTabIndex(tabIndex) //카테고리 탭이라면 따로 관리하는 currentTabIndex를 바꾸자.
+      : store.jumpPressId(tabIndex); // 언론사 탭이라면 페이지를 바꿔야함. 로직이 그럼
   };
   const $numberBox = makeNode(`<span id="listTab-${tabIndex}"> </span>`);
 
@@ -41,28 +40,13 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
    */
 
   const startTimer = () => {
-    const { timerId } = store.state;
-    // 중복 실행 방지: 이미 타이머가 있다면 먼저 죽이고 새로 시작
-    if (timerId) store.clearTimerId();
-
     const repeat = () => {
-      const { currentPressNumber } = store.state;
-
       // 1. 상태 업데이트 (다음 언론사 번호로)
-      // 현재 번호를 가져와서 +1 하는 로직이 store에 있으면 좋습니다.
-      if (isThisCategoryTab) {
-        if (currentPressNumber === maxPressIndex)
-          //카테고리 탭일 땐 언론사 늘리다가 마지막에 다음 탭
-          store.setCurrentTabIndex(tabIndex + 1);
-        else {
-          store.setCurrentPressNumber(1);
-          store.setTimerId(setTimeout(repeat, repeatTime));
-        }
-      }
-      //구독한 언론사 탭일땐 바로바로 다음 탭
-      else store.setCurrentTabIndex(tabIndex + 1);
+      const { currentPressId } = store.state;
+      store.setCurrentPressIdAfterCheck(currentPressId, 1);
 
-      // 2. 재귀 호출: 다시 2초 뒤에 repeat을 실행
+      // 2. 재귀 호출: 다시 n초 뒤에 repeat을 실행
+      store.setTimerId(setTimeout(repeat, repeatTime));
     };
 
     // 최초 실행
@@ -81,10 +65,14 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
    * 렌더링 함수
    */
   const render = () => {
-    const { currentPage, currentPressNumber } = store.state;
-    const newActivated = tabIndex === currentPage;
+    const { currentTabIndex, currentPressId } = store.state;
+    // 카태고리 탭인 경우, store의 currentTabIndex와 이 컴포넌트의 index가 같으면,
+    // 언론사 탭인 경우, store의 현재 페이지와 이 컴포넌트의 index가 같으면 활성화.
+    const newActivated = isThisCategoryTab
+      ? currentTabIndex === tabIndex
+      : currentPressId === tabIndex;
 
-    if (!newActivated && newActivated === prevActivated) return;
+    if (newActivated === false && newActivated === prevActivated) return; //상태 변화가 없으면 그만.
 
     if (newActivated) {
       $el.appendChild($numberBox);
@@ -92,24 +80,25 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
       startTimer();
 
       if (isThisCategoryTab)
-        $numberBox.textContent = `${currentPressNumber + 1}/${
+        $numberBox.textContent = `${currentPressId + 1}/${
           category.pressIdList.length
         }`;
       else $numberBox.innerHTML = RightIcon();
     } else {
       if (prevActivated === true) {
         $el.classList.remove("active");
-        stopTimer();
         $el.innerHTML = isThisCategoryTab ? category.category : pressName;
       }
     }
     prevActivated = newActivated;
   };
 
-  window.addEventListener("pageChange", render);
-  window.addEventListener("currentPressNumberChange", render);
-  window.addEventListener("viewOnlySubsChange", stopTimer);
-  window.addEventListener("viewGridChange", stopTimer);
+  const stopTimerOnGrid = () => {
+    const { viewGrid } = store.state;
+    if (viewGrid) stopTimer();
+  };
+  window.addEventListener("viewGridChange", stopTimerOnGrid);
+  window.addEventListener("currentPressIdChange", render);
 
   render();
   return $el;
