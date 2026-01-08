@@ -86,9 +86,14 @@ export function renderListView() {
             data-action="change-category"
             data-category="${escapeAttr(c)}"
             aria-pressed="${c === selectedCtg}"
-          >${
+          >
+          
+          ${
             c === selectedCtg // 선택된 카테고리의 경우
-              ? `<span >
+              ? `
+              <div id = 'progress-box'></div>
+              <div id='category-info-wrap'>
+              <span >
               ${escapeHtml(c)}
               </span >
               <div>
@@ -96,7 +101,7 @@ export function renderListView() {
               currentPageIdx + 1
             } / <span id='press-total-cnt'>${getPressCntByCtg(c)}</span>
             </div>
-            
+            </div>
             `
               : escapeHtml(c)
           }</button>

@@ -14,14 +14,19 @@ button.category-btn.is-active {
   background-color: var(--surface-brand-alt);
   width: 166px;
   color: var(--text-white-default);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 0 16px;
   gap: 8px;
+  position: relative;
 }
 #press-total-cnt {
   color: var(--text-white-weak);
+}
+
+#category-info-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #press-news {
@@ -104,4 +109,24 @@ a li {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@keyframes fillBoxFromLeftToRight {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+#progress-box {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: var(--surface-brand-default);
+  height: 100%;
+  transform-origin: left center;
+  animation: fillBoxFromLeftToRight 20s linear infinite;
 }
