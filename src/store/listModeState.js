@@ -16,6 +16,11 @@ export function getShowingPressData() {
   return pressDataByCtg[selectedCtg]?.[showingPressIdx] ?? null;
 }
 
+// 해당 카테고리의 전체 신문사 갯수 반환하는 함수
+export function getPressCntByCtg(category) {
+  return listModeState.pressDataByCtg[category].length;
+}
+
 // 전체 카테고리 종류 리스트 반환하는 함수(이름순서대로 정렬해서)
 export function getCategoryList() {
   return Object.keys(listModeState.pressDataByCtg).sort();

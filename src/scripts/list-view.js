@@ -2,6 +2,7 @@ import {
   addPressDataToPressDataByCtg,
   getCategoryList,
   getListModeState,
+  getPressCntByCtg,
   getShowingPressData,
   setSelectedCtg,
 } from "../store/listModeState";
@@ -44,7 +45,6 @@ function bindListViewEvents() {
 }
 
 function renderListView() {
-  console.log("hi");
   const listViewEl = document.querySelector("#list-view");
   const listModeState = getListModeState();
   // 상단바에 뜰 카테고리 종류 리스트
@@ -69,7 +69,20 @@ function renderListView() {
             data-action="change-category"
             data-category="${escapeAttr(c)}"
             aria-pressed="${c === listModeState.selectedCtg}"
-          >${escapeHtml(c)}</button>
+          >${
+            c === listModeState.selectedCtg // 선택된 카테고리의 경우
+              ? `<span >
+              ${escapeHtml(c)}
+              </span >
+              <div>
+            ${
+              listModeState.showingPressIdx + 1
+            } / <span id='press-total-cnt'>${getPressCntByCtg(c)}</span>
+            </div>
+            
+            `
+              : escapeHtml(c)
+          }</button>
         `
         )
         .join("")}
@@ -105,7 +118,7 @@ function renderListView() {
           <img src="${escapeAttr(
             showingPressData.mainImg
           )}" alt="" id="main-news-thumbnail" />
-          <a href=${escapeAttr(
+          <a target='_blank' href=${escapeAttr(
             showingPressData.mainLink
           )} class="available-medium16" id="main-news-title">${escapeHtml(
     showingPressData.mainTitle
@@ -117,7 +130,7 @@ function renderListView() {
             ${showingPressData.relatedArticles
               .map(
                 (subArticle, idx) => `
-                <a href=${escapeAttr(subArticle.link)}>
+                <a target='_blank' href=${escapeAttr(subArticle.link)}>
                 <li class="available-medium16" data-index="${idx}">
                   ${escapeHtml(subArticle.title)}
                 </li>

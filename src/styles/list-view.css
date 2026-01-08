@@ -3,14 +3,25 @@
   height: 40px;
   border: 1px solid var(--border-default);
   background-color: var(--surface-alt);
+  display: flex;
 }
 
 .category-btn {
-  height: 40px;
+  height: 100%;
   padding: 0px 16px;
 }
 button.category-btn.is-active {
   background-color: var(--surface-brand-alt);
+  width: 166px;
+  color: var(--text-white-default);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  gap: 8px;
+}
+#press-total-cnt {
+  color: var(--text-white-weak);
 }
 
 #press-news {
