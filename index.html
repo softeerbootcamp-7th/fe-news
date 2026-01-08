@@ -25,10 +25,36 @@
       <!-- 롤링 뉴스 영역 -->
       <section class="rolling-news" id="rolling-news" role="region" aria-label="Rolling news">
         <div class="rolling-news-column" id="rolling-left" data-column="left">
-          <ul class="rolling-news-list" role="list"></ul>
+          <ul class="rolling-news-list" role="list">
+            <article class="rolling-news-item">
+              <div class="rolling-wrapper">
+                <div>
+                  <span class="typo-display-bold-14"></span>
+                  <p class="typo-available-medium-14"></p>
+                </div>
+                <div>
+                  <span class="typo-display-bold-14"></span>
+                  <p class="typo-available-medium-14"></p>
+                </div>
+              </div>
+            </article>
+          </ul>
         </div>
         <div class="rolling-news-column" id="rolling-right" data-column="right">
-          <ul class="rolling-news-list" role="list"></ul>
+          <ul class="rolling-news-list" role="list">
+            <article class="rolling-news-item">
+              <div class="rolling-wrapper">
+                <div>
+                  <span class="typo-display-bold-14"></span>
+                  <p class="typo-available-medium-14"></p>
+                </div>
+                <div>
+                  <span class="typo-display-bold-14"></span>
+                  <p class="typo-available-medium-14"></p>
+                </div>
+              </div>
+            </article>
+          </ul>
         </div>
       </section>
 
@@ -50,13 +76,23 @@
           <button id="prev-btn" class="pagination-btn prev-btn" aria-label="Previous page">
             <img src="/src/assets/icons/left_arrow.svg" alt="Previous"/>
           </button>
-          <ul id="content" class="grid" role="list"></ul>
+          <ul id="news-contents" class="grid" role="list"></ul>
           <button id="next-btn" class="pagination-btn next-btn" aria-label="Next page">
             <img src="/src/assets/icons/right_arrow.svg" alt="Next"/>
           </button>
         </div>
       </section>
     </main>
+    <!-- 모달 테스트 중 -->
+    <section>
+      <div class="modal-overlay">
+        <div class="modal">
+          <div class="modal-content">
+            <h3 class="typo-display-bold-16">모달테스트</h3>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </div>
   <script type="module" src="./src/app.js"></script>
