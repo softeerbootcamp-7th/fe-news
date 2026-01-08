@@ -13,46 +13,52 @@ import { SUBSCRIPTION_TAB } from "@/types/constant";
 export function initListView(paginatedData, currentIndex) {
   // 첫 list 레이아웃 그리기
   const listContainer = document.querySelector(".press-section");
+  listContainer.innerHTML =
+    getNavListHTML(paginatedData, currentIndex) + getContentHTML(paginatedData);
+}
 
-  const navList = getNavList();
+function getNavListHTML(paginatedData, currentIndex) {
+  const { navList, selectedNav, selectedNavTotal } = getNavInfo(paginatedData);
 
   let html = "";
   html += getNavTemplateStart();
   html += navList
     .map((nav) =>
       getNavTemplate({
-        selected:
-          nav ===
-          (getSubscriptionTab() === SUBSCRIPTION_TAB.ALL
-            ? paginatedData.category
-            : paginatedData.name),
+        selected: nav === selectedNav,
         navName: nav,
         currentPress: currentIndex + 1,
-        totalPress:
-          getSubscriptionTab() === SUBSCRIPTION_TAB.ALL
-            ? paginatedData.totalPage
-            : null,
+        totalPress: selectedNavTotal,
       })
     )
     .join("");
   html += getNavTemplateEnd();
-  if (paginatedData)
-    html += getPressContentTemplate({
+  return html;
+}
+
+function getNavInfo(paginatedData) {
+  switch (getSubscriptionTab()) {
+    case SUBSCRIPTION_TAB.ALL:
+      return {
+        navList: Object.values(CATEGORY_LIST),
+        selectedNav: paginatedData.category,
+        selectedNavTotal: paginatedData.totalPage,
+      };
+
+    case SUBSCRIPTION_TAB.MY:
+      return {
+        navList: getSubscribedList(),
+        selectedNav: paginatedData.name,
+        selectedNavTotal: null,
+      };
+  }
+}
+
+function getContentHTML(paginatedData) {
+  if (!paginatedData) return getEmptyContentTemplate();
+  else
+    return getPressContentTemplate({
       ...paginatedData,
       isSubscribed: isSubscribed(paginatedData.name),
     });
-  else html += getEmptyContentTemplate();
-
-  console.log();
-  listContainer.innerHTML = html;
-}
-
-function getNavList() {
-  switch (getSubscriptionTab()) {
-    case SUBSCRIPTION_TAB.ALL:
-      return Object.values(CATEGORY_LIST);
-
-    case SUBSCRIPTION_TAB.MY:
-      return getSubscribedList();
-  }
 }
