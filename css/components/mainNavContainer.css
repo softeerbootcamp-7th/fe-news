@@ -13,14 +13,14 @@ main section {
 .nav-press-container {
     display: flex;
     gap: 24px;
-}
 
-.unselected {
-    opacity: 0.6;
-}
+    .unselected {
+        opacity: 0.6;
+    }
 
-.selected {
-    color: var(--color-text-strong);
+    .selected {
+        color: var(--color-text-strong);
+    }
 }
 
 .published-press-num {
@@ -42,16 +42,14 @@ main section {
     align-items: center;
 }
 
-.nav-view-container span {
-    cursor: pointer;
-    color: var(--color-text-weak);
-}
-
-.nav-view-container span.selected {
-    color: var(--color-text-point);
-}
-
 .nav-icon {
     width: 24px;
     height: 24px;
+    cursor: pointer;
+
+    color: var(--color-text-weak);
+
+    &.selected {
+        color: var(--color-text-point); 
+    }
 }
