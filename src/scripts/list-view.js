@@ -8,16 +8,7 @@ import {
 import { escapeAttr, escapeHtml } from "../utils/escapeAttr";
 
 export function initListModeState() {
-  loadPressDatas().then(() => {
-    // 상단바에 뜰 카테고리 종류 리스트
-    const categoryList = getCategoryList();
-    // 선택되어 있는 카테고리 정보는 카테고리 리스트의 맨 첫번째 거
-    setSelectedCtg(categoryList[0]);
-  });
-}
-
-export function loadPressDatas() {
-  return fetch("/data/news-detail.mok.json")
+  fetch("/data/news-detail.mok.json")
     .then((res) => res.json())
     .then((data) =>
       data.forEach((pressData) => {
@@ -25,9 +16,31 @@ export function loadPressDatas() {
       })
     )
     .then(() => {
-      const state = getListModeState();
+      // 상단바에 뜰 카테고리 종류 리스트
+      const categoryList = getCategoryList();
+      // 선택되어 있는 카테고리 정보는 카테고리 리스트의 맨 첫번째 거
+      setSelectedCtg(categoryList[0]);
       renderListView();
     });
+}
+
+export function initListView() {
+  initListModeState();
+  bindListViewEvents();
+}
+
+// 리스트 뷰 내 요소들에 리스너 붙이는 작업
+function bindListViewEvents() {
+  const listViewEl = document.querySelector("#list-view");
+  // 바뀌지 않는 요소(list-view 요소)에 리스너 단다. 그 요소 내부에 있는 것들은 innerHtml바뀌면서 돔에서 사라졌다가 생겼다 하지만 그 상위 list-view 요소는 그대로 남아 있음
+  listViewEl.addEventListener("click", (e) => {
+    console.log(bindListViewEvents);
+    const categoryBtn = e.target.closest(".category-btn");
+    if (!categoryBtn) return; // 클릭된게 카테고리 버튼이 아니면 리스너 그냥 종료
+    // 선택된 카테고리 버튼 내용으로 현재 선택된 카테고리 state정보 변경
+    setSelectedCtg(categoryBtn.textContent);
+    renderListView();
+  });
 }
 
 function renderListView() {
