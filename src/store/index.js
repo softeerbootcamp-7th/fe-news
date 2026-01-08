@@ -138,6 +138,15 @@ export const pressList = pressNames.map((name, i) => {
   };
 });
 
+export const tabNames = [
+  "종합/경제",
+  "방송/통신",
+  "IT",
+  "영자지",
+  "스포츠/연예",
+  "매거진/전문지",
+  "지역",
+];
 export const store = {
   state: {
     viewOnlySubs: false,
@@ -148,12 +157,18 @@ export const store = {
     targetPressId: null,
     targetPressName: "",
     subscribedIds: loadSavedSubs(), // 구독한 언론사의 ID를 저장하는 Sets
+
+    currentPressNumber: 0,
+    timerId: null,
+    pressData: [],
   },
   setViewOnlySubs(bool) {
     if (this.state.viewOnlySubs === bool) return;
     this.state.viewOnlySubs = bool;
     this.state.currentPage = 0;
     this.setTargetPressId(null, "");
+    this.clearTimerId();
+    this.state.currentPressNumber = 0;
     this.setMaxPage();
     notify("viewOnlySubs");
   },
@@ -162,6 +177,8 @@ export const store = {
     this.state.viewGrid = bool;
     this.state.currentPage = 0;
     this.setTargetPressId(null, "");
+    this.clearTimerId();
+    this.state.currentPressNumber = 0;
     this.setMaxPage();
     notify("viewGrid");
   },
@@ -197,6 +214,7 @@ export const store = {
     if (page === 0) this.state.currentPage = 0;
     else this.state.currentPage = result;
 
+    this.setCurrentPressNumber(0);
     this.setTargetPressId(null, "");
     notify("page");
   },
@@ -223,5 +241,35 @@ export const store = {
     this.state.targetPressName = "";
     this.setMaxPage();
     notify("subsList");
+  },
+  /** 여기서부터 List 뷰 상태 관리
+   *
+   */
+  setCurrentTabIndex(index) {
+    if (index < 0 || index > this.state.maxPage) this.state.currentPage = 0;
+    else this.state.currentPage = index;
+
+    this.setCurrentPressNumber(0);
+    notify("page");
+  },
+  setCurrentPressNumber(number) {
+    if ((number !== 0) & (number !== 1)) return;
+
+    if (number === 0) this.state.currentPressNumber = 0;
+    else if (number === 1)
+      this.state.currentPressNumber = this.state.currentPressNumber + 1;
+
+    notify("currentPressNumber");
+  },
+  setTimerId(id) {
+    this.state.timerId = id;
+  },
+  clearTimerId() {
+    clearTimeout(this.state.timerId);
+    this.state.timerId = null;
+  },
+  setPressData(data) {
+    this.state.pressData = data;
+    notify("pressData");
   },
 };
