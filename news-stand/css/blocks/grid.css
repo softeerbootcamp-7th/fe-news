@@ -8,7 +8,11 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+
+  span {
+    display: none;
+  }
 }
 
 .grid-layout {
@@ -18,4 +22,26 @@ nav {
   width: 930px;
   height: 388px;
   overflow: hidden;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+#btn-left {
+  width: 24px;
+  height: 40px;
+  margin: 0 47px 0 0;
+  background-image: url('../../images/icons/left-button.svg');
+}
+
+#btn-right {
+  width: 24px;
+  height: 40px;
+  margin: 0 0 0 48px;
+  background-image: url('../../images/icons/right-button.svg');
 }
