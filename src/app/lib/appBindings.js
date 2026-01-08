@@ -3,6 +3,7 @@ import { shuffle } from "../../shared/lib/index.js";
 import { createAppContext } from "../AppContext.js";
 import { createNewsStandActions } from "./appActions.js";
 import { DateController } from "../../features/date/index.js";
+import { createAppRouter } from "../Router/appRouter.js";
 
 import { NewsRollingController } from "../../widgets/newsRolling/index.js";
 import {
@@ -75,6 +76,7 @@ export function initControllers(app) {
 }
 
 export function initActions(app) {
+  app.router = createAppRouter(app);
   app.actions = createNewsStandActions(app);
   app._onDocumentClick = (e) => handleClick(app, e);
   app.setThemeInState = (theme) => setThemeInState(app, theme);

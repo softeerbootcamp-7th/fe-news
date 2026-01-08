@@ -7,14 +7,8 @@ export function setThemeInState(app, theme) {
 export async function initNewsStandApp(app) {
   app.date.render();
   await app.newsView.initShuffle();
-  app.newsView.setTab("all");
-  if (typeof app.renderNewsForView === "function") {
-    app.newsView.setRenderNews(
-      app.renderNewsForView(app.store.getState().view)
-    );
-  }
+  app.router?.init?.();
   app.theme.init();
-  app.view.initFromState();
   app.subscriptions.updateCount();
 
   try {
