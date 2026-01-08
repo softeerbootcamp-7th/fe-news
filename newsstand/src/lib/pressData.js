@@ -72,7 +72,7 @@ export const ensureListPressData = () => {
 
   actions?.setLoading?.(true);
 
-  fetch("/pressMockData.json")
+  fetch("/pressMockData1.json")
     .then((res) => {
       if (!res.ok) {
         throw new Error(

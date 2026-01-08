@@ -58,7 +58,9 @@ const createListContentMarkup = (nowPress) => `
     </div>
     <div class="ns-press-list__content">
       <div class="ns-press-list__main-news">
-        <img src="https://www.moananursery.com/wp-content/uploads/2023/08/1920-x-1280-2.jpg" alt="메인뉴스이미지" class="ns-press-list__main-news-image" />
+        <img src="${
+          nowPress.mainImg
+        }" alt="메인뉴스이미지" class="ns-press-list__main-news-image" />
         <span class="ns-press-list__main-news-title text-strong typo-available-medium16">${
           nowPress.mainTitle
         }</span>
