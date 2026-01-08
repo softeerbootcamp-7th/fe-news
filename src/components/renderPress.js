@@ -6,7 +6,13 @@ import { createBtn } from "./createBtn";
 export const renderGrid = async () => {
   const pressData = await getPressData()
 
-  renderAllPress('.press-logo-container', pressData);
+  const newsContainer = document.querySelector('.news-container');
+  newsContainer.innerHTML = ''
+  const newsGridContainer = document.createElement('ul');
+  newsGridContainer.className = 'news-grid-container';
+  newsContainer.appendChild(newsGridContainer);
+
+  renderAllPress('.news-grid-container', pressData);
 
   const allPressBtn = document.querySelector('.all-press-container');
   const subscribedPressBtn = document.querySelector('.subscribed-press-container');
@@ -15,7 +21,7 @@ export const renderGrid = async () => {
   subscribePressStore.subscribe(() => {
     const subscribedTab = document.querySelector('.subscribed-press-container');
     if (subscribedTab && subscribedTab.classList.contains('selected')) {
-      renderSubscribedPress('.press-logo-container', pressData);
+      renderSubscribedPress('.news-grid-container', pressData);
     }
   });
 
@@ -25,7 +31,7 @@ export const renderGrid = async () => {
     subscribedPressBtn.classList.remove('selected');
     subscribedPressBtn.classList.add('unselected');
 
-    renderAllPress('.press-logo-container', pressData);
+    renderAllPress('.news-grid-container', pressData);
     loadSVG();
   });
 
@@ -35,7 +41,7 @@ export const renderGrid = async () => {
     allPressBtn.classList.remove('selected');
     allPressBtn.classList.add('unselected');
 
-    renderSubscribedPress('.press-logo-container', pressData);
+    renderSubscribedPress('.news-grid-container', pressData);
     loadSVG();
   });
 
