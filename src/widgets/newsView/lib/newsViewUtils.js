@@ -1,45 +1,25 @@
-import {
-  buildShuffledLogoLists,
-  getLogoFilesForTheme,
-} from "../../../shared/lib/index.js";
+import { ensurePressData, getPressList } from "../../../shared/lib/index.js";
 
-export function initShuffle({
-  store,
-  shuffle,
-  LOGO_FILES,
-  LIGHT_ONLY_FILES,
-  DARK_ONLY_FILES,
-} = {}) {
-  const shuffledByTheme = buildShuffledLogoLists({
-    shuffle,
-    LOGO_FILES,
-    LIGHT_ONLY_FILES,
-    DARK_ONLY_FILES,
-  });
-  store?.setState?.({ shuffledByTheme });
-  return shuffledByTheme;
+export async function initShuffle({ store, shuffle } = {}) {
+  const data = await ensurePressData();
+  const pressList = data?.pressList ?? getPressList();
+  const shuffledPress = shuffle ? shuffle(pressList) : pressList;
+  store?.setState?.({ pressList, shuffledPress });
+  return shuffledPress;
 }
 
 export function getLogoListForState({
   state,
   subscriptions,
-  LOGO_FILES,
-  LIGHT_ONLY_FILES,
-  DARK_ONLY_FILES,
 } = {}) {
-  const theme = state.theme === "dark" ? "dark" : "light";
-  const base =
-    state.shuffledByTheme?.[theme] ??
-    getLogoFilesForTheme({
-      theme,
-      LOGO_FILES,
-      LIGHT_ONLY_FILES,
-      DARK_ONLY_FILES,
-    });
-
+  const base = state.shuffledPress?.length
+    ? state.shuffledPress
+    : state.pressList ?? [];
   const subscribed = subscriptions?.getSet?.() ?? new Set();
   const files =
-    state.tab === "subscribed" ? base.filter((f) => subscribed.has(f)) : base;
+    state.tab === "subscribed"
+      ? base.filter((entry) => subscribed.has(entry.press))
+      : base;
   return { files, subscribed };
 }
 

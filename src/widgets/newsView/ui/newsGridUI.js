@@ -1,8 +1,9 @@
-import { $, encodePathSegment } from "../../../shared/lib/index.js";
+import { $, normalizePressLogo } from "../../../shared/lib/index.js";
 import {
   renderActiveTabButtons,
   renderNavButtons,
 } from "../lib/newsViewPagination.js";
+import { stopNewsListTicker } from "../controllers/NewsListController.js";
 
 export { renderActiveTabButtons, renderNavButtons };
 
@@ -10,29 +11,31 @@ export function renderLogoGrid({
   documentRef = document,
   selector = "#logos",
   cells = [],
-  folder,
+  theme = "light",
   subscribed = new Set(),
+  store,
 } = {}) {
   const $logos = $(selector, documentRef);
   if (!$logos) return;
 
+  stopNewsListTicker();
+  $logos.classList.remove("is-newslist");
   $logos.innerHTML = cells
-    .map((filename) => {
-      if (!filename)
+    .map((entry) => {
+      if (!entry)
         return `<li class="logo-card is-empty" aria-hidden="true"></li>`;
 
-      const src = `./images/${folder}/${encodePathSegment(filename)}`;
-      const isSub = subscribed.has(filename);
+      const press = entry.press ?? "";
+      const src = normalizePressLogo(entry.logo ?? "", theme);
+      const isSub = subscribed.has(press);
       const btnText = isSub ? "해지하기" : "구독하기";
       const btnIcon = isSub ? "×" : "+";
       return `
-        <li class="logo-card" data-logo="${encodePathSegment(filename)}">
-          <img src="${src}" alt="언론사 로고" loading="lazy" decoding="async" />
+        <li class="logo-card" data-press="${press}">
+          <img src="${src}" alt="${press} 로고" loading="lazy" decoding="async" />
           <button class="sub-pill ${
             isSub ? "is-subscribed" : ""
-          }" type="button" data-action="toggle-sub" data-logo="${encodePathSegment(
-        filename
-      )}" aria-label="${btnText}">
+          }" type="button" data-action="toggle-sub" data-press="${press}" aria-label="${btnText}">
             <span class="sub-pill__icon">${btnIcon}</span>
             <span class="sub-pill__text">${btnText}</span>
           </button>

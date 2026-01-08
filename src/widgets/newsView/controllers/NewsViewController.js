@@ -1,5 +1,4 @@
 import { SELECTORS } from "../../../shared/const/index.js";
-import { getThemeFolder } from "../../../shared/lib/index.js";
 import { renderActiveTabButtons, renderNavButtons } from "../ui/newsGridUI.js";
 import {
   buildLogoCells,
@@ -13,9 +12,6 @@ export class NewsViewController {
     context,
     store,
     shuffle,
-    LOGO_FILES,
-    LIGHT_ONLY_FILES,
-    DARK_ONLY_FILES,
     subscriptions,
     renderNews,
     logosSelector = SELECTORS.logos,
@@ -26,9 +22,6 @@ export class NewsViewController {
     const ctx = context ?? {};
     this.store = store;
     this.shuffle = shuffle;
-    this.LOGO_FILES = LOGO_FILES;
-    this.LIGHT_ONLY_FILES = LIGHT_ONLY_FILES;
-    this.DARK_ONLY_FILES = DARK_ONLY_FILES;
     this.subscriptions = subscriptions;
     this._renderNews = renderNews;
     this.document = ctx.document ?? document;
@@ -38,13 +31,10 @@ export class NewsViewController {
     this.rightSelector = rightSelector;
   }
 
-  initShuffle() {
-    initShuffle({
+  async initShuffle() {
+    return initShuffle({
       store: this.store,
       shuffle: this.shuffle,
-      LOGO_FILES: this.LOGO_FILES,
-      LIGHT_ONLY_FILES: this.LIGHT_ONLY_FILES,
-      DARK_ONLY_FILES: this.DARK_ONLY_FILES,
     });
   }
 
@@ -90,9 +80,6 @@ export class NewsViewController {
     const { files, subscribed } = getLogoListForState({
       state,
       subscriptions: this.subscriptions,
-      LOGO_FILES: this.LOGO_FILES,
-      LIGHT_ONLY_FILES: this.LIGHT_ONLY_FILES,
-      DARK_ONLY_FILES: this.DARK_ONLY_FILES,
     });
     const { items, nextPage, totalPages, logosPerPage } = getPagedItems({
       state,
@@ -100,14 +87,13 @@ export class NewsViewController {
       store: this.store,
     });
 
-    const folder = getThemeFolder(state.theme);
     const cells = buildLogoCells({ state, items, logosPerPage });
 
     this.renderNews({
       documentRef: this.document,
       selector: this.logosSelector,
       cells,
-      folder,
+      theme: state.theme,
       subscribed,
       store: this.store,
     });
