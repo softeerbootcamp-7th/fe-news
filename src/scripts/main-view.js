@@ -66,16 +66,16 @@ function renderMainView() {
 
 function renderGridView() {
   console.log("renderGridView");
-  const gridModeView = document.querySelector("#grid-mode-view-wrapper");
+  const gridModeView = document.querySelector("#grid-view-wrapper");
   gridModeView.hidden = false;
-  const listModeView = document.querySelector("#list-mode-view");
+  const listModeView = document.querySelector("#list-view");
   listModeView.hidden = true;
 }
 function renderListView() {
   console.log("renderListView");
-  const gridModeView = document.querySelector("#grid-mode-view-wrapper");
+  const gridModeView = document.querySelector("#grid-view-wrapper");
   gridModeView.hidden = true;
-  const listModeView = document.querySelector("#list-mode-view");
+  const listModeView = document.querySelector("#list-view");
   listModeView.hidden = false;
 }
 
@@ -176,6 +176,12 @@ function handleAlertNegaBtn() {
 }
 alertPositiveBtn.addEventListener("click", handleAlertPosiBtn);
 alertNegativeBtn.addEventListener("click", handleAlertNegaBtn);
+
+// showUnsubscribeAlrert : 구독해지 알림창 띄우는 함수
+function showUnsubscribeAlert(unsubscribeAlertEl, pressName) {
+  unsubscribeAlertEl.querySelector("span").textContent = pressName;
+  unsubscribeAlertEl.style.visibility = "visible";
+}
 
 // 알림창 띄우는 함수(=visibility : visible 로 만들어줌)
 function showAlert(alertEl) {
@@ -316,7 +322,7 @@ function handleUnSubscribeBtn(clickedBtnEl) {
   // 해지하고자 하는 언론사 정보(=언론사 이미지 파일명)를 alert창의 요소의 dataset에 저장해줘야함
   unsubscribeAlertEl.dataset.pressId = clickedBtnEl.id;
   // 구독 해지할거냐고 묻는 알림창 보이게
-  showAlert(unsubscribeAlertEl);
+  showUnsubscribeAlert(unsubscribeAlertEl);
 }
 function handleSubscribeBtn(clickedBtnEl) {
   const id = clickedBtnEl.id;
@@ -382,7 +388,6 @@ function checkArrowShow() {
     rightArrowEl,
     toggle: lastPageIdx - currentPageIdx > 0,
   });
-  debugger;
 }
 
 // 그리드 옆 왼쪽 화살표 눌렀을 때 불려지는 함수
@@ -402,7 +407,6 @@ function handleRightArrowClick() {
 
   const nextPageIdx = currentPageIdx + 1;
   renderGrid(nextPageIdx);
-  debugger;
 }
 
 leftArrowEl.addEventListener("click", handleLeftArrowClick);
