@@ -1,7 +1,4 @@
 import { removeSubscription } from '../store/subscription';
-import { initSubscriptionBadge } from './subBadge.js';
-
-const subscriptionBadge = initSubscriptionBadge();
 
 export function createSubAlert(pressId, pressGrid) {
   if (document.querySelector('.sub-alert')) return;
@@ -23,8 +20,6 @@ export function createSubAlert(pressId, pressGrid) {
 
   confirmButton.addEventListener('click', () => {
     removeSubscription(pressId);
-    subscriptionBadge.update();
-    pressGrid.update();
     alert.remove();
   });
 
