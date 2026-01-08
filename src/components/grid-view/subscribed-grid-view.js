@@ -4,6 +4,7 @@ import {
   createGridCardListHTML,
   getArrowButtonPosition,
   gridViewEventHandler,
+  gridViewStore,
   insertArrowButtons,
   newsSectionStore,
   subscribedGridViewEventHandler,
@@ -14,19 +15,15 @@ import {
  * @returns {{cleanup: () => void}}
  */
 export const SubscribedGridView = () => {
-  const {
-    PAGE_SIZE,
-    INITIAL_PAGE,
-    LEFT_BUTTON_CLASS_NAME,
-    RIGHT_BUTTON_CLASS_NAME,
-  } = GRID_VIEW;
+  const { PAGE_SIZE, LEFT_BUTTON_CLASS_NAME, RIGHT_BUTTON_CLASS_NAME } =
+    GRID_VIEW;
 
   const $gridView = document.querySelector('.news-grid-view');
 
   const { handleMouseOver, handleMouseOut, handleClick } = gridViewEventHandler(
     {
       newspaperList: subscribedNewspaperStore.getSubscribedNewspaperList(),
-      initialPage: INITIAL_PAGE,
+      initialPage: gridViewStore.getSubscribedGridViewPageIndex(),
       isSubscribed: true,
     },
   );
@@ -50,7 +47,7 @@ export const SubscribedGridView = () => {
     const currentNewspaperList =
       subscribedNewspaperStore.getSubscribedNewspaperList();
     const totalPage = Math.ceil(currentNewspaperList.length / PAGE_SIZE) - 1;
-    let currentPage = INITIAL_PAGE;
+    let currentPage = gridViewStore.getSubscribedGridViewPageIndex();
     const gridCardListHTML = createGridCardListHTML({
       newspaperList: currentNewspaperList,
       currentPage,

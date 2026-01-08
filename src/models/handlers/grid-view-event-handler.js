@@ -1,5 +1,9 @@
-import { GRID_VIEW } from '@/constants';
-import { subscribedNewspaperStore } from '@/models';
+import { GRID_VIEW, NEWS_SECTION_STATE } from '@/constants';
+import {
+  gridViewStore,
+  newsSectionStore,
+  subscribedNewspaperStore,
+} from '@/models';
 import {
   logoImageTemplate,
   subscribeButtonTemplate,
@@ -100,13 +104,25 @@ export const gridViewEventHandler = ({
     });
   };
 
+  const updatePageIndex = (currentPage) => {
+    const { type } = newsSectionStore.getState();
+
+    if (type === NEWS_SECTION_STATE.TYPE.TOTAL) {
+      gridViewStore.setPageIndex({ totalGridViewPageIndex: currentPage });
+    } else {
+      gridViewStore.setPageIndex({ subscribedGridViewPageIndex: currentPage });
+    }
+
+    updateGrid(currentPage);
+  };
+
   const handleClick = (event) => {
     if (event.target.closest(`.${RIGHT_BUTTON_CLASS_NAME}`)) {
       currentPage++;
-      updateGrid(currentPage);
+      updatePageIndex(currentPage);
     } else if (event.target.closest(`.${LEFT_BUTTON_CLASS_NAME}`)) {
       currentPage--;
-      updateGrid(currentPage);
+      updatePageIndex(currentPage);
     }
   };
 
