@@ -353,7 +353,7 @@ export const store = {
   },
   setCurrentPressId(pressId) {
     this.state.currentPressId = pressId;
-    console.log("나 바뀌어유: ", pressId);
+
     notify("currentPressId");
   },
 };

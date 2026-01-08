@@ -16,7 +16,7 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
   const isThisCategoryTab = pressId === null;
   let prevActivated = false;
 
-  const repeatTime = 3000;
+  const repeatTime = 20000;
 
   const pressName = isThisCategoryTab
     ? ""
@@ -24,7 +24,9 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
 
   const $el = makeNode(`
         <div class="list-tab" id="${pressId}">
-            ${isThisCategoryTab ? category.category : pressName}
+          <div class="list-tab-contents">${
+            isThisCategoryTab ? category.category : pressName
+          }</div>
         </div>
     `);
   $el.onclick = () => {
@@ -32,7 +34,12 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
       ? store.setCurrentTabIndex(tabIndex) //카테고리 탭이라면 따로 관리하는 currentTabIndex를 바꾸자.
       : store.jumpPressId(tabIndex); // 언론사 탭이라면 페이지를 바꿔야함. 로직이 그럼
   };
+
+  const $contentRegion = $el.querySelector(".list-tab-contents");
   const $numberBox = makeNode(`<span id="listTab-${tabIndex}"> </span>`);
+
+  const $progressBar = makeNode(`
+          <div class="list-tab-progress-bar"> </div>`);
 
   /**
    * 자동으로 넘기는 타이머 관리함수
@@ -74,7 +81,8 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
     if (newActivated === false && newActivated === prevActivated) return; //상태 변화가 없으면 그만.
 
     if (newActivated) {
-      $el.appendChild($numberBox);
+      $contentRegion.appendChild($numberBox);
+      $el.appendChild($progressBar);
       $el.classList.add("active");
 
       if (isThisCategoryTab) {
@@ -84,14 +92,16 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
         store.setCurrentPressId(category.pressIdList[listViewPage]);
       } else {
         $numberBox.innerHTML = RightIcon();
-        console.log("값 넣기 전 검사:" + pressId);
         store.setCurrentPressId(pressId);
       }
       startTimer();
     } else {
       if (prevActivated === true) {
         $el.classList.remove("active");
-        $el.innerHTML = isThisCategoryTab ? category.category : pressName;
+        $contentRegion.innerHTML = isThisCategoryTab
+          ? category.category
+          : pressName;
+        $el.removeChild($progressBar);
       }
     }
     prevActivated = newActivated;
