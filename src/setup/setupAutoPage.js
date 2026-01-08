@@ -48,22 +48,16 @@ function updateProgressGradient(progress) {
 function setupUserInteractionEvents(container) {
   const categoryTabs = container.querySelectorAll(".category-tab");
   categoryTabs.forEach((tab) => {
-    tab.addEventListener("click", handleCategoryClick);
+    tab.addEventListener("click", resetAutoPageTimer);
   });
 
   const paginationArrows = container.querySelectorAll(".pagination-arrow");
   paginationArrows.forEach((arrow) => {
-    arrow.addEventListener("click", handlePaginationClick);
+    arrow.addEventListener("click", resetAutoPageTimer);
   });
 }
 
-function handleCategoryClick() {
-  if (autoPageTimer) {
-    autoPageTimer.restart();
-  }
-}
-
-function handlePaginationClick() {
+function resetAutoPageTimer() {
   if (autoPageTimer) {
     autoPageTimer.restart();
   }
