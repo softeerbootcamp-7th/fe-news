@@ -4,16 +4,16 @@ import {
 } from "@/template/SubscribeButton";
 import { VIEW_TAB } from "@/types/constant";
 
-export function getNavTemplateStart() {
+export function getTabTemplateStart() {
   return `<nav class="press-tabs" aria-label="언론사 카테고리">`;
 }
-export function getNavTemplateEnd() {
+export function getTabTemplateEnd() {
   return `</nav>`;
 }
 
-export function getNavTemplate({
+export function getTabTemplate({
   selected,
-  navName,
+  tabName,
   currentPress,
   totalPress,
 }) {
@@ -23,7 +23,7 @@ export function getNavTemplate({
       class="press-tabs__item active"
       aria-current="true"
     >
-      <p class="press-tabs__title">${navName}</p>
+      <p class="press-tabs__title">${tabName}</p>
       ${
         totalPress
           ? `<p class="press-tabs__description">
@@ -44,7 +44,7 @@ export function getNavTemplate({
   `
     : `
     <button class="press-tabs__item">
-      <p class="press-tabs__title">${navName}</p>
+      <p class="press-tabs__title">${tabName}</p>
     </button>
   `;
 }
