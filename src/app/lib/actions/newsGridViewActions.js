@@ -1,11 +1,18 @@
 export function createGridViewActions(app) {
   return {
-    prev: () => app.newsView.prevPage(),
-    next: () => app.newsView.nextPage(),
+    prev: () => {
+      const state = app.store?.getState?.() ?? {};
+      const nextPage = (state.page ?? 0) - 1;
+      app.router?.pushRoute?.({ page: nextPage });
+    },
+    next: () => {
+      const state = app.store?.getState?.() ?? {};
+      const nextPage = (state.page ?? 0) + 1;
+      app.router?.pushRoute?.({ page: nextPage });
+    },
     tab: (target) => {
       const tab = target?.getAttribute?.("data-tab") || "all";
-      app.newsView.setTab(tab);
+      app.router?.pushRoute?.({ tab });
     },
-    render: () => app.newsView.render(),
   };
 }

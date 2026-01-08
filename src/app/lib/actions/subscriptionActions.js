@@ -10,7 +10,7 @@ export async function handleToggleSubscription(app, target) {
     subscriptions: app.subscriptions,
     unsubscribeDialog: app.unsubscribeDialog,
   });
-  if (changed) app.newsView.render();
+  if (changed) app.router?.rerender?.();
 }
 
 export async function handleListSubscribe(app, target) {
@@ -29,9 +29,5 @@ export async function handleListSubscribe(app, target) {
   app.subscriptions.updateCount();
   setNewsListSubscriptions(app.subscriptions.getSet());
   setNewsListActivePress(press);
-  app.view.set("list");
-  if (typeof app.renderNewsForView === "function") {
-    app.newsView.setRenderNews(app.renderNewsForView("list"));
-  }
-  app.newsView.setTab("subscribed");
+  app.router?.pushRoute?.({ tab: "subscribed", view: "list" });
 }

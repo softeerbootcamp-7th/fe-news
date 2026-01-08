@@ -70,7 +70,7 @@ export function initControllers(app) {
     context: app.context,
     onChange: (theme) => {
       setThemeInState(app, theme);
-      app.newsView.render();
+      app.router?.rerender?.();
     },
   });
 }
