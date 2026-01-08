@@ -17,7 +17,7 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
   const isThisCategoryTab = pressId === null;
   let prevActivated = false;
   const maxPressIndex = isThisCategoryTab
-    ? category.pressNames.length - 1
+    ? category.pressIdList.length - 1
     : Array.from(subscribedIds).length - 1;
 
   const repeatTime = 500;
@@ -93,7 +93,7 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
 
       if (isThisCategoryTab)
         $numberBox.textContent = `${currentPressNumber + 1}/${
-          category.pressNames.length
+          category.pressIdList.length
         }`;
       else $numberBox.innerHTML = RightIcon();
     } else {

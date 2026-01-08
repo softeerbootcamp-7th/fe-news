@@ -7,9 +7,9 @@ export const fetchPressListPerCategory = async () => {
 
     const result = tabNames.map((currTab) => ({
       category: currTab,
-      pressNames: newsList
+      pressIdList: newsList
         .filter((press) => press.category === currTab)
-        .map((press) => press.pressName),
+        .map((press) => press.id),
     }));
 
     return result;
@@ -26,7 +26,7 @@ export const fetchPressListPerCategory = async () => {
 export const fetchNewsListOfOnePress = async (pressId) => {
   try {
     const newsList = data.newsList;
-    const pressData = newsList.find((n, index) => index === pressId);
+    const pressData = newsList.find((n) => n.id === pressId);
     if (!pressData)
       throw new Error(
         `해당 언론사를 찾을 수 없습니다. 언론사 id: [${pressId}]`
@@ -37,32 +37,3 @@ export const fetchNewsListOfOnePress = async (pressId) => {
     throw error;
   }
 };
-
-/**
- * 카테고리별 언론사 목록을 가져오는 함수
- * @param none
- * @returns {Promise} 카테고리별 언론사 데이터 객체
- */
-// export const fetchPressListPerCategory = async () => {
-//   return await fetchRawJson()
-//     .then((data) => {
-//       const newsList = data.newsList;
-
-//       // tabNames 배열을 기반으로 새로운 객체 배열 생성
-//       const result = tabNames.map((currTab) => {
-//         return {
-//           category: currTab,
-//           // 해당 카테고리에 속하는 언론사의 '이름'만 추출해서 배열로 만듦
-//           pressNames: newsList
-//             .filter((press) => press.category === currTab)
-//             .map((press) => press.pressName),
-//         };
-//       });
-
-//       return result;
-//     })
-//     .catch((error) => {
-//       console.error("API Error:", error);
-//       throw error;
-//     });
-// };

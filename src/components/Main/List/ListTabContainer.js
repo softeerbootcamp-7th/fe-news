@@ -38,7 +38,7 @@ export function ListTabContainer() {
   };
   const savePressNumberArray = (pressListPerCategory) => {
     const tempArr = pressListPerCategory.map((category) => {
-      return category.pressNames.length;
+      return category.pressIdList.length;
     });
     store.setPressNumPerTab(tempArr);
   };
