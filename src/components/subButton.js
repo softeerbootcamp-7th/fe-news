@@ -1,5 +1,4 @@
-import { isSubscribed, addSubscription } from '../store/subscription.js';
-import { initSubscriptionBadge } from './subBadge.js';
+import { isSubscribed, addSubscription, subscribe } from '../store/subscription.js';
 import { createSubAlert } from './subAlert.js';
 
 const BUTTON_TEXT = {
@@ -7,23 +6,23 @@ const BUTTON_TEXT = {
   unsubscribed: '+ 구독하기',
 };
 
-const subscriptionBadge = initSubscriptionBadge();
-
-export function createSubButton(pressId, pressGrid) {
+export function createSubButton(pressId) {
   const button = document.createElement('button');
   button.className = 'sub-button';
-  updateButton(button, pressId);
+  
+  function update() {
+    button.textContent = isSubscribed(pressId) 
+      ? BUTTON_TEXT.subscribed
+      : BUTTON_TEXT.unsubscribed;
+  }
+
+  update();
+  subscribe(update);
 
   button.addEventListener('click', (e) => {
     e.stopPropagation();
-    (isSubscribed(pressId)) ? createSubAlert(pressId, pressGrid) : addSubscription(pressId);
-    updateButton(button, pressId);
-    subscriptionBadge.update();
+    (isSubscribed(pressId)) ? createSubAlert(pressId) : addSubscription(pressId);
   });
 
   return button;
-}
-
-function updateButton(button, pressId) {
-  button.textContent = isSubscribed(pressId) ? BUTTON_TEXT.subscribed : BUTTON_TEXT.unsubscribed;
 }

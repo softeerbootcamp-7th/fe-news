@@ -1,6 +1,6 @@
 import { pressLogos, PER_PAGE } from '../data/pressLogo.js';
 import { createSubButton } from './subButton.js';
-import { isSubscribed } from '../store/subscription.js';
+import { isSubscribed, subscribe } from '../store/subscription.js';
 import { shuffle } from '../utils/utils.js';
 
 export function initPressGrid() {
@@ -89,12 +89,17 @@ export function initPressGrid() {
     return render();
   }
 
+  const unsubscribe = subscribe(update);
+
   const pressGrid = {
     render,
     setTab,
     goPrev,
     goNext,
     update,
+    destroy() {
+      unsubscribe();
+    }
   }
 
   return pressGrid;
