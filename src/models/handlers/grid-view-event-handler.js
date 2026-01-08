@@ -1,5 +1,5 @@
 import { GRID_VIEW } from '@/constants';
-import { subscribedNewspaperStore } from '@/stores';
+import { subscribedNewspaperStore } from '@/models';
 import {
   logoImageTemplate,
   subscribeButtonTemplate,

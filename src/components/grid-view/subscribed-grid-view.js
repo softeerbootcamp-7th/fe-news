@@ -5,9 +5,10 @@ import {
   getArrowButtonPosition,
   gridViewEventHandler,
   insertArrowButtons,
+  newsSectionStore,
   subscribedGridViewEventHandler,
+  subscribedNewspaperStore,
 } from '@/models';
-import { newsSectionStore, subscribedNewspaperStore } from '@/stores';
 
 /**
  * @returns {{cleanup: () => void}}

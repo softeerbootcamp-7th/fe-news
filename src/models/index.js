@@ -8,3 +8,4 @@ export {
   totalGridViewEventHandler,
 } from './handlers';
 export { insertArrowButtons } from './insert-arrow-buttons';
+export { newsSectionStore, subscribedNewspaperStore } from './stores';

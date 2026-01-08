@@ -1,4 +1,4 @@
-import { subscribedNewspaperStore } from '@/stores';
+import { subscribedNewspaperStore } from '@/models';
 import {
   subscribeButtonTemplate,
   unsubscribeButtonTemplate,

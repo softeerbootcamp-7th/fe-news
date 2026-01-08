@@ -1,4 +1,4 @@
-import { subscribedNewspaperStore } from '@/stores';
+import { subscribedNewspaperStore } from '@/models';
 
 /**
  * @returns {{handleClick: (event: Event) => void}}

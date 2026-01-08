@@ -1,7 +1,6 @@
 import { NEWS_SECTION_STATE } from '@/constants';
 import { Observer } from '@/libs';
-import { getNewspaperForGrid } from '@/models';
-import { newsSectionStore } from '@/stores';
+import { getNewspaperForGrid, newsSectionStore } from '@/models';
 
 import { GridView } from '../grid-view';
 import { NewsSectionHeader } from '../news-section-header';
