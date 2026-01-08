@@ -149,7 +149,7 @@ export const tabNames = [
 ];
 export const store = {
   state: {
-    viewOnlySubs: false,
+    viewOnlySubs: true,
     viewGrid: false,
     shuffledPressList: shuffle(pressList),
     currentPage: 0,
@@ -170,11 +170,7 @@ export const store = {
   setViewOnlySubs(bool) {
     if (this.state.viewOnlySubs === bool) return;
     this.state.viewOnlySubs = bool;
-    this.state.currentPage = 0;
-    this.setTargetPressId(null, "");
-    this.clearTimerId();
-    this.state.listViewPage = 0;
-    this.setMaxPage();
+    this.setViewGrid(!bool);
     notify("viewOnlySubs");
   },
   setViewGrid(bool) {
