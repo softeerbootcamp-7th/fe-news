@@ -3,6 +3,7 @@ import { Observer } from '@/libs';
 import { getNewspaperForGrid, newsSectionStore } from '@/models';
 
 import { GridView } from '../grid-view';
+import { ListView } from '../list-view';
 import { NewsSectionHeader } from '../news-section-header';
 import { RollingSection } from '../rolling-section';
 import { SubscribedNewsNumber } from '../subscribed-news-number';
@@ -21,17 +22,23 @@ export const Main = async () => {
     currentView = newView;
 
     if (newView === NEWS_SECTION_STATE.VIEW.LIST) {
-      if (gridViewCleanupFunctions) {
-        gridViewCleanupFunctions();
-      }
+      gridViewCleanupFunctions?.();
+      gridViewCleanupFunctions = null;
+      ListView();
       return;
     }
 
-    GridView({ newspaperList: totalNewspaperList }).then(
-      ({ cleanup: cleanupGridView }) => {
-        gridViewCleanupFunctions = cleanupGridView;
-      },
-    );
+    if (newView === NEWS_SECTION_STATE.VIEW.GRID) {
+      const $listViewWrapper = document.querySelector(
+        '.news-list-view__wrapper',
+      );
+      $listViewWrapper?.remove();
+      GridView({ newspaperList: totalNewspaperList }).then(
+        ({ cleanup: cleanupGridView }) => {
+          gridViewCleanupFunctions = cleanupGridView;
+        },
+      );
+    }
   };
 
   const observer = new Observer(updateMain);
