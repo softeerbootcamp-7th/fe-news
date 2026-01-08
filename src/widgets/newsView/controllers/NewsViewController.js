@@ -68,13 +68,6 @@ export class NewsViewController {
     });
   }
 
-  setTab(tab) {
-    const nextTab = tab === "subscribed" ? "subscribed" : "all";
-    this.store?.setState?.({ tab: nextTab });
-    this.applyActiveTabUI();
-    this.render();
-  }
-
   render() {
     const state = this.store?.getState?.() ?? {};
     const { files, subscribed } = getLogoListForState({
