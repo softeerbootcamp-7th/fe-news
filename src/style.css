@@ -248,6 +248,16 @@ body {
   display: block;
 }
 
+.provider-grid,
+.provider-list {
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.view--active {
+  opacity: 1;
+}
+
 .provider-grid {
   display: grid;
   list-style: none;
