@@ -81,3 +81,9 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+#press-mark {
+  width: 53px;
+  height: 20px;
+  object-fit: contain;
+}
