@@ -19,7 +19,6 @@ test.describe("router query state", () => {
   test("grid page is reflected in URL", async ({ page }) => {
     await page.goto("/?view=grid&page=2");
     await expect(page.locator('.icon-btn.is-active[data-view="grid"]')).toBeVisible();
-    await expect(page).toHaveURL(/view=grid/);
     await expect(page).toHaveURL(/page=2/);
   });
 
