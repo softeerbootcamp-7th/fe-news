@@ -3,7 +3,7 @@ https://fe-news.forhyundaisofteer.workers.dev/
 
 ## 진행한 작업
 ### 2025/01/07 
- - 구조 변경
+#### 구조 변경
   1. 유저가 사이트에 접속해서 index.html 요청
   2. Cloudflare Worker가 Request 인터셉트 (`run_worker_first`)
   3. Worker 내부에서 네이버 HTML을 fetch한 뒤, `<head>`에 있는 `window["EAGER-DATA"]` 인젝션 로직 파싱
