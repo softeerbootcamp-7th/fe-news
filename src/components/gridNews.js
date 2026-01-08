@@ -4,7 +4,7 @@ import { PAGINATION } from "../constants/constants.js";
 
 const SUBSCRIBE_BUTTON_TEXT = {
   subscribe: "구독하기",
-  unsubscribe: "구독 해지",
+  unsubscribe: "해지하기",
 };
 
 function createNewsCardContent(item, subscribedNews, currentFilter) {
@@ -15,7 +15,7 @@ function createNewsCardContent(item, subscribedNews, currentFilter) {
       <img src="${item.logo}" alt="${item.press}">
     </a>
     <button 
-      class="subscribe-btn ${isSubscribed ? "subscribed" : ""}"
+      class="subscribe-btn-inline ${isSubscribed ? "subscribed" : ""}"
       data-press="${item.press}"
       data-logo="${item.logo}"
       data-filter="${currentFilter}"
