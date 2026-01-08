@@ -105,9 +105,11 @@ function renderListView() {
           <img src="${escapeAttr(
             showingPressData.mainImg
           )}" alt="" id="main-news-thumbnail" />
-          <p class="available-medium16" id="main-news-title">${escapeHtml(
-            showingPressData.mainTitle
-          )}</p>
+          <a href=${escapeAttr(
+            showingPressData.mainLink
+          )} class="available-medium16" id="main-news-title">${escapeHtml(
+    showingPressData.mainTitle
+  )}</a>
         </article>
 
         <div id="sub-article">
@@ -115,9 +117,11 @@ function renderListView() {
             ${showingPressData.relatedArticles
               .map(
                 (subArticle, idx) => `
-              <li class="available-medium16" data-index="${idx}">
-                ${escapeHtml(subArticle.title)}
-              </li>`
+                <a href=${escapeAttr(subArticle.link)}>
+                <li class="available-medium16" data-index="${idx}">
+                  ${escapeHtml(subArticle.title)}
+                </li>
+              </a>`
               )
               .join("")}
           </ul>
