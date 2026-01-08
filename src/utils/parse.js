@@ -18,6 +18,7 @@ export function parsePressData(rawData) {
       category,
       totalPage,
       logo,
+      darkLogo,
       press,
       time,
       mainTitle,
@@ -30,6 +31,7 @@ export function parsePressData(rawData) {
       category,
       totalPage,
       logo,
+      darkLogo,
       name: press,
       time,
       mainNews: {

@@ -2,6 +2,10 @@ import { articlesData } from "@/dummy/articlesData";
 import { initHeader } from "@/feature/header/header";
 import { LatestNewsView } from "@/feature/latest-news/latestNews.js";
 import { initPressView } from "@/feature/press/press";
+import { initTheme } from "@/feature/header/theme";
+
+// 다크모드 테마
+initTheme();
 
 // 기본 상단 영역
 initHeader();

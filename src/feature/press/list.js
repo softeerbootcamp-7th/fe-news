@@ -9,9 +9,15 @@ import { CATEGORY_LIST } from "@/types/constant";
 import { isSubscribed, getSubscribedList } from "@/store/subscriptionStore";
 import { getSubscriptionTab } from "@/store/subscriptionTabStore";
 import { SUBSCRIPTION_TAB } from "@/types/constant";
+import { observeTheme } from "@/feature/header/theme";
 
 export function initListView(paginatedData, currentIndex) {
   renderListView(paginatedData, currentIndex);
+
+  // 다크모드 로고
+  observeTheme(() => {
+    renderListView(paginatedData, currentIndex);
+  });
 }
 
 function renderListView(paginatedData, currentIndex) {
@@ -59,9 +65,13 @@ function getTabInfo(paginatedData) {
 
 function getContentHTML(paginatedData) {
   if (!paginatedData) return getEmptyContentTemplate();
-  else
+  else {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
     return getPressContentTemplate({
       ...paginatedData,
+      logo:
+        currentTheme === "dark" ? paginatedData.darkLogo : paginatedData.logo,
       isSubscribed: isSubscribed(paginatedData.name),
     });
+  }
 }
