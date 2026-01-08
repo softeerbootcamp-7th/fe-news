@@ -1,0 +1,38 @@
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get commit hash
+        id: commit
+        run: echo "hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Prepare Build Directory
+        run: |
+          mkdir build
+          rsync -av --exclude='.git' --exclude='build' . build/
+
+          HASH=${{ steps.commit.outputs.hash }}
+          mkdir -p build/snapshots/$HASH
+
+          rsync -av --exclude='.git' --exclude='build' . build/snapshots/$HASH/
+          ls -R build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          keep_files: true
