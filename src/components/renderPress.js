@@ -3,14 +3,12 @@ import { loadSVG, LOGO_COUNT_PER_PAGE } from "../utils/assetUtils";
 import { waitForAlert } from "./alert";
 import { createBtn } from "./createBtn";
 
-export const renderGrid = async () => {
+export const renderGrid = async (container) => {
   const pressData = await getPressData()
-
-  const newsContainer = document.querySelector('.news-container');
-  newsContainer.innerHTML = ''
+  
   const newsGridContainer = document.createElement('ul');
   newsGridContainer.className = 'news-grid-container';
-  newsContainer.appendChild(newsGridContainer);
+  container.appendChild(newsGridContainer);
 
   renderAllPress('.news-grid-container', pressData);
 
