@@ -1,7 +1,7 @@
 import {
   advanceNewsListPress,
   selectNewsListTab,
-} from "../../../widgets/newsView/ui/newsListUI.js";
+} from "../../../widgets/newsView/controllers/NewsListController.js";
 
 export function createNewsListActions() {
   const prev = () => advanceNewsListPress(-1);

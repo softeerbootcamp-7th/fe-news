@@ -2,7 +2,7 @@ import { toggleSubscriptionFromTarget } from "../../../features/subscriptions/in
 import {
   setNewsListActivePress,
   setNewsListSubscriptions,
-} from "../../../widgets/newsView/ui/newsListUI.js";
+} from "../../../widgets/newsView/controllers/NewsListController.js";
 
 export async function handleToggleSubscription(app, target) {
   const changed = await toggleSubscriptionFromTarget({

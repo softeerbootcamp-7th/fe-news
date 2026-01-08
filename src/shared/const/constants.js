@@ -110,3 +110,18 @@ export const dayNames = [
   "금요일",
   "토요일",
 ];
+
+export const NEWSLIST_CATEGORIES = [
+  "종합/경제",
+  "방송/통신",
+  "IT",
+  "영자지",
+  "스포츠/연예",
+  "매거진/전문지",
+  "지역",
+];
+
+export const NEWSLIST_DURATION_MS = 20000;
+
+export const NEWSLIST_TEMP_MAIN_IMG =
+  "https://s.pstatic.net/dthumb.phinf/?src=%22https%3A%2F%2Fs.pstatic.net%2Fmimgnews%2Fimage%2Forigin%2F277%2F2026%2F01%2F06%2F5702711.jpg%3Fut%3D20260106122813%22&type=nf312_208&service=navermain";

@@ -109,6 +109,7 @@ export class NewsViewController {
       cells,
       folder,
       subscribed,
+      store: this.store,
     });
 
     this.updateNavButtons({ page: nextPage, totalPages });
@@ -118,11 +119,11 @@ export class NewsViewController {
     this._renderNews = renderNews;
   }
 
-  renderNews({ documentRef, selector, cells, folder, subscribed } = {}) {
+  renderNews({ documentRef, selector, cells, folder, subscribed, store } = {}) {
     if (typeof this._renderNews !== "function") {
       throw new Error("renderNews must be provided.");
     }
-    this._renderNews({ documentRef, selector, cells, folder, subscribed });
+    this._renderNews({ documentRef, selector, cells, folder, subscribed, store });
   }
 
   prevPage() {
