@@ -13,7 +13,6 @@ import { RightIcon } from "../../icons/RightIcon";
  * @returns element
  */
 export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
-  const { subscribedIds } = store.state;
   const isThisCategoryTab = pressId === null;
   let prevActivated = false;
 
@@ -24,7 +23,7 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
     : pressList.find((p) => p.id === pressId).name;
 
   const $el = makeNode(`
-        <div class="list-tab">
+        <div class="list-tab" id="${pressId}">
             ${isThisCategoryTab ? category.category : pressName}
         </div>
     `);
@@ -42,8 +41,8 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
   const startTimer = () => {
     const repeat = () => {
       // 1. 상태 업데이트 (다음 언론사 번호로)
-      const { currentPressId } = store.state;
-      store.setCurrentPressIdAfterCheck(currentPressId, 1);
+      const { listViewPage } = store.state;
+      store.setListViewPageAfterCheck(listViewPage, 1);
 
       // 2. 재귀 호출: 다시 n초 뒤에 repeat을 실행
       store.setTimerId(setTimeout(repeat, repeatTime));
@@ -65,25 +64,30 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
    * 렌더링 함수
    */
   const render = () => {
-    const { currentTabIndex, currentPressId } = store.state;
+    const { currentTabIndex, listViewPage } = store.state;
     // 카태고리 탭인 경우, store의 currentTabIndex와 이 컴포넌트의 index가 같으면,
     // 언론사 탭인 경우, store의 현재 페이지와 이 컴포넌트의 index가 같으면 활성화.
     const newActivated = isThisCategoryTab
       ? currentTabIndex === tabIndex
-      : currentPressId === tabIndex;
+      : listViewPage === tabIndex;
 
     if (newActivated === false && newActivated === prevActivated) return; //상태 변화가 없으면 그만.
 
     if (newActivated) {
       $el.appendChild($numberBox);
       $el.classList.add("active");
-      startTimer();
 
-      if (isThisCategoryTab)
-        $numberBox.textContent = `${currentPressId + 1}/${
+      if (isThisCategoryTab) {
+        $numberBox.textContent = `${listViewPage + 1}/${
           category.pressIdList.length
         }`;
-      else $numberBox.innerHTML = RightIcon();
+        store.setCurrentPressId(category.pressIdList[listViewPage]);
+      } else {
+        $numberBox.innerHTML = RightIcon();
+        console.log("값 넣기 전 검사:" + pressId);
+        store.setCurrentPressId(pressId);
+      }
+      startTimer();
     } else {
       if (prevActivated === true) {
         $el.classList.remove("active");
@@ -98,7 +102,7 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
     if (viewGrid) stopTimer();
   };
   window.addEventListener("viewGridChange", stopTimerOnGrid);
-  window.addEventListener("currentPressIdChange", render);
+  window.addEventListener("listViewPageChange", render);
 
   render();
   return $el;

@@ -31,14 +31,14 @@ export function MainContents() {
     const { viewGrid } = store.state;
     if (viewGrid) store.setPage(-1);
     else {
-      store.setCurrentPressId(-1);
+      store.setListViewPage(-1);
     }
   };
   $pageNext.onclick = () => {
     const { viewGrid } = store.state;
     if (viewGrid) store.setPage(1);
     else {
-      store.setCurrentPressId(1);
+      store.setListViewPage(1);
     }
   };
 
