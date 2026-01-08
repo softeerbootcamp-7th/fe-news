@@ -81,9 +81,10 @@ const roll = (list) => {
     if (!list) return;
 
     const itemHeight = list.querySelector('li').offsetHeight;
+    const listGap = 16
 
     list.style.transition = 'transform 0.5s ease-in-out';
-    list.style.transform = `translateY(-${itemHeight}px)`;
+    list.style.transform = `translateY(-${itemHeight+listGap}px)`;
 
     setTimeout(() => {
         list.style.transition = 'none';

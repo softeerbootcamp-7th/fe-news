@@ -26,13 +26,9 @@
     color: var(--color-text-strong);
 }
 
-@keyframes rolling {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-70%);
-  }
+.rolling-viewport {
+  height: 17px;
+  overflow: hidden;
 }
 
 .rolling-list {
