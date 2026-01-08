@@ -57,7 +57,7 @@ function getTabInfo(paginatedData) {
     case SUBSCRIPTION_TAB.MY:
       return {
         tabList: getSubscribedList(),
-        selectedTab: paginatedData.name,
+        selectedTab: paginatedData ? paginatedData.name : null,
         selectedTabTotal: null,
       };
   }
