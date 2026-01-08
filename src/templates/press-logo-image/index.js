@@ -1,1 +1,1 @@
-export { pressLogoImageTemplate } from './press-logo-image-template.js';
+export { logoImageTemplate } from './logo-image-template.js';

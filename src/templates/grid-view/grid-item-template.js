@@ -1,4 +1,4 @@
-import { logoImageTemplate } from '../logo-image-template.js';
+import { logoImageTemplate } from '../press-logo-image';
 
 /**
  * @typedef {import('../../types').Newspaper} Newspaper
