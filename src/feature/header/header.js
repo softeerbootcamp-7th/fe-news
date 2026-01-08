@@ -1,4 +1,4 @@
-import { parseDateString } from "@/utils/parse";
+import { formatDate } from "@/utils/parse";
 
 export function initHeader() {
   // 로고 클릭 시 새로고침
@@ -9,7 +9,7 @@ export function initHeader() {
     });
 
   // 날짜 설정
-  document.querySelector(".newsstand-header__date").innerText = parseDateString(
+  document.querySelector(".newsstand-header__date").innerText = formatDate(
     new Date()
   );
 }
