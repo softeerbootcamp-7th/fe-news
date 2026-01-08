@@ -37,5 +37,6 @@
 }
 
 .press-logo-container img {
+    height: 20px;
     object-fit: cover;
 }
