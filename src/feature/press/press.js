@@ -235,6 +235,18 @@ function addSubscribeEvents() {
       .querySelector("strong").textContent;
     toggleSubscription(pressName);
     dialog.removeAttribute("open");
+
+    if (
+      getSubscriptionTab() === SUBSCRIPTION_TAB.MY &&
+      getViewTab() === VIEW_TAB.LIST
+    ) {
+      if (
+        pagination.getCurrentPage() >=
+        pagination.getTotalPages(filteredData) - 1
+      ) {
+        pagination.reset();
+      } else pagination.next();
+    }
   });
 
   // 다이얼로그 닫기
