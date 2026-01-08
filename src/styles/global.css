@@ -11,7 +11,8 @@ button {
 p,
 h1,
 h2,
-h3 {
+h3,
+ul {
   margin: 0;
   padding: 0;
 }
@@ -23,7 +24,7 @@ h3 {
   gap: 2px;
   height: 24px;
 
-  padding: 0px 6px;
+  padding: 0px 5px;
   border-radius: 1000px;
   border: 1px solid;
   border-color: var(--border-default);

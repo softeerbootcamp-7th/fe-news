@@ -1,4 +1,4 @@
-const subscriptionState = new Map();
+const subscriptionState = new Map(); // key: press name, value: date
 const listeners = new Set();
 
 export function observeSubscriptionStore(listener) {
@@ -11,17 +11,25 @@ function notify(pressName) {
 }
 
 export function isSubscribed(pressName) {
-  return subscriptionState.get(pressName) ?? false;
+  return subscriptionState.get(pressName) ? true : false;
+}
+
+export function getSubscriptionDate(pressName) {
+  return subscriptionState.get(pressName) ?? null;
 }
 
 export function toggleSubscription(pressName) {
-  const nextValue = !isSubscribed(pressName);
-  subscriptionState.set(pressName, nextValue);
+  if (isSubscribed(pressName)) subscriptionState.delete(pressName);
+  else subscriptionState.set(pressName, new Date());
   notify(pressName);
 }
 
 export function getSubscriptionCount() {
-  return Array.from(subscriptionState.values()).filter(
-    (value) => value === true
-  ).length;
+  return subscriptionState.size;
+}
+
+export function getSubscribedList() {
+  return Array.from(subscriptionState.entries())
+    .sort(([, dateA], [, dateB]) => new Date(dateA) - new Date(dateB))
+    .map(([key]) => key);
 }

@@ -1,5 +1,9 @@
-import { parsePressData } from "@/utils/parse";
-import { shuffleArray } from "@/utils/shuffle";
+import {
+  parsePressData,
+  shufflePressData,
+  parseCategoryIndex,
+  parseFirstPageInCategory,
+} from "@/utils/parse";
 import { SUBSCRIPTION_TAB } from "@/types/constant";
 import { VIEW_TAB } from "@/types/constant";
 import {
@@ -7,6 +11,7 @@ import {
   getSubscriptionCount,
   toggleSubscription,
   observeSubscriptionStore,
+  getSubscriptionDate,
 } from "@/store/subscriptionStore";
 import {
   getSubscriptionTab,
@@ -24,12 +29,17 @@ import { initListView } from "./list";
 import { getLoadingIndicatorTemplate } from "@/template/Loading";
 
 // 상태
+let shuffledData = [];
 let filteredData = [];
+let slideTimeoutId = null;
+const SLIDE_INTERVAL_MS = 20000;
 const pagination = createPaginationController();
 
 export function initPressView(articlesData) {
   // dummy 데이터 파싱 및 셔플
-  const allPressData = shuffleArray(parsePressData(articlesData)); // {id, name, logo}
+  const allPressData = parsePressData(articlesData); // {id, name, logo}
+  shuffledData = allPressData;
+  filteredData = allPressData;
 
   // 그리드/리스트 버튼
   addViewTabEvents();
@@ -41,53 +51,69 @@ export function initPressView(articlesData) {
   addSubscribeEvents();
 
   // 그리드/리스트 변경 시 뷰 업데이트
-  observeViewTabStore(() => {
-    pagination.setStrategy(getViewTab());
-    renderPressView();
+  observeViewTabStore((viewTab) => {
+    pagination.setStrategy(viewTab);
+    if (getSubscriptionTab() === SUBSCRIPTION_TAB.ALL)
+      shuffledData = shufflePressData(viewTab, allPressData); // 셔플
+    filteredData = filterPressData(shuffledData);
+    updateViewTab(viewTab);
+    createPressView();
   });
   // 전체/구독 탭 변경 시 데이터 업데이트
-  observeSubscriptionTabStore(() => {
-    filteredData = filterPressData(allPressData);
+  observeSubscriptionTabStore((subscriptionTab) => {
+    filteredData = filterPressData(shuffledData);
     pagination.reset();
-    renderPressView();
+    updateSubscriptionTab(subscriptionTab);
+    createPressView();
   });
 
   // 구독/해지 변경 시 뷰 업데이트
   observeSubscriptionStore(() => {
     updateSubscriptionCount();
-    filteredData = filterPressData(allPressData);
-    pagination.reset();
-    renderPressView();
+    filteredData = filterPressData(shuffledData);
+    createPressView();
   });
 
   // 초기 설정
-  setViewTab(VIEW_TAB.GRID);
+  // setViewTab(VIEW_TAB.GRID);
+  setViewTab(VIEW_TAB.LIST);
   setSubscriptionTab(SUBSCRIPTION_TAB.ALL);
   updateSubscriptionCount();
 }
 
-function filterPressData(allPressData) {
+function filterPressData(shuffledData) {
   if (getSubscriptionTab() === SUBSCRIPTION_TAB.MY) {
-    return allPressData.filter((p) => isSubscribed(p.name));
+    return shuffledData
+      .filter(({ name }) => isSubscribed(name))
+      .sort((a, b) => {
+        const dateA = getSubscriptionDate(a.name);
+        const dateB = getSubscriptionDate(b.name);
+        return new Date(dateA) - new Date(dateB); // 구독 오래된 순
+      });
   }
-  return allPressData;
+  return shuffledData;
 }
 
-function renderPressView() {
+function createPressView() {
   // 그리드/리스트 뷰
   const paginatedData = pagination.getPageData(filteredData);
-  const { showPrev, showNext } = pagination.getArrowState(filteredData);
+  if (slideTimeoutId) clearTimeout(slideTimeoutId);
 
   switch (getViewTab()) {
     case VIEW_TAB.GRID:
       initGridView(paginatedData);
       break;
     case VIEW_TAB.LIST:
-      initListView();
+      const currentPage = pagination.getCurrentPage();
+      const currentIndex = parseCategoryIndex(shuffledData, currentPage);
+      initListView(paginatedData, currentIndex);
+      addNavEvents();
+      startSlidingAnimation();
       break;
   }
 
   // 좌우 페이지네이션 화살표
+  const { showPrev, showNext } = pagination.getArrowState(filteredData);
   const prevButton = document.querySelector(".press-list__control--prev");
   const nextButton = document.querySelector(".press-list__control--next");
   prevButton.classList.toggle("hidden", !showPrev);
@@ -105,32 +131,55 @@ function addSubscriptionTabEvents() {
   const [allViewButton, myViewButton] =
     document.querySelectorAll(".press-news__tab");
   allViewButton.addEventListener("click", () => {
-    allViewButton.classList.add("active");
-    myViewButton.classList.remove("active");
     setSubscriptionTab(SUBSCRIPTION_TAB.ALL);
   });
   myViewButton.addEventListener("click", () => {
-    myViewButton.classList.add("active");
-    allViewButton.classList.remove("active");
     setSubscriptionTab(SUBSCRIPTION_TAB.MY);
   });
 }
+
+function updateSubscriptionTab(subscriptionTab) {
+  const [allViewButton, myViewButton] =
+    document.querySelectorAll(".press-news__tab");
+  switch (subscriptionTab) {
+    case SUBSCRIPTION_TAB.ALL:
+      allViewButton.classList.add("active");
+      myViewButton.classList.remove("active");
+      break;
+    case SUBSCRIPTION_TAB.MY:
+      myViewButton.classList.add("active");
+      allViewButton.classList.remove("active");
+      break;
+  }
+}
+
 function addViewTabEvents() {
   // 그리드/리스트 뷰 버튼
   const [listViewButton, gridViewButton] =
     document.querySelectorAll(".view-toggle");
-
   gridViewButton.addEventListener("click", () => {
-    gridViewButton.classList.add("active");
-    listViewButton.classList.remove("active");
     setViewTab(VIEW_TAB.GRID);
   });
   listViewButton.addEventListener("click", () => {
-    listViewButton.classList.add("active");
-    gridViewButton.classList.remove("active");
     setViewTab(VIEW_TAB.LIST);
   });
 }
+
+function updateViewTab(viewTab) {
+  const [listViewButton, gridViewButton] =
+    document.querySelectorAll(".view-toggle");
+  switch (viewTab) {
+    case VIEW_TAB.GRID:
+      gridViewButton.classList.add("active");
+      listViewButton.classList.remove("active");
+      break;
+    case VIEW_TAB.LIST:
+      listViewButton.classList.add("active");
+      gridViewButton.classList.remove("active");
+      break;
+  }
+}
+
 function addPaginationEvents() {
   // 페이지네이션 양옆 화살표
   const prevButton = document.querySelector(".press-list__control--prev");
@@ -138,12 +187,16 @@ function addPaginationEvents() {
 
   prevButton.addEventListener("click", () => {
     pagination.prev();
-    renderPressView();
+    createPressView();
+
+    startSlidingAnimation();
   });
 
   nextButton.addEventListener("click", () => {
     pagination.next();
-    renderPressView();
+    createPressView();
+
+    startSlidingAnimation();
   });
 }
 
@@ -155,7 +208,9 @@ function addSubscribeEvents() {
 
   // 구독/해지 버튼
   pressSection.addEventListener("click", (e) => {
-    const pressName = e.target.closest("li").dataset.label;
+    const dataEl = e.target.closest("[data-label]");
+    if (!dataEl) return;
+    const pressName = dataEl.dataset.label;
     if (!pressName) return;
     const button = e.target.closest("button");
     if (!button) return;
@@ -168,6 +223,7 @@ function addSubscribeEvents() {
       // 구독버튼: 구독
       button.innerHTML = getLoadingIndicatorTemplate();
       toggleSubscription(pressName);
+      setSubscriptionTab(SUBSCRIPTION_TAB.MY);
     }
   });
 
@@ -184,4 +240,44 @@ function addSubscribeEvents() {
   negativeButton.addEventListener("click", () => {
     dialog.removeAttribute("open");
   });
+}
+
+function addNavEvents() {
+  const navContainer = document.querySelector(".press-tabs");
+  navContainer.addEventListener("click", (e) => {
+    const navButton = e.target.closest(".press-tabs__item");
+    const label = navButton.firstElementChild.textContent;
+    updatePageByNav(label);
+  });
+}
+
+function updatePageByNav(label) {
+  let page = 0;
+  switch (getSubscriptionTab()) {
+    case SUBSCRIPTION_TAB.ALL:
+      page = parseFirstPageInCategory(filteredData, label);
+
+      break;
+    case SUBSCRIPTION_TAB.MY:
+      page = filteredData.findIndex((press) => press.name === label);
+      break;
+  }
+  pagination.setPage(page);
+  createPressView();
+}
+function startSlidingAnimation() {
+  if (slideTimeoutId) {
+    clearTimeout(slideTimeoutId);
+  }
+
+  slideTimeoutId = setTimeout(() => {
+    if (
+      pagination.getCurrentPage() >=
+      pagination.getTotalPages(filteredData) - 1
+    ) {
+      pagination.reset();
+    } else pagination.next();
+
+    createPressView();
+  }, SLIDE_INTERVAL_MS);
 }

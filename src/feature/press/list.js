@@ -1,8 +1,58 @@
-import { getPressListTemplate } from "@/template/ListView";
+import {
+  getNavTemplateStart,
+  getNavTemplateEnd,
+  getNavTemplate,
+  getPressContentTemplate,
+  getEmptyContentTemplate,
+} from "@/template/ListView";
+import { CATEGORY_LIST } from "@/types/constant";
+import { isSubscribed, getSubscribedList } from "@/store/subscriptionStore";
+import { getSubscriptionTab } from "@/store/subscriptionTabStore";
+import { SUBSCRIPTION_TAB } from "@/types/constant";
 
-const listContainer = document.querySelector(".press-section");
-
-export function initListView() {
+export function initListView(paginatedData, currentIndex) {
   // 첫 list 레이아웃 그리기
-  listContainer.innerHTML = getPressListTemplate({});
+  const listContainer = document.querySelector(".press-section");
+
+  const navList = getNavList();
+
+  let html = "";
+  html += getNavTemplateStart();
+  html += navList
+    .map((nav) =>
+      getNavTemplate({
+        selected:
+          nav ===
+          (getSubscriptionTab() === SUBSCRIPTION_TAB.ALL
+            ? paginatedData.category
+            : paginatedData.name),
+        navName: nav,
+        currentPress: currentIndex + 1,
+        totalPress:
+          getSubscriptionTab() === SUBSCRIPTION_TAB.ALL
+            ? paginatedData.totalPage
+            : null,
+      })
+    )
+    .join("");
+  html += getNavTemplateEnd();
+  if (paginatedData)
+    html += getPressContentTemplate({
+      ...paginatedData,
+      isSubscribed: isSubscribed(paginatedData.name),
+    });
+  else html += getEmptyContentTemplate();
+
+  console.log();
+  listContainer.innerHTML = html;
+}
+
+function getNavList() {
+  switch (getSubscriptionTab()) {
+    case SUBSCRIPTION_TAB.ALL:
+      return Object.values(CATEGORY_LIST);
+
+    case SUBSCRIPTION_TAB.MY:
+      return getSubscribedList();
+  }
 }

@@ -9,7 +9,7 @@ export function observeSubscriptionTabStore(listener) {
 }
 
 function notify() {
-  listeners.forEach((listener) => listener());
+  listeners.forEach((listener) => listener(subscriptionTabName));
 }
 
 export function getSubscriptionTab() {
