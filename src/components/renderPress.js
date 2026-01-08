@@ -38,6 +38,8 @@ export const renderGrid = async () => {
     renderSubscribedPress('.press-logo-container', pressData);
     loadSVG();
   });
+
+  loadSVG();
 }
 
 /**
