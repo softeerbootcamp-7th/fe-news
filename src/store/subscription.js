@@ -21,12 +21,6 @@ export function isSubscribed(id) {
   return subscribedIds.has(id);
 }
 
-export function toggleSubscribe(id) {
-  subscribedIds.has(id) ? subscribedIds.delete(id) : subscribedIds.add(id);
-  save();
-  notify();
-}
-
 export function addSubscription(id) {
   subscribedIds.add(id);
   save();
