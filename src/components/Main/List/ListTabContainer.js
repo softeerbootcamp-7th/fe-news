@@ -58,12 +58,58 @@ export function ListTabContainer(animationDruation = 5) {
     viewOnlySubs ? renderSubscribedPressTabs() : fetchAndRenderCategoryTabs();
   };
 
-  window.addEventListener("viewOnlySubsChange", render);
-  render();
+  let isMouseDown = false;
+  let startX = 0;
+  let scrollLeftPos = 0;
+  $el.addEventListener("mousedown", (e) => {
+    isMouseDown = true;
+    // 클릭한 지점의 마우스 좌표에서 요소의 왼쪽 여백을 뺍니다.
+    startX = e.pageX - $el.offsetLeft;
+    scrollLeftPos = $el.scrollLeft;
+  });
 
+  const endDrag = (e) => {
+    e.stopPropagation();
+    isMouseDown = false;
+  };
+  $el.addEventListener("mouseleave", endDrag);
+  $el.addEventListener("mouseup", endDrag);
+  $el.addEventListener("mousemove", (e) => {
+    if (!isMouseDown) return;
+    e.preventDefault();
+
+    // 현재 마우스 위치
+    const x = e.pageX - $el.offsetLeft;
+
+    // 이동 거리 계산 (현재 위치 - 시작 위치)
+    // 곱하기 4는 감도(속도) 조절입니다.
+    const walk = (x - startX) * 1;
+
+    // 핵심: "처음 스크롤 위치"에서 "움직인 거리"를 뺍니다.
+    // 마우스를 오른쪽으로 밀면(walk가 양수), 스크롤은 왼쪽으로 가야 하므로 뺍니다.
+    $el.scrollLeft = scrollLeftPos - walk;
+  });
+
+  const getPositionOfActivatedTab = () => {
+    const { viewOnlySubs, currentTabIndex, listViewPage } = store.state;
+    const targetTab = viewOnlySubs ? listViewPage : currentTabIndex;
+
+    const thisRect = $el.getBoundingClientRect();
+    const childRectArr = $el.querySelectorAll(`.list-tab`);
+    const childRect = childRectArr[targetTab].getBoundingClientRect();
+
+    if (thisRect.width < childRect.x + childRect.width - thisRect.x)
+      $el.scrollLeft = childRect.left - thisRect.left - 200;
+  };
+
+  window.addEventListener("tabIndexChange", getPositionOfActivatedTab);
+  window.addEventListener("listViewPageChange", getPositionOfActivatedTab);
+
+  window.addEventListener("viewOnlySubsChange", render);
   cleanupEventListenerMap.set($el, () => {
     window.removeEventListener("viewOnlySubsChange", render);
   });
+  render();
 
   return $el;
 }

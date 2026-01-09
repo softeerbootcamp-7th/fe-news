@@ -27,7 +27,7 @@ export function ListTab({
     : pressList.find((p) => p.id === pressId).name;
 
   const $el = makeNode(`
-        <div class="list-tab" id="${pressId}">
+        <div class="list-tab" id="list-tab-${tabIndex}">
           <div class="list-tab-contents">${
             isThisCategoryTab ? category.category : pressName
           }</div>

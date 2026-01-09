@@ -159,8 +159,8 @@ export const store = {
     subscribedIds: loadSavedSubs(), // 구독한 언론사의 ID를 저장하는 Sets
 
     // List view에서 추가되는 변수들 _ 언론사 순서는 page 변수 재사용
-    listViewPage: 0, //현재 언론사의 id 저장 -> 이름 바꾸고, 탭 번호로 바꾸기!
-    currentPressId: 0, //현재 언론사의 'id'를 저장할 변수. 이름 바꿔야함 !!!!!!!!!!!!!!!!!
+    listViewPage: 0, //탭 번호
+    currentPressId: 0, //현재 언론사의 'id'를 저장할 변수
     currentTabIndex: 0, //현재 카테고리 인덱스 지정. ?-> page를 0으로? 아님 배열이 있으니 0~72중 해당 값으로?
 
     pressNumPerTab: [0, 0, 0, 0, 0, 0, 0], // 카테고리별 언론사 개수 목록. fetch해서 받아오고 넣기
@@ -196,7 +196,7 @@ export const store = {
       nextMaxPage =
         Math.ceil(Array.from(this.state.subscribedIds).length / 24) - 1;
     //그리드 뷰, 전체 보기
-    else nextMaxPage = Math.ceil(pressList.length / 24);
+    else nextMaxPage = Math.ceil(pressList.length / 24) - 1;
 
     this.state.maxPage = nextMaxPage;
     if (prevPage > nextMaxPage) this.state.currentPage = nextMaxPage;
