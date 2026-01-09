@@ -5,7 +5,6 @@
     <title>뉴스스탠드</title>
     <link rel="stylesheet" href="./src/styles/tokens.css" />
     <link rel="stylesheet" href="./src/styles/theme.css" />
-    <link rel="stylesheet" href="./src/styles/typography.css" />
     <link rel="stylesheet" href="./src/styles/global.css" />
     <link rel="stylesheet" href="./src/styles/newsstand.css" />
   </head>
@@ -26,13 +25,11 @@
             fill="currentColor"
           />
         </svg>
-        <h1 class="newsstand-header__title display-bold-24">뉴스스탠드</h1>
+        <h1 class="newsstand-header__title">뉴스스탠드</h1>
       </div>
 
       <div class="newsstand-header__right">
-        <time class="newsstand-header__date display-medium-16">
-          2026. 01. 14. 수요일
-        </time>
+        <time class="newsstand-header__date"> 2026. 01. 14. 수요일 </time>
         <button
           class="theme-toggle-button button-label bg-gray"
           aria-label="테마 전환"
@@ -58,14 +55,14 @@
             aria-label="언론사 구독 필터링 여부 선택"
           >
             <button class="press-news__tab active" aria-label="전체 언론사 탭">
-              <h2 class="display-bold-16">전체 언론사</h2>
+              <h2>전체 언론사</h2>
             </button>
             <button
               class="press-news__tab my"
               aria-label="내가 구독한 언론사 탭"
             >
-              <h2 class="medium-16">내가 구독한 언론사</h2>
-              <div class="badge"><span class="medium-12">8</span></div>
+              <h2>내가 구독한 언론사</h2>
+              <div class="badge"><span>8</span></div>
             </button>
           </nav>
           <!-- 그리드/리스트 보기 -->
@@ -92,28 +89,7 @@
         <!-- 언론사 목록 영역-->
         <section aria-label="언론사 목록" class="press-list">
           <!-- 그리드/리스트 -->
-          <section class="press-section" aria-label="보기 목록">
-            <ul class="press-grid__list">
-              <li class="press-grid__item">
-                <img src="" alt="서울경제 로고" />
-              </li>
-
-              <li class="press-grid__item">
-                <img src="" alt="서울경제 로고" />
-              </li>
-
-              <li class="press-grid__item">
-                <button class="button-label bg-gray">
-                  <svg aria-hidden="true" viewBox="0 0 18 18">
-                    <path
-                      d="M0 8V0H8V8H0ZM0 18V10H8V18H0ZM10 8V0H18V8H10ZM10 18V10H18V18H10Z"
-                    />
-                  </svg>
-                  <span>해지하기</span>
-                </button>
-              </li>
-            </ul>
-          </section>
+          <section class="press-section" aria-label="보기 목록"></section>
 
           <button
             class="press-list__control press-list__control--prev hidden"
@@ -152,7 +128,7 @@
             aria-labelledby="press-dialog-title"
           >
             <div class="dialog-title">
-              <h3 class="medium-16">
+              <h3>
                 <strong>언론사명</strong>을(를)<br />구독해지하시겠습니까?
               </h3>
             </div>
@@ -165,6 +141,6 @@
       </section>
     </main>
 
-    <script type="module" src="/src/app.js"></script>
+    <script type="module" src="./src/app.js"></script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 import {
-  getNavTemplateStart,
-  getNavTemplateEnd,
-  getNavTemplate,
+  getTabTemplateStart,
+  getTabTemplateEnd,
+  getTabTemplate,
   getPressContentTemplate,
   getEmptyContentTemplate,
 } from "@/template/ListView";
@@ -11,48 +11,61 @@ import { getSubscriptionTab } from "@/store/subscriptionTabStore";
 import { SUBSCRIPTION_TAB } from "@/types/constant";
 
 export function initListView(paginatedData, currentIndex) {
-  // 첫 list 레이아웃 그리기
-  const listContainer = document.querySelector(".press-section");
+  renderListView(paginatedData, currentIndex);
+}
 
-  const navList = getNavList();
+function renderListView(paginatedData, currentIndex) {
+  const listContainer = document.querySelector(".press-section");
+  listContainer.innerHTML =
+    getTabListHTML(paginatedData, currentIndex) + getContentHTML(paginatedData);
+}
+
+function getTabListHTML(paginatedData, currentIndex) {
+  const { tabList, selectedTab, selectedTabTotal } = getTabInfo(paginatedData);
 
   let html = "";
-  html += getNavTemplateStart();
-  html += navList
-    .map((nav) =>
-      getNavTemplate({
-        selected:
-          nav ===
-          (getSubscriptionTab() === SUBSCRIPTION_TAB.ALL
-            ? paginatedData.category
-            : paginatedData.name),
-        navName: nav,
+  html += getTabTemplateStart();
+  html += tabList
+    .map((tab) =>
+      getTabTemplate({
+        selected: tab === selectedTab,
+        tabName: tab,
         currentPress: currentIndex + 1,
-        totalPress:
-          getSubscriptionTab() === SUBSCRIPTION_TAB.ALL
-            ? paginatedData.totalPage
-            : null,
+        totalPress: selectedTabTotal,
       })
     )
     .join("");
-  html += getNavTemplateEnd();
-  if (paginatedData)
-    html += getPressContentTemplate({
-      ...paginatedData,
-      isSubscribed: isSubscribed(paginatedData.name),
-    });
-  else html += getEmptyContentTemplate();
-
-  console.log();
-  listContainer.innerHTML = html;
+  html += getTabTemplateEnd();
+  return html;
 }
 
-function getNavList() {
+function getTabInfo(paginatedData) {
   switch (getSubscriptionTab()) {
     case SUBSCRIPTION_TAB.ALL:
-      return Object.values(CATEGORY_LIST);
+      return {
+        tabList: Object.values(CATEGORY_LIST),
+        selectedTab: paginatedData.category,
+        selectedTabTotal: paginatedData.totalPage,
+      };
 
     case SUBSCRIPTION_TAB.MY:
-      return getSubscribedList();
+      return {
+        tabList: getSubscribedList(),
+        selectedTab: paginatedData ? paginatedData.name : null,
+        selectedTabTotal: null,
+      };
+  }
+}
+
+function getContentHTML(paginatedData) {
+  if (!paginatedData) return getEmptyContentTemplate();
+  else {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    return getPressContentTemplate({
+      ...paginatedData,
+      logo:
+        currentTheme === "dark" ? paginatedData.darkLogo : paginatedData.logo,
+      isSubscribed: isSubscribed(paginatedData.name),
+    });
   }
 }

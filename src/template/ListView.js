@@ -4,16 +4,16 @@ import {
 } from "@/template/SubscribeButton";
 import { VIEW_TAB } from "@/types/constant";
 
-export function getNavTemplateStart() {
+export function getTabTemplateStart() {
   return `<nav class="press-tabs" aria-label="언론사 카테고리">`;
 }
-export function getNavTemplateEnd() {
+export function getTabTemplateEnd() {
   return `</nav>`;
 }
 
-export function getNavTemplate({
+export function getTabTemplate({
   selected,
-  navName,
+  tabName,
   currentPress,
   totalPress,
 }) {
@@ -23,10 +23,10 @@ export function getNavTemplate({
       class="press-tabs__item active"
       aria-current="true"
     >
-      <p class="display-bold-14">${navName}</p>
+      <p class="press-tabs__title">${tabName}</p>
       ${
         totalPress
-          ? `<p class="display-bold-12">
+          ? `<p class="press-tabs__description">
             ${currentPress}<span> / ${totalPress} </span>
           </p>`
           : `<svg
@@ -44,7 +44,7 @@ export function getNavTemplate({
   `
     : `
     <button class="press-tabs__item">
-      <p class="press-tabs__title medium-14">${navName}</p>
+      <p class="press-tabs__title">${tabName}</p>
     </button>
   `;
 }
@@ -64,7 +64,7 @@ export function getPressContentTemplate({
         <img src="${logo}" alt="${name}" class="press-feed__logo" />
         <time
           datetime="${time}"
-          class="press-feed__time medium-12"
+          class="press-feed__time"
         >
           ${time} 편집
         </time>
@@ -76,26 +76,40 @@ export function getPressContentTemplate({
       </header>
       <div class="press-feed__container">
         <!-- 메인 뉴스 -->
-        <article class="press-feed__lead">
-          <img
-            src="${mainNews.thumbnail}"
-            alt="메인 뉴스 썸네일"
-            class="press-feed__thumbnail"
-          />
-          <h3 class="press-feed__headline medium-16">
-            ${mainNews.title}
-          </h3>
-        </article>
+        <a href="${mainNews.link}" target="_blank">
+          <article class="press-feed__lead">
+            <img
+              src="${mainNews.thumbnail}"
+              alt="메인 뉴스 썸네일"
+              class="press-feed__thumbnail"
+            />
+            <h3 class="press-feed__headline">
+              ${mainNews.title}
+            </h3>
+          </article>
+        </a>
 
         <!-- 서브 뉴스 -->
-        <ul class="press-feed__list medium-16">
-          <li>${subNews[0].title}</li>
-          <li>${subNews[1].title}</li>
-          <li>${subNews[2].title}</li>
-          <li>${subNews[3].title}</li>
-          <li>${subNews[4].title}</li>
-          <li>${subNews[5].title}</li>
-          <p class="press-feed__note medium-14">
+        <ul class="press-feed__list">
+          <li> 
+            <a href="${subNews[0].link}" target="_black">${subNews[0].title}</a>
+          </li>
+          <li> 
+            <a href="${subNews[1].link}" target="_black">${subNews[1].title}</a>
+          </li>
+          <li> 
+            <a href="${subNews[2].link}" target="_black">${subNews[2].title}</a>
+          </li>
+          <li> 
+            <a href="${subNews[3].link}" target="_black">${subNews[3].title}</a>
+          </li>
+          <li> 
+            <a href="${subNews[4].link}" target="_black">${subNews[4].title}</a>
+          </li>
+          <li> 
+            <a href="${subNews[5].link}" target="_black">${subNews[5].title}</a>
+          </li>
+          <p class="press-feed__note">
             ${name} 언론사에서 직접 편집한 뉴스입니다.
           </p>
         </ul>

@@ -16,7 +16,33 @@ export class LatestNewsView {
     this.rightLastRoll = performance.now() + LatestNewsView.ROLL_OFFSET_MS; // 오른쪽 1초 시간차
     this.leftPaused = false;
     this.rightPaused = false;
+    this.rafId = null;
+  }
+
+  initLatestNews(newsData) {
+    // 데이터 초기화
+    this.data = newsData;
+
+    // 첫 2개의 뉴스 추가
+    const leftNews = this.appendLeftNewsElement();
+    const rightNews = this.appendRightNewsElement();
+    leftNews.style.transform = "translateY(0)";
+    rightNews.style.transform = "translateY(0)";
+
+    // 롤링 애니메이션 시작
+    this.initRolling();
+  }
+
+  initRolling() {
     this.rafId = requestAnimationFrame(this.loop.bind(this));
+
+    // 탭 복귀 시 시간차 되살리기
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") {
+        this.leftLastRoll = performance.now();
+        this.rightLastRoll = performance.now() + LatestNewsView.ROLL_OFFSET_MS;
+      }
+    });
   }
 
   loop(timestamp) {
@@ -75,17 +101,6 @@ export class LatestNewsView {
     // setTimeout(() => oldNews.remove(), 500);
   }
 
-  initLatestNews(newsData) {
-    // 데이터 초기화
-    this.data = newsData;
-
-    // 첫 2개의 뉴스 추가
-    const leftNews = this.appendLeftNewsElement();
-    const rightNews = this.appendRightNewsElement();
-    leftNews.style.transform = "translateY(0)";
-    rightNews.style.transform = "translateY(0)";
-  }
-
   appendLeftNewsElement() {
     const leftNews = this.createNewsElement(this.leftIndex);
 
@@ -128,12 +143,13 @@ export class LatestNewsView {
   createNewsElement(dataIndex) {
     // 특정 데이터로 뉴스 요소 생성
     const news = document.createElement("article");
+    news.classList.add("latest-news__item");
     const press = document.createElement("p");
-    press.classList.add("display-bold-14");
     press.textContent = this.data[dataIndex].press;
-    const title = document.createElement("h3");
-    title.classList.add("medium-14");
+    const title = document.createElement("a");
+    title.target = "_blank"; // 새창에서 열기
     title.textContent = this.data[dataIndex].mainTitle;
+    title.href = this.data[dataIndex].mainLink;
     news.appendChild(press);
     news.appendChild(title);
 

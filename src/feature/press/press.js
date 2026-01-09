@@ -27,6 +27,7 @@ import { createPaginationController } from "./pagination";
 import { initGridView } from "./grid";
 import { initListView } from "./list";
 import { getLoadingIndicatorTemplate } from "@/template/Loading";
+import { observeTheme } from "@/feature/header/theme";
 
 // 상태
 let shuffledData = [];
@@ -74,6 +75,10 @@ export function initPressView(articlesData) {
     createPressView();
   });
 
+  // 다크모드
+  observeTheme(() => {
+    createPressView();
+  });
   // 초기 설정
   // setViewTab(VIEW_TAB.GRID);
   setViewTab(VIEW_TAB.LIST);
@@ -223,7 +228,8 @@ function addSubscribeEvents() {
       // 구독버튼: 구독
       button.innerHTML = getLoadingIndicatorTemplate();
       toggleSubscription(pressName);
-      setSubscriptionTab(SUBSCRIPTION_TAB.MY);
+      if (getViewTab() == VIEW_TAB.LIST)
+        setSubscriptionTab(SUBSCRIPTION_TAB.MY);
     }
   });
 
@@ -234,6 +240,18 @@ function addSubscribeEvents() {
       .querySelector("strong").textContent;
     toggleSubscription(pressName);
     dialog.removeAttribute("open");
+
+    if (
+      getSubscriptionTab() === SUBSCRIPTION_TAB.MY &&
+      getViewTab() === VIEW_TAB.LIST
+    ) {
+      if (
+        pagination.getCurrentPage() >=
+        pagination.getTotalPages(filteredData) - 1
+      ) {
+        pagination.reset();
+      } else pagination.next();
+    }
   });
 
   // 다이얼로그 닫기
