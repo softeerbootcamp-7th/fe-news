@@ -1,33 +1,38 @@
 export function renderListView(items) {
+  const item = items[0]
   const content = document.getElementById('news-contents')
   if (!content) return
 
   content.className = 'list'
-  
-  // TODO: 리스트 UI 작업 필요
-  const listItems = items.map(item => `
+
+  const relatedArticlesList = item.relatedArticles
+    .map(
+      (article) => `
+    <li class="related-article" role="article">
+      <p class="typo-available-medium-16">${article.title}</p>
+    </li>
+  `,
+    )
+    .join('')
+
+  const listItems = `
     <li class="list-item" role="article">
       <div class="press-info">
         <img src="${item.logo}" alt="${item.press}" width="44" height="20">
-        <span class="press-name">${item.time}</span>
+        <span class="typo-body-medium-12">${item.time}</span>
       </div>
       <div class="press-contents">
-        <div>
-          <img src="${item.mainImg}" alt="${item.mainTitle}" class="list-item-image">
-          <p>${item.mainTitle}</p>
+        <div class="first-content">
+          <img src="${item.mainImg}" alt="${item.mainTitle}" width="320" height="200">
+          <p class="typo-available-medium-16">${item.mainTitle}</p>
         </div>
-        <div class="list-item-content">
-          <div>
-            <h3 class="list-item-title">${item.title}</h3>
-            <p class="list-item-description">${item.description}</p>
-          </div>
-          <div class="list-item-meta">
-            <time class="list-item-date" datetime="${item.date}">${item.date}</time>
-          </div>
-        </div>
+        <ul class="list-item-content">
+          ${relatedArticlesList}
+          <p class="typo-body-medium-14">${item.press} 언론사에서 직접 편집한 뉴스입니다.</p>
+        </ul>
       </div>
     </li>
-  `).join('')
+  `
 
   content.innerHTML = listItems
 }
