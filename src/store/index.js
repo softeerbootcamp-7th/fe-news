@@ -224,6 +224,13 @@ export const store = {
     }
     notify("subscribeTarget");
   },
+  subscribePress(pressId) {
+    const { subscribedIds } = this.state;
+    subscribedIds.add(pressId);
+    saveSubscribedIds(subscribedIds);
+    this.setMaxPage();
+    notify("subsList");
+  },
   /** Alert모달에서 [확인]기능 함수 */
   toggleSub() {
     const { targetPressId, subscribedIds } = this.state;
