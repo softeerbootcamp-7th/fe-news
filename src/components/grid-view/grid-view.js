@@ -1,6 +1,6 @@
 import { NEWS_SECTION_STATE } from '@/constants';
 import { Observer } from '@/libs';
-import { newsSectionStore } from '@/stores';
+import { newsSectionStore } from '@/models';
 import { gridViewTemplate } from '@/templates';
 
 import { SubscribedGridView } from './subscribed-grid-view';

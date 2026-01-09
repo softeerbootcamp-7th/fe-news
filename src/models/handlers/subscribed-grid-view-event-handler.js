@@ -1,4 +1,4 @@
-import { subscribedNewspaperStore } from '@/stores';
+import { subscribedNewspaperStore, unsubscriptionModalStore } from '@/models';
 
 /**
  * @returns {{handleClick: (event: Event) => void}}
@@ -13,10 +13,10 @@ export const subscribedGridViewEventHandler = () => {
       if (!currentNewspaperList[newspaperIndex]) {
         return;
       }
-      subscribedNewspaperStore.unsubscribeNewspaper(
-        currentNewspaperList[newspaperIndex].press,
-      );
-      $card.innerHTML = '';
+      unsubscriptionModalStore.setModalState({
+        isOpen: true,
+        pressName: currentNewspaperList[newspaperIndex].press,
+      });
     }
   };
   return {

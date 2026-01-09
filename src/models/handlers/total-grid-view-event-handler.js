@@ -1,8 +1,5 @@
-import { subscribedNewspaperStore } from '@/stores';
-import {
-  subscribeButtonTemplate,
-  unsubscribeButtonTemplate,
-} from '@/templates';
+import { subscribedNewspaperStore, unsubscriptionModalStore } from '@/models';
+import { unsubscribeButtonTemplate } from '@/templates';
 
 /**
  * @typedef {import('../../types').Newspaper} Newspaper
@@ -27,10 +24,10 @@ export const totalGridViewEventHandler = ({ newspaperList }) => {
       );
       $card.innerHTML = unsubscribeButtonTemplate();
     } else if (event.target.closest('.unsubscribe-button')) {
-      subscribedNewspaperStore.unsubscribeNewspaper(
-        newspaperList[newspaperIndex].press,
-      );
-      $card.innerHTML = subscribeButtonTemplate();
+      unsubscriptionModalStore.setModalState({
+        isOpen: true,
+        pressName: newspaperList[newspaperIndex].press,
+      });
     }
   };
 

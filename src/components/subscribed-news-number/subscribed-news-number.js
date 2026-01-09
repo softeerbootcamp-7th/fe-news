@@ -1,5 +1,5 @@
 import { Observer } from '@/libs';
-import { subscribedNewspaperStore } from '@/stores';
+import { subscribedNewspaperStore } from '@/models';
 
 export const SubscribedNewsNumber = () => {
   const updateSubscribedNewsNumber = () => {
