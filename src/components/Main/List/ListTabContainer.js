@@ -5,8 +5,16 @@ import { fetchPressListPerCategory } from "../../../mockServer/mockServer";
 import { store } from "../../../store";
 import { cleanupEventListenerMap } from "../../../infrastructure/domObserver";
 
-export function ListTabContainer() {
+/**
+ *
+ * @param {*} animationDruation <Integer>
+ * @returns
+ */
+export function ListTabContainer(animationDruation = 5) {
   const $el = makeNode(`<div class="list-tab-container"></div>`);
+
+  const root = document.documentElement;
+  root.style.setProperty("--animation-time", `${animationDruation}s`);
 
   const fetchAndRenderCategoryTabs = () => {
     fetchPressListPerCategory().then((pressListPerCategory) => {
@@ -21,6 +29,7 @@ export function ListTabContainer() {
         tabIndex: index,
         category: category,
         pressId: null,
+        stayDuration: animationDruation,
       };
       $el.appendChild(ListTab(listTabPram));
     });
@@ -33,6 +42,7 @@ export function ListTabContainer() {
         tabIndex: index,
         category: {},
         pressId: id,
+        stayDuration: animationDruation,
       };
       $el.appendChild(ListTab(listTabPram));
     });

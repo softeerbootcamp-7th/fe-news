@@ -13,11 +13,14 @@ import { RightIcon } from "../../icons/RightIcon";
           }
  * @returns element
  */
-export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
+export function ListTab({
+  tabIndex = 0,
+  category = {},
+  pressId = null,
+  stayDuration = 20,
+}) {
   const isThisCategoryTab = pressId === null;
   let prevActivated = false;
-
-  const repeatTime = 20000;
 
   const pressName = isThisCategoryTab
     ? ""
@@ -54,11 +57,11 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
       store.setListViewPageAfterCheck(listViewPage, 1);
 
       // 2. 재귀 호출: 다시 n초 뒤에 repeat을 실행
-      store.setTimerId(setTimeout(repeat, repeatTime));
+      store.setTimerId(setTimeout(repeat, stayDuration * 1000));
     };
 
     // 최초 실행
-    store.setTimerId(setTimeout(repeat, repeatTime));
+    store.setTimerId(setTimeout(repeat, stayDuration * 1000));
   };
 
   const stopTimer = () => {
