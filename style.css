@@ -273,8 +273,10 @@ ul, ol {
 }
 
 .news-category {
+    position: relative;
+
     display: flex;
-    gap: 50px;
+    /* gap: 50px; */
     justify-content: space-between;
     align-items: center;
     height: 40px;
@@ -283,8 +285,110 @@ ul, ol {
     color: var(--text-weak);
 }
 .news-category.active {
+    width: 134px;
     background-color: var(--surface-brand-alt);
     color: var(--text-white-default);
+}
+.news-category:hover {
+    text-decoration: underline;
+}
+/* 카테고리 애니메이션 */
+.news-category .progress-bar {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: var(--surface-brand-default);
+    z-index: 0;
+}
+@keyframes fillProgress {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+/* .news-category.active .progress-bar {
+    animation: fillProgress 20s linear forwards;
+} */
+.news-category .news-category-text,
+.news-category .cate-count {
+    position: relative;
+    z-index: 1;
+}
+
+.list-content-container {
+    margin: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.list-content-header {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+}
+.list-content-header img {
+    width: auto;
+    height: 20px;
+}
+.list-content-header button {
+    width: 72px;
+    height: 24px;
+    background-color: var(--surface-alt);
+    border: 1px solid var(--border-default);
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list-content-body {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+.list-main-news {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* overflow: hidden; */
+}
+.list-main-news-image-wrapper {
+    overflow: hidden;
+    width: 320px;
+    height: 200px;
+}
+.list-main-news-image-wrapper img {
+    object-fit: cover;
+    width: 320px;
+    height: 200px;
+}
+.list-main-news:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.list-main-news:hover img {
+    transform: scale(1.05);
+}
+
+.list-related-news {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.list-related-news .tab {
+    color: var(--text-bold);
+}
+.list-related-news .tab:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.list-related-news .foot {
+    color: var(--text-weak);
 }
 
 

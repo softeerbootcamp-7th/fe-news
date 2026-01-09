@@ -12,10 +12,15 @@ export function initRollingTabs() {
     // 최신 뉴스 10개 불러오기
     const headlines = getLatestHeadlines(RECENT_NEWS);
 
+
     // 좌우 롤링 탭 DOM 참조
-    const tabs = document.querySelectorAll('.rolling-tab');
-    const leftUl = tabs[0].querySelector('.news-list');
-    const rightUl = tabs[1].querySelector('.news-list');
+    const [leftTab, rightTab] = document.querySelectorAll('.rolling-tab');
+    const rollingTabs = {
+        left: leftTab,
+        right: rightTab
+    };
+    const leftUl = rollingTabs.left.querySelector('.news-list');
+    const rightUl = rollingTabs.right.querySelector('.news-list');
 
     /*
     롤링 영역 생성
@@ -41,9 +46,9 @@ export function initRollingTabs() {
     전역 클락은 멈추지 않아 다른 영역에는 영향 없음
     hover 해제 시 다음 tick에 자동 재동기화
     */
-    tabs[0].addEventListener('mouseenter', leftArea.pause);
-    tabs[0].addEventListener('mouseleave', leftArea.resume);
+    rollingTabs.left.addEventListener('mouseenter', leftArea.pause);
+    rollingTabs.left.addEventListener('mouseleave', leftArea.resume);
 
-    tabs[1].addEventListener('mouseenter', rightArea.pause);
-    tabs[1].addEventListener('mouseleave', rightArea.resume);
+    rollingTabs.right.addEventListener('mouseenter', rightArea.pause);
+    rollingTabs.right.addEventListener('mouseleave', rightArea.resume);
 }

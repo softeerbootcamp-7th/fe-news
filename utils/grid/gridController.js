@@ -33,6 +33,7 @@ export function initGridEvents({ viewId, prevBtnId, nextBtnId }) {
 /* GRID 탭을 열 때마다 호출 */
 export function showGrid() {
   if (!grid) return;
+  currentPage = 0;
   render();
 }
 
