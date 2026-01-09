@@ -20,6 +20,7 @@ export const paginateList = () => {
   return {
     listNav: createListNav(currentCategory, totalPresses, autoPager),
     nowPress,
+    autoPager,
   };
 };
 

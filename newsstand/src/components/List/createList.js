@@ -3,8 +3,6 @@ import { ensureListPressData } from "../../lib/pressData";
 import { store } from "../../state/store";
 import { createIconButton, PLUS_ICON } from "../buttons";
 import { paginateList } from "./paginateList";
-// 처음 렌더링 되었을때 애니메이션 20초동안 넣어주면 된다
-// 20초 후에 인덱스를 바꿔주는 함수 필요
 /**
  * 리스트 컴포넌트 생성
  */
@@ -23,8 +21,15 @@ export const createList = () => {
     return nsList;
   }
 
-  const { listNav, nowPress } = paginateList();
+  const { listNav, nowPress, autoPager } = paginateList();
   nsList.append(listNav, createListContent(nowPress));
+
+  nsList._cleanup = () => {
+    if (autoPager) {
+      console.log("autoPager.stop");
+      autoPager.stop();
+    }
+  };
 
   return nsList;
 };
