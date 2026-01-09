@@ -1,9 +1,17 @@
 import rollingNews from './data/rolling_news.json';
 import { initRollingBars } from './rolling';
 import { initGrid } from './grid';
+import { initSubscriptionSystem } from './subscription/index.js';
+import { renderGridItems } from './grid/index.js';
 
-// 초기화 실행
 document.addEventListener('DOMContentLoaded', () => {
+    const { subscriptionManager } = initSubscriptionSystem();
+    
+    initGrid({
+        containerSelector: '.content__grid',
+        subscriptionManager,
+        renderFunction: renderGridItems
+    });
+    
     initRollingBars(rollingNews, { containerSelector: '.rolling-bar' });
-    initGrid({ containerSelector: '.content__grid' });
 });
