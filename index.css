@@ -163,6 +163,7 @@ body {
     display: flex;
     align-items: center;
     gap: 4px;
+    cursor: pointer;
 }
 
 .content__tab--active {

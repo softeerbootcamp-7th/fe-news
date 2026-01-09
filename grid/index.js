@@ -78,16 +78,27 @@ function renderGridItems(gridElement, subscriptionManager, filter = 'all') {
     const totalCount = GRID_COLS * GRID_ROWS;
     // TODO: 페이지네이션 필요
     const randomItems = fisherYatesShuffle(itemsToShow).slice(0, totalCount);
+    
+    // 항상 totalCount만큼의 칸을 그리기 위해 빈 칸 추가
+    const itemsToRender = [...randomItems];
+    while (itemsToRender.length < totalCount) {
+        itemsToRender.push(null); // 빈 칸을 null로 표시
+    }
 
-    randomItems.forEach((press) => {
+    itemsToRender.forEach((press) => {
         const item = document.createElement('div');
         item.className = `content__grid-item`;
-        item.dataset.pressId = press.id; // 언론사 ID 저장
-
-        const img = document.createElement('img');
-        img.className = `content__grid-img`;
-        img.src = `${logoLinks.baseUrl}/${press.logo}`;
-        item.appendChild(img);
+        
+        if (press) {
+            // 언론사가 있는 경우
+            item.dataset.pressId = press.id;
+            
+            const img = document.createElement('img');
+            img.className = `content__grid-img`;
+            img.src = `${logoLinks.baseUrl}/${press.logo}`;
+            item.appendChild(img);
+        }
+        // press가 null이면 빈 칸 (아무 내용도 추가하지 않음)
         
         gridElement.appendChild(item);
     })
