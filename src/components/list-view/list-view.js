@@ -1,154 +1,77 @@
+import { Observer } from '@/libs';
 import {
-  getArrowButtonPosition,
-  getNewspaperForList,
-  insertArrowButtons,
+  createListViewFactory,
+  listViewEventHandler,
   listViewStore,
+  subscribedNewspaperStore,
 } from '@/models';
-import {
-  listViewCategoryTabPageIndicatorTemplate,
-  listViewNewsSectionAdditionalArticlesListTemplate,
-  listViewNewsSectionAdditionalArticleTemplate,
-  listViewNewsSectionHeaderTemplate,
-  listViewNewsSectionMainArticleTemplate,
-  listViewNewsSectionMainTemplate,
-  listViewNewsSectionTemplate,
-  listViewTemplate,
-} from '@/templates';
+import { subscribeButtonTemplate } from '@/templates';
+/**
+ * @typedef {import('../../types').Newspaper} Newspaper
+ *
+ * @typedef {Object} ListViewParams
+ * @property {Map<Newspaper['category'], Newspaper[]>} categoryNewspaperMap
+ */
+export const ListView = ({ categoryNewspaperMap }) => {
+  const { createListView, initializeListView } = createListViewFactory();
+  let cleanup = null;
 
-export const ListView = async () => {
-  const createListView = () => {
-    const $newsSection = document.querySelector('.news-section');
-    $newsSection.insertAdjacentHTML('beforeend', listViewTemplate());
+  const { handleClick } = listViewEventHandler({ categoryNewspaperMap });
 
-    return $newsSection.querySelector('.news-list-view');
-  };
-
-  const initializeSelectedCategoryButton = ({
-    $listView,
-    category,
-    pageIndex,
-    totalPage,
-  }) => {
-    const $selectedCategoryButton = $listView.querySelector(
-      `[data-category="${category}"]`,
-    );
-    $selectedCategoryButton.classList.add(
-      'news-list-view__category-tabs__item--selected',
-    );
-
-    $selectedCategoryButton.insertAdjacentHTML(
-      'beforeend',
-      listViewCategoryTabPageIndicatorTemplate({
-        pageIndex,
-        totalPage,
-      }),
-    );
-  };
-
-  const insertListViewNewsSection = ($listView) => {
-    $listView.insertAdjacentHTML('beforeend', listViewNewsSectionTemplate());
-    return $listView.querySelector('.news-list-view__newspaper-section');
-  };
-
-  const insertListViewNewsSectionHeader = ($listViewNewsSection) => {
-    $listViewNewsSection.insertAdjacentHTML(
-      'beforeend',
-      listViewNewsSectionHeaderTemplate({
-        logo: newspaperList[pageIndex].logo,
-        press: newspaperList[pageIndex].press,
-        time: newspaperList[pageIndex].time,
-      }),
-    );
-  };
-
-  const insertListViewNewsSectionMain = ($listViewNewsSection) => {
-    $listViewNewsSection.insertAdjacentHTML(
-      'beforeend',
-      listViewNewsSectionMainTemplate(),
-    );
-
-    return $listViewNewsSection.querySelector(
-      '.news-list-view__newspaper-section__main',
-    );
-  };
-
-  const insertListViewNewsSectionMainArticle = ($listViewNewsSectionMain) => {
-    $listViewNewsSectionMain.insertAdjacentHTML(
-      'beforeend',
-      listViewNewsSectionMainArticleTemplate({
-        mainTitle: newspaperList[pageIndex].mainTitle,
-        mainLink: newspaperList[pageIndex].mainLink,
-        mainImg: newspaperList[pageIndex].mainImg,
-      }),
-    );
-  };
-
-  const insertListViewNewsSectionAdditionalArticlesList = (
-    $listViewNewsSectionMain,
-  ) => {
-    $listViewNewsSectionMain.insertAdjacentHTML(
-      'beforeend',
-      listViewNewsSectionAdditionalArticlesListTemplate({
-        press: newspaperList[pageIndex].press,
-      }),
-    );
-
-    return $listViewNewsSectionMain.querySelector('ul');
-  };
-
-  const insertListViewNewsSectionAdditionalArticleList = (
-    $listViewNewsSectionAdditionalArticlesList,
-  ) => {
-    const listViewNewsSectionAdditionalArticleList = newspaperList[
-      pageIndex
-    ].relatedArticles
-      .map((article) =>
-        listViewNewsSectionAdditionalArticleTemplate({
-          title: article.title,
-          link: article.link,
-        }),
-      )
-      .join('');
-
-    $listViewNewsSectionAdditionalArticlesList.insertAdjacentHTML(
-      'beforeend',
-      listViewNewsSectionAdditionalArticleList,
-    );
-  };
-
+  const $listView = createListView();
+  $listView.addEventListener('click', handleClick);
   const { category, pageIndex } = listViewStore.getState();
-  const { newspaperList } = await getNewspaperForList({ category });
-
+  const newspaperList = categoryNewspaperMap.get(category);
   const totalPage = newspaperList.length - 1;
   listViewStore.setTotalPage(totalPage);
 
-  const $listView = createListView();
-
-  initializeSelectedCategoryButton({
+  initializeListView({
     $listView,
     category,
     pageIndex,
     totalPage,
+    newspaperList,
   });
 
-  const $listViewNewsSection = insertListViewNewsSection($listView);
+  const updateListView = async () => {
+    const { category, pageIndex, totalPage } = listViewStore.getState();
+    const newspaperList = categoryNewspaperMap.get(category);
 
-  insertListViewNewsSectionHeader($listViewNewsSection);
-  const $listViewNewsSectionMain =
-    insertListViewNewsSectionMain($listViewNewsSection);
+    $listView.innerHTML = '';
+    initializeListView({
+      $listView,
+      category,
+      pageIndex,
+      totalPage,
+      newspaperList,
+    });
+  };
 
-  insertListViewNewsSectionMainArticle($listViewNewsSectionMain);
-  const $listViewNewsSectionAdditionalArticlesList =
-    insertListViewNewsSectionAdditionalArticlesList($listViewNewsSectionMain);
+  const updateListViewBySubscription = () => {
+    const $unsubscribeButton = document.querySelector('.unsubscribe-button');
+    if (!$unsubscribeButton) {
+      return;
+    }
+    $unsubscribeButton.remove();
+    const $listViewHeader = document.querySelector(
+      '.news-list-view__newspaper-section__header',
+    );
+    $listViewHeader.insertAdjacentHTML('beforeend', subscribeButtonTemplate());
+  };
 
-  insertListViewNewsSectionAdditionalArticleList(
-    $listViewNewsSectionAdditionalArticlesList,
+  const observer = new Observer(updateListView);
+  const subscribedNewspaperObserver = new Observer(
+    updateListViewBySubscription,
   );
+  listViewStore.subscribe(observer);
+  subscribedNewspaperStore.subscribe(subscribedNewspaperObserver);
 
-  insertArrowButtons({
-    parentElement: $listView,
-    position: getArrowButtonPosition(pageIndex, totalPage),
-    leftButtonClassName: 'news-list-view__left-arrow',
-    rightButtonClassName: 'news-list-view__right-arrow',
-  });
+  cleanup = () => {
+    $listView.removeEventListener('click', handleClick);
+    listViewStore.unsubscribe(observer);
+  };
+
+  return {
+    cleanup,
+  };
 };

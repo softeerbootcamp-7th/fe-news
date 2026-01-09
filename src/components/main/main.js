@@ -1,6 +1,10 @@
 import { NEWS_SECTION_STATE } from '@/constants';
 import { Observer } from '@/libs';
-import { getNewspaperForGrid, newsSectionStore } from '@/models';
+import {
+  getNewspaperForGrid,
+  getNewspaperForList,
+  newsSectionStore,
+} from '@/models';
 
 import { GridView } from '../grid-view';
 import { ListView } from '../list-view';
@@ -10,8 +14,14 @@ import { SubscribedNewsNumber } from '../subscribed-news-number';
 
 export const Main = async () => {
   let currentView = newsSectionStore.getState().view;
-  let gridViewCleanupFunctions = null;
-  const { newspaperList: totalNewspaperList } = await getNewspaperForGrid();
+  let cleanupFunctions = null;
+
+  const [totalNewspaperList, categoryNewspaperMap] = await Promise.all([
+    getNewspaperForGrid().then(({ newspaperList }) => newspaperList),
+    getNewspaperForList().then(
+      ({ categoryNewspaperMap }) => categoryNewspaperMap,
+    ),
+  ]);
 
   const updateMain = () => {
     const newView = newsSectionStore.getState().view;
@@ -20,11 +30,12 @@ export const Main = async () => {
     }
 
     currentView = newView;
+    cleanupFunctions?.();
+    cleanupFunctions = null;
 
     if (newView === NEWS_SECTION_STATE.VIEW.LIST) {
-      gridViewCleanupFunctions?.();
-      gridViewCleanupFunctions = null;
-      ListView();
+      const { cleanup: cleanupListView } = ListView({ categoryNewspaperMap });
+      cleanupFunctions = cleanupListView;
       return;
     }
 
@@ -35,7 +46,7 @@ export const Main = async () => {
       $listViewWrapper?.remove();
       GridView({ newspaperList: totalNewspaperList }).then(
         ({ cleanup: cleanupGridView }) => {
-          gridViewCleanupFunctions = cleanupGridView;
+          cleanupFunctions = cleanupGridView;
         },
       );
     }
@@ -49,7 +60,7 @@ export const Main = async () => {
   SubscribedNewsNumber();
   GridView({ newspaperList: totalNewspaperList }).then(
     ({ cleanup: cleanupGridView }) => {
-      gridViewCleanupFunctions = cleanupGridView;
+      cleanupFunctions = cleanupGridView;
     },
   );
 };
