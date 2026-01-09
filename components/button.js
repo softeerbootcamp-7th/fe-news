@@ -8,7 +8,7 @@ function createSubscribeButton({ label, onClick, type = 'plus' }) {
 
     const img = document.createElement('img');
     img.className = 'component__button-img';
-    img.src = `../assets/icons/btn_${type}.svg`;
+    img.src = `../assets/icons/btn-${type}.svg`;
 
     button.append(img, content);
 
