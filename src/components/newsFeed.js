@@ -205,10 +205,6 @@ async function handleSubscribeChange(press, filter) {
     subscribedNews.add(press);
     saveSubscribedNews(subscribedNews);
 
-    await new Promise((resolve) =>
-      setTimeout(resolve, SUBSCRIBE.LOADING_DELAY)
-    );
-
     eventBus.publish(EVENTS.SUBSCRIBE_ADDED, { press });
     eventBus.publish(EVENTS.STATE_UPDATED);
   } else {
