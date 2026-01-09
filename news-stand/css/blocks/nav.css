@@ -1,5 +1,30 @@
 .main--nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 930px;
   padding: 32px 0 24px;
   margin: 0 auto;
+}
+
+#main-radio > button {
+  width: 18px;
+  height: 18px;
+  margin: 0 0 0 11px;
+}
+
+[id='grid-button'][role='radio'][aria-selected='true'] {
+  background-image: url('../../images/icons/grid-button-selected.svg');
+}
+
+[id='grid-button'][role='radio'][aria-selected='false'] {
+  background-image: url('../../images/icons/grid-button-unselected.svg');
+}
+
+[id='list-button'][role='radio'][aria-selected='true'] {
+  background-image: url('../../images/icons/list-button-selected.svg');
+}
+
+[id='list-button'][role='radio'][aria-selected='false'] {
+  background-image: url('../../images/icons/list-button-unselected.svg');
 }

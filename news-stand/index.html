@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css//blocks/rolling.css" />
     <link rel="stylesheet" href="css/blocks/header.css" />
     <link rel="stylesheet" href="css/blocks/nav.css" />
+    <link rel="stylesheet" href="css/blocks/subscribe.css" />
   </head>
   <body>
     <header class="display-bold24">
@@ -24,19 +25,29 @@
       </section>
       <section>
         <div class="main--nav">
-          <nav id="grid-menu" aria-labelledby="전체 언론사/구독한 언론사">
-            <button>전체 언론사</button>
-            <button>내가 구독한 언론사</button>
+          <nav id="subscribe" aria-labelledby="전체 언론사/내가 구독한 언론사">
+            <a role="button" aria-selected="true">전체 언론사</a>
+            <a role="button" aria-selected="false">내가 구독한 언론사</a>
           </nav>
-          <nav id="grid-layout" aria-labelledby="그리드/리스트">
-            <button>1</button>
-            <button>2</button>
+          <nav id="main-radio" aria-labelledby="그리드/리스트">
+            <button
+              type="button"
+              role="radio"
+              aria-selected="true"
+              id="grid-button"
+            ></button>
+            <button
+              type="button"
+              role="radio"
+              aria-selected="false"
+              id="list-button"
+            ></button>
           </nav>
         </div>
         <div class="flex-row">
-          <button id="btn-left">이전</button>
+          <button id="btn-left"><span>이전</span></button>
           <ul id="grid-news" class="grid-layout"></ul>
-          <button id="btn-right">다음</button>
+          <button id="btn-right"><span>다음</span></button>
         </div>
       </section>
     </main>
