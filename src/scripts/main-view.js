@@ -419,7 +419,7 @@ export function renderArrowEls() {
 }
 
 // 그리드 옆 왼쪽 화살표 눌렀을 때 불려지는 함수
-function handleLeftArrowClick() {
+export function handleLeftArrowClick() {
   const state = getState();
   const { currentPageIdx, viewMode } = state;
   const nextPageIdx = currentPageIdx - 1;
@@ -430,7 +430,7 @@ function handleLeftArrowClick() {
 }
 
 // 그리드 옆 오른쪽 화살표 눌렀을 때 불려지는 함수
-function handleRightArrowClick() {
+export function handleRightArrowClick() {
   const state = getState();
   const { currentPageIdx, viewMode } = state;
 

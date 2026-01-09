@@ -64,12 +64,11 @@ button.category-btn.is-active {
 }
 
 #sub-article {
+  min-width: 0;
   display: flex;
-  flex: 1;
   flex-direction: column;
   justify-content: space-between;
   gap: 16px;
-  min-width: 0;
 }
 
 #sub-article p {
@@ -128,5 +127,5 @@ a li {
   background-color: var(--surface-brand-default);
   height: 100%;
   transform-origin: left center;
-  animation: fillBoxFromLeftToRight 20s linear infinite;
+  animation: fillBoxFromLeftToRight 5s linear;
 }
