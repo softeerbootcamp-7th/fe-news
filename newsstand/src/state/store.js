@@ -84,8 +84,8 @@ export const actions = {
   },
 
   setPrev() {
-    const { listCategoryIdx, listPressIdx } = store.getState();
-    const { categoryIdx, pressIdx } = getPrevIdx(listCategoryIdx, listPressIdx);
+    const { listCategoryIdx, listPressIdx, listPressData } = store.getState();
+    const { categoryIdx, pressIdx } = getPrevIdx(listCategoryIdx, listPressIdx, listPressData);
     actions.setListIdx({ categoryIdx, pressIdx });
   },
 

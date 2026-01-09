@@ -45,7 +45,7 @@ export const getNextIdx = (
   }
 };
 
-export const getPrevIdx = (currentCategoryIdx, currentPressIdx) => {
+export const getPrevIdx = (currentCategoryIdx, currentPressIdx, listPressData) => {
   if (currentPressIdx - 1 >= 0) {
     return { categoryIdx: currentCategoryIdx, pressIdx: currentPressIdx - 1 };
   } else {
@@ -53,8 +53,7 @@ export const getPrevIdx = (currentCategoryIdx, currentPressIdx) => {
       (currentCategoryIdx - 1 + PRESS_CATEGORIES.length) %
       PRESS_CATEGORIES.length;
     const prevCategoryPressesLength =
-      store.getState().listPressData[PRESS_CATEGORIES[prevCategoryIdx]].presses
-        .length;
+      listPressData[PRESS_CATEGORIES[prevCategoryIdx]].presses.length;
     return {
       categoryIdx: prevCategoryIdx,
       pressIdx: prevCategoryPressesLength - 1,
