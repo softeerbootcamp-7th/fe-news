@@ -5,6 +5,7 @@ export {
 export { gridItemTemplate, gridViewTemplate } from './grid-view';
 export {
   listViewCategoryTabPageIndicatorTemplate,
+  listViewCategoryTabsTemplate,
   listViewNewsSectionAdditionalArticlesListTemplate,
   listViewNewsSectionAdditionalArticleTemplate,
   listViewNewsSectionHeaderTemplate,

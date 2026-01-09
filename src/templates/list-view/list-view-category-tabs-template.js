@@ -1,6 +1,5 @@
 export const listViewCategoryTabsTemplate = () => {
-  return `
-  <ul class="news-list-view__category-tabs">
+  return `<ul class="news-list-view__category-tabs">
   <li>
     <button
       class="news-list-view__category-tabs__item"
@@ -45,6 +44,5 @@ export const listViewCategoryTabsTemplate = () => {
       <span>지역</span>
     </button>
   </li>
-</ul>
-  `;
+</ul>`;
 };

@@ -1,4 +1,5 @@
 export { listViewCategoryTabPageIndicatorTemplate } from './list-view-category-tab-page-indicator-template.js';
+export { listViewCategoryTabsTemplate } from './list-view-category-tabs-template.js';
 export { listViewNewsSectionAdditionalArticleTemplate } from './list-view-news-section-additional-article-template.js';
 export { listViewNewsSectionAdditionalArticlesListTemplate } from './list-view-news-section-additional-articles-list-template.js';
 export { listViewNewsSectionHeaderTemplate } from './list-view-news-section-header-template.js';
