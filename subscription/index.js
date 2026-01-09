@@ -21,11 +21,7 @@ export function initSubscriptionSystem() {
     subscriptionManager.subscribe(tabBadgeObserver);
     subscriptionManager.subscribe(gridFilterObserver);
     
-    initTabManager({
-        tabSelector: '.content__tab',
-        subscriptionManager,
-        gridFilterObserver
-    });
+    initTabManager({ tabSelector: '.content__tab', gridFilterObserver });
     
     return { subscriptionManager, gridFilterObserver };
 }
