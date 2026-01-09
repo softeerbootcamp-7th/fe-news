@@ -1,4 +1,3 @@
-import { articlesData } from "@/assets/dummy/articlesData";
 import { initHeader } from "@/feature/header/header";
 import { LatestNewsView } from "@/feature/latest-news/latestNews.js";
 import { initPressView } from "@/feature/press/press";
