@@ -1,0 +1,39 @@
+#label {
+  display: flex;
+  width: 72px;
+  height: 24px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 12px;
+  border-color: var(--border-default);
+  padding-inline-end: 4px;
+  font: var(--available-medium12);
+  color: var(--text-weak);
+  justify-self: center;
+}
+
+#label > .icon {
+  width: 12px;
+  height: 12px;
+}
+
+.white {
+  background-color: var(--surface-default);
+}
+
+.gray {
+  background-color: var(--surface-alt);
+}
+
+#label:not(:has(.text)) {
+  padding-inline-end: 0px;
+}
+
+.labelHover {
+  border-color: var(--border-bold);
+  color: var(--text-bold);
+}

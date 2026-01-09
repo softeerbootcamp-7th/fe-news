@@ -1,4 +1,5 @@
 import '@/components/NewsBar/style.css';
+import { RollingNewsBar } from '@/components/NewsBar/Rolling';
 
 export const NewsBar = () => {
     return `
@@ -8,3 +9,8 @@ export const NewsBar = () => {
       </ul>
     `
 };
+
+export const rollingHeadLine = () => {
+    const newsBar = new RollingNewsBar('#autoRollingNewsBar');
+    newsBar.init();
+}
