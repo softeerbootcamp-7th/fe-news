@@ -7,14 +7,25 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build with Vite
+        run: npm run build
 
       - name: Get commit hash
         id: commit
@@ -22,14 +33,15 @@ jobs:
 
       - name: Prepare Build Directory
         run: |
-          mkdir build
-          rsync -av --exclude='.git' --exclude='build' . build/
+          mkdir -p build
+          rsync -av dist/ build/
 
           HASH=${{ steps.commit.outputs.hash }}
           mkdir -p build/snapshots/$HASH
 
-          rsync -av --exclude='.git' --exclude='build' . build/snapshots/$HASH/
-          ls -R build
+          rsync -av dist/ build/snapshots/$HASH/
+
+          find build -maxdepth 3
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4

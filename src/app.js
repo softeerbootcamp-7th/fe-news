@@ -18,7 +18,7 @@ function initApp() {
 
 function initNews() {
   // 데이터 fetch
-  fetch("./src/assets/dummy/articlesData.json")
+  fetch(`${import.meta.env.BASE_URL}dummy/articlesData.json`)
     .then((response) => response.json())
     .then((articlesData) => {
       // 뉴스 자동 롤링
