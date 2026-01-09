@@ -94,12 +94,20 @@ export function ListTabContainer(animationDruation = 5) {
     const { viewOnlySubs, currentTabIndex, listViewPage } = store.state;
     const targetTab = viewOnlySubs ? listViewPage : currentTabIndex;
 
+    if (!targetTab) return;
+
     const thisRect = $el.getBoundingClientRect();
     const childRectArr = $el.querySelectorAll(`.list-tab`);
     const childRect = childRectArr[targetTab].getBoundingClientRect();
 
     if (thisRect.width < childRect.x + childRect.width - thisRect.x)
-      $el.scrollLeft = childRect.left - thisRect.left - 200;
+      $el.scrollLeft += childRect.left / 2;
+    if ($el.scrollLeft > childRect.left) {
+      if (targetTab === 0) $el.scrollLeft = 0;
+      else $el.scrollLeft = childRect.x;
+    }
+    console.log($el.scrollLeft);
+    console.log(childRect.x);
   };
 
   window.addEventListener("tabIndexChange", getPositionOfActivatedTab);
