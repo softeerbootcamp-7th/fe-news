@@ -1,13 +1,8 @@
-import { ROLLING_NEWS_LEFT, ROLLING_NEWS_RIGHT } from '../const';
-
-const element = document.getElementById('rolling');
+import { ROLLING_NEWS } from '../lib/const';
+import { moveY } from '../lib/utils';
 
 const intervalTime = 5000;
 const delayTime = 1000;
-
-const getNewsContent = (side) => {
-  return side === 'left' ? ROLLING_NEWS_LEFT : ROLLING_NEWS_RIGHT;
-};
 
 const createInnerContent = (item) => {
   const { name, title } = item;
@@ -27,150 +22,163 @@ const createInnerContent = (item) => {
   return div;
 };
 
-const createPanel = (side) => {
-  const newsContent = getNewsContent(side);
-  const li = document.createElement('li');
-  const roller = document.createElement('div');
+const controlPanel = {
+  panels: [],
+  timeStamps: [],
 
-  li.classList.add('rolling--li', 'border', `${side}-rolling`);
+  append(element) {
+    const time = Date.now();
 
-  roller.classList.add('roller');
+    this.panels.push(element);
+    this.timeStamps.push(time);
+  },
 
-  const firstContent = createInnerContent(newsContent[0]);
-  const secondContent = createInnerContent(newsContent[1]);
+  updateTime(side) {
+    this.panels.forEach((state, index) => {
+      if (state.side === side) {
+        this.timeStamps[index] = Date.now();
+      }
+    });
+  },
 
-  roller.append(firstContent, secondContent);
+  alertPause(side) {
+    this.panels.forEach((state, index) => {
+      if (state.side === side) {
+        this.timeStamps[index] = null;
+      }
+    });
+  },
 
-  li.appendChild(roller);
+  // 여기서 1초 계산 뒤에 다른 패널에 알려준다. 계산 문제인 거 같습니다.
+  alertStart(side) {
+    let otherTime;
+    let panelIndex;
 
-  return li;
+    this.panels.forEach((state, index) => {
+      if (state.side !== side) {
+        otherTime = this.timeStamps[index];
+      } else if (!this.timeStamps[index]) {
+        panelIndex = index;
+      }
+    });
+
+    const delay = Date.now() - otherTime + delayTime;
+    this.panels[panelIndex].scheduleRolling(delay);
+  },
 };
 
-// 한 번만 사용하므로 객체 리터럴로 구현하는 싱글톤 패턴 활용.
-const controlPanel = {
-  elements: {
-    left: document.querySelector('.left-rolling'),
-    right: document.querySelector('.right-rolling'),
-  },
-  nextTimes: {
-    left: 0,
-    right: 0,
-  },
-  timerIds: {
-    left: null,
-    right: null,
-  },
-  idx: {
-    left: 1,
-    right: 1,
-  },
+class Panel {
+  constructor(side, handlers) {
+    this.side = side;
+    this.idx = 1;
+    this.timerId = null;
+    this.content = ROLLING_NEWS[side];
+    this.element = this.createElement(); // 이렇게 돼요?
+    this.handlers = handlers;
+    this.eventInit();
 
-  eventListenerInit(side) {
-    this.elements[side] = document.querySelector(`.${side}-rolling`);
+    // 수정 처음에만 1초 간격 나오도록 구현
+    const firstRight = this.side === 'right' ? true : false;
+    const delay = firstRight ? delayTime + 1000 : delayTime;
 
-    // 안전장치: 만약 요소를 못 찾았다면 에러를 내지 않고 종료
-    if (!this.elements[side]) {
-      console.error(`Error: .${side}-rolling 요소를 찾을 수 없습니다.`);
-      return;
-    }
+    this.scheduleRolling(delay);
+  }
 
-    const allA = this.elements[side].querySelectorAll('a');
+  createElement() {
+    const li = document.createElement('li');
+    const roller = document.createElement('div');
+
+    li.classList.add('rolling--li', 'border');
+
+    roller.classList.add('roller');
+
+    const firstContent = createInnerContent(this.content[0]);
+    const secondContent = createInnerContent(this.content[1]);
+
+    roller.append(firstContent, secondContent);
+
+    li.appendChild(roller);
+
+    return li;
+  }
+
+  eventInit() {
+    const allA = this.element.querySelectorAll('a'); // 이거 뒤에만 접근해도 되는데 할 수 있는 방법이 없을까?
 
     allA.forEach((a) => {
       a.addEventListener('mouseenter', () => {
-        debugger;
-        clearInterval(this.timerIds[side]);
+        clearTimeout(this.timerId); // 이게 작동을 안해요.
+
+        this.handlers.onEnter(this.side);
       });
 
       a.addEventListener('mouseleave', () => {
-        this.syncAndResume(side);
+        this.handlers.onLeave(this.side);
       });
     });
+  }
 
-    const firstRight = side === 'right' ? true : false;
-    const delay = firstRight ? delayTime + 1000 : delayTime;
-
-    this.scheduleRolling(side, delay);
-  },
-
-  updateContent(side) {
-    const parent = this.elements[side].querySelector('div');
-    const prevContent = parent.querySelector('div');
-    prevContent.remove();
-    this.idx[side]++;
-
-    const newsContent = getNewsContent(side);
-
-    if (this.idx[side] === newsContent.length - 1) {
-      this.idx[side] = 0;
-    }
-
-    const secondContent = createInnerContent(newsContent[this.idx[side]]);
-    parent.appendChild(secondContent);
-
-    // 이벤트를 여기서도 추가해야 하나? 기존에 있던 이벤트들은 요소가 삭제된다면 어떻게 될까?
-    const a = parent.querySelector('a');
-
-    a.addEventListener('mouseenter', () => {
-      debugger;
-      clearInterval(this.timerIds[side]);
-    });
-
-    a.addEventListener('mouseleave', () => {
-      this.syncAndResume(side);
-    });
-  },
-
-  startRolling(side) {
-    let updateTimer = null;
-    const element = this.elements[side].querySelector('div'); // 수정
-    element.style.transition = 'transform 0.5s';
-    element.style.transform = `translateY(-49px)`; // 수정
-
-    updateTimer = setTimeout(() => {
-      this.updateContent(side);
-      element.style.transition = 'transform 0s';
-      element.style.transform = 'translateY(0)';
-    }, 500);
-  },
-
-  scheduleRolling(side, delay) {
-    this.timerIds[side] = setTimeout(() => {
-      this.startRolling(side);
-      this.scheduleRolling(side, intervalTime);
-      this.nextTimes[side] = Date.now() + intervalTime;
+  scheduleRolling(delay) {
+    this.timerId = setTimeout(() => {
+      this.startRolling();
+      this.scheduleRolling(intervalTime);
     }, delay);
-  },
+  }
 
-  syncAndResume(mySide) {
-    const otherSide = mySide === 'left' ? 'right' : 'left';
-    const otherNextTime = this.nextTimes[otherSide];
+  removeChild(parent) {
+    const firstDiv = parent.querySelector('div');
+    firstDiv.remove();
+  }
 
-    if (!otherNextTime) {
-      this.scheduleRolling(mySide, 0);
-      return;
+  appendChildTo(parent) {
+    this.idx++;
+    if (this.idx === this.content.length - 1) {
+      this.idx = 0;
     }
 
-    const targetTime = otherNextTime + delayTime;
+    const secondContent = createInnerContent(this.content[this.idx]);
 
-    let delay = targetTime - Date.now();
+    secondContent.addEventListener('mouseenter', () => {
+      clearTimeout(this.timerId); // 이게 작동을 안해요.
 
-    if (delay > intervalTime) {
-      delay -= intervalTime;
-    } else if (delay < 0) {
-      delay += intervalTime;
-    }
+      this.handlers.onEnter(this.side);
+    });
 
-    this.scheduleRolling(mySide, delay);
-  },
+    secondContent.addEventListener('mouseleave', () => {
+      this.handlers.onLeave(this.side);
+    });
+
+    parent.appendChild(secondContent);
+  }
+
+  startRolling() {
+    const parent = this.element.querySelector('div');
+
+    moveY(parent, 0.5, -49);
+
+    setTimeout(() => {
+      this.removeChild(parent);
+      moveY(parent);
+      this.appendChildTo(parent);
+      this.handlers.onReportTime(this.side);
+    }, 500);
+  }
+}
+
+const element = document.getElementById('rolling');
+
+const handlers = {
+  onEnter: (side) => controlPanel.alertPause(side),
+  onLeave: (side) => controlPanel.alertStart(side),
+  onReportTime: (side) => controlPanel.updateTime(side),
 };
 
 export const renderRollingNews = () => {
-  const leftPanel = createPanel('left');
-  const rightPanel = createPanel('right');
+  const leftPanel = new Panel('left', handlers);
+  const rightPanel = new Panel('right', handlers);
 
-  element.append(leftPanel, rightPanel);
+  element.append(leftPanel.element, rightPanel.element);
 
-  controlPanel.eventListenerInit('left');
-  controlPanel.eventListenerInit('right');
+  controlPanel.append(leftPanel);
+  controlPanel.append(rightPanel);
 };
