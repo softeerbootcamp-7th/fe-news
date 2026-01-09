@@ -4,6 +4,7 @@ import "./styles/reset.css";
 import { Header } from "./components/Header/Header.js";
 import { RollingSection } from "./components/Rollable/RollingSection.js";
 import { MainContents } from "./components/Main/MainContent.js";
+import { startEventRemovingObserver } from "./infrastructure/domObserver.js";
 
 const app = document.querySelector("#app");
 
