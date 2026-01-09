@@ -28,10 +28,11 @@ function buildPressList(byPress) {
 
 export function normalizePressLogo(logoUrl, theme) {
   if (!logoUrl) return "";
-  if (theme === "dark") {
+  const resolved = resolveTheme(theme);
+  if (resolved === "dark") {
     return logoUrl.replace("/light/", "/dark/");
   }
-  if (theme === "light") {
+  if (resolved === "light") {
     return logoUrl.replace("/dark/", "/light/");
   }
   return logoUrl;
@@ -39,8 +40,17 @@ export function normalizePressLogo(logoUrl, theme) {
 
 export function getPressLogo(entry, theme) {
   if (!entry) return "";
-  if (theme === "dark" && entry.darkLogo) return entry.darkLogo;
-  return normalizePressLogo(entry.logo ?? "", theme);
+  const resolved = resolveTheme(theme);
+  if (resolved === "dark" && entry.darkLogo) return entry.darkLogo;
+  return normalizePressLogo(entry.logo ?? "", resolved);
+}
+
+function resolveTheme(theme) {
+  if (typeof document !== "undefined") {
+    const docTheme = document.documentElement?.getAttribute("data-theme");
+    if (docTheme === "dark" || docTheme === "light") return docTheme;
+  }
+  return theme === "dark" ? "dark" : "light";
 }
 
 export function ensurePressData({
