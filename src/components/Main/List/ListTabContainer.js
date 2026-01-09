@@ -94,20 +94,35 @@ export function ListTabContainer(animationDruation = 5) {
     const { viewOnlySubs, currentTabIndex, listViewPage } = store.state;
     const targetTab = viewOnlySubs ? listViewPage : currentTabIndex;
 
-    if (!targetTab) return;
+    const childRectArr = $el.querySelectorAll(`.list-tab`);
+    const activeChild = childRectArr[targetTab];
+
+    if (!activeChild) return;
 
     const thisRect = $el.getBoundingClientRect();
-    const childRectArr = $el.querySelectorAll(`.list-tab`);
-    const childRect = childRectArr[targetTab].getBoundingClientRect();
+    const childRect = activeChild.getBoundingClientRect();
 
-    if (thisRect.width < childRect.x + childRect.width - thisRect.x)
-      $el.scrollLeft += childRect.left / 2;
-    if ($el.scrollLeft > childRect.left) {
-      if (targetTab === 0) $el.scrollLeft = 0;
-      else $el.scrollLeft = childRect.x;
+    // 1. 컨테이너 왼쪽 끝에서 자식 왼쪽 끝까지의 상대적 거리 (현재 뷰포트 기준)
+    const relativeLeft = childRect.left - thisRect.left;
+    // 2. 컨테이너 왼쪽 끝에서 자식 오른쪽 끝까지의 상대적 거리
+    const relativeRight = childRect.right - thisRect.left;
+
+    // 오른쪽이 잘리는 경우
+    if (relativeRight > thisRect.width) {
+      // 현재 스크롤 위치에서 모자란 만큼 더 이동 (+ 여유분 30px)
+      $el.scrollTo({
+        left: $el.scrollLeft + (relativeRight - thisRect.width) + 30,
+        behavior: "smooth",
+      });
     }
-    console.log($el.scrollLeft);
-    console.log(childRect.x);
+    // 왼쪽으로 가려진 경우 (스크롤로 이미 넘어가버린 경우)
+    else if (relativeLeft < 0) {
+      // 현재 스크롤 위치에서 가려진 만큼 왼쪽으로 이동 (- 여유분 30px)
+      $el.scrollTo({
+        left: $el.scrollLeft + relativeLeft - 30,
+        behavior: "smooth",
+      });
+    }
   };
 
   window.addEventListener("tabIndexChange", getPositionOfActivatedTab);
