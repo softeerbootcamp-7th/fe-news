@@ -482,9 +482,10 @@ body {
   justify-content: center;
   pointer-events: none;
   transition: opacity 0.2s ease;
-  padding: 10px 6px;
+  padding: 2px 6px;
   font-size: 12px;
   font-weight: 500;
+  text-align: center;
   border: 1px solid var(--color-border);
   border-radius: 999px;
   background-color: var(--color-white);
