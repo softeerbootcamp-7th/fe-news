@@ -11,10 +11,14 @@ export function renderPressGrid(pressDataList) {
     return;
   }
 
-  gridContainer.innerHTML = '';
+  // DocumentFragment로 DOM 접근 최소화
+  const fragment = document.createDocumentFragment();
 
   pressDataList.forEach((pressData) => {
     const pressItem = createPressItem(pressData);
-    gridContainer.appendChild(pressItem);
+    fragment.appendChild(pressItem);
   });
+
+  // 기존 콘텐츠 제거 후 fragment 추가
+  gridContainer.replaceChildren(fragment);
 }
