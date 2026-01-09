@@ -384,6 +384,9 @@ body {
   color: var(--text-strong);
 }
 
+.press-feed__list {
+  min-width: 0;
+}
 .press-feed__list li {
   /* sub news item */
   margin-bottom: 16px;
@@ -393,6 +396,12 @@ body {
   &:hover {
     cursor: pointer;
     text-decoration: underline;
+  }
+  & > a {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 
