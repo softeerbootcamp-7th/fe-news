@@ -17,7 +17,6 @@ export function normalizeRoute(route, { state, subscriptions }) {
   let tab = route.tab === "subscribed" ? "subscribed" : "all";
   let page = Number.isFinite(route.page) ? Math.max(0, route.page) : 0;
 
-  if (tab === "subscribed") view = "list";
   if (view === "list") {
     page = 0;
   } else {

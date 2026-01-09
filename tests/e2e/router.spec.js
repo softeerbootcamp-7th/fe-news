@@ -8,11 +8,10 @@ test.describe("router query state", () => {
     await expect(page).not.toHaveURL(/page=/);
   });
 
-  test("deep link to subscribed tab forces list view", async ({ page }) => {
+  test("deep link to subscribed tab keeps tab active", async ({ page }) => {
     await page.goto("/?tab=subscribed");
     const activeTab = page.locator('.tab.is-active[data-tab="subscribed"]');
     await expect(activeTab).toBeVisible();
-    await expect(page.locator("#logos")).toHaveClass(/is-newslist/);
     await expect(page).toHaveURL(/tab=subscribed/);
   });
 
@@ -36,6 +35,16 @@ test.describe("router query state", () => {
     await expect(page.locator('.icon-btn.is-active[data-view="grid"]')).toBeVisible();
     await page.goForward();
     await expect(page.locator('.icon-btn.is-active[data-view="list"]')).toBeVisible();
+  });
+
+  test("tab switch adjusts view per rules", async ({ page }) => {
+    await page.goto("/");
+    await page.locator('[data-action="tab"][data-tab="subscribed"]').click();
+    await expect(page.locator('.tab.is-active[data-tab="subscribed"]')).toBeVisible();
+    await expect(page.locator('.icon-btn.is-active[data-view="list"]')).toBeVisible();
+    await page.locator('[data-action="tab"][data-tab="all"]').click();
+    await expect(page.locator('.tab.is-active[data-tab="all"]')).toBeVisible();
+    await expect(page.locator('.icon-btn.is-active[data-view="grid"]')).toBeVisible();
   });
 
   test("tab click updates URL without reload", async ({ page }) => {

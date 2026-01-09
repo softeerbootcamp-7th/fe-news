@@ -16,13 +16,11 @@ export class ViewController {
   }
 
   apply(view) {
-    const tab = this.store?.getState?.().tab;
     renderViewToggle({
       documentRef: this.document,
       logosSelector: this.logosSelector,
       buttonsSelector: this.buttonsSelector,
       view,
-      tab,
     });
   }
 
