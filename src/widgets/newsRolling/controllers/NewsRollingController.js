@@ -1,7 +1,8 @@
 import { SELECTORS } from "../../../shared/const/index.js";
 import { $ } from "../../../shared/lib/index.js";
 import { RollingLane } from "../components/RollingLane.js";
-import { extractHeadlinesFromNewsJson } from "../lib/extractHeadlinesFromJson.js";
+import { ensurePressData } from "../../../shared/lib/index.js";
+import { extractHeadlinesFromPressData } from "../lib/extractHeadlinesFromPressData.js";
 
 export class NewsRollingController {
   constructor({
@@ -21,10 +22,8 @@ export class NewsRollingController {
   }
 
   async start({ maxItems = 120 } = {}) {
-    const res = await fetch("./mockData/news.json");
-    if (!res.ok) throw new Error(`Failed to load news.json: ${res.status}`);
-    const json = await res.json();
-    const all = extractHeadlinesFromNewsJson(json);
+    const data = await ensurePressData();
+    const all = extractHeadlinesFromPressData(data?.items ?? []);
     const items = this.shuffle(all).slice(0, maxItems);
 
     const left = $(this.leftSelector, this.document);

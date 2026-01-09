@@ -11,6 +11,9 @@ export function renderViewToggle({
   if ($logos) $logos.classList.toggle("is-list", view === "list");
 
   for (const $btn of $$(buttonsSelector, documentRef)) {
-    $btn.classList.toggle("is-active", $btn.getAttribute("data-view") === view);
+    const buttonView = $btn.getAttribute("data-view");
+    $btn.classList.toggle("is-active", buttonView === view);
+    $btn.disabled = false;
+    $btn.setAttribute("aria-disabled", "false");
   }
 }

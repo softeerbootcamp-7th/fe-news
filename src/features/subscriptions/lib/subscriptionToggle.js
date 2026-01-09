@@ -1,19 +1,17 @@
-import { pressNameFromFilename } from "../../../shared/lib/index.js";
-
-export async function toggleSubscriptionByFilename({
-  filename,
+export async function toggleSubscriptionByPress({
+  press,
   subscriptions,
   unsubscribeDialog,
 } = {}) {
-  if (!filename || !subscriptions) return false;
-  if (subscriptions.isSubscribed(filename)) {
+  if (!press || !subscriptions) return false;
+  if (subscriptions.isSubscribed(press)) {
     const ok = await unsubscribeDialog?.confirm?.({
-      pressName: pressNameFromFilename(filename),
+      pressName: press,
     });
     if (!ok) return false;
-    subscriptions.remove(filename);
+    subscriptions.remove(press);
   } else {
-    subscriptions.add(filename);
+    subscriptions.add(press);
   }
 
   subscriptions.updateCount();
@@ -25,10 +23,9 @@ export async function toggleSubscriptionFromTarget({
   subscriptions,
   unsubscribeDialog,
 } = {}) {
-  const encoded = target?.getAttribute?.("data-logo") || "";
-  const filename = decodeURIComponent(encoded);
-  return toggleSubscriptionByFilename({
-    filename,
+  const press = target?.getAttribute?.("data-press") || "";
+  return toggleSubscriptionByPress({
+    press,
     subscriptions,
     unsubscribeDialog,
   });
