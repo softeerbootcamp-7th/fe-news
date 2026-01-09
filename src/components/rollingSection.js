@@ -6,13 +6,10 @@ class HeadlineSlider {
     this.startIdx = startIdx;
     this.side = side;
     this.currentIdx = startIdx;
-    this.animationStartTime = 0;
     this.allNewsData = [];
     this.delay = delay;
-    this.animationId = null;
     this.sliderManager = sliderManager;
-    this.delayStartTime = 0;
-    this.isDelayPhase = true;
+    this.lastRollTime = -Infinity;
 
     this.sliderManager.sliders.push(this);
   }
@@ -21,7 +18,6 @@ class HeadlineSlider {
     await this.loadInitialData();
     this.renderHeadlines();
     this.setupHoverEvents();
-    this.startAnimation();
   }
 
   async loadInitialData() {
@@ -32,7 +28,7 @@ class HeadlineSlider {
     return /* html */ `
       <div class="rolling-wrapper">
           <div class="headline-content">
-              <a href="${news.url}" target="_blank" rel="noopener" class="news-link">
+              <a href="${news.logo}" target="_blank" rel="noopener" class="news-link">
                   ${news.officeName}
               </a>
               <a href="${news.url}" target="_blank" rel="noopener" class="rolling-item">
@@ -45,6 +41,8 @@ class HeadlineSlider {
 
   renderHeadlines() {
     const article = document.querySelector(`.headline-${this.side}`);
+    if (!article) return;
+
     const nextIdx = (this.currentIdx + 1) % this.allNewsData.length;
 
     article.innerHTML =
@@ -53,7 +51,8 @@ class HeadlineSlider {
   }
 
   setupHoverEvents() {
-    const li = document.querySelector(`.headline-${this.side}`).closest("li");
+    const li = document.querySelector(`.headline-${this.side}`)?.closest("li");
+    if (!li) return;
 
     li.addEventListener("mouseenter", () => {
       this.sliderManager.isHovered = true;
@@ -61,56 +60,31 @@ class HeadlineSlider {
 
     li.addEventListener("mouseleave", () => {
       this.sliderManager.isHovered = false;
-      this.sliderManager.sliders.forEach((slider) => {
-        slider.isDelayPhase = true;
-        slider.delayStartTime = 0;
-        slider.animationStartTime = 0;
-      });
+      this.sliderManager.needsReset = true;
     });
   }
 
-  startAnimation() {
-    const animate = (timeStamp) => {
-      if (this.sliderManager.isHovered) {
-        this.animationId = requestAnimationFrame(animate);
-        return;
-      }
-
-      if (this.isDelayPhase) {
-        if (!this.delayStartTime) {
-          this.delayStartTime = timeStamp;
-        }
-
-        if (timeStamp - this.delayStartTime >= this.delay) {
-          this.isDelayPhase = false;
-          this.delayStartTime = 0;
-        }
-
-        this.animationId = requestAnimationFrame(animate);
-        return;
-      }
-
-      if (!this.animationStartTime) {
-        this.animationStartTime = timeStamp;
-      }
-
-      const elapsedTime = timeStamp - this.animationStartTime;
-
-      if (elapsedTime >= ANIMATION.HEADLINE_INTERVAL) {
+  checkAndRoll(elapsed) {
+    if (this.lastRollTime === -Infinity) {
+      if (elapsed >= this.delay) {
         this.handleRolling();
-        this.animationStartTime = 0;
-        this.isDelayPhase = true;
-        this.delayStartTime = 0;
+        this.lastRollTime = elapsed;
       }
+      return;
+    }
 
-      this.animationId = requestAnimationFrame(animate);
-    };
+    const timeSinceLastRoll = elapsed - this.lastRollTime;
 
-    this.animationId = requestAnimationFrame(animate);
+    if (timeSinceLastRoll >= ANIMATION.HEADLINE_INTERVAL) {
+      this.handleRolling();
+      this.lastRollTime += ANIMATION.HEADLINE_INTERVAL;
+    }
   }
 
   handleRolling() {
     const article = document.querySelector(`.headline-${this.side}`);
+    if (!article) return;
+
     const wrappers = article.querySelectorAll(".rolling-wrapper");
 
     const nextIdx = (this.currentIdx + 1) % this.allNewsData.length;

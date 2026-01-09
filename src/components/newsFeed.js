@@ -11,20 +11,20 @@ import setupSubscribe, {
   saveSubscribedNews,
 } from "../setup/setupSubscribe.js";
 import {
-  setupAutoPage,
-  restartAutoPage,
-  cleanupAutoPage,
+  initAutoPageModule,
+  setAutoPageContext,
 } from "../setup/setupAutoPage.js";
 import {
   loadNewsData,
   paginateForGrid,
   shuffleArray,
 } from "../utils/newsDataManager.js";
-import { PAGINATION } from "../constants/constants.js";
+import { PAGINATION, VIEW_TYPE, SUBSCRIBE } from "../constants/constants.js";
+import { eventBus, EVENTS } from "../utils/eventBus.js";
 
 let allNewsData = [];
 let currentFilter = "all";
-let currentView = "grid";
+let currentView = VIEW_TYPE.GRID;
 let subscribedNews = new Set();
 
 let gridState = {
@@ -49,7 +49,7 @@ let cachedDOM = {
 export default function newsFeed() {
   return /* html */ `
     <div class="news-feed-container">
-      ${newsFilter("all", "grid", 0)}
+      ${newsFilter("all", VIEW_TYPE.GRID, 0)}
       <div id="content-container">
         ${gridNews([], subscribedNews, currentFilter)}
       </div>
@@ -65,9 +65,85 @@ export async function initNewsFeed(container) {
   cachedDOM.filterContainer = container.querySelector(".news-filter-container");
   cachedDOM.contentContainer = container.querySelector("#content-container");
 
-  renderCurrentView();
+  setupEventSubscriptions();
+
+  initAutoPageModule();
+  setAutoPageContext(cachedDOM.container, handlePageChangeInternal);
+
   setupAllEventListeners();
-  updateAllUI();
+
+  eventBus.publish(EVENTS.STATE_UPDATED);
+}
+
+function setupEventSubscriptions() {
+  eventBus.subscribe(EVENTS.FILTER_CHANGED, ({ filter }) => {
+    if (currentView === VIEW_TYPE.GRID) {
+      gridState.currentPage = 0;
+      const filteredData = getFilteredData(filter);
+      gridState.paginatedData = paginateForGrid(
+        filteredData,
+        gridState.pageSize
+      );
+    } else {
+      initializeListView();
+    }
+  });
+
+  eventBus.subscribe(EVENTS.VIEW_CHANGED, ({ newView, previousView }) => {
+    if (newView === VIEW_TYPE.LIST && previousView === VIEW_TYPE.GRID) {
+      initializeListView();
+    } else if (newView === VIEW_TYPE.GRID && previousView === VIEW_TYPE.LIST) {
+      resetListState();
+    }
+  });
+
+  eventBus.subscribe(EVENTS.SUBSCRIBE_ADDED, () => {
+    currentFilter = "favorite";
+    currentView = VIEW_TYPE.LIST;
+
+    const filteredData = getFilteredData(currentFilter);
+    gridState.paginatedData = paginateForGrid(filteredData, gridState.pageSize);
+    gridState.currentPage = 0;
+
+    initializeListView();
+
+    eventBus.publish(EVENTS.VIEW_CHANGED, {
+      newView: VIEW_TYPE.LIST,
+      previousView: VIEW_TYPE.GRID,
+    });
+  });
+
+  eventBus.subscribe(EVENTS.SUBSCRIBE_REMOVED, ({ press, filter }) => {
+    if (filter === "favorite") {
+      if (currentView === VIEW_TYPE.LIST) {
+        handleUnsubscribeInListView(press);
+      } else {
+        handleUnsubscribeInGridView();
+      }
+    }
+  });
+
+  eventBus.subscribe(EVENTS.PAGE_CHANGED, ({ direction }) => {
+    if (currentView === VIEW_TYPE.GRID) {
+      handleGridPageChange(direction);
+    } else {
+      handleListPageChange(direction);
+    }
+  });
+
+  eventBus.subscribe(EVENTS.CATEGORY_CHANGED, ({ category }) => {
+    if (listState.categorizedData[category]) {
+      listState.currentCategory = category;
+      listState.currentPressIndex = 0;
+    }
+  });
+
+  eventBus.subscribe(EVENTS.STATE_UPDATED, () => {
+    renderCurrentView();
+    updateFilterBar();
+    updatePaginationState();
+    updatePaginationArrowsVisibility();
+  });
 }
 
 async function loadInitialData() {
@@ -85,58 +161,38 @@ function setupAllEventListeners() {
 }
 
 function handleFilterChange(newFilter) {
+  const oldFilter = currentFilter;
   currentFilter = newFilter;
 
-  if (currentView === "grid") {
-    gridState.currentPage = 0;
-    const filteredData = getFilteredData(currentFilter);
-    gridState.paginatedData = paginateForGrid(filteredData, gridState.pageSize);
-  } else {
-    handleViewChange("grid");
-    return;
-  }
-
-  renderCurrentView();
-  updateAllUI();
+  eventBus.publish(EVENTS.FILTER_CHANGED, { filter: newFilter, oldFilter });
+  eventBus.publish(EVENTS.STATE_UPDATED);
 }
 
 function handleViewChange(newView) {
   const previousView = currentView;
   currentView = newView;
 
-  if (previousView === "list") {
-    cleanupAutoPage();
-  }
-
-  if (newView === "list" && previousView === "grid") {
-    initializeListView();
-  } else if (newView === "grid" && previousView === "list") {
-    resetListState();
-  }
-
-  renderCurrentView();
-  updateAllUI();
-
-  if (newView === "list") {
-    setTimeout(() => {
-      setupAutoPage(cachedDOM.container, handlePageChange, 20000);
-    }, 100);
-  }
+  eventBus.publish(EVENTS.VIEW_CHANGED, { newView, previousView });
+  eventBus.publish(EVENTS.STATE_UPDATED);
 }
 
 function handlePageChange(direction) {
-  if (currentView === "grid") {
-    handleGridPageChange(direction);
-  } else {
-    handleListPageChange(direction);
-    restartAutoPage();
-  }
+  eventBus.publish(EVENTS.PAGE_CHANGED, { direction, source: "user" });
+}
+
+function handlePageChangeInternal(direction, source = "user") {
+  eventBus.publish(EVENTS.PAGE_CHANGED, { direction, source });
 }
 
 async function handleSubscribeChange(press, filter) {
-  const button = cachedDOM.container.querySelector(
-    `.subscribe-btn-inline[data-press="${press}"]`
-  );
+  const button =
+    cachedDOM.container.querySelector(
+      `.subscribe-btn-inline[data-press="${press}"]`
+    ) ||
+    cachedDOM.container.querySelector(
+      `.subscribe-btn[data-press="${press}"]`
+    ) ||
+    cachedDOM.container.querySelector(`.subscribe-icon[data-press="${press}"]`);
 
   if (!button) return;
 
@@ -145,49 +201,18 @@ async function handleSubscribeChange(press, filter) {
   if (!wasSubscribed) {
     button.disabled = true;
     button.classList.add("loading");
-    const originalText = button.textContent;
-    button.innerHTML = `
-      <svg class="loading-spinner" width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="25 25" />
-      </svg>
-    `;
 
     subscribedNews.add(press);
     saveSubscribedNews(subscribedNews);
 
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    cleanupAutoPage();
-
-    currentFilter = "favorite";
-    currentView = "list";
-
-    const filteredData = getFilteredData(currentFilter);
-    gridState.paginatedData = paginateForGrid(filteredData, gridState.pageSize);
-    gridState.currentPage = 0;
-
-    initializeListView();
-
-    renderCurrentView();
-    updateAllUI();
-
-    setTimeout(() => {
-      setupAutoPage(cachedDOM.container, handlePageChange, 20000);
-    }, 100);
+    eventBus.publish(EVENTS.SUBSCRIBE_ADDED, { press });
+    eventBus.publish(EVENTS.STATE_UPDATED);
   } else {
     subscribedNews.delete(press);
     saveSubscribedNews(subscribedNews);
 
-    if (filter === "favorite") {
-      repaginateForFavorites();
-    }
-
-    renderCurrentView();
-    updateAllUI();
-
-    if (currentView === "list") {
-      restartAutoPage();
-    }
+    eventBus.publish(EVENTS.SUBSCRIBE_REMOVED, { press, filter });
+    eventBus.publish(EVENTS.STATE_UPDATED);
   }
 }
 
@@ -208,9 +233,32 @@ function handleGridPageChange(direction) {
   }
 }
 
-function repaginateForFavorites() {
-  if (currentView !== "grid") return;
+function handleUnsubscribeInListView(unsubscribedPress) {
+  const isCurrentPress = listState.currentCategory === unsubscribedPress;
 
+  const currentCategoryIndex = listState.categories.indexOf(
+    listState.currentCategory
+  );
+
+  initializeListView();
+
+  if (isCurrentPress) {
+    if (currentCategoryIndex >= listState.categories.length) {
+      listState.currentCategory =
+        listState.categories[listState.categories.length - 1];
+    } else {
+      listState.currentCategory = listState.categories[currentCategoryIndex];
+    }
+    listState.currentPressIndex = 0;
+  } else {
+    if (!listState.categorizedData[listState.currentCategory]) {
+      listState.currentCategory = listState.categories[0];
+      listState.currentPressIndex = 0;
+    }
+  }
+}
+
+function handleUnsubscribeInGridView() {
   const allItems = gridState.paginatedData.flat();
   const filteredItems = allItems.filter(
     (item) => item && subscribedNews.has(item.press)
@@ -231,7 +279,12 @@ function repaginateForFavorites() {
 }
 
 function initializeListView() {
-  listState.categorizedData = categorizePressData(allNewsData);
+  if (currentFilter === "favorite") {
+    listState.categorizedData = categorizePressDataByPress(allNewsData);
+  } else {
+    listState.categorizedData = categorizePressData(allNewsData);
+  }
+
   listState.categories = Object.keys(listState.categorizedData);
 
   if (listState.categories.length > 0) {
@@ -253,6 +306,31 @@ function categorizePressData(newsData) {
 
   Object.keys(categorized).forEach((category) => {
     categorized[category] = shuffleArray(categorized[category]);
+  });
+
+  return categorized;
+}
+
+function categorizePressDataByPress(newsData) {
+  const categorized = {};
+
+  const subscribedPressData = newsData.filter((press) =>
+    subscribedNews.has(press.press)
+  );
+
+  const savedSubscriptions = localStorage.getItem("subscribedNews");
+  const subscriptionOrder = savedSubscriptions
+    ? JSON.parse(savedSubscriptions)
+    : [];
+
+  subscribedPressData.sort((a, b) => {
+    const indexA = subscriptionOrder.indexOf(a.press);
+    const indexB = subscriptionOrder.indexOf(b.press);
+    return indexA - indexB;
+  });
+
+  subscribedPressData.forEach((press) => {
+    categorized[press.press] = [press];
   });
 
   return categorized;
@@ -318,17 +396,6 @@ function handleListPageChange(direction) {
   updatePaginationState();
 }
 
-function handleCategoryChange(newCategory) {
-  if (listState.categorizedData[newCategory]) {
-    listState.currentCategory = newCategory;
-    listState.currentPressIndex = 0;
-    renderCurrentView();
-    updatePaginationState();
-
-    restartAutoPage();
-  }
-}
-
 function resetListState() {
   listState.currentCategory = "";
   listState.categorizedData = {};
@@ -337,7 +404,7 @@ function resetListState() {
 }
 
 function renderCurrentView() {
-  if (currentView === "grid") {
+  if (currentView === VIEW_TYPE.GRID) {
     renderGridView();
   } else {
     renderListView();
@@ -366,7 +433,8 @@ function renderListView() {
     listState.categories,
     currentPosition,
     totalInCategory,
-    subscribedNews
+    subscribedNews,
+    currentFilter
   );
 
   setupCategoryChange();
@@ -399,14 +467,8 @@ function renderListView() {
       nextArrow.style.visibility = "visible";
     }
 
-    setupAutoPage(cachedDOM.container, handlePageChange, 20000);
+    eventBus.publish(EVENTS.AUTO_PAGE_START);
   }, 0);
-}
-
-function updateAllUI() {
-  updateFilterBar();
-  updatePaginationState();
-  updatePaginationArrowsVisibility();
 }
 
 function updateFilterBar() {
@@ -431,7 +493,7 @@ function updateFilterBar() {
 }
 
 function updatePaginationState() {
-  if (currentView === "grid") {
+  if (currentView === VIEW_TYPE.GRID) {
     const currentPage = gridState.currentPage;
     const totalPages = gridState.paginatedData.length;
     updatePaginationUI(cachedDOM.container, currentPage, totalPages);
@@ -487,7 +549,8 @@ function setupCategoryChange() {
     button.addEventListener("click", (e) => {
       const category = e.target.dataset.category;
       if (category) {
-        handleCategoryChange(category);
+        eventBus.publish(EVENTS.CATEGORY_CHANGED, { category });
+        eventBus.publish(EVENTS.STATE_UPDATED);
       }
     });
   });
