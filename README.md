@@ -43,3 +43,5 @@
 - [DOM 다루기와 XSS](https://www.notion.so/using2/Softeer-bootcamp-7-DOM-innerHTML-insertAdjacentHTML-XSS-2e01b5b80212809eb500d25e4d629256)
 - [이벤트, 전파와 위임](https://www.notion.so/using2/Softeer-bootcamp-7-2e11b5b802128021aae1ee1870a30c6e)
 - [mouseenter, mouseleave, mouseover, mouseout](https://www.notion.so/using2/Softeer-bootcamp-7-mouseenter-mouseleave-mouseover-mouseout-2e11b5b8021280e494ace4e8a84eaa51)
+- [자동 페이지네이션 타이머 구현기 - 클래스 설계부터 this 바인딩까지](https://www.notion.so/using2/Softeer-bootcamp-7-this-2e21b5b80212800ab7d7f30a591ecb54)
+- [Observer vs PubSub pattern: 복잡한 상태 관리, 패턴으로 해결하기](https://www.notion.so/using2/Softeer-bootcamp-7-Observer-vs-PubSub-pattern-2e31b5b8021280509b8bc34cc396ae85)
