@@ -5,13 +5,18 @@ import { initSubscriptionSystem } from './subscription/index.js';
 import { renderGridItems } from './grid/index.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const { subscriptionManager } = initSubscriptionSystem();
-    
-    initGrid({
+    const gridResult = initGrid({
         containerSelector: '.content__grid',
-        subscriptionManager,
+        subscriptionManager: null,
         renderFunction: renderGridItems
     });
+    
+    const { subscriptionManager } = initSubscriptionSystem(gridResult.updateOverlayButton);
+    
+    // subscriptionManager를 그리드에 설정
+    if (gridResult.setSubscriptionManager) {
+        gridResult.setSubscriptionManager(subscriptionManager);
+    }
     
     initRollingBars(rollingNews, { containerSelector: '.rolling-bar' });
 });

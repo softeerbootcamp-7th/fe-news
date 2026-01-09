@@ -1,9 +1,9 @@
 import { SubscriptionManager } from './manager.js';
-import { createTabBadgeObserver, createGridFilterObserver } from './observers.js';
+import { createTabBadgeObserver, createGridFilterObserver, createOverlayButtonObserver } from './observers.js';
 import { initTabManager } from './tab-manager.js';
 import { renderGridItems } from '../grid/index.js';
 
-export function initSubscriptionSystem() {
+export function initSubscriptionSystem(updateOverlayButtonFn) {
     const subscriptionManager = new SubscriptionManager();
     
     const tabBadgeObserver = createTabBadgeObserver('.content__tab-badge');
@@ -20,6 +20,12 @@ export function initSubscriptionSystem() {
     
     subscriptionManager.subscribe(tabBadgeObserver);
     subscriptionManager.subscribe(gridFilterObserver);
+    
+    // 오버레이 버튼 업데이트 Observer 등록
+    if (updateOverlayButtonFn) {
+        const overlayButtonObserver = createOverlayButtonObserver(updateOverlayButtonFn);
+        subscriptionManager.subscribe(overlayButtonObserver);
+    }
     
     initTabManager({ tabSelector: '.content__tab', gridFilterObserver });
     

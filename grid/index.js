@@ -104,17 +104,79 @@ function initGrid({ containerSelector, subscriptionManager, renderFunction }) {
         renderGridItems(gridEl, subMgr, filter);
     });
     
-    renderFn(gridElement, subscriptionManager, 'all');
+    // subscriptionManager를 나중에 설정할 수 있도록 변수로 관리
+    let currentSubscriptionManager = subscriptionManager;
+    
+    renderFn(gridElement, currentSubscriptionManager, 'all');
 
     const overlay = document.querySelector('.grid__overlay');
 
     gridElement.addEventListener('mouseover', (event) => {
-        showGridOverlay(event, gridElement, overlay, subscriptionManager);
+        showGridOverlay(event, gridElement, overlay, currentSubscriptionManager);
     });
     gridElement.addEventListener('mouseleave', () => hiddenGridOverlay(overlay));
     
-    // renderFunction을 반환하여 외부에서 재렌더링 가능하도록
-    return { render: renderFn };
+    // 오버레이 버튼 업데이트 함수
+    function updateOverlayButton() {
+        // 오버레이가 숨겨져 있으면 업데이트 불필요
+        if (overlay.classList.contains('grid__overlay--hidden')) {
+            return;
+        }
+        
+        // 현재 오버레이 위치에 해당하는 그리드 아이템 찾기
+        const overlayRect = overlay.getBoundingClientRect();
+        const items = Array.from(gridElement.querySelectorAll('.content__grid-item'));
+        
+        let targetItem = null;
+        for (const item of items) {
+            const itemRect = item.getBoundingClientRect();
+            // 오버레이와 아이템이 겹치는지 확인
+            if (overlayRect.left < itemRect.right && overlayRect.right > itemRect.left &&
+                overlayRect.top < itemRect.bottom && overlayRect.bottom > itemRect.top) {
+                targetItem = item;
+                break;
+            }
+        }
+        
+        if (!targetItem) return;
+        
+        const pressId = targetItem.dataset.pressId;
+        const isSubscribed = currentSubscriptionManager && currentSubscriptionManager.isSubscribed(pressId);
+        
+        // 기존 버튼 제거
+        const existingButton = overlay.querySelector('.component__button');
+        if (existingButton) {
+            existingButton.remove();
+        }
+        
+        // 새로운 버튼 생성
+        const buttonType = isSubscribed ? 'closed' : 'plus';
+        const buttonLabel = isSubscribed ? '해지하기' : '구독하기';
+        
+        const overlayButton = createSubscribeButton({
+            label: buttonLabel,
+            type: buttonType,
+            onClick: () => {
+                if (isSubscribed) {
+                    currentSubscriptionManager.removeSubscription(pressId);
+                } else {
+                    currentSubscriptionManager.addSubscription(pressId);
+                }
+            }
+        });
+        
+        overlay.appendChild(overlayButton);
+    }
+    
+    // subscriptionManager 설정 함수
+    function setSubscriptionManager(subMgr) {
+        currentSubscriptionManager = subMgr;
+        // subscriptionManager가 설정되면 그리드 재렌더링
+        renderFn(gridElement, currentSubscriptionManager, 'all');
+    }
+    
+    // renderFunction, updateOverlayButton, setSubscriptionManager를 반환
+    return { render: renderFn, updateOverlayButton, setSubscriptionManager };
 }
 
 export { initGrid, renderGridItems };

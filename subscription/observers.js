@@ -33,5 +33,17 @@ function createGridFilterObserver(gridElement, renderFunction, subscriptionManag
     return observer;
 }
 
-export { createTabBadgeObserver, createGridFilterObserver };
+// OverlayButtonObserver - 오버레이 버튼 업데이트
+function createOverlayButtonObserver(updateOverlayButtonFn) {
+    return {
+        update(event, data) {
+            if (event === 'subscribe' || event === 'unsubscribe') {
+                // 구독 상태 변경 시 오버레이 버튼 업데이트
+                updateOverlayButtonFn();
+            }
+        }
+    };
+}
+
+export { createTabBadgeObserver, createGridFilterObserver, createOverlayButtonObserver };
 
