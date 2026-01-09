@@ -20,6 +20,15 @@
     border: 1px solid var(--color-border-default);
 }
 
+@keyframes fillProgress {
+    from {
+        background-size: 0% 100%; 
+    }
+    to {
+        background-size: 100% 100%;
+    }
+}
+
 .category-tab-item {
     display: flex;
     align-items: center;
@@ -31,10 +40,24 @@
     font: var(--font-available-14);
     color: var(--color-text-weak);
 
+    position: relative;
+
     &.selected {
         font: var(--font-selected-14);
         color: var(--color-text-white-default);
-        background-color: var(--color-surface-brand-default);
+
+        background-color: color-mix(in srgb, var(--color-surface-brand-default), transparent 40%);
+        background-image: linear-gradient(to right, var(--color-surface-brand-default), var(--color-surface-brand-default));
+        background-repeat: no-repeat;
+        
+        background-size: 0% 100%;
+
+        /* 애니메이션
+           - 20s: 20초 동안
+           - steps(20): 20단계로 끊어서 (1초마다 이동)
+           - forwards: 애니메이션이 끝나면 100% 상태 유지
+        */
+        animation: fillProgress 20s steps(20) forwards;
     }
 
     &:hover {
