@@ -1,3 +1,5 @@
+import { PRESS_CATEGORIES } from "./pressData";
+
 export const getDate = () => {
   const weekdays = [
     "일요일",
@@ -28,4 +30,33 @@ export const getVisiblePresses = (state, PRESS_LIST) => {
 
 export const loadJson = (url) => {
   return fetch(url).then((response) => response.json());
+};
+
+export const getNextIdx = (
+  currentCategoryIdx,
+  currentPressIdx,
+  totalLength
+) => {
+  if (currentPressIdx + 1 < totalLength) {
+    return { categoryIdx: currentCategoryIdx, pressIdx: currentPressIdx + 1 };
+  } else {
+    const nextCategoryIdx = (currentCategoryIdx + 1) % PRESS_CATEGORIES.length;
+    return { categoryIdx: nextCategoryIdx, pressIdx: 0 };
+  }
+};
+
+export const getPrevIdx = (currentCategoryIdx, currentPressIdx, listPressData) => {
+  if (currentPressIdx - 1 >= 0) {
+    return { categoryIdx: currentCategoryIdx, pressIdx: currentPressIdx - 1 };
+  } else {
+    const prevCategoryIdx =
+      (currentCategoryIdx - 1 + PRESS_CATEGORIES.length) %
+      PRESS_CATEGORIES.length;
+    const prevCategoryPressesLength =
+      listPressData[PRESS_CATEGORIES[prevCategoryIdx]].presses.length;
+    return {
+      categoryIdx: prevCategoryIdx,
+      pressIdx: prevCategoryPressesLength - 1,
+    };
+  }
 };

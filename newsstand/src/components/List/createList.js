@@ -1,52 +1,37 @@
 import { createEl } from "../../lib/dom";
-import { groupPressByCategory, PRESS_CATEGORIES } from "../../lib/pressData";
+import { ensureListPressData } from "../../lib/pressData";
+import { store } from "../../state/store";
 import { createIconButton, PLUS_ICON } from "../buttons";
-
+import { paginateList } from "./paginateList";
 /**
  * 리스트 컴포넌트 생성
  */
 export const createList = () => {
-  const categoryIdx = 0;
-  let pressIdx = 0;
+  // 데이터를 아직 불러오지 않았다면 불러오기
+  ensureListPressData();
+
   const nsList = createEl("section", "ns-press-list border-default", "");
   nsList.classList.add("ns-press-list");
   nsList.setAttribute("aria-label", "언론사 목록");
 
-  nsList.append(createListNav(PRESS_CATEGORIES));
+  const { isLoading } = store.getState();
 
-  const listContentContainer = createEl(
-    "div",
-    "ns-press-list__content-container",
-    "로딩중..."
-  );
-  nsList.append(listContentContainer);
+  if (isLoading) {
+    nsList.innerHTML = `<div class="loading-spinner">로딩중...</div>`;
+    return nsList;
+  }
 
-  loadAndRenderPressList(listContentContainer, categoryIdx, pressIdx);
+  const { listNav, nowPress, autoPager } = paginateList();
+  nsList.append(listNav, createListContent(nowPress));
+
+  nsList._cleanup = () => {
+    if (autoPager) {
+      console.log("autoPager.stop");
+      autoPager.stop();
+    }
+  };
 
   return nsList;
-};
-
-const createListNav = (categories) => {
-  const nav = createEl(
-    "nav",
-    "ns-press-list__nav",
-    `<ul class="ns-press-list__nav-list surface-alt"></ul>`
-  );
-  const navList = nav.querySelector(".ns-press-list__nav-list");
-  categories.forEach((category) => {
-    navList.append(createNavItem(category));
-  });
-
-  return nav;
-};
-
-const createNavItem = (category) => {
-  const navItem = createEl(
-    "li",
-    "ns-press-list__nav-item typo-available-medium14",
-    category
-  );
-  return navItem;
 };
 
 const createListContent = (nowPress) => {
@@ -59,26 +44,6 @@ const createListContent = (nowPress) => {
   listContentWrapper.innerHTML = createListContentMarkup(nowPress);
 
   return listContentWrapper;
-};
-
-const fetchPressData = (pressDataUrl) => {
-  return fetch(pressDataUrl).then((res) => {
-    if (!res.ok) {
-      throw new Error("Failed to fetch press data");
-    }
-    return res.json();
-  });
-};
-
-const loadAndRenderPressList = (container, categoryIdx, pressIdx) => {
-  const category = PRESS_CATEGORIES[categoryIdx];
-  return fetchPressData("/pressMockData.json")
-    .then((data) => groupPressByCategory(data))
-    .then((groupedData) => {
-      container.replaceChildren(
-        createListContent(groupedData[category].presses[pressIdx])
-      );
-    });
 };
 
 const createListContentMarkup = (nowPress) => `
@@ -98,7 +63,9 @@ const createListContentMarkup = (nowPress) => `
     </div>
     <div class="ns-press-list__content">
       <div class="ns-press-list__main-news">
-        <img src="https://www.moananursery.com/wp-content/uploads/2023/08/1920-x-1280-2.jpg" alt="메인뉴스이미지" class="ns-press-list__main-news-image" />
+        <img src="${
+          nowPress.mainImg
+        }" alt="메인뉴스이미지" class="ns-press-list__main-news-image" />
         <span class="ns-press-list__main-news-title text-strong typo-available-medium16">${
           nowPress.mainTitle
         }</span>
