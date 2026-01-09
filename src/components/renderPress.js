@@ -1,3 +1,4 @@
+import { getPressData } from "../../data/fetchPressData";
 import { subscribePressStore } from "../stores/subscribePressStore";
 import { loadSVG, LOGO_COUNT_PER_PAGE } from "../utils/assetUtils";
 import { waitForAlert } from "./alert";
@@ -157,14 +158,3 @@ const handleClickSubscribeBtn = async (pressId, pressData) => {
   
   subscribePressStore.dispatch({ type: actionType, payload: pressId });
 };
-
-async function getPressData() {
-  const response = await fetch("./data/pressData.json", {
-    headers: {
-	    Accept: "application / json",
-	  },
-  });
-  const jsonData = await response.json()
-
-  return jsonData
-}
