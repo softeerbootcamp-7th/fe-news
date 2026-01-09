@@ -26,6 +26,7 @@
     justify-content: center;
     padding: 16px;
     box-sizing: border-box;
+    gap: 40px;
 
     font: var(--font-available-14);
     color: var(--color-text-weak);
@@ -39,6 +40,22 @@
     &:hover {
         cursor: pointer;
         text-decoration: underline;
+    }
+
+    .category-name {
+        white-space: nowrap;
+    }
+}
+
+.category-count-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    font: var(--font-bold-12);
+    color: var(--color-text-weak);
+    
+    .current-count {
+        color: var(--color-text-white-default);
     }
 }
 

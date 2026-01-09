@@ -1,21 +1,69 @@
-export const renderList = (container) => {
-    // TODO: fetch json data
+import { getNewsCategoryList, getPressData } from "../../data/fetchPressData.js";
 
+export const renderList = async (container) => {
     container.innerHTML = `<div class="news-list-container">
-                        <ul class="category-tab-container">
-                            <li class="category-tab-item selected">종합/경제</li>
-                            <li class="category-tab-item">IT</li>
-                            <li class="category-tab-item">영자지</li>
-                            <li class="category-tab-item">방송/통신</li>
-                            <li class="category-tab-item">스포츠/연예</li>
-                            <li class="category-tab-item">매거진/전문지</li>
-                            <li class="category-tab-item">지역</li>
-                        </ul>
-                        <div class="category-news-container">
-                            <div class="news-info-container">
+                        <ul class="category-tab-container"></ul>
+                        <div class="category-news-container"></div>
+                     </div>`
+
+    const pressData = await getPressData();
+    const newsCategory = getNewsCategoryList(pressData);
+
+    const categoryTabContainer = document.querySelector('.category-tab-container');
+    newsCategory.forEach((category, index) => {
+        const categoryTabItem = document.createElement('li');
+        categoryTabItem.className = `category-tab-item${index === 0 ? " selected" : ""}`;
+
+        const spanEl = document.createElement('span');
+        spanEl.className = 'category-name';
+        spanEl.textContent = category
+        categoryTabItem.appendChild(spanEl);
+
+        categoryTabItem.addEventListener('click', (e) => {
+            const newSelectedTab = e.currentTarget;
+            const selectedTab = document.querySelector('.category-tab-item.selected');
+            toggleCountText(selectedTab, false);
+            toggleCountText(newSelectedTab, true);
+        })
+
+        if (index === 0) addCountText(categoryTabItem);
+
+        categoryTabContainer.appendChild(categoryTabItem);
+    })
+
+    addNewsMainContent();
+}
+
+const toggleCountText = (el, isAddText) => {
+    el.classList.toggle('selected');
+    if (!isAddText) {
+        const categoryCountContainer = document.querySelector(".category-count-container");
+        categoryCountContainer?.remove();
+        
+        return;
+    }
+    addCountText(el);
+}
+
+const addCountText = (container) => {
+    const categoryCountContainer = document.createElement('div');
+    categoryCountContainer.className = "category-count-container";
+    container.appendChild(categoryCountContainer);
+
+    const currentCnt = 1
+    const totalCnt = 10
+
+    categoryCountContainer.innerHTML = `
+                                    <span class="current-count">${currentCnt}</span>
+                                    <span>/</span>
+                                    <span class="total-count">${totalCnt}</span>`
+}
+
+const addNewsMainContent = () => {
+    const newsMainContent = `<a class="news-info-container">
                                 <img src="https://placehold.co/52x20" />
                                 <span class="news-info">2026.01.14. 19:38 편집</span>
-                            </div>
+                            </a>
                             <div class="news-main-container">
                                 <div class="img-section">
                                     <img src="https://placehold.co/320x200" />
@@ -32,7 +80,7 @@ export const renderList = (container) => {
                                     </ul>
                                     <span class="news-caption">아주경제 언론사에서 직접 편집한 뉴스입니다.</span>
                                 </div>
-                            </div>
-                        </div>
-                     </div>`
+                            </div>`
+    const categoryNewsContainer = document.querySelector('.category-news-container');
+    categoryNewsContainer.innerHTML = newsMainContent;
 }
