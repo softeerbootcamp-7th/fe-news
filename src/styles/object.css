@@ -1,0 +1,4 @@
+:root {
+  --popup: "0px 2px 18px 0px #14212B14";
+  --border: "1px solid var(--border-default, #D2DAE0)";
+}

@@ -1,0 +1,131 @@
+#field-tab {
+  width: 930px;
+  height: 40px;
+  border: 1px solid var(--border-default);
+  background-color: var(--surface-alt);
+  display: flex;
+}
+
+.category-btn {
+  height: 100%;
+  padding: 0px 16px;
+}
+button.category-btn.is-active {
+  background-color: var(--surface-brand-alt);
+  width: 166px;
+  color: var(--text-white-default);
+  padding: 0 16px;
+  gap: 8px;
+  position: relative;
+}
+#press-total-cnt {
+  color: var(--text-white-weak);
+}
+
+#category-info-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#press-news {
+  display: flex;
+  flex-direction: column;
+  width: 930px;
+  padding: 24px;
+  gap: 16px;
+  border: 1px solid var(--border-default);
+  margin-top: -1px;
+}
+
+#press-info {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+#news {
+  display: flex;
+  width: 100%;
+  gap: 32px;
+}
+#main-article {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+#main-news-thumbnail {
+  width: 320px;
+  height: 200px;
+  border: 1px solid var(--border-default);
+}
+
+#sub-article {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+#sub-article p {
+  margin: 0px;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+#sub-article ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  padding-inline-start: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-bold);
+}
+a:hover {
+  text-decoration: underline;
+}
+
+#press-mark {
+  width: 53px;
+  height: 20px;
+  object-fit: contain;
+}
+
+a li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes fillBoxFromLeftToRight {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+#progress-box {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: var(--surface-brand-default);
+  height: 100%;
+  transform-origin: left center;
+  animation: fillBoxFromLeftToRight 5s linear;
+}
