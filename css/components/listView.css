@@ -52,12 +52,7 @@
         
         background-size: 0% 100%;
 
-        /* 애니메이션
-           - 20s: 20초 동안
-           - steps(20): 20단계로 끊어서 (1초마다 이동)
-           - forwards: 애니메이션이 끝나면 100% 상태 유지
-        */
-        animation: fillProgress 20s steps(20) forwards;
+        animation: fillProgress 20s linear forwards;
     }
 
     &:hover {
