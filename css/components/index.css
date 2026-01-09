@@ -4,6 +4,7 @@
 @import url('./pressStyling.css');
 @import url('./btn.css');
 @import url('./alert.css');
+@import url('./listView.css');
 
 main {
     width: 930px;

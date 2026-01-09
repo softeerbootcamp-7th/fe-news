@@ -17,21 +17,19 @@
             <time class="date display-medium16"></time>
         </header>
         <main>
-            <section>
-                <ul class="auto-rolling-news-container">
-                    <li class="auto-rolling-news-item">
-                        <a href="#">
-                            <span class="press display-bold14">연합뉴스</span>
-                            <span class="title available-medium14">[속보] 도심 공원 ‘조용한 독서존’ 시범 운영… 시민 호응 이어져</span>
-                        </a>
-                    </li>
-                    <li class="auto-rolling-news-item">
-                        <a href="#">
-                            <span class="press display-bold14">서울경제</span>
-                            <span class="title available-medium14">착한 소비 캠페인, 지역 상권 회복에 긍정적 영향</span>
-                        </a>
-                    </li>
-                </ul>
+            <section class="rolling-news-wrap">
+                <div class="rolling-box" id="rolling1">
+                    <span class="press display-bold14"></span>
+                    <div class="rolling-viewport">
+                        <ul class="rolling-list"></ul>                    
+                    </div>    
+                </div>
+                <div class="rolling-box" id="rolling2">
+                    <span class="press display-bold14"></span>
+                    <div class="rolling-viewport">
+                        <ul class="rolling-list"></ul>                    
+                    </div>    
+                </div>
             </section>
             <section class="press-container">
                 <div class="main-nav-container">
@@ -44,23 +42,18 @@
                     </nav>
 
                     <nav class="nav-view-container">
-                        <span class="nav-icon" data-svg="./public/assets/icons/list-view.svg"></span>
-                        <span class="nav-icon selected" data-svg="./public/assets/icons/grid-view.svg"></span>
+                        <span class="nav-icon list-view" data-svg="./public/assets/icons/list-view.svg"></span>
+                        <span class="nav-icon grid-view selected" data-svg="./public/assets/icons/grid-view.svg"></span>
                     </nav>
                 </div>
 
-                <div class="press-nav-container">
-                    <!-- <button><img src="https://placehold.co/50x50" alt="화살표 버튼"></button> -->
-
-                    <ul class="press-logo-container"></ul>
-
-                    <!-- <button><img src="https://placehold.co/50x50" alt="화살표 버튼"></button> -->
-                </div>
+                <div class="news-container"></div>
             </section>
+            
             <aside class="alert" role="alert">
                 <div class="alert-content display-medium16">
                     <div>
-                        <span class="alert-press-title display-bold16">{언론사명}</span>
+                        <span class="alert-press-name display-bold16">{언론사명}</span>
                         <span>을(를)</span>
                     </div>
                     <span>구독해지하시겠습니까?</span>

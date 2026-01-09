@@ -1,104 +1,71 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
 
+:root {
+  /* === Font Families === */
+  --font-family-base: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* === Bold (700) === */
+  --font-bold-24: 700 24px/normal var(--font-family-base);
+  --font-bold-16: 700 16px/normal var(--font-family-base);
+  --font-bold-14: 700 14px/normal var(--font-family-base);
+  --font-bold-12: 700 12px/normal var(--font-family-base);
+
+  /* === Medium (500) === */
+  --font-medium-16: 500 16px/22px var(--font-family-base);
+  --font-medium-14: 500 14px/normal var(--font-family-base);
+  --font-medium-12: 500 12px/normal var(--font-family-base);
+
+  /* === Selected (선택된 상태) === */
+  --font-selected-16: 700 16px/normal var(--font-family-base);
+  --font-selected-14: 700 14px/normal var(--font-family-base);
+
+  /* === Available (선택 가능 상태) === */
+  --font-available-16: 500 16px/22px var(--font-family-base);
+  --font-available-14: 500 14px/normal var(--font-family-base);
+  --font-available-12: 500 12px/normal var(--font-family-base);
+
+  /* === Hover (호버 상태) === */
+  --font-hover-16: 500 16px/22px var(--font-family-base);
+  --font-hover-14: 500 14px/normal var(--font-family-base);
+}
+
 body {
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-family-base);
   margin: 0;
   padding: 0;
 }
 
+/* === Bold === */
+.display-bold24 { font: var(--font-bold-24); }
+.display-bold16 { font: var(--font-bold-16); }
+.display-bold14 { font: var(--font-bold-14); }
+.display-bold12 { font: var(--font-bold-12); }
 
-/* === Bold (700) === */
-.display-bold24 {
-  font-weight: 700;
-  font-size: 24px;
-  line-height: normal;
-}
+/* === Medium === */
+.display-medium16 { font: var(--font-medium-16); }
+.display-medium14 { font: var(--font-medium-14); }
+.display-medium12 { font: var(--font-medium-12); }
 
-.display-bold16 {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: normal;
-}
+/* === Selected === */
+.selected-bold16 { font: var(--font-selected-16); }
+.selected-bold14 { font: var(--font-selected-14); }
 
-.display-bold14 {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: normal;
-}
+/* === Available === */
+.available-medium16 { font: var(--font-available-16); }
+.available-medium14 { font: var(--font-available-14); }
+.available-medium12 { font: var(--font-available-12); }
 
-.display-bold12 {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: normal;
-}
-
-/* === Medium (500) === */
-.display-medium16 {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
-}
-
-.display-medium14 {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: normal;
-}
-
-.display-medium12 {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: normal;
-}
-
-/* === Selected (선택된 상태) === */
-.selected-bold16 {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: normal;
-}
-
-.selected-bold14 {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: normal;
-}
-
-/* === Available (선택 가능 상태) === */
-.available-medium16 {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
-}
-
-.available-medium14 {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: normal;
-}
-
-.available-medium12 {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: normal;
-}
-
-/* === Hover (호버 상태) === */
+/* === Hover === */
 .hover-medium16 {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
+  font: var(--font-hover-16);
   text-decoration: underline;
 }
-
 .hover-medium14 {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: normal;
+  font: var(--font-hover-14);
   text-decoration: underline;
 }
 
-/* === 밑줄 변형 공통 === */
+/* === 밑줄 공통 === */
 .display-medium16.underline,
 .display-medium14.underline {
   text-decoration: underline;
