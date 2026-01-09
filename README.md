@@ -4,6 +4,12 @@
 
 https://lwjmcn.github.io/fe-news/
 
+### 기록
+
+일자별 완료 작업 목록, 고민과 해결 과정, AI 활용 경험을 포함하고 있습니다.
+
+[>> 기록 보러 가기](https://github.com/softeerbootcamp-7th/fe-news/pulls?q=is%3Apr+%EC%9D%B4%EC%98%88%EC%A7%84+)
+
 ### 태스크 정리
 
 - [x] Vite 환경 구성
