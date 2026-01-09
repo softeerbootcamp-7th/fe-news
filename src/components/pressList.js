@@ -1,16 +1,12 @@
 import pressData from '../data/pressData.json';
+import { groupByCategory } from '../data/pressCategory.js';
 import { createSubButton } from './subButton.js';
 import { isSubscribed, subscribe } from '../store/subscription.js';
 
-const CATEGORIES = [
-  '종합/경제',
-  '방송/통신',
-  'IT',
-  '영자지',
-  '스포츠/연예',
-  '매거진/전문지',
-  '지역',
-];
+let currentTab = 'all';
+
+const categorizedData = groupByCategory(pressData);
+console.log(categorizedData);
 
 export function initPressList() {
   const list = document.querySelector('.provider-list');
@@ -90,10 +86,10 @@ export function initPressList() {
     const body = document.createElement('div');
     body.className = 'provider-list-body';
 
-    const mainLink = document.createElement('a');
-    mainLink.className = 'main-article';
-    mainLink.href = item.mainLink;
-    mainLink.target = '_blank';
+    const mainArticle = document.createElement('a');
+    mainArticle.className = 'main-article';
+    mainArticle.href = item.mainLink;
+    mainArticle.target = '_blank';
 
     const mainImg = document.createElement('img');
     mainImg.className = 'main-image';
@@ -104,7 +100,7 @@ export function initPressList() {
     mainTitle.className = 'main-title';
     mainTitle.textContent = item.mainTitle;
 
-    mainLink.append(mainImg, mainTitle);
+    mainArticle.append(mainImg, mainTitle);
 
     const relatedList = document.createElement('ul');
     relatedList.className = 'related-articles';
@@ -119,14 +115,14 @@ export function initPressList() {
       relatedList.appendChild(li);
     });
 
-    body.append(mainLink, relatedList);
+    body.append(mainArticle, relatedList);
 
     li.append(header, body);
     list.appendChild(li);
 
     return {
-      index: currentIndex + 1,
-      lastIndex: data.length,
+      page: currentIndex,
+      lastPage: data.length,
     };
   }
 
