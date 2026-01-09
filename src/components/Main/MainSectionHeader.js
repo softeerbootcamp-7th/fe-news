@@ -3,6 +3,7 @@ import { ListViewIcon } from "../icons/ListViewIcon";
 import { GridViewIcon } from "../icons/GridViewIcon";
 import { store } from "../../store";
 import { makeNode } from "../../utils/utils";
+import { cleanupEventListenerMap } from "../../infrastructure/domObserver";
 
 export function MainSectionHeader() {
   const $el = makeNode(`
@@ -60,6 +61,12 @@ export function MainSectionHeader() {
   window.addEventListener("viewOnlySubsChange", updateSubsToggle);
   window.addEventListener("viewGridChange", updateViewToggle);
   window.addEventListener("subsListChange", updateBadgeNum);
+
+  cleanupEventListenerMap.set($el, () => {
+    window.removeEventListener("viewOnlySubsChange", updateSubsToggle);
+    window.removeEventListener("viewGridChange", updateViewToggle);
+    window.removeEventListener("subsListChange", updateBadgeNum);
+  });
 
   updateSubsToggle();
   updateViewToggle();

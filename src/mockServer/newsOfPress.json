@@ -1,2449 +1,2556 @@
 {
   "newsList": [
     {
+      "id": 0,
       "pressName": "그린포스트코리아",
-      "category": "종합/경제",
-      "lastEditedTime": "2026.01.07. 08:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "탄소 중립 실천, 이제는 선택 아닌 필수",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "플라스틱 없는 일주일 도전기",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "재생 에너지 효율 20% 상승 비결",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "친환경 에코 라이프 가이드",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지구 온난화가 미치는 영향",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "기업들의 ESG 경영 실태",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "미래를 여는 수소 에너지",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "낚시춘추",
-      "category": "방송/통신",
-      "lastEditedTime": "2026.01.07. 09:12",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "겨울철 대어 낚는 포인트 전격 공개",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "초보 낚시꾼을 위한 장비 가이드",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "민물낚시와 바다낚시의 차이",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "전국 유명 낚시터 베스트 5",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "미끼 종류별 활용 방법",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "낚시 매너와 환경 보호",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "밤낚시 안전 수칙 안내",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "뉴스토마토",
-      "category": "IT",
-      "lastEditedTime": "2026.01.07. 10:05",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "반도체 공급망 재편, 한국의 대응은?",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "국제 증시 마감 시황 정리",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "금리 동결에 따른 부동산 전망",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "스타트업 투자 시장의 변화",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "물가 상승률 하락세 진입",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "반도체 수출 지표 분석",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "환율 급등락 주의보 발령",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "뉴스핌",
-      "category": "영자지",
-      "lastEditedTime": "2026.01.07. 11:20",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "글로벌 원자재 가격 하락세 지속",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "유가 하락과 국내 물가 전망",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "해외 주식 직접 투자 전략",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "연금 저축 상품 비교 분석",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "보험료 산정 체계 개편",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "카드 포인트 활용 꿀팁",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "가계 부채 관리 방안 발표",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "데일리한국",
-      "category": "스포츠/연예",
-      "lastEditedTime": "2026.01.07. 12:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "K-컬처의 힘, 전 세계 팬심 잡다",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "새해 첫 대작 영화 개봉 소식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "아이돌 그룹 빌보드 차트 역주행",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "OTT 오리지널 시리즈 라인업",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "공연계 라이브 콘서트 재개",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "스타들의 기부 릴레이 소식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "웹툰 원작 드라마 제작 열풍",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "데일리NK",
       "category": "매거진/전문지",
-      "lastEditedTime": "2026.01.07. 13:10",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "한반도 주변 정세 심층 분석 리포트",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "동북아 경제 협력의 새로운 방향",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "인권 관련 국제 회의 결과 보고",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "식량 안보를 위한 국제 지원 체계",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "주변국 외교 정책 변화 전망",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "민간 교류 활성화를 위한 제언",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "학술 세미나: 평화를 위한 여정",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "디디넷",
-      "category": "지역",
-      "lastEditedTime": "2026.01.07. 14:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "지역 사회 상생을 위한 프로젝트 시동",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "지자체 혁신 우수 사례 발표",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "우리 동네 숨은 명소 찾기",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지역 전통 시장 현대화 사업",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "청년 창업 지원 공간 오픈",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "마을 공동체 활성화 교육",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지역 축제 일정 및 교통 안내",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "디자인정글",
-      "category": "종합/경제",
-      "lastEditedTime": "2026.01.07. 14:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "2026 글로벌 디자인 트렌드 리포트",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "미니멀리즘의 귀환과 현대적 해석",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "친환경 소재를 활용한 산업 디자인",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "사용자 경험(UX) 중심의 웹 설계",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "타이포그래피의 시각적 언어 분석",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "올해의 주목할만한 젊은 디자이너",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "공공 디자인이 바꾸는 도시의 표정",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "디지털투데이",
-      "category": "방송/통신",
-      "lastEditedTime": "2026.01.07. 14:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "초연결 시대, 5G 네트워크의 진화",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "위성 통신 서비스 상용화 박차",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "차세대 미디어 스트리밍 기술",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "통신비 절감을 위한 신규 요금제",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "사물인터넷(IoT) 보안 강화 방안",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "디지털 격차 해소를 위한 지원 사업",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "메타버스 기반 교육 플랫폼 구축",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "마이데일리",
-      "category": "IT",
-      "lastEditedTime": "2026.01.07. 14:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "생성형 AI, 업무 생산성 혁명 주도",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "신형 스마트폰 유출 정보 총정리",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "클라우드 게임 시장의 빠른 성장세",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "웨어러블 기기의 헬스케어 혁신",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "반도체 공정 미세화의 기술적 한계",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "오픈 소스 소프트웨어 생태계 전망",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "양자 컴퓨팅 보안 알고리즘 개발",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "매일노동뉴스",
-      "category": "영자지",
-      "lastEditedTime": "2026.01.07. 15:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "Labor Rights in the Era of Automation",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "Minimum Wage Debate Intensifies",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Remote Work Policies Post-Pandemic",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Union Movements in the Tech Sector",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Workplace Diversity and Inclusion",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Job Market Trends for Gen Z",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "International Labor Standards Report",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "맥스무비",
-      "category": "스포츠/연예",
-      "lastEditedTime": "2026.01.07. 15:20",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "천만 영화 탄생 예고, 예매율 1위",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "할리우드 거장의 신작 제작 발표",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "독립 영화계의 새로운 샛별 등장",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "영화제 수상작 스트리밍 서비스 시작",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "배우들의 캐릭터 변신, 연기력 호평",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "원작 소설을 영화화한 화제작들",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "여름 텐트폴 영화 라인업 공개",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "미디어펜",
-      "category": "매거진/전문지",
-      "lastEditedTime": "2026.01.07. 15:35",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "미디어 시장의 지형 변화와 전망",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "1인 미디어 창작자 수익 구조 분석",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "광고 시장의 디지털 전환 전략",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "저널리즘의 신뢰 회복을 위한 과제",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "뉴스 유통 플랫폼의 사회적 책임",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "방송 콘텐츠 IP 확보 전쟁 격화",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "글로벌 미디어 그룹의 합병 사례",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "미주한국일보",
-      "category": "지역",
-      "lastEditedTime": "2026.01.07. 15:50",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "한인 이민 사회의 어제와 오늘",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "한인 경제권 활성화를 위한 노력",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "교포 2세들의 정체성 찾기 교육",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "해외 한인회 주요 활동 소식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "한국 문화 알리기 행사 성황리 종료",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "이민법 개정에 따른 대응 가이드",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "현지 한인 기업의 성공 스토리",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "보안뉴스",
-      "category": "종합/경제",
-      "lastEditedTime": "2026.01.07. 16:05",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "국가 핵심 기술 유출 방지 시스템 강화",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "제로 트러스트 보안 모델 도입 가이드",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "클라우드 설정 오류로 인한 사고 예방",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "생체 인증 기술의 보안성 검증 절차",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "산업 제어 시스템(ICS) 해킹 대응책",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "화이트 해커 양성을 위한 교육 과정",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "다크웹 모니터링 서비스 활용 방안",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "비즈한국",
-      "category": "방송/통신",
-      "lastEditedTime": "2026.01.07. 16:20",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "OTT 업계, 오리지널 콘텐츠 투자 총력전",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "저가형 광고 요금제 도입 효과 분석",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "유료 방송 시장의 가입자 이탈 현황",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지상파와 스트리밍 플랫폼의 공생",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "해외 미디어 공룡들의 한국 진출 전략",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "콘텐츠 불법 유통 근절을 위한 법안",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "차세대 화질 기술 HDR10+ 상용화",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "산업일보",
-      "category": "IT",
-      "lastEditedTime": "2026.01.07. 16:40",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "스마트 팩토리 도입으로 제조 혁신 가속",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "산업용 로봇 시장의 폭발적 성장세",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "3D 프린팅 기술의 대량 생산 적용",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "에너지 절감형 공정 제어 시스템",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "중소기업 디지털 전환 지원 정책",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "공급망 관리(SCM) 최적화 AI 솔루션",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "글로벌 표준 제조 플랫폼 구축 현황",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "소비자가만드는신문",
-      "category": "영자지",
-      "lastEditedTime": "2026.01.07. 16:55",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "Consumers Rights Protection in Global Market",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "How to Deal with Overseas Direct Purchases",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "New Safety Regulations for Kids' Toys",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "The Impact of Fast Fashion on Environment",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Understanding Refund Policies Online",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Consumer Satisfaction Index Report",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "The Rise of Conscious Consumption",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "스포츠경향",
-      "category": "스포츠/연예",
-      "lastEditedTime": "2026.01.07. 17:10",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "컴백 초읽기 아이돌 그룹, 콘셉트 티저 공개",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "드라마 촬영장 비하인드 컷 대방출",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "실력파 보컬리스트의 OST 참여 소식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "영화계 대작들의 스크린 경쟁 예고",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "연예인들의 사회 공헌 활동 집중 조명",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "유명 예능 프로그램 개편 및 새 멤버",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "글로벌 패션 아이콘으로 떠오른 스타",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "스포츠동아",
-      "category": "매거진/전문지",
-      "lastEditedTime": "2026.01.07. 17:25",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "프로야구 스프링 캠프 현장 스케치",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "신인 드래프트 최대어들의 훈련 모습",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "해외파 선수들의 국내 복귀 가능성",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "스포츠 재활 기술의 최신 동향",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "데이터 야구가 바꾸는 승리 공식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "전국 고교 축구 대회 대진표 확정",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "비인기 종목 유망주 후원 프로젝트",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "스포츠월드",
-      "category": "지역",
-      "lastEditedTime": "2026.01.07. 17:40",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "지역 연고 구단 홈 경기장 활성화 방안",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "지방 체육 시설 무료 개방 안내",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "우리 고장 스포츠 스타 팬미팅",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "생활 체육 동호인 대회 개최 소식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "청소년 스포츠 클럽 리그 운영",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지역 밀착형 스포츠 마케팅 사례",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "동계 스포츠 꿈나무 육성 캠프",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "스포츠조선",
-      "category": "종합/경제",
-      "lastEditedTime": "2026.01.07. 18:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "스포츠 산업의 경제적 파급 효과 분석",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "해외 중계권 계약 규모 역대 최고",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "스포츠 테크 스타트업 투자 열풍",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "스타 플레이어의 광고 모델 가치",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "글로벌 스포츠 브랜드 매출 동향",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "스포츠 베팅 시장의 양성화 과제",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "경기장 건설 프로젝트 경제성 검토",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "스포츠Q",
-      "category": "방송/통신",
-      "lastEditedTime": "2026.01.07. 18:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "디지털 시대, 스포츠 중계의 진화",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "VR/AR 기반 가상 경기 관람 서비스",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "실시간 데이터 중계 기술의 발전",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "e스포츠 방송의 글로벌 유통 전략",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "중계권 독점 플랫폼의 명과 암",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "시청자 맞춤형 멀티앵글 중계",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "AI 캐스터와 자동 하이라이트 생성",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "시사위크",
-      "category": "IT",
-      "lastEditedTime": "2026.01.07. 18:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "디지털 플랫폼 규제와 산업의 미래",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "알고리즘 투명성 확보를 위한 법안",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "빅테크의 시장 지배력 남용 논란",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "신기술 윤리 가이드라인 마련",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "국내 소프트웨어 경쟁력 강화 방안",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "IT 전문 인력 양성 정책 제언",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "디지털 포용을 위한 기술 개발",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "씨네21",
-      "category": "영자지",
-      "lastEditedTime": "2026.01.07. 18:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "Korean Cinema in the Eyes of Global Critics",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "Evolution of Genre Films in Korea",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Rising Stars of the Asian Indie Scene",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Film Festival Winners Available on OTT",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Visual Effects Industry Trends in Seoul",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Sustainability in Film Production",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Co-production Projects with Hollywood",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "아리랑",
-      "category": "스포츠/연예",
-      "lastEditedTime": "2026.01.07. 19:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "한류 스타, 글로벌 명품 홍보대사 석권",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "K-팝 월드 투어의 경제적 가치",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "해외 팬들이 꼽은 한국 예능 베스트",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "국악과 힙합의 융합 공연 화제",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "전통 무용의 현대화 시도",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "한류 콘텐츠 수출 지원 강화",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "외국인 관광객이 즐기는 K-투어",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "아시아투데이",
-      "category": "매거진/전문지",
-      "lastEditedTime": "2026.01.07. 19:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "아시아 경제 통합과 협력의 과제",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "동남아 신흥 시장 진출 가이드",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "역내 포괄적 경제 동반자 협정 성과",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "아시아 주요 도시 경쟁력 비교",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "에너지 안보를 위한 공동 대응",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "디지털 무역 활성화 방안 연구",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "문화 교류를 통한 공동체 의식",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "약사공론",
-      "category": "지역",
-      "lastEditedTime": "2026.01.07. 19:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "지역 사회 약국 거점 서비스 확대",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "방문 약료 서비스의 실제 사례",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "고령 사회 대비 복약 지도 강화",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지역 주민 건강 교실 운영 소식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "의약품 오남용 방지 캠페인",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지역 약사회 장학금 전달식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "약국 경영 활성화를 위한 컨설팅",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "에너지경제",
-      "category": "종합/경제",
-      "lastEditedTime": "2026.01.07. 19:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "에너지 믹스 개편과 산업의 대응",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "신재생 에너지 비중 확대 전망",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "탄소 배출권 거래제 보완 대책",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "에너지 고효율 가전 보급 지원",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "수소 경제 로드맵 이행 현황",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "원자력 발전 기술의 안정성 강화",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "글로벌 자원 확보 전쟁의 이면",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "연합뉴스",
-      "category": "방송/통신",
-      "lastEditedTime": "2026.01.07. 20:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "공영 방송의 공정성 확보를 위한 대책",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "방송 제작 환경 표준 가이드라인",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "디지털 뉴스 유료화 모델 실험",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "현장 취재 기자 안전 수칙 강화",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "외신 협력 네트워크 강화 방안",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "오보 방지를 위한 팩트체크 시스템",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "뉴미디어 플랫폼 뉴스 유통 분석",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "위키리크스한국",
-      "category": "IT",
-      "lastEditedTime": "2026.01.07. 20:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "빅테크 정보 보안 실태 집중 점검",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "개인정보 보호법 위반 사례 고발",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "인공지능 기반 감시 시스템 논란",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "비밀번호 없는 인증 방식의 확산",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "해킹 방어 기술의 최첨단 기술",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "IT 기업의 사회적 책임과 윤리",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "가상 화폐 보안 솔루션의 진화",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "이뉴스투데이",
-      "category": "영자지",
-      "lastEditedTime": "2026.01.07. 20:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "Daily Business Insight and Global Trends",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "How AI is Changing Customer Service",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Stock Market Highlights This Week",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Sustainable Fashion: A Growing Market",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Digital Nomad Lifestyle in Korea",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Review of the Latest Tech Gadgets",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Startup Funding Success Stories",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "이로운넷",
-      "category": "스포츠/연예",
-      "lastEditedTime": "2026.01.07. 20:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "사회적 가치를 창출하는 문화 예술 활동",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "장애인 예술가 지원 전시회 소식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "업사이클링 패션쇼 런웨이 현장",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "청년 창작자들의 협동조합 운영기",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "커뮤니티 예술 교육의 성과 공유",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "문화 소외 계층을 위한 공연 사업",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "예술을 통한 마을 재생 프로젝트",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "이코노미조선",
-      "category": "매거진/전문지",
-      "lastEditedTime": "2026.01.07. 21:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "초일류 기업의 생존 전략 심층 해부",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "데이터가 바꾸는 경영의 미래",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "글로벌 CEO들이 주목하는 키워드",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "혁신적 조직 문화와 생산성 관계",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "불황을 이기는 마케팅 성공 사례",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "차세대 유니콘 기업의 탄생 조건",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "부의 이전과 새로운 자산 관리",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "이투데이",
-      "category": "지역",
-      "lastEditedTime": "2026.01.07. 21:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "지역 중소상공인을 위한 디지털 솔루션",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "골목상권 활성화를 위한 매칭 앱",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지역 화폐 연동 포인트 적립 혜택",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지자체 소상공인 대출 이자 지원",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "온라인 시장 진출 노하우 교육",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지역 축제 연계 특산물 판매 부스",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "공동 배달망 구축을 위한 협의체",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "인민망",
-      "category": "종합/경제",
-      "lastEditedTime": "2026.01.07. 21:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "글로벌 공급망 협력 강화와 무역 안정화",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "신에너지 산업의 국제 표준 협력",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "디지털 경제 발전 로드맵 발표",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "주요 도시 인프라 현대화 성과",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "문화 교류를 통한 상호 이해 증진",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "농촌 활성화 및 빈곤 퇴치 사례",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "첨단 기술 단지 투자 유치 현황",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "일요신문",
-      "category": "방송/통신",
-      "lastEditedTime": "2026.01.07. 21:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "주말 예능 시청률 전쟁, 승자는?",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "특종: 연예계 핑크빛 소식 비하인드",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "드라마 촬영장 밀착 취재기",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "유튜버들의 방송 진출 성공 전략",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "화제의 인물 단독 인터뷰 공개",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "시즌제 예능의 인기 비결 분석",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "사회적 이슈가 된 방송 장면들",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "전기신문",
-      "category": "IT",
-      "lastEditedTime": "2026.01.07. 22:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "차세대 전력망 스마트 그리드 구축",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "전기차 무선 충전 기술 상용화",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "신재생 에너지 저장 장치(ESS) 동향",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지능형 빌딩 에너지 관리 시스템",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "반도체 공장 특수 전력 설비 점검",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "송전 선로 무인 드론 점검 도입",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "초전도체 기술을 활용한 전력 송전",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "정신의학신문",
-      "category": "영자지",
-      "lastEditedTime": "2026.01.07. 22:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "Mental Health Awareness in Modern Society",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "How Sleep Affects Cognitive Function",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Psychological Impact of Social Media",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Meditation: Science Behind the Zen",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Workplace Stress Management Tips",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Understanding Emotional Intelligence",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "New Trends in Clinical Psychology",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "조이뉴스",
-      "category": "스포츠/연예",
-      "lastEditedTime": "2026.01.07. 22:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "오늘의 연예계 핫이슈 실시간 요약",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "신곡 차트 올킬, 음원 강자 귀환",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "패션 매거진 커버 장식한 스타",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "인기 드라마 종영 소감 인터뷰",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "콘서트 현장의 열기 생생 전달",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "스타의 일상, SNS 속 핫템 정보",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "예능 유망주들이 꼽은 롤모델",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "철강금속신문",
-      "category": "매거진/전문지",
-      "lastEditedTime": "2026.01.07. 22:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "고부가 가치 특수강 시장 경쟁력 확보",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "수소 환원 제철 기술의 미래 전망",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "글로벌 철강 수요 회복세 분석",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "비철금속 가격 변동과 산업 영향",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "스마트 팩토리 도입 철강 공정 혁신",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "자동차용 초고장력 강판 개발",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "철강 폐기물 재활용 기술 성과",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "초이스경제",
-      "category": "지역",
-      "lastEditedTime": "2026.01.07. 23:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "지역 특화 산업 육성을 위한 금융 지원",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "지역 상권 살리는 제로 페이 혜택",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "중소기업 상생을 위한 협약식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "전국 주요 상권 임대료 동향 보고",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "귀농 귀촌 정착 지원 프로그램",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지역 경제 전문가 초청 세미나",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "마을 기업 성공 사례 집중 분석",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "컴퓨터월드",
-      "category": "종합/경제",
-      "lastEditedTime": "2026.01.08. 08:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "엔터프라이즈 AI 시장 규모 급성장",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "데이터 센터 냉각 기술의 혁신",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "하이브리드 클라우드 도입 전략",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "서버 가상화 기술의 보안 이슈",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "오픈 소스 데이터베이스 트렌드",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "IT 예산 관리 및 비용 최적화",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "국내 테크 기업의 글로벌 경쟁력",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "텐아시아",
-      "category": "방송/통신",
-      "lastEditedTime": "2026.01.08. 08:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "글로벌 아이돌 데뷔 프로젝트 런칭",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "스타 패션: 공항 도둑 스타일 분석",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "드라마 시청률 퀸의 복귀작 소식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "신인 작곡가들이 꼽은 인생곡",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "음악 방송 비하인드 직캠 화제",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "아이돌 팬덤의 기부 문화 열기",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "예능 대세들의 광고 촬영 현장",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "티브이데일리",
-      "category": "IT",
-      "lastEditedTime": "2026.01.08. 08:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "스마트 기기와 엔터테인먼트의 융합",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "VR 콘서트의 현장감 극대화 기술",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "AI 추천 알고리즘의 고도화 분석",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "차세대 디스플레이의 화질 혁명",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "스트리밍 전용 디바이스 출시 소식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "모바일 게임 엔진의 진화 방향",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "콘텐츠 불법 다운로드 방지 기술",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "한국금융",
-      "category": "영자지",
-      "lastEditedTime": "2026.01.08. 08:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "Financial Market Outlook for the New Year",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "Investment Strategies for Volatile Markets",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "The Role of Fintech in Modern Banking",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Impact of Interest Rates on Housing",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Global Trade Policies and Economies",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Understanding Cryptocurrency Taxes",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Wealth Management Trends for 2026",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "한국대학신문",
-      "category": "스포츠/연예",
       "lastEditedTime": "2026.01.08. 09:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "대학가 축제 라인업 열풍과 트렌드",
+      "coverImg": "https://loremflickr.com/320/200/eco,nature",
+      "coverNewsTitle": "2026 탄소국경세 전면 시행, 국내 기업 비상",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "동아리 리그 결승전 스포츠 열기",
+          "newsTitle": "제로 웨이스트 숍, 동네 거점으로 진화 중",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "캠퍼스 버스킹 유망주 인터뷰",
+          "newsTitle": "미세플라스틱 제거하는 신기술 국내 연구진 개발",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "연극영화과 졸업 공연 작품성 극찬",
+          "newsTitle": "전기차 폐배터리 재활용 시장 100조 원대로 성장",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "대학생이 뽑은 최애 예능인 순위",
+          "newsTitle": "친환경 에코 패키징 도입 안 하면 수출 길 막힌다",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "체육 특기생 지원 제도 개선안",
+          "newsTitle": "서울 도심 속 '숨 쉬는 숲' 프로젝트 성과 보고",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "MZ세대 캠퍼스 라이프와 미디어",
+          "newsTitle": "바이오 플라스틱의 한계와 새로운 대안들",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
-      "pressName": "BBS News",
+      "id": 1,
+      "pressName": "낚시춘추",
       "category": "매거진/전문지",
-      "lastEditedTime": "2026.01.08. 09:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "전통 문화유산의 가치와 보존 방안",
+      "lastEditedTime": "2026.01.08. 09:12",
+      "coverImg": "https://loremflickr.com/320/200/fishing,sea",
+      "coverNewsTitle": "겨울 얼음낚시, 안전하게 즐기는 10가지 수칙",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "사찰 음식으로 배우는 건강 식단",
+          "newsTitle": "올해 최고의 붕어 낚시터, 경북권 저수지 집중 분석",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "명상과 마음 챙김 템플스테이 체험",
+          "newsTitle": "초경량 탄소 섬유 낚싯대 선택 가이드",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "국내 중요 문화재 발굴 현장 보고",
+          "newsTitle": "바다낚시 입문자를 위한 채비 준비법",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "전통 서예의 현대적 예술 승화",
+          "newsTitle": "친환경 미끼 사용이 생태계에 미치는 긍정적 영향",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "불교 미술 기획전시 관람 가이드",
+          "newsTitle": "남해안 감성돔 포인트, 현지꾼들만 아는 비밀 명소",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "사회적 갈등 해소를 위한 지혜",
+          "newsTitle": "밤낚시 필수 아이템: 고휘도 LED 찌 리뷰",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
-      "pressName": "BUSINESS POST",
-      "category": "지역",
-      "lastEditedTime": "2026.01.08. 09:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "지방 거점 국립대 창업 지원 클러스터",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "지방 소멸 방지 청년 정책 성공 사례",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지역 강소기업 취업 박람회 소식",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "향토 기업의 글로벌 진출 원조",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지자체 홍보 마케팅 우수 아이디어",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "우리 동네 전통 시장 브랜드화",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지방 산업 단지 스마트화 공고",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "BylineNetwork",
+      "id": 2,
+      "pressName": "뉴스토마토",
       "category": "종합/경제",
-      "lastEditedTime": "2026.01.08. 09:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "빅테크 기업의 새로운 수익 모델 분석",
+      "lastEditedTime": "2026.01.08. 10:05",
+      "coverImg": "https://loremflickr.com/320/200/finance,business",
+      "coverNewsTitle": "금리 인하 기조 전환, 부동산 시장 반등 시그널인가",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "구독 경제의 함정과 소비자 권리",
+          "newsTitle": "반도체 수출 실적 역대 최대치 갱신",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "인앱 결제 정책 변화와 파급 효과",
+          "newsTitle": "대형 건설사, 해외 플랜트 수주 릴레이 가속",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "핀테크와 전통 금융의 협력 모델",
+          "newsTitle": "비트코인 1억 시대, 가상자산 과세 논란 재점화",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "디지털 광고 시장의 새로운 규칙",
+          "newsTitle": "주요 기업 신년 인사 키워드는 '기술 혁신'과 '안정'",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "스타트업 엑시트 전략 가이드라인",
+          "newsTitle": "소비자 물가 안정세 진입... 장바구니 부담 덜까",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "IT 기반 ESG 경영 평가 지표",
+          "newsTitle": "K-푸드, 동남아 넘어 유럽 시장 점유율 확대",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
-      "pressName": "CEO스코어데일리",
-      "category": "방송/통신",
-      "lastEditedTime": "2026.01.08. 10:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "주요 기업 신년 경영 계획 및 인사",
+      "id": 3,
+      "pressName": "뉴스핌",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 10:20",
+      "coverImg": "https://loremflickr.com/320/200/economy,global",
+      "coverNewsTitle": "글로벌 공급망 재편, 동남아로 향하는 한국 공장들",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "대기업 지배 구조 개편 핵심 쟁점",
+          "newsTitle": "미국 대선 결과에 따른 국내 증시 영향 분석",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "방송 통신 분야 CEO 연봉 분석",
+          "newsTitle": "원-달러 환율 1,200원대 하향 안정세 유지",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "미래 신수종 사업 투자 규모 발표",
+          "newsTitle": "스타트업 투자 시장 얼어붙었나... 옥석 가리기 본격화",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "글로벌 시장 점유율 확보 전략",
+          "newsTitle": "국가 핵심 기술 보호법 강화, 산업 스파이 근절 나선다",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "주주 환원 정책 강화 예고 소식",
+          "newsTitle": "온라인 유통 공룡들의 새벽 배송 전쟁 2라운드",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "사내 복지 혁신 사례 집중 탐구",
+          "newsTitle": "고령화 시대, 시니어 비즈니스가 경제의 핵심축",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
-      "pressName": "cnbNEWS",
-      "category": "IT",
-      "lastEditedTime": "2026.01.08. 10:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "디지털 자산 시장 투명성 제고 방안",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "NFT 활용 비즈니스 모델의 진화",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "메타버스 내 저작권 보호 기술",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "웹 3.0 기반의 새로운 인터넷 환경",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "블록체인 보안 사고 예방 체크리스트",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "중앙은행 디지털 화폐(CBDC) 전망",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "IT 전문 변호사가 말하는 규제 리스크",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "DataNews",
-      "category": "영자지",
-      "lastEditedTime": "2026.01.08. 10:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "The Power of Data Visualization",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "Analyzing Global Population Trends",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "The Future of Big Data in Healthcare",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "How to Build a Data-Driven Culture",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Statistics on Remote Work Efficiency",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Climate Change Data: Visualized",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Key Performance Indicators for Tech",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "EBN",
-      "category": "스포츠/연예",
+      "id": 4,
+      "pressName": "데일리한국",
+      "category": "종합/경제",
       "lastEditedTime": "2026.01.08. 10:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "스포츠 의류 시장의 친환경 열풍",
+      "coverImg": "https://loremflickr.com/320/200/korea,news",
+      "coverNewsTitle": "지자체 소멸 위기, '디지털 노마드' 유치로 해법 찾는다",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "운동화 리셀 시장의 가격 안정화",
+          "newsTitle": "국가 장학금 제도 전면 개편, 취약계층 혜택 확대",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "연예인 광고 효과 측정 데이터",
+          "newsTitle": "한반도 평화 프로세스, 다자간 대화 재개 움직임",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "피트니스 앱 가입자 성향 분석",
+          "newsTitle": "저출산 대책 실효성 논란... '육아 휴직 의무화' 대안 부상",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "골프 용품 수입액 추이 보고서",
+          "newsTitle": "전국 주요 도시 광역급행철도(GTX) 노선 확정",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "국내 아웃도어 브랜드 순위 변화",
+          "newsTitle": "전통시장 온누리상품권 디지털 사용처 대폭 확대",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "엔터사 주가 변동 핵심 요인들",
+          "newsTitle": "공공기관 2차 지방 이전 계획, 지역 갈등 해소가 관건",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
-      "pressName": "ELLE",
-      "category": "매거진/전문지",
-      "lastEditedTime": "2026.01.08. 11:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "봄 시즌 런웨이 리포트와 스타일 팁",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "올해의 컬러와 패션 아이템 추천",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "뷰티 트렌드: 스킨케어 미니멀리즘",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "명품 브랜드의 가상 세계 진출기",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "아이코닉한 액세서리 매칭 가이드",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지속 가능한 럭셔리 패션 브랜드",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "라이프스타일: 인테리어 꿀팁 모음",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "GameMeca",
-      "category": "종합/경제",
-      "lastEditedTime": "2026.01.08. 11:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "올해 최고 기대작, 정식 출시일 확정",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "게임 시장 매출 규모 역대급 경신",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "신작 엔진으로 구현한 실사 그래픽",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "글로벌 게임 어워드 후보작 발표",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "클라우드 게임 플랫폼 구독 모델",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "인디 게임 개발사 투자 지원 확대",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "게임 내 경제 시스템 밸런스 조정",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "HUFFPOST",
+      "id": 5,
+      "pressName": "데일리NK",
       "category": "방송/통신",
-      "lastEditedTime": "2026.01.08. 11:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "다양성과 포용성을 위한 미디어의 역할",
+      "lastEditedTime": "2026.01.08. 11:00",
+      "coverImg": "https://loremflickr.com/320/200/northkorea,politics",
+      "coverNewsTitle": "북한 내부 장마당 물가 급등... 식량난 심화 조짐",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "기후 위기 대응을 위한 다큐멘터리",
+          "newsTitle": "접경 지역 무역 활동 재개 움직임 포착",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "MZ세대가 열광하는 소통형 예능",
+          "newsTitle": "탈북민 정착 지원금 인상, 자립 성공 사례 늘어",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "디지털 웰빙을 위한 스마트폰 사용법",
+          "newsTitle": "북한 MZ세대 사이에서 퍼지는 한국 문화 실태",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "글로벌 인권 이슈 현장 리포트",
+          "newsTitle": "동북아 외교 관계의 변화와 한반도 정세 전망",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "예술과 기술의 경계를 허무는 전시",
+          "newsTitle": "대북 인도적 지원 사업의 새로운 접근 방식 제언",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "사회적 소수자 목소리 담은 팟캐스트",
+          "newsTitle": "위성 사진으로 본 북한 주요 산업 단지의 변화",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
-      "pressName": "Insight",
+      "id": 6,
+      "pressName": "디디넷",
+      "category": "IT",
+      "lastEditedTime": "2026.01.08. 11:15",
+      "coverImg": "https://loremflickr.com/320/200/server,tech",
+      "coverNewsTitle": "양자 컴퓨팅 상용화 성큼, 보안 체계 판도 바뀐다",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "클라우드 네이티브 전환, 기업 생존의 필수 조건",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "데이터 센터 액침 냉각 기술 도입으로 전력 효율 극대화",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "오픈소스 AI 모델의 약진, 빅테크 독점 깨나",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "저전력 반도체 설계 경쟁... 모바일 기기 혁신 주도",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "엣지 컴퓨팅의 진화, 자율주행차 응답 속도 0.1초 단축",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "국내 중소 IT 기업의 글로벌 진출 성공 비결 공개",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "pressName": "디자인정글",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 11:30",
+      "coverImg": "https://loremflickr.com/320/200/design,art",
+      "coverNewsTitle": "2026 디자인 키워드: '인간 중심적 미니멀리즘'",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "생성형 AI와 디자이너의 협업, 예술의 경계를 넘다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "지속 가능한 소재를 활용한 산업 디자인의 미학",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "도시 재생 프로젝트: 버려진 공장이 예술 공간으로",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "사용자 경험(UX) 디자인의 미래, 음성 제어와 감성 인식",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "브랜드 아이덴티티, 폰트 하나로 바뀌는 기업의 첫인상",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "올해의 디자인 어워드 수상작으로 본 글로벌 트렌드",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "pressName": "디지털투데이",
       "category": "IT",
       "lastEditedTime": "2026.01.08. 11:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "생활 속 IT 꿀팁: 배터리 수명 늘리기",
+      "coverImg": "https://loremflickr.com/320/200/digital,blockchain",
+      "coverNewsTitle": "핀테크를 넘어선 테크핀, 금융의 디지털 전환 마무리에 박차",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "요즘 유행하는 AI 사진 보정 앱",
+          "newsTitle": "메타버스 기반 가상 오피스 도입 사례와 성과 분석",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "편리한 일상을 위한 스마트 가전",
+          "newsTitle": "블록체인 기반 투명한 유통 이력 관리 시스템 확산",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "코딩 없이 앱 만드는 노코드 툴",
+          "newsTitle": "차세대 6G 통신 표준 선점 경쟁, 한·미·일 삼국지",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "가상 화폐 보안 사고 예방법",
+          "newsTitle": "스마트 팩토리 도입 중소기업, 생산성 평균 30% 향상",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "최신형 태블릿 PC 비교 분석",
+          "newsTitle": "개인화된 AI 비서 서비스, 일상의 모든 것을 대신한다",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "아이들을 위한 코딩 교육 교구",
+          "newsTitle": "사이버 보안의 새로운 패러다임: 제로 트러스트 모델",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
-      "pressName": "IT Chosun",
-      "category": "영자지",
-      "lastEditedTime": "2026.01.08. 12:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "Leading the Global Tech Landscape",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "Korea's Semiconductor Dominance",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Future of Robotics in Logistics",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Cybersecurity Threats in 2026",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "New Era of 6G Connectivity",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Investment in Quantum Tech",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "Tech Startups to Watch in Asia",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "IT dongA",
+      "id": 9,
+      "pressName": "마이데일리",
       "category": "스포츠/연예",
-      "lastEditedTime": "2026.01.08. 12:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "스포츠와 IT의 만남: 스마트 웨어러블",
+      "lastEditedTime": "2026.01.08. 12:00",
+      "coverImg": "https://loremflickr.com/320/200/star,concert",
+      "coverNewsTitle": "K-팝 스타들, 빌보드 '핫 100' 장기 집권 비결은?",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "훈련 데이터 분석용 전용 앱",
+          "newsTitle": "화제의 드라마 종영, 시즌 2 제작 확정 소식에 팬들 환호",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "e스포츠 전용 하이엔드 게이밍 기어",
+          "newsTitle": "국가대표 축구팀, 월드컵 예선에서 짜릿한 역전승",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "온라인 팬미팅 시스템 구축 사례",
+          "newsTitle": "올해의 신인 그룹, 데뷔와 동시에 음원 차트 올킬",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "아이돌 VR 콘텐츠 제작 현장",
+          "newsTitle": "스타들의 사복 패션, SNS에서 화제된 아이템은 무엇?",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "스마트 경기장 직관 경험 혁신",
+          "newsTitle": "영화제 레드카펫을 수놓은 스타들의 베스트 드레서",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "유튜브 스포츠 채널 성장 전략",
+          "newsTitle": "인기 예능 출연진 교체 카드, 시청률 반등 성공할까",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
-      "pressName": "JIJI",
+      "id": 10,
+      "pressName": "매일노동뉴스",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 12:15",
+      "coverImg": "https://loremflickr.com/320/200/labor,worker",
+      "coverNewsTitle": "주 4일제 도입 실험, 근로 의욕 향상과 생산성의 관계",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "최저임금 협상 타결, 노사 간의 쟁점과 남은 과제",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "플랫폼 노동자 권리 보장법 국회 통과... 무엇이 바뀌나",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "산업재해 예방을 위한 기업들의 안전 관리 강화 실태",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "청년 구직자들이 원하는 일자리 조건 1위는 '워라밸'",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "비정규직 정규직 전환 과정에서의 갈등과 사회적 합의",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "감정 노동 보호를 위한 가이드라인, 현장 정착률은?",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "pressName": "맥스무비",
       "category": "매거진/전문지",
       "lastEditedTime": "2026.01.08. 12:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "글로벌 시사 이슈: 동아시아 정세",
+      "coverImg": "https://loremflickr.com/320/200/movie,cinema",
+      "coverNewsTitle": "올해 최고 기대작 SF 대작, 예매 오픈과 동시에 서버 마비",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "경제 전문가가 본 세계 무역망",
+          "newsTitle": "독립 영화의 반란, 해외 영화제에서 주요 부문 수상",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "새로운 에너지 패러다임 분석",
+          "newsTitle": "천만 감독의 신작 인터뷰: 이번에는 '가족' 이야기",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "심층 인터뷰: 미래학자와의 대화",
+          "newsTitle": "다시 돌아온 고전 명작, 리마스터링 개봉 열풍",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "각국 정부의 디지털 통화 정책",
+          "newsTitle": "OTT와 극장의 공생 전략, 동시 개봉작 늘어난다",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "글로벌 공급망 재편의 핵심 포인트",
+          "newsTitle": "영화 속 특수효과의 진화: 어디까지가 실제인가",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "국제 사회의 분쟁 해결 메커니즘",
+          "newsTitle": "원작 웹툰을 영화화한 작품들, 올해 라인업 총정리",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
-      "pressName": "KBS WORLD",
-      "category": "지역",
-      "lastEditedTime": "2026.01.08. 12:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "전국 각지의 소식을 세계로 전달",
-      "coverNewsLink": "https://news.naver.com",
-      "newsTitleList": [
-        {
-          "newsTitle": "지방 전통 문화의 글로벌화 프로젝트",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "외국인이 가보고 싶은 한국 명소",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지역 특산물 수출 활성화 방안",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "다문화 가정을 위한 정착 지원",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "전국 기상 특보 실시간 알림",
-          "link": "https://news.naver.com"
-        },
-        {
-          "newsTitle": "지역 균형 발전을 위한 주요 정책",
-          "link": "https://news.naver.com"
-        }
-      ]
-    },
-    {
-      "pressName": "MK스포츠",
+      "id": 12,
+      "pressName": "미디어펜",
       "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 12:45",
+      "coverImg": "https://loremflickr.com/320/200/media,press",
+      "coverNewsTitle": "디지털 미디어 시대, 저널리즘의 신뢰 회복이 관건",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "대형 포털의 뉴스 알고리즘 투명성 강화 대책",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "1인 미디어 창작자의 사회적 책임과 자정 작용",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "광고 시장의 변화: TV 광고 지고 소셜 미디어 광고 뜬다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "가짜 뉴스 판별하는 AI 팩트체크 시스템 도입",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "언론사들의 유료 구독 모델 성공 사례 집중 분석",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "차세대 방송 장비 도입으로 UHD 방송 커버리지 확대",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "pressName": "미주한국일보",
+      "category": "지역",
       "lastEditedTime": "2026.01.08. 13:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "프로야구 연봉 협상과 구단 운영",
+      "coverImg": "https://loremflickr.com/320/200/usa,korean",
+      "coverNewsTitle": "미국 내 한인 이민 사회의 정치적 영향력 확대",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "스포츠 마케팅의 시장 가치 분석",
+          "newsTitle": "한인 기업들, 실리콘밸리에서 기술 혁신 주도",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "스타 선수의 개인 브랜드 사업",
+          "newsTitle": "미주 한인 2세들의 정체성 찾기와 한국어 교육 열풍",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "신규 경기장 유치를 위한 경제 효과",
+          "newsTitle": "현지 교포 사회의 노인 복지 문제와 공동체 해결책",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "프로 리그 스폰서십 체결 현황",
+          "newsTitle": "K-컬처가 미주 한인들의 위상 제고에 미친 영향",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "스포츠 에이전시의 사회적 책임",
+          "newsTitle": "미국 이민법 개정안, 한인 사회에 미칠 파장은?",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "해외 자본의 국내 스포츠 투자",
+          "newsTitle": "한인 커뮤니티의 자선 및 봉사 활동 미담 사례",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
-      "pressName": "Newsen",
-      "category": "방송/통신",
+      "id": 14,
+      "pressName": "보안뉴스",
+      "category": "IT",
       "lastEditedTime": "2026.01.08. 13:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "예능 프로그램 섭외 1순위 누구?",
+      "coverImg": "https://loremflickr.com/320/200/security,cyber",
+      "coverNewsTitle": "딥페이크 활용한 피싱 공격 급증, 예방법과 기술적 대응",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "방금 전 올라온 연예인 SNS 사진",
+          "newsTitle": "국가 배후 해커 조직의 국내 공공기관 공격 시도 차단",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "드라마 촬영 대기 중인 주연 배우",
+          "newsTitle": "스마트 홈 보안 취약점 주의보... 사생활 노출 위험",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "아이돌 그룹의 새 리얼리티 런칭",
+          "newsTitle": "생체 인증 보안의 진화: 지문 넘어 홍채와 심박수까지",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "방송가에 부는 복고풍 열풍",
+          "newsTitle": "기업용 랜섬웨어 복구 솔루션 시장 급성장",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "신인 개그맨들의 라이브 코너",
+          "newsTitle": "정보보호 최고책임자(CISO)의 역할과 위상 강화 필요성",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "라디오 DJ들의 유쾌한 입담 모음",
+          "newsTitle": "다크웹 모니터링 서비스로 유출된 개인정보 실시간 확인",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
+      "id": 15,
+      "pressName": "비즈한국",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 13:30",
+      "coverImg": "https://loremflickr.com/320/200/business,office",
+      "coverNewsTitle": "재계 서열 바꾼 신성장 동력, 바이오와 우주 산업",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "오너 3세들의 경영 전면 배치... 기업 문화가 바뀐다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "기업 사냥꾼에서 가치 투자자로, 사모펀드의 변신",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "ESG 경영의 허와 실: 보여주기식 활동 넘어서야",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "중견 기업의 성공적인 가업 승계 전략 노하우",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "해외 유망 기업 M&A를 통한 글로벌 공급망 확보 전략",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "사옥 이전 열풍... 직원의 창의력을 높이는 사무 공간 디자인",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "pressName": "산업일보",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 13:45",
+      "coverImg": "https://loremflickr.com/320/200/industry,factory",
+      "coverNewsTitle": "국내 제조업의 부활, 지능형 로봇 도입이 핵심",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "친환경 제철 공법 상용화로 탄소 중립 실현 앞당긴다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "전기차 모터용 희토류 자립화 성공, 수입 대체 효과 기대",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "3D 프린팅 기술로 항공 부품 생산 시간 50% 단축",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "노후 산업 단지의 대변신: '스마트 에너지 플랫폼' 구축",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "글로벌 공작기계 전시회에서 확인한 한국의 기술 위상",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "뿌리 산업의 인력난 해소, 외국인 숙련공 유치가 답인가",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "pressName": "소비자가만드는신문",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 14:00",
+      "coverImg": "https://loremflickr.com/320/200/consumer,shop",
+      "coverNewsTitle": "교묘해지는 슈링크플레이션, 소비자 권익 보호 대책 시급",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "구독 서비스 해지 어렵게 만든 '다크 패턴' 집중 점검",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "가전제품 무상 수리 기간 연장 요구 목소리 높아진다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "해외 직구 사기 피해 급증, 안전한 결제 시스템 이용 권장",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "배달 앱 중개 수수료 인상 논란... 자영업자와 상생 방안은?",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "친환경 마케팅인 줄 알았더니 '그린워싱'... 소비자 기만 주의",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "어린이 장난감 안전 검사 기준 대폭 강화... 유해 물질 차단",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "pressName": "스포츠경향",
+      "category": "스포츠/연예",
+      "lastEditedTime": "2026.01.08. 14:15",
+      "coverImg": "https://loremflickr.com/320/200/baseball,stadium",
+      "coverNewsTitle": "프로야구 개막전, 역대 최다 관중 기록 갈아치울까",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "해외파 야구 스타의 국내 복귀설 솔솔... 팬들 기대감 고조",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "배구 여제, 은퇴 번복하고 코트 복귀 결정한 진짜 이유",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "데이터 야구의 승리: 하위권 팀의 반란이 시작됐다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "스타일리시한 스포츠웨어 브랜드 화보 공개한 스타",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "연예인 야구단 자선 경기 성황리 개최... 수익금 전액 기부",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "도심 속 즐기는 이색 스포츠 '패들 테니스' 인기 폭발",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "pressName": "스포츠동아",
+      "category": "스포츠/연예",
+      "lastEditedTime": "2026.01.08. 14:30",
+      "coverImg": "https://loremflickr.com/320/200/soccer,player",
+      "coverNewsTitle": "유럽 리그 누비는 한국 선수들, 명문 클럽 영입 경쟁",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "K-리그의 세계화 전략: 동남아 유망주 대거 영입",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "피겨 스케이팅 신동 등장... 차세대 올림픽 메달 기대주",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "e스포츠도 이제 정식 종목, 아시안게임 선발전 후끈",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "스포츠 재활 기술의 발전으로 부상 선수의 복귀 빨라졌다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "유명 축구 해설가가 꼽은 올해의 우승 후보 1위는?",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "동계 스포츠 활성화 위한 전국 규모 스키 캠프 개최",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "pressName": "스포츠월드",
+      "category": "스포츠/연예",
+      "lastEditedTime": "2026.01.08. 14:45",
+      "coverImg": "https://loremflickr.com/320/200/golf,sport",
+      "coverNewsTitle": "골프 대중화 시대, '2030' 골퍼 취향 저격한 필드 패션",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "국내 투어 상금 규모 확대... 톱 랭커들의 치열한 순위 싸움",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "신인왕 쟁탈전 본격화, 전반기 눈에 띄는 활약상 정리",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "스포츠 에이전트의 세계: 스타 선수를 만드는 보이지 않는 손",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "지역 연고 구단과 상생하는 스포츠 마케팅 사례",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "경기장 내 '친환경 관람 문화' 캠페인... 일회용품 없앤다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "비인기 종목의 설움 씻고 메달 획득한 영웅들의 감동 스토리",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "pressName": "스포츠조선",
+      "category": "스포츠/연예",
+      "lastEditedTime": "2026.01.08. 15:00",
+      "coverImg": "https://loremflickr.com/320/200/entertainment,drama",
+      "coverNewsTitle": "글로벌 OTT와 손잡은 K-드라마, 전 세계 시청률 1위 탈환",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "대형 소속사 신인 아이돌, 데뷔 전부터 화제성 압도",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "톱스타 커플 탄생 임박? 연예계 핑크빛 소식 비하인드",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "화제의 예능 프로그램, 해외 포맷 수출 쾌거 달성",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "스크린 복귀하는 대배우들의 연기 변신 기대 포인트",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "가수들의 콘서트 티켓팅 전쟁... 암표 근절 위한 대책은?",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "스타들의 기부 릴레이, 선한 영향력이 바꾸는 세상",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "pressName": "스포츠Q",
+      "category": "스포츠/연예",
+      "lastEditedTime": "2026.01.08. 15:15",
+      "coverImg": "https://loremflickr.com/320/200/athlete,training",
+      "coverNewsTitle": "디테일이 승부를 결정한다... 스포츠 데이터 분석의 힘",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "운동 선수들을 위한 맞춤형 식단 관리 앱 사용기",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "심층 인터뷰: 은퇴 후 제2의 인생을 사는 스포츠 스타",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "스포츠 테크 시장의 강자들, 웨어러블 기기로 승부수",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "생활 체육 동호인들을 위한 전국 규모 대회 일정 안내",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "청소년 스포츠 클럽 활성화를 위한 지자체 지원 방안",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "스포츠 심리학자가 말하는 '슬럼프 극복'의 비결",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "pressName": "시사위크",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 15:30",
+      "coverImg": "https://loremflickr.com/320/200/politics,news",
+      "coverNewsTitle": "정치권의 '세대교체' 바람, 청년 정치인들의 약진",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "선거구제 개편 논의 본격화... 비례성 강화가 핵심",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "사회적 갈등 해소를 위한 여야 협치 기구 발족",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "심층 취재: 소외된 계층의 목소리를 담은 복지 사각지대",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "국가 안보 전략의 대전환, 뉴미디어 심리전 대비책 마련",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "지방 자치 분권 강화법 시행... 지역 특색 살린 정책 가능할까",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "환경 보호와 경제 성장의 딜레마, 합리적인 대안을 찾아서",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "pressName": "씨네21",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 15:45",
+      "coverImg": "https://loremflickr.com/320/200/film,director",
+      "coverNewsTitle": "거장 감독들의 신작 대결, 칸 영화제 미리보기",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "한국 영화의 장르적 실험: 이번엔 정통 호러다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "독립 영화 전용관 살리기 캠페인... 관객들의 발길 이어져",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "캐릭터 몰입의 장인, 주연 배우의 메소드 연기 비하인드",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "영화 비평의 새로운 시선: 유튜브 영화 리뷰의 빛과 그림자",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "애니메이션 시장의 역습, 성인 관객 잡은 감성 작품들",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "시나리오 작가들의 처우 개선과 저작권 보호법 제정 움직임",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "pressName": "아리랑",
+      "category": "영자지",
+      "lastEditedTime": "2026.01.08. 16:00",
+      "coverImg": "https://loremflickr.com/320/200/korea,culture",
+      "coverNewsTitle": "Arirang TV, Expanding K-Content Reach to South America",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "Global Viewers Pick 'Seoul' as Top Travel Destination",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "The Rise of K-Indie Music in the Global Scene",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "Korean Traditional Crafts Meet Modern Tech",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "Learning Hangeul: Online Enrollment Hits Record High",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "Documentary: The Hidden Beauty of Jeju Island",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "World Peace Forum Held in Pyeongchang",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "pressName": "아시아투데이",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 16:15",
+      "coverImg": "https://loremflickr.com/320/200/asia,business",
+      "coverNewsTitle": "아시아 경제 공동체 실현을 위한 한국의 역할",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "인도네시아 수도 이전 사업, 한국 건설사 참여 확대",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "아세안 국가들과의 디지털 화폐 협력 강화",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "베트남 생산 기지, '하이테크 거점'으로 진화 중",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "중국 내수 시장 공략을 위한 '프리미엄 K-뷰티' 전략",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "아시아 스타트업 엑스포, 서울에서 성황리 개최",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "동아시아 에너지 안보를 위한 신재생 그리드 구축",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "pressName": "약사공론",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 16:30",
+      "coverImg": "https://loremflickr.com/320/200/pharmacy,medicine",
+      "coverNewsTitle": "비대면 진료 법제화와 약국 배송 시스템 논란",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "AI 기반 복약 지도 보조 시스템 도입 확산",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "고령 사회 맞춤형 '다제약물 관리 서비스' 성과 보고",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "신규 전문약사 제도 안착, 병원 약료 서비스 전문성 강화",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "품절 의약품 사태 해결을 위한 수급 모니터링 강화",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "건기식 소분 판매 서비스, 약국가 새로운 수익 모델로",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "마약류 관리법 강화에 따른 약국 보안 수칙 안내",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "pressName": "에너지경제",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 16:45",
+      "coverImg": "https://loremflickr.com/320/200/energy,power",
+      "coverNewsTitle": "SMR(소형모듈원전) 기술 수출, 에너지 강국 도약",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "수소 경제 로드맵 2.0 선포, 인프라 구축 가속화",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "해상 풍력 발전 단지, 어민 상생 모델로 갈등 해결",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "유가 요동에 에너지 바우처 지원 대상 전격 확대",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "차세대 태양광 페로브스카이트 효율 30% 돌파",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "국가 전력망 지능화, '스마트 그리드' 핵심 기술 확보",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "탄소 포집 및 저장 기술(CCS) 상용화 단지 착공",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "pressName": "연합뉴스",
+      "category": "방송/통신",
+      "lastEditedTime": "2026.01.08. 17:00",
+      "coverImg": "https://loremflickr.com/320/200/breaking,news",
+      "coverNewsTitle": "[속보] 정부, 반도체 메가 클러스터 추가 지원책 발표",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "한미 안보 조약 강화, 첨단 기술 동맹으로 격상",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "물가 상승률 2%대 안착, 금리 하락 시그널 강화",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "전국 기상 특보: 수도권 미세먼지 주의보 발령",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "국회, 초저출산 대응 '아동수당 확대법' 전격 합의",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "세계보건기구, 새로운 변이 바이러스 모니터링 착수",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "한국 축구, 월드컵 최종 예선 조 1위로 본선 진출",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "pressName": "위키리크스한국",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 17:15",
+      "coverImg": "https://loremflickr.com/320/200/leak,secret",
+      "coverNewsTitle": "독점 취재: 거대 기업 내부 고발자가 밝힌 로비 실태",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "국가 기밀 유출 경로 추적, 보안망의 허점 발견",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "빅테크 알고리즘의 정치적 편향성 검증 리포트",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "해외 조세 회피처 이용 기업 리스트 공개",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "전직 고위 공직자의 취업 제한 규정 위반 사례",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "디지털 화폐 세탁 방지망 뚫렸나... 추적 불능 자금의 정체",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "제약업계 리베이트 카르텔, 무기명 투서로 수사 급물살",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "pressName": "이뉴스투데이",
+      "category": "방송/통신",
+      "lastEditedTime": "2026.01.08. 17:30",
+      "coverImg": "https://loremflickr.com/320/200/market,daily",
+      "coverNewsTitle": "중소상공인 디지털 전환 지원, 매출 20% 상승 효과",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "신규 분양 시장 활기, 역세권 대단지 청약 과열",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "카드사 무이자 할부 혜택 축소, 알뜰족의 대응은?",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "프랜차이즈 가맹점주 보호를 위한 표준계약서 개정",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "고물가 시대, '가성비' 강조한 자체 브랜드(PB) 상품 인기",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "퇴직금 연금 전환율 급증, 노후 준비 인식 변화",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "공유 오피스 시장의 재편, 특화 공간 서비스로 승부",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "pressName": "이로운넷",
+      "category": "방송/통신",
+      "lastEditedTime": "2026.01.08. 17:45",
+      "coverImg": "https://loremflickr.com/320/200/social,impact",
+      "coverNewsTitle": "사회적 기업 1만 개 시대, 양적 성장에서 질적 성숙으로",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "임팩트 투자가 바꾸는 스타트업 생태계 지도",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "지역 소멸 해법, 사회적 협동조합에서 찾다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "발달장애인 일자리 창출을 위한 '스마트 팜' 프로젝트",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "가치 소비를 지향하는 MZ세대의 '바이코트' 운동",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "기업의 사회적 책임(CSR)을 넘어 공유 가치(CSV)로",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "공정 무역 제품 판로 확대를 위한 온-오프라인 연계",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "pressName": "이코노미조선",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 18:00",
+      "coverImg": "https://loremflickr.com/320/200/strategy,wealth",
+      "coverNewsTitle": "Cover Story: AI 시대, 리더십의 새로운 정의",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "글로벌 헤지펀드 거물들의 2026 포트폴리오 공개",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "워런 버핏의 새로운 투자처는 한국 반도체 장비주?",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "실리콘밸리의 해고 바람 이후, 인재들은 어디로 갔나",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "기업 승계의 정석: 유럽 장수 기업들의 생존 비결",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "부의 미래: 가상 현실 속 부동산 자산의 가치 평가",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "스페이스 X와 손잡은 국내 기업들, 우주 비즈니스 시동",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "pressName": "이투데이",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 18:15",
+      "coverImg": "https://loremflickr.com/320/200/stock,money",
+      "coverNewsTitle": "코스피 3,000선 안착... 하반기 증시 주도주는?",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "개인 투자자 '국장' 복귀, 정부 밸류업 프로그램 통했나",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "부동산 프로젝트 파이낸싱(PF) 리스크, 구조조정 마무리 단계",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "해외 주식 '직구'족을 위한 절세 가이드와 추천 종목",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "2차 전지 테마주 열풍 이후, 실적 중심 장세 돌입",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "공매도 전면 재개 후 시장 반응: 변동성 관리 비상",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "금융권 AI 상담원 도입 후 소비자 만족도 조사 결과",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "pressName": "인민망",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 18:30",
+      "coverImg": "https://loremflickr.com/320/200/china,world",
+      "coverNewsTitle": "한중 수교 주년 기념, 경제 협력의 새로운 지평",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "중국 내 한국산 화장품 판매량 반등, 트렌드 변화의 힘",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "베이징 동계 비즈니스 포럼 개최, IT 협력 논의",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "중국 관광객 '유커' 귀환, 면세점 및 관광지 활기",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "상하이 자유무역구 내 한국 기업 투자 우대 정책 발표",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "중국 MZ세대의 한국산 캐릭터 굿즈 사랑 열풍",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "한중 탄소 중립 기술 공동 연구소 설립 추진",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "pressName": "일요신문",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 18:45",
+      "coverImg": "https://loremflickr.com/320/200/mystery,investigation",
+      "coverNewsTitle": "추적: 강남 학원가에 파고든 신종 변종 사행성 게임",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "재벌가 파격 혼사, 그 이면에 담긴 비즈니스 결합",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "연예계 은밀한 스폰서십 폭로, 실체 확인 나선다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "정치인 A씨의 해외 자산 은닉 의혹 조사 착수",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "유명 유튜버의 탈세 수법 공개, 국세청 세무조사 예고",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "강력 미제 사건의 결정적 단서? 20년 만의 새로운 증언",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "가상 화폐 사기 조직의 수뇌부 검거 작전 밀착 취재",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "pressName": "전기신문",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 19:00",
+      "coverImg": "https://loremflickr.com/320/200/electric,grid",
+      "coverNewsTitle": "무선 충전 도로 상용화, 달리는 전기차 충전 시대",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "데이터 센터 급증에 따른 고압 전력망 확충 비상",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "전고체 배터리 핵심 소재 양산 체제 구축 성공",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "노후 아파트 전기 설비 안전 점검 의무화 법안 추진",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "전기 기사 자격시험 개편, 실무 위주 문항 대폭 강화",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "V2G(전기차-전력망 연동) 기술로 전기료 재테크 가능해진다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "초전도 케이블 활용한 도심 전력 손실 0% 도전",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "pressName": "정신의학신문",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 19:15",
+      "coverImg": "https://loremflickr.com/320/200/mental,health",
+      "coverNewsTitle": "번아웃 증후군을 넘어 '조용한 사직'에 대처하는 법",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "디지털 디톡스: 스마트폰 중독이 뇌에 미치는 영향",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "회복 탄력성(Resilience)을 키우는 마음 근육 훈련법",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "아동 ADHD 급증, 올바른 약물 치료와 환경 조성의 조화",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "명상이 스트레스 호르몬 수치를 낮추는 과학적 원리",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "노년기 우울증과 치매 초기 증상의 구분법과 예방책",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "직장 내 괴롭힘 피해자를 위한 심리 상담 지원 가이드",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "pressName": "조이뉴스",
+      "category": "스포츠/연예",
+      "lastEditedTime": "2026.01.08. 19:30",
+      "coverImg": "https://loremflickr.com/320/200/kpop,dance",
+      "coverNewsTitle": "인기 아이돌 그룹 7년 차 징크스 깼다... 전원 재계약",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "드라마 속 '케미' 폭발한 주연 배우, 실제 열애설 제기",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "가수 컴백 쇼케이스 현장: 역대급 퍼포먼스로 시선 강탈",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "관찰 예능 출연 스타의 집 공개, 화려함 뒤의 소탈한 일상",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "웹툰 기반 영화 캐스팅 확정, 싱크로율 100% 누구?",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "오디션 프로그램 우승자의 눈물 젖은 데뷔 스토리 인터뷰",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "연예인 유튜브 채널 구독자 100만 돌파 비결 분석",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "pressName": "철강금속신문",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 19:45",
+      "coverImg": "https://loremflickr.com/320/200/steel,metal",
+      "coverNewsTitle": "그린 스틸(Green Steel) 시대, 저탄소 철강이 미래다",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "자동차용 초고장력 강판 공급 확대, 연비 효율 극대화",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "철광석 가격 급등에 따른 원가 절감형 공정 기술 개발",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "알루미늄 시장의 부상, 전기차 경량화의 핵심 소재로",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "글로벌 보호무역주의 확산, 철강 수출 쿼터제 대응 전략",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "특수강 분야 글로벌 1위 탈환을 위한 R&D 투자 확대",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "폐철 스크랩 재활용 활성화를 위한 도시광산 프로젝트",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "pressName": "초이스경제",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 20:00",
+      "coverImg": "https://loremflickr.com/320/200/wallstreet,analyst",
+      "coverNewsTitle": "월가 전문가 진단: 2026년 하반기 경기 연착륙 성공할까",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "미국 연준(Fed) 의장의 발언으로 본 향후 금리 로드맵",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "엔저 현상 장기화, 일본 여행 열풍 뒤에 숨은 경제학",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "빅테크 기업들의 자사주 매입 열풍과 주주 환원 정책",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "글로벌 원자재 펀드 수익률 급등, 인플레이션 헤지 수단",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "신흥국 채권 투자 주의보, 국가 부도 위험 지표 상승",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "디지털 금으로 불리는 가상자산의 포트폴리오 편입 전략",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "pressName": "컴퓨터월드",
+      "category": "IT",
+      "lastEditedTime": "2026.01.08. 20:15",
+      "coverImg": "https://loremflickr.com/320/200/computer,it",
+      "coverNewsTitle": "2026 엔터프라이즈 IT 트렌드: 'AI 통합 인프라'",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "사이버 복원력(Resilience) 강화를 위한 데이터 백업 전략",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "멀티 클라우드 환경에서의 비용 최적화 솔루션 비교",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "로우코드/노코드 플랫폼의 진화, 실무자가 개발자로",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "차세대 CPU와 GPU 탑재한 고성능 워크스테이션 리뷰",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "IT 서비스 관리(ITSM)의 자동화, AI 챗봇의 역할 확대",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "국내 소프트웨어 기업의 SaaS 전환 성공과 해외 진출",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "pressName": "텐아시아",
+      "category": "스포츠/연예",
+      "lastEditedTime": "2026.01.08. 20:30",
+      "coverImg": "https://loremflickr.com/320/200/kpop,idol",
+      "coverNewsTitle": "10주년 맞은 글로벌 그룹, 팬들을 위한 헌정곡 발표",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "신인 보이그룹 멤버들의 개성 넘치는 첫 프로필 공개",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "드라마 촬영장 메이킹 영상 화제: NG 장면도 영화처럼",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "스타들의 사복 패션 분석: 올해의 '공항 패션' 키워드",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "연말 시상식 주인공은 누구? 전문가들이 뽑은 후보 3팀",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "인터뷰: 한류 열풍을 이끄는 스타 작가들의 집필 비결",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "팬들이 꼽은 '내 아이돌의 레전드 무대' 베스트 10",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "pressName": "티브이데일리",
+      "category": "스포츠/연예",
+      "lastEditedTime": "2026.01.08. 20:45",
+      "coverImg": "https://loremflickr.com/320/200/tv,studio",
+      "coverNewsTitle": "지상파 예능의 반격, '숏폼' 형식 도입으로 화제성 잡다",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "인기 드라마 여주인공의 파격적인 쇼트커트 변신 이유",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "실시간 생중계 콘서트, 전 세계 동시 접속자 수 경신",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "방송 사고 비하인드: 생방송 중 돌발 상황에 대처하는 자세",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "스타 패밀리 관찰 예능, 2세들의 성장기에 시청률 쑥쑥",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "해외 로케이션 촬영기: 영상미를 위해 찾아간 오지 명소",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "유명 예능 콤비의 하차 소식에 아쉬워하는 시청자들",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "pressName": "한국금융",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 21:00",
+      "coverImg": "https://loremflickr.com/320/200/finance,bank",
+      "coverNewsTitle": "금융권 슈퍼앱 전쟁, 모든 금융 서비스를 하나로",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "은행권 대출 금리 인하 경쟁, 대환대출 플랫폼 활성화",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "보험사의 디지털 헬스케어 서비스, 건강하면 보험료 할인",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "증권업계 해외 진출 가속, K-금융 영토 확장 나선다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "마이데이터 2.0 시대, 더 정교해진 맞춤형 자산 관리",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "고액 자산가들 사이에서 유행하는 '아트 테크' 투자 기법",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "가족 금융 서비스 강화, 아이부터 노인까지 한 번에 관리",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "pressName": "한국대학신문",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 21:15",
+      "coverImg": "https://loremflickr.com/320/200/campus,university",
+      "coverNewsTitle": "글로컬 대학 30 선정 결과 발표, 대학 구조개혁 급물살",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "AI 융합 전공 신설 열풍, 인문계 대학생들의 도전",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "대학가 축제 문화의 변화: '주점' 대신 '체험형 팝업스토어'",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "지방 거점 국립대와 지자체의 상생 프로젝트 성공 사례",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "장학금 혜택 늘린 대학들, 우수 인재 유치 경쟁 치열",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "캠퍼스 내 스타트업 창업 열기, 학생 창업가 2만 명 시대",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "해외 대학과의 복수 학위제 확대, 글로벌 경쟁력 강화",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "pressName": "BBS News",
+      "category": "방송/통신",
+      "lastEditedTime": "2026.01.08. 21:30",
+      "coverImg": "https://loremflickr.com/320/200/temple,peace",
+      "coverNewsTitle": "부처님 오신 날 봉축 법요식, '평화와 화합'의 메시지",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "사찰 체험 템플스테이, 외국인 관광객 만족도 98%",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "불교 문화유산의 디지털 아카이브 구축 사업 완료",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "전통 음식 사찰 요리의 세계화, 뉴욕 매거진 집중 조명",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "불교 사회 복지 재단, 독거 노인을 위한 급식 봉사 확대",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "명상 앱 '마음의 쉼터', 스트레스 지수 낮추는 효과 입증",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "지방 소멸 위기 사찰의 변신: 청년 문화 공간으로 개방",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "pressName": "BUSINESS POST",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 21:45",
+      "coverImg": "https://loremflickr.com/320/200/ceo,meeting",
+      "coverNewsTitle": "집중 분석: 상위 10대 그룹의 미래 먹거리 전략 보고서",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "금융 지주 회장들의 신년사 키워드는 '비은행 강화'",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "해외 직접 투자 유치 사상 최대, 글로벌 허브로 부상",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "기업 지배 구조 평가 결과 발표, ESG 등급 상승 기업들",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "차세대 유니콘 기업 10선, 어떤 기술력을 가졌나?",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "오너 경영 vs 전문 경영, 성과로 본 리더십 스타일 분석",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "대기업-중소기업 상생 펀드 조성, 공급망 안정화 도모",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "pressName": "BylineNetwork",
+      "category": "IT",
+      "lastEditedTime": "2026.01.08. 22:00",
+      "coverImg": "https://loremflickr.com/320/200/it,network",
+      "coverNewsTitle": "심층 리포트: SaaS 전성시대, 국내 기업의 생존법",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "개발자 구인난 해소의 열쇠, 'AI 코딩 어시스턴트'의 실력은?",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "데이터 주권 시대, 한국형 '소버린 AI'가 필요한 이유",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "커머스 기술의 미래: 라이브 방송과 결합된 증강현실(AR)",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "IT 전문 저널리스트가 본 CES 2026 핵심 포인트",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "보안 사고는 예고 없이 온다... '모의 해킹' 훈련의 실효성",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "테크 스타트업 CEO 인터뷰: 100억 투자 유치 성공기",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "pressName": "CEO스코어데일리",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 17:10",
+      "coverImg": "https://loremflickr.com/320/200/ceo,office",
+      "coverNewsTitle": "500대 기업 경영진 성적표 공개... 실적 따라 '세대교체' 가속",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "대기업 사내유보금 역대 최대, 투자처는 결국 'AI'",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "여성 등기임원 비중 20% 돌파... 유리천장 깨지는 재계",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "주요 그룹 3·4세 경영권 승계 작업 어디까지 왔나",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "글로벌 공급망 재편 속 기업들의 해외 자본 유출입 분석",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "CEO들이 꼽은 2026년 최대 경영 리스크는 '지정학적 불안'",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "계열사 간 내부거래 비중 낮춘 그룹들, 투명 경영 합격점",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "pressName": "cnbNEWS",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 17:25",
+      "coverImg": "https://loremflickr.com/320/200/company,building",
+      "coverNewsTitle": "문화예술 지원하는 기업들, 메세나 활동으로 브랜드 가치 제고",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "은행권 상생금융 지원책 발표, 소상공인 이자 부담 경감",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "건설업계 신기술 공모전, '탄소저감 콘크리트' 대상 수상",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "유통업계 팝업스토어 열풍, MZ세대의 성지로 떠오른 매장들",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "제약사들의 신약 개발 도전기, 임상 3상 통과 임박 종목",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "국내 중소기업의 이색 아이디어 상품, 해외 시장서 대박",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "에너지 절감 캠페인 동참하는 기업들, 탄소중립 실천 사례",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "pressName": "DataNews",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 17:40",
+      "coverImg": "https://loremflickr.com/320/200/data,graph",
+      "coverNewsTitle": "데이터로 본 2026 트렌드: '나홀로 소비'가 시장 주도",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "서울 아파트 매수세 통계 분석, 30대 비중 다시 상승",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "수출 품목 비중 변화 데이터, 자동차가 반도체 맹추격",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "지방 소멸 위험 지수 데이터 시각화, 해법은 어디에",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "OTT 서비스 이용 시간 통계, 주말 시청 시간 20% 증가",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "전기차 보급률과 충전 인프라 상관관계 수치로 확인",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "데이터 중심 경영 도입 기업, 매출 성장률 평균 15% 상회",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "pressName": "EBN",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 17:55",
+      "coverImg": "https://loremflickr.com/320/200/industry,ship",
+      "coverNewsTitle": "조선업계 슈퍼사이클 도래, 'K-조선' 3년치 일감 확보",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "석유화학업계 체질 개선 가속, 고부가 가치 친환경 제품군 확대",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "항공업계 국제선 운항 100% 회복, 유가 하락에 수익성 개선",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "배터리 소재 공급망 내재화, 리튬·니켈 확보 전쟁 점입가경",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "철강 가격 인상 예고에 자동차·가전업계 수익성 방어 비상",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "방산 수출 200억 달러 시대, 'K-방산' 동유럽 넘어 중동으로",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "물류비 상승세 둔화, 수출 기업들에게는 가뭄의 단비",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "pressName": "ELLE",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 18:10",
+      "coverImg": "https://loremflickr.com/320/200/fashion,model",
+      "coverNewsTitle": "Spring 2026 Fashion Week: 런웨이를 수놓은 메탈릭 룩",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "독점 인터뷰: 세계가 주목하는 한국의 신진 디자이너",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "비건 뷰티의 진화, 성분은 착하게 발색은 강렬하게",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "올봄 머스트 해브 아이템: 오버사이즈 숄더 재킷 스타일링",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "디지털 럭셔리: 가상 현실 속에서 입는 '디지털 패션' 트렌드",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "아이코닉 백의 부활, 빈티지 제품이 다시 사랑받는 이유",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "웰니스 라이프: 도심 속에서 즐기는 명상과 요가 클래스",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "pressName": "GameMeca",
+      "category": "IT",
+      "lastEditedTime": "2026.01.08. 18:25",
+      "coverImg": "https://loremflickr.com/320/200/game,play",
+      "coverNewsTitle": "2026 GOTY 후보 0순위 신작, 실제 플레이 영상 최초 공개",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "국내 게임사들의 콘솔 시장 도전, 'K-소울라이크' 열풍",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "VR 게임의 한계를 넘다, 햅틱 슈트 연동으로 느끼는 실감 전투",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "e스포츠 리그 유료 시청권 도입, 팬들의 반응은 엇갈려",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "확률형 아이템 규제 이후, 게임사들의 새로운 비즈니스 모델",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "인기 IP의 모바일 외전 출시, 원작 팬들 잡을 수 있을까",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "게임 엔진의 진화: '언리얼 엔진 6'가 가져올 그래픽 혁명",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "pressName": "HUFFPOST",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 18:40",
+      "coverImg": "https://loremflickr.com/320/200/society,people",
+      "coverNewsTitle": "우리가 몰랐던 '다양성'의 가치, 함께 사는 세상을 위한 제언",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "기후 위기 최전선의 목소리: '에코 불안'을 이겨내는 법",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "반려동물 가족 1500만 시대, 성숙한 펫티켓이 필요한 시점",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "주거권은 인권이다: 청년들의 주거 불안 해결을 위한 공동체",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "디지털 웰빙 실천하기: 소셜 미디어와 건강하게 거리 두기",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "미니멀리즘을 넘어선 '에센셜리즘', 정말 소중한 것에 집중하기",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "성별 임금 격차 해소를 위한 글로벌 기업들의 파격적 행보",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "pressName": "Insight",
+      "category": "종합/경제",
+      "lastEditedTime": "2026.01.08. 18:55",
+      "coverImg": "https://loremflickr.com/320/200/trend,lifestyle",
+      "coverNewsTitle": "MZ세대가 열광하는 '갓생' 살기 루틴, 핵심은 꾸준함",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "요즘 뜨는 이색 아르바이트: '디지털 장례지도사'를 아시나요",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "편의점 신상 먹거리 리뷰, 품절 대란 일으킨 '그 디저트'",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "여행 트렌드 변화: 관광 대신 '한 달 살기'가 대세인 이유",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "아이패드로 그림 그리기 초보 탈출, 독학 가능한 유료 클래스",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "일상 속 제로 웨이스트 실천법: 텀블러 사용보다 중요한 것",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "직장인 부업 열풍, 전자책 출판으로 월급 외 수익 창출하기",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "pressName": "IT Chosun",
+      "category": "영자지",
+      "lastEditedTime": "2026.01.08. 19:10",
+      "coverImg": "https://loremflickr.com/320/200/tech,future",
+      "coverNewsTitle": "The Semiconductor Cold War: Korea's Strategic Options",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "AI-Driven Healthcare: Diagnosing Rare Diseases in Seconds",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "The Evolution of 6G: Beyond Speed to Instant Connectivity",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "Cyber Resilience: How Companies Bounce Back from Attacks",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "Quantum Computing Breakthrough by Seoul National University",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "Tech Giants vs. Governments: The New Antitrust Battle",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "Sustainable IT: Reducing Carbon Footprints of Data Centers",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "pressName": "IT dongA",
+      "category": "IT",
+      "lastEditedTime": "2026.01.08. 19:25",
+      "coverImg": "https://loremflickr.com/320/200/gadget,mobile",
+      "coverNewsTitle": "신형 폴더블 스마트폰 리뷰: 힌지의 혁신이 두께를 바꿨다",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "가성비 태블릿 PC 3종 비교, 학업용으로 최적의 선택은?",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "윈도우 12 업데이트 주의사항, 내 PC에서도 잘 돌아갈까",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "무선 이어폰 노이즈 캔슬링 성능 테스트, 정점은 어느 브랜드?",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "클라우드 스토리지 용량 부족 해결법, 저렴한 유료 서비스 추천",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "스마트 워치 건강 관리 기능, 부정맥 감지 정확도 신뢰할 만한가",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "초보자를 위한 영상 편집 프로그램, 모바일에서도 전문가급 제작",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "pressName": "JIJI",
+      "category": "지역",
+      "lastEditedTime": "2026.01.08. 19:40",
+      "coverImg": "https://loremflickr.com/320/200/japan,news",
+      "coverNewsTitle": "일본 중앙은행 금리 인상 검토... 엔화 가치 반등하나",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "한일 정상회담 개최 예고, 경제 협력 및 셔틀 외교 복원",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "일본 반도체 연합 '라피더스', 2나노 공정 시제품 양산 성공",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "일본 내 K-푸드 인기 지속, '한국식 편의점' 도쿄 상륙",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "도쿄 증시 사상 최고치 경신, 외국인 투자자 유입 급증",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "일본 관광 시장 활기, 오사카 엑스포 준비 현황 점검",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "저출산 고령화 대책: 일본의 '어린이 가정청' 성과와 과제",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "pressName": "KBS WORLD",
+      "category": "영자지",
+      "lastEditedTime": "2026.01.08. 19:55",
+      "coverImg": "https://loremflickr.com/320/200/world,news",
+      "coverNewsTitle": "Connecting Korea to the World: KBS World's Global Vision",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "K-Drama Awards: The Most Popular Series Voted by Global Fans",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "Exclusive Interview: Prime Minister Discusses Korea's Global Role",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "K-Travel Guide: Hidden Gems in Gangwon Province",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "K-Pop Evolution: From Idols to Global Artistic Icons",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "International Student Life in Korea: Challenges and Successes",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "Weekly News Wrap-up: Economic Stability and Tech Growth",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "pressName": "MK스포츠",
+      "category": "스포츠/연예",
+      "lastEditedTime": "2026.01.08. 20:10",
+      "coverImg": "https://loremflickr.com/320/200/baseball,bat",
+      "coverNewsTitle": "프로야구 연봉 협상 마무리... '100억 클럽' 가입 주인공은?",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "프로농구 플레이오프 돌입, 챔피언 결정전 우승 후보 예측",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "MLB 서울 시리즈 재개 여부 논의, 한국 야구 팬들 설렌다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "신인 드래프트 유망주 인터뷰: '포스트 이정후'를 꿈꾼다",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "프로배구 FA 시장 개막, 대어급 선수들의 이동 경로 추적",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "스포츠 에이전트 인터뷰: 선수 가치를 높이는 협상의 기술",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "데이터로 분석한 투수들의 구속 변화, 올 시즌 대세는 구종",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "pressName": "Newsen",
+      "category": "스포츠/연예",
+      "lastEditedTime": "2026.01.08. 20:25",
+      "coverImg": "https://loremflickr.com/320/200/celebrity,news",
+      "coverNewsTitle": "단독: 대형 커플 탄생? 영화관 데이트 포착된 톱스타 A와 B",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "스타들의 컴백 무대 의상 정보, 패션 트렌드 선도하는 아이돌",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "드라마 촬영장 비하인드 컷 공개, 배우들의 화기애애한 분위기",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "유명 유튜버 예능 진출 성공기, 지상파까지 접수한 입담",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "뮤지컬 무대에 도전한 아이돌 가수, 가창력 논란 잠재운 연기력",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "연예인들의 SNS 일상, 팬들과 소통하는 스타들의 귀여운 모습",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "방송 예정 신작 드라마 캐스팅 라인업, 최고의 기대작은?",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 64,
       "pressName": "NextDaily",
       "category": "IT",
-      "lastEditedTime": "2026.01.08. 13:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "미래 기술 트렌드 2026 전망",
+      "lastEditedTime": "2026.01.08. 20:40",
+      "coverImg": "https://loremflickr.com/320/200/innovation,tech",
+      "coverNewsTitle": "자율주행 4단계 실증 완료... 서울 도심 누비는 무인 택시",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "초지능 AI가 가져올 사회 변화",
+          "newsTitle": "도심 항공 모빌리티(UAM) 시범 운행 개시, 출퇴근 20분 시대",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "바이오 테크와 IT의 융합 현장",
+          "newsTitle": "개인 맞춤형 헬스케어 AI 서비스, 건강 검진 데이터를 비서처럼",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "자율 이동 로봇의 상용화 단계",
+          "newsTitle": "스마트 홈 가전의 진화: 음성 제어 넘어 사용자 습관 학습",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "에너지 제로 스마트 시티 구현",
+          "newsTitle": "로봇 서빙 서비스 확대, 자영업자 인건비 절감의 효자로",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "개인 맞춤형 디지털 보안 솔루션",
+          "newsTitle": "디지털 트윈 기술로 미리 보는 도시 계획, 침수 피해 예방",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "디지털 헬스케어의 새로운 지평",
+          "newsTitle": "미래 기술 교육 열풍: 초등학생 코딩 대신 'AI 활용법' 배운다",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
+      "id": 65,
       "pressName": "OBS",
-      "category": "영자지",
-      "lastEditedTime": "2026.01.08. 13:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "Global Broadcasting Standards in 2026",
+      "category": "지역",
+      "lastEditedTime": "2026.01.08. 20:55",
+      "coverImg": "https://loremflickr.com/320/200/korea,incheon",
+      "coverNewsTitle": "인천항 물류 혁신으로 동북아 물류 허브 도약 노린다",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "International Media Rights Debate",
+          "newsTitle": "경기도 광역 교통망 확충 계획 발표, 출퇴근 시간 단축 기대",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "New Era of Digital News Reporting",
+          "newsTitle": "지역 사회 상생 프로젝트: 버려진 부지가 공원으로 대변신",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "The Role of Journalists in Crisis",
+          "newsTitle": "경인 지역 전통시장 현대화 사업 성과, 젊은 층 방문객 급증",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "Global Streaming Platform Strategies",
+          "newsTitle": "지자체 소식: 소상공인 특례 보증 대출 지원 규모 확대",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "Technological Shift in Media Ads",
+          "newsTitle": "지역 예술가 기획 전시회 개최, 주민들의 문화 생활 저변 확대",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "Freedom of Press: A Global Update",
+          "newsTitle": "환경 보호 캠페인: 경기 바다 쓰레기 줍기 활동 성황리 종료",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
+      "id": 66,
       "pressName": "Pd Journal",
-      "category": "스포츠/연예",
-      "lastEditedTime": "2026.01.08. 14:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "콘텐츠 제작자가 말하는 흥행 공식",
+      "category": "매거진/전문지",
+      "lastEditedTime": "2026.01.08. 21:10",
+      "coverImg": "https://loremflickr.com/320/200/camera,producer",
+      "coverNewsTitle": "콘텐츠 전쟁터가 된 OTT, PD들이 말하는 '흥행의 본질'",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "드라마 PD들이 꼽은 최고의 작가",
+          "newsTitle": "공영 방송의 역할 재정립, 수신료 논란 속 제작 자율성 확보",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "방송 작가들의 아이디어 기획 노트",
+          "newsTitle": "가짜 뉴스와의 전쟁: 저널리즘 윤리 강화를 위한 보도 지침",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "예능 편집의 기술: 재미의 완성",
+          "newsTitle": "방송 기술의 진화: AI 생성 배경으로 제작비 절감 및 퀄리티 향상",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "방송 기술 스태프들의 노고",
+          "newsTitle": "독점 인터뷰: 화제의 다큐멘터리 제작한 스타 PD의 취재기",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "새로운 포맷의 방송 공모전",
+          "newsTitle": "외주 제작사 처우 개선 및 상생 방안 마련을 위한 국회 토론회",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "방송 윤리와 심의 기준 안내",
+          "newsTitle": "뉴미디어 플랫폼 뉴스 유통 분석, 틱톡형 뉴스가 대세?",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
+      "id": 67,
       "pressName": "ShippingGazette",
       "category": "매거진/전문지",
-      "lastEditedTime": "2026.01.08. 14:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "글로벌 해운 물류 대란 해소 전망",
+      "lastEditedTime": "2026.01.08. 21:25",
+      "coverImg": "https://loremflickr.com/320/200/ship,logistics",
+      "coverNewsTitle": "글로벌 해운 운임 지수 안정세... 물류 공급망 숨통 트였다",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "스마트 항만 자동화 시스템 구축",
+          "newsTitle": "스마트 자율주행 선박 상용화 임박, 해운업계 판도 바뀐다",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "친환경 선박 연료로의 전환 속도",
+          "newsTitle": "친환경 선박 연료로의 전환 가속, 메탄올 추진선 발주 급증",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "전 세계 주요 항로 운임 동향",
+          "newsTitle": "항만 자동화 시스템 도입 성과, 하역 속도 40% 이상 개선",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "해상 운송 보안 기술 강화 방안",
+          "newsTitle": "글로벌 물류 허브 경쟁 격화, 한국 항만의 차별화 전략은?",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "글로벌 물류 허브 경쟁력 분석",
+          "newsTitle": "해상 보험 시장 트렌드 변화: 사이버 위협 담보 상품 인기",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "해기사 양성 및 일자리 지원 사업",
+          "newsTitle": "선원 인력난 해소 대책 시급, 외국인 해기사 채용 기준 완화",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
+      "id": 68,
       "pressName": "sportal korea",
-      "category": "지역",
-      "lastEditedTime": "2026.01.08. 14:30",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "지역 유소년 축구 꿈나무 육성 현장",
+      "category": "스포츠/연예",
+      "lastEditedTime": "2026.01.08. 21:40",
+      "coverImg": "https://loremflickr.com/320/200/football,stadium",
+      "coverNewsTitle": "K-리그 관중 동원력 역대 최고치 경신, 축구 열기 뜨겁다",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "지역 연고 구단의 팬 친화 마케팅",
+          "newsTitle": "유럽 진출 선수들의 활약상 요약, 이번 주말 득점 소식 기대",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "전국 생활 체육 대회 개최 소식",
+          "newsTitle": "축구 국가대표팀 전술 변화 시도, 젊은 피 수혈 효과 보나",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "우리 지역 체육 영웅 기리기 행사",
+          "newsTitle": "아시아 챔피언스 리그 대진표 확정, K-리그 팀들의 전망 분석",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "동네 체육 시설 현대화 사업 추진",
+          "newsTitle": "이적 시장 핫이슈: 스타 플레이어들의 거취 문제 초읽기",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "지자체 스포츠 관광 활성화 전략",
+          "newsTitle": "유소년 축구 시스템 점검, 미래의 국가대표를 육성하는 힘",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "청소년 건강 증진 프로젝트 실시",
+          "newsTitle": "심층 취재: 축구 팬들의 열정적인 응원 문화와 서포터즈 세계",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
+      "id": 69,
       "pressName": "TBC",
-      "category": "종합/경제",
-      "lastEditedTime": "2026.01.08. 14:45",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "지역 중견 기업의 수출 판로 개척",
+      "category": "지역",
+      "lastEditedTime": "2026.01.08. 21:55",
+      "coverImg": "https://loremflickr.com/320/200/daegu,korea",
+      "coverNewsTitle": "대구·경북 통합 신공항 착공... 지역 경제 부활의 신호탄",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "대구 경제 활성화를 위한 신성장 동력",
+          "newsTitle": "지역 중소기업 지원 프로젝트, 수출 판로 개척에 큰 도움",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "지역 일자리 박람회 채용 성과",
+          "newsTitle": "경북 전통 문화의 현대적 재해석, 관광객 유입 효과 톡톡",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "소상공인 지원 정책 및 금융 혜택",
+          "newsTitle": "지역 사회 복지 사각지대 해소, '찾아가는 상담 서비스' 인기",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "전통 시장 관광화 사업 추진 현황",
+          "newsTitle": "특집 다큐멘터리: 영남의 젖줄 낙동강의 사계절과 생태계",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "지역 창업 보육 센터 입주 모집",
+          "newsTitle": "지자체 소식: 대구시, 청년 창업가들을 위한 전용 공간 오픈",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "경제 자유 구역 투자 유치 설명회",
+          "newsTitle": "지역 스포츠 활성화 방안 마련, 유소년 체육 시설 대폭 확충",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
+      "id": 70,
+      "pressName": "TBS",
+      "category": "지역",
+      "lastEditedTime": "2026.01.08. 22:10",
+      "coverImg": "https://loremflickr.com/320/200/seoul,bus",
+      "coverNewsTitle": "서울시 대중교통 요금 체계 개편... 이용 패턴에 따른 할인 혜택",
+      "coverNewsLink": "https://news.naver.com",
+      "newsTitleList": [
+        {
+          "newsTitle": "실시간 교통 정보: 출근길 정체 구간 우회 도로 안내",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "시민 참여 광장: 우리 동네 불편 사항, 어떻게 해결되고 있나",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "서울 도심 속 문화 행사 소식, 주말 나들이 가기 좋은 명소",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "생활 밀착형 뉴스: 버려진 가전제품, 전화 한 통으로 무상 수거",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "기후 위기 대응: 서울시 옥상 정원 가꾸기 사업 신청 안내",
+          "link": "https://news.naver.com"
+        },
+        {
+          "newsTitle": "교통 안전 캠페인: 어린이 보호 구역 내 보행자 보호 의무 강화",
+          "link": "https://news.naver.com"
+        }
+      ]
+    },
+    {
+      "id": 71,
       "pressName": "TheKoreaTimes",
       "category": "영자지",
-      "lastEditedTime": "2026.01.08. 15:00",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "Strengthening Diplomatic Ties in Seoul",
+      "lastEditedTime": "2026.01.08. 22:25",
+      "coverImg": "https://loremflickr.com/320/200/seoul,global",
+      "coverNewsTitle": "Korea's Soft Power Peaks as K-Style Sweeps Global Markets",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "Cultural Exchange Programs for Expats",
+          "newsTitle": "Foreign Investors Bullish on Korean Tech Stocks in 2026",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "Global Startups Flourish in Korea",
+          "newsTitle": "New Visa Regulations to Attract Global Talent to Korea",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "English Language Media Trends",
+          "newsTitle": "Seoul's Smart City Initiatives Highlighted at Global Summit",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "Living in Seoul: A Guide for Foreigners",
+          "newsTitle": "Expats' Guide to Living Sustainably in Modern Korea",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "The K-Food Craze in North America",
+          "newsTitle": "Interview with the Ambassador: Strengthening Korea-US Relations",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "Education Policy Updates for 2026",
+          "newsTitle": "Cultural Festival in Insadong: A Blend of Tradition and Future",
           "link": "https://news.naver.com"
         }
       ]
     },
     {
+      "id": 72,
       "pressName": "TheScienceTimes",
-      "category": "IT",
-      "lastEditedTime": "2026.01.08. 15:15",
-      "coverImg": "https://loremflickr.com/320/200",
-      "coverNewsTitle": "인류의 미래를 바꿀 과학 기술 7선",
+      "category": "영자지",
+      "lastEditedTime": "2026.01.08. 22:40",
+      "coverImg": "https://loremflickr.com/320/200/science,space",
+      "coverNewsTitle": "한국인 최초 달 착륙 도전... '누리호' 개량형 발사 카운트다운",
       "coverNewsLink": "https://news.naver.com",
       "newsTitleList": [
         {
-          "newsTitle": "화성 탐사 로봇의 새로운 발견",
+          "newsTitle": "암 정복의 희망, 맞춤형 면역 항암제 국내 임상 성공적",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "유전자 편집 기술의 윤리적 논쟁",
+          "newsTitle": "상온 초전도체 이론 실제 검증 돌입, 과학계 술렁",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "양자 물리학 실험 성공 사례",
+          "newsTitle": "기후 변화의 경고: 북극빙 감소 속도 예측보다 빨라",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "기후 위기 해결할 탄소 포집 기술",
+          "newsTitle": "양자 암호 통신 상용화, 도청 불가능한 네트워크 구축",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "뇌-컴퓨터 인터페이스(BCI) 성과",
+          "newsTitle": "인공지능의 윤리적 딜레마, 과학자들이 제시한 가이드라인",
           "link": "https://news.naver.com"
         },
         {
-          "newsTitle": "우주 기원 탐구하는 차세대 망원경",
+          "newsTitle": "신비로운 우주의 기원, 제임스웹 망원경의 새로운 사진 분석",
           "link": "https://news.naver.com"
         }
       ]
