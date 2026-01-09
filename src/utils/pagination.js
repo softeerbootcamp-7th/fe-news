@@ -1,11 +1,9 @@
-export const ITEMS_PER_PAGE = 24
-
-export function getPaginatedData(data, page, itemsPerPage = ITEMS_PER_PAGE) {
+export function getPaginatedData(data, page, itemsPerPage) {
   const start = (page - 1) * itemsPerPage
   const end = start + itemsPerPage
   return data.slice(start, end)
 }
 
-export function getTotalPages(data, itemsPerPage = ITEMS_PER_PAGE) {
+export function getTotalPages(data, itemsPerPage) {
   return Math.ceil(data.length / itemsPerPage)
 }

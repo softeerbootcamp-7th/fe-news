@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0421/nsd111533869.png",
@@ -37,6 +38,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0421/nsd111551222.png"
   },
   {
+    "id": 2,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/964.png",
@@ -74,6 +76,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/964.png"
   },
   {
+    "id": 3,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/925.png",
@@ -111,6 +114,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/925.png"
   },
   {
+    "id": 4,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/923.png",
@@ -148,6 +152,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/923.png"
   },
   {
+    "id": 5,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/974.png",
@@ -185,6 +190,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/974.png"
   },
   {
+    "id": 6,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/804.png",
@@ -222,6 +228,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/804.png"
   },
   {
+    "id": 7,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2021/1221/nsd15292271.png",
@@ -259,6 +266,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2021/1221/nsd171157172.png"
   },
   {
+    "id": 8,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd173935353.png",
@@ -296,6 +304,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd173950592.png"
   },
   {
+    "id": 9,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2024/0701/nsd105216680.png",
@@ -333,6 +342,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2024/0701/nsd10529721.png"
   },
   {
+    "id": 10,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/801.png",
@@ -370,6 +380,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/801.png"
   },
   {
+    "id": 11,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/1021/nsd144629334.png",
@@ -407,6 +418,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/1021/nsd144650952.png"
   },
   {
+    "id": 12,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181542864.png",
@@ -444,6 +456,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181556674.png"
   },
   {
+    "id": 13,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0421/nsd113059820.png",
@@ -481,6 +494,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0421/nsd113113968.png"
   },
   {
+    "id": 14,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/993.png",
@@ -518,6 +532,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/993.png"
   },
   {
+    "id": 15,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17236863.png",
@@ -555,6 +570,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17254320.png"
   },
   {
+    "id": 16,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd174041516.png",
@@ -592,6 +608,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd174052596.png"
   },
   {
+    "id": 17,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/932.png",
@@ -629,6 +646,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/932.png"
   },
   {
+    "id": 18,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd174454995.png",
@@ -666,6 +684,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17459528.png"
   },
   {
+    "id": 19,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd1778591.png",
@@ -703,6 +722,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17724719.png"
   },
   {
+    "id": 20,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/922.png",
@@ -740,6 +760,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/922.png"
   },
   {
+    "id": 21,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/954.png",
@@ -777,6 +798,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/954.png"
   },
   {
+    "id": 22,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182326399.png",
@@ -814,6 +836,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182338294.png"
   },
   {
+    "id": 23,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17313279.png",
@@ -851,6 +874,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd173115317.png"
   },
   {
+    "id": 24,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd173553657.png",
@@ -888,6 +912,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17369120.png"
   },
   {
+    "id": 25,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2023/0731/nsd13387289.png",
@@ -925,6 +950,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2023/0731/nsd133759965.png"
   },
   {
+    "id": 26,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/961.png",
@@ -962,6 +988,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/961.png"
   },
   {
+    "id": 27,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/975.png",
@@ -999,6 +1026,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/975.png"
   },
   {
+    "id": 28,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/972.png",
@@ -1036,6 +1064,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/972.png"
   },
   {
+    "id": 29,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18025837.png",
@@ -1073,6 +1102,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18039590.png"
   },
   {
+    "id": 30,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2024/1101/nsd102910563.png",
@@ -1110,6 +1140,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2024/1101/nsd10293597.png"
   },
   {
+    "id": 31,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/963.png",
@@ -1147,6 +1178,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/963.png"
   },
   {
+    "id": 32,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd183051314.png",
@@ -1184,6 +1216,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18312532.png"
   },
   {
+    "id": 33,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd174559608.png",
@@ -1221,6 +1254,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd174615810.png"
   },
   {
+    "id": 34,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/042.png",
@@ -1258,6 +1292,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/042.png"
   },
   {
+    "id": 35,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181433494.png",
@@ -1295,6 +1330,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181453897.png"
   },
   {
+    "id": 36,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/816.png",
@@ -1332,6 +1368,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/816.png"
   },
   {
+    "id": 37,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/941.png",
@@ -1369,6 +1406,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/941.png"
   },
   {
+    "id": 38,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/0804/nsd1343054.png",
@@ -1406,6 +1444,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/0804/nsd13457540.png"
   },
   {
+    "id": 39,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/1116/nsd113848865.png",
@@ -1443,6 +1482,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/1116/nsd113840778.png"
   },
   {
+    "id": 40,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/0817/nsd14491516.png",
@@ -1480,6 +1520,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/0817/nsd14499446.png"
   },
   {
+    "id": 41,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd183149251.png",
@@ -1517,6 +1558,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd1832047.png"
   },
   {
+    "id": 42,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18551402.png",
@@ -1554,6 +1596,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd1866881.png"
   },
   {
+    "id": 43,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/809.png",
@@ -1591,6 +1634,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/809.png"
   },
   {
+    "id": 44,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd173828874.png",
@@ -1628,6 +1672,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd173843283.png"
   },
   {
+    "id": 45,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd16586474.png",
@@ -1665,6 +1710,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd165823173.png"
   },
   {
+    "id": 46,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/969.png",
@@ -1702,6 +1748,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/969.png"
   },
   {
+    "id": 47,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/913.png",
@@ -1739,6 +1786,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/913.png"
   },
   {
+    "id": 48,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/120.png",
@@ -1776,6 +1824,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/120.png"
   },
   {
+    "id": 49,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/920.png",
@@ -1813,6 +1862,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/920.png"
   },
   {
+    "id": 50,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18119444.png",
@@ -1850,6 +1900,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181123257.png"
   },
   {
+    "id": 51,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/1024/nsd174430433.png",
@@ -1887,6 +1938,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/1024/nsd174424325.png"
   },
   {
+    "id": 52,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2021/0907/nsd9423633.png",
@@ -1924,6 +1976,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2021/0907/nsd94216114.png"
   },
   {
+    "id": 53,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/957.png",
@@ -1961,6 +2014,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/957.png"
   },
   {
+    "id": 54,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd1747652.png",
@@ -1998,6 +2052,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd174717805.png"
   },
   {
+    "id": 55,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd175927519.png",
@@ -2035,6 +2090,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd175939310.png"
   },
   {
+    "id": 56,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/973.png",
@@ -2072,6 +2128,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/973.png"
   },
   {
+    "id": 57,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18344563.png",
@@ -2109,6 +2166,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18355852.png"
   },
   {
+    "id": 58,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/914.png",
@@ -2146,6 +2204,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/914.png"
   },
   {
+    "id": 59,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/013.png",
@@ -2183,6 +2242,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/013.png"
   },
   {
+    "id": 60,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/968.png",
@@ -2220,6 +2280,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/968.png"
   },
   {
+    "id": 61,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/1115/nsd153942530.png",
@@ -2257,6 +2318,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/1115/nsd153934427.png"
   },
   {
+    "id": 62,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/1006/nsd205818702.png",
@@ -2294,6 +2356,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/1006/nsd205810265.png"
   },
   {
+    "id": 63,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd16545193.png",
@@ -2331,6 +2394,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd165423235.png"
   },
   {
+    "id": 64,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17819300.png",
@@ -2368,6 +2432,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17834561.png"
   },
   {
+    "id": 65,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2021/0316/nsd103953129.png",
@@ -2405,6 +2470,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2021/0316/nsd104012979.png"
   },
   {
+    "id": 66,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/1018/nsd132851977.png",
@@ -2442,6 +2508,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/1018/nsd132844419.png"
   },
   {
+    "id": 67,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd174812228.png",
@@ -2479,6 +2546,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd174823953.png"
   },
   {
+    "id": 68,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/824.png",
@@ -2516,6 +2584,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/824.png"
   },
   {
+    "id": 69,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2024/0124/nsd95528325.png",
@@ -2553,6 +2622,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2024/0124/nsd95520363.png"
   },
   {
+    "id": 70,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182533332.png",
@@ -2590,6 +2660,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182547177.png"
   },
   {
+    "id": 71,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/971.png",
@@ -2627,6 +2698,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/971.png"
   },
   {
+    "id": 72,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/825.png",
@@ -2664,6 +2736,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/825.png"
   },
   {
+    "id": 73,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/970.png",
@@ -2701,6 +2774,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/970.png"
   },
   {
+    "id": 74,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd1875841.png",
@@ -2738,6 +2812,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18718795.png"
   },
   {
+    "id": 75,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0828/nsd152134481.png",
@@ -2775,6 +2850,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0828/nsd152123742.png"
   },
   {
+    "id": 76,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2020/0730/nsd13728808.png",
@@ -2812,6 +2888,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2020/0730/nsd13719939.png"
   },
   {
+    "id": 77,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/814.png",
@@ -2849,6 +2926,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/814.png"
   },
   {
+    "id": 78,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd165523873.png",
@@ -2886,6 +2964,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd165538205.png"
   },
   {
+    "id": 79,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17414424.png",
@@ -2923,6 +3002,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd174159582.png"
   },
   {
+    "id": 80,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182845526.png",
@@ -2960,6 +3040,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182857171.png"
   },
   {
+    "id": 81,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd1891202.png",
@@ -2997,6 +3078,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18915842.png"
   },
   {
+    "id": 82,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/942.png",
@@ -3034,6 +3116,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/942.png"
   },
   {
+    "id": 83,
     "category": "종합/경제",
     "totalPage": "83",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181012156.png",
@@ -3071,6 +3154,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181024126.png"
   },
   {
+    "id": 84,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2020/0922/nsd152336602.png",
@@ -3108,6 +3192,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2020/0922/nsd152323211.png"
   },
   {
+    "id": 85,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/981.png",
@@ -3145,6 +3230,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/981.png"
   },
   {
+    "id": 86,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd161629389.png",
@@ -3182,6 +3268,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd161647802.png"
   },
   {
+    "id": 87,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18244498.png",
@@ -3219,6 +3306,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18255712.png"
   },
   {
+    "id": 88,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd169122.png",
@@ -3256,6 +3344,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd16919234.png"
   },
   {
+    "id": 89,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd161319927.png",
@@ -3293,6 +3382,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd161333220.png"
   },
   {
+    "id": 90,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/376.png",
@@ -3330,6 +3420,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/376.png"
   },
   {
+    "id": 91,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17349214.png",
@@ -3367,6 +3458,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd1742154.png"
   },
   {
+    "id": 92,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd161128598.png",
@@ -3404,6 +3496,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd161142279.png"
   },
   {
+    "id": 93,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181916575.png",
@@ -3441,6 +3534,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181929906.png"
   },
   {
+    "id": 94,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/340.png",
@@ -3478,6 +3572,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/340.png"
   },
   {
+    "id": 95,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd161857755.png",
@@ -3515,6 +3610,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd161857755.png"
   },
   {
+    "id": 96,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2020/0803/nsd20247547.png",
@@ -3552,6 +3648,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2020/0803/nsd202358800.png"
   },
   {
+    "id": 97,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2021/0420/nsd105139164.png",
@@ -3589,6 +3686,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2021/0420/nsd104943516.png"
   },
   {
+    "id": 98,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/989.png",
@@ -3626,6 +3724,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/989.png"
   },
   {
+    "id": 99,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd161450864.png",
@@ -3663,6 +3762,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd161561.png"
   },
   {
+    "id": 100,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2023/0103/nsd95227559.png",
@@ -3700,6 +3800,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2023/0103/nsd9522095.png"
   },
   {
+    "id": 101,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd162134806.png",
@@ -3737,6 +3838,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/052.png"
   },
   {
+    "id": 102,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182944971.png",
@@ -3774,6 +3876,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18301174.png"
   },
   {
+    "id": 103,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd171363.png",
@@ -3811,6 +3914,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17114288.png"
   },
   {
+    "id": 104,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd161750512.png",
@@ -3848,6 +3952,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd16183692.png"
   },
   {
+    "id": 105,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/934.png",
@@ -3885,6 +3990,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/934.png"
   },
   {
+    "id": 106,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd162017484.png",
@@ -3922,6 +4028,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd162032135.png"
   },
   {
+    "id": 107,
     "category": "방송/통신",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/906.png",
@@ -3959,6 +4066,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/906.png"
   },
   {
+    "id": 108,
     "category": "IT",
     "totalPage": "12",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/818.png",
@@ -3996,6 +4104,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/818.png"
   },
   {
+    "id": 109,
     "category": "IT",
     "totalPage": "12",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/977.png",
@@ -4033,6 +4142,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/977.png"
   },
   {
+    "id": 110,
     "category": "IT",
     "totalPage": "12",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd173217384.png",
@@ -4070,6 +4180,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd173232634.png"
   },
   {
+    "id": 111,
     "category": "IT",
     "totalPage": "12",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/910.png",
@@ -4107,6 +4218,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/910.png"
   },
   {
+    "id": 112,
     "category": "IT",
     "totalPage": "12",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17435516.png",
@@ -4144,6 +4256,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17448335.png"
   },
   {
+    "id": 113,
     "category": "IT",
     "totalPage": "12",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18180929.png",
@@ -4181,6 +4294,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18182244.png"
   },
   {
+    "id": 114,
     "category": "IT",
     "totalPage": "12",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/953.png",
@@ -4218,6 +4332,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/953.png"
   },
   {
+    "id": 115,
     "category": "IT",
     "totalPage": "12",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd173331727.png",
@@ -4255,6 +4370,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd173347174.png"
   },
   {
+    "id": 116,
     "category": "IT",
     "totalPage": "12",
     "logo": "https://s.pstatic.net/static/newsstand/up/2021/1112/nsd102040597.png",
@@ -4292,6 +4408,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2021/1112/nsd102110770.png"
   },
   {
+    "id": 117,
     "category": "IT",
     "totalPage": "12",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/952.png",
@@ -4329,6 +4446,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/952.png"
   },
   {
+    "id": 118,
     "category": "IT",
     "totalPage": "12",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/917.png",
@@ -4366,6 +4484,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/917.png"
   },
   {
+    "id": 119,
     "category": "IT",
     "totalPage": "12",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd1884140.png",
@@ -4403,6 +4522,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18815657.png"
   },
   {
+    "id": 120,
     "category": "영자지",
     "totalPage": "6",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/0615/nsd7251644.png",
@@ -4440,6 +4560,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/0615/nsd7244919.png"
   },
   {
+    "id": 121,
     "category": "영자지",
     "totalPage": "6",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/326.png",
@@ -4477,6 +4598,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/326.png"
   },
   {
+    "id": 122,
     "category": "영자지",
     "totalPage": "6",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/040.png",
@@ -4514,6 +4636,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/040.png"
   },
   {
+    "id": 123,
     "category": "영자지",
     "totalPage": "6",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182116196.png",
@@ -4551,6 +4674,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182130812.png"
   },
   {
+    "id": 124,
     "category": "영자지",
     "totalPage": "6",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182012954.png",
@@ -4588,6 +4712,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182025175.png"
   },
   {
+    "id": 125,
     "category": "영자지",
     "totalPage": "6",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/946.png",
@@ -4625,6 +4750,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/946.png"
   },
   {
+    "id": 126,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/144.png",
@@ -4662,6 +4788,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/144.png"
   },
   {
+    "id": 127,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/410.png",
@@ -4699,6 +4826,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/410.png"
   },
   {
+    "id": 128,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/076.png",
@@ -4736,6 +4864,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/076.png"
   },
   {
+    "id": 129,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/802.png",
@@ -4773,6 +4902,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/802.png"
   },
   {
+    "id": 130,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/311.png",
@@ -4810,6 +4940,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/311.png"
   },
   {
+    "id": 131,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/314.png",
@@ -4847,6 +4978,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/314.png"
   },
   {
+    "id": 132,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/447.png",
@@ -4884,6 +5016,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/447.png"
   },
   {
+    "id": 133,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/312.png",
@@ -4921,6 +5054,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/312.png"
   },
   {
+    "id": 134,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/440.png",
@@ -4958,6 +5092,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/440.png"
   },
   {
+    "id": 135,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/396.png",
@@ -4995,6 +5130,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/396.png"
   },
   {
+    "id": 136,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2020/0610/nsd151458769.png",
@@ -5032,6 +5168,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2020/0610/nsd151458769.png"
   },
   {
+    "id": 137,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2023/0714/nsd125517690.png",
@@ -5069,6 +5206,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2023/0714/nsd125510155.png"
   },
   {
+    "id": 138,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/947.png",
@@ -5106,6 +5244,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/947.png"
   },
   {
+    "id": 139,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/117.png",
@@ -5143,6 +5282,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/117.png"
   },
   {
+    "id": 140,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/139.png",
@@ -5180,6 +5320,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/139.png"
   },
   {
+    "id": 141,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2021/0211/nsd02321523.png",
@@ -5217,6 +5358,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2021/0211/nsd02332888.png"
   },
   {
+    "id": 142,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2020/1228/nsd1681569.png",
@@ -5254,6 +5396,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2020/1228/nsd1688305.png"
   },
   {
+    "id": 143,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2023/0112/nsd92558162.png",
@@ -5291,6 +5434,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/241.png"
   },
   {
+    "id": 144,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/108.png",
@@ -5328,6 +5472,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/108.png"
   },
   {
+    "id": 145,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2021/1130/nsd10159718.png",
@@ -5365,6 +5510,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2021/1130/nsd101536636.png"
   },
   {
+    "id": 146,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/0328/nsd223244325.png",
@@ -5402,6 +5548,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/0328/nsd223257107.png"
   },
   {
+    "id": 147,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/1029/nsd18933667.png",
@@ -5439,6 +5586,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/1029/nsd18956291.png"
   },
   {
+    "id": 148,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/up/2020/0708/nsd94830278.png",
@@ -5476,6 +5624,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2020/0708/nsd94820151.png"
   },
   {
+    "id": 149,
     "category": "스포츠/연예",
     "totalPage": "24",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/962.png",
@@ -5513,6 +5662,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/962.png"
   },
   {
+    "id": 150,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/956.png",
@@ -5550,6 +5700,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/956.png"
   },
   {
+    "id": 151,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18127785.png",
@@ -5587,6 +5738,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18140858.png"
   },
   {
+    "id": 152,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2023/0418/nsd124451202.png",
@@ -5624,6 +5776,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2023/0418/nsd124439166.png"
   },
   {
+    "id": 153,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/955.png",
@@ -5661,6 +5814,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/955.png"
   },
   {
+    "id": 154,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/965.png",
@@ -5698,6 +5852,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/965.png"
   },
   {
+    "id": 155,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2021/1112/nsd10248812.png",
@@ -5735,6 +5890,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2021/1112/nsd102419893.png"
   },
   {
+    "id": 156,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/819.png",
@@ -5772,6 +5928,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/819.png"
   },
   {
+    "id": 157,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182645116.png",
@@ -5809,6 +5966,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182657747.png"
   },
   {
+    "id": 158,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2021/0211/nsd01153196.png",
@@ -5846,6 +6004,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2021/0211/nsd01153196.png"
   },
   {
+    "id": 159,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2020/1019/nsd144531857.png",
@@ -5883,6 +6042,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2020/1019/nsd144525568.png"
   },
   {
+    "id": 160,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/0418/nsd164755323.png",
@@ -5920,6 +6080,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/0418/nsd164818946.png"
   },
   {
+    "id": 161,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18445157.png",
@@ -5957,6 +6118,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd18456870.png"
   },
   {
+    "id": 162,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2021/0728/nsd1110888.png",
@@ -5994,6 +6156,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2021/0728/nsd111059924.png"
   },
   {
+    "id": 163,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/328.png",
@@ -6031,6 +6194,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/328.png"
   },
   {
+    "id": 164,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/984.png",
@@ -6068,6 +6232,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/984.png"
   },
   {
+    "id": 165,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182222162.png",
@@ -6105,6 +6270,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182235729.png"
   },
   {
+    "id": 166,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/0405/nsd15024245.png",
@@ -6142,6 +6308,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/0405/nsd15014578.png"
   },
   {
+    "id": 167,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/0315/nsd181452869.png",
@@ -6179,6 +6346,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/0315/nsd18156958.png"
   },
   {
+    "id": 168,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182742490.png",
@@ -6216,6 +6384,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd182757714.png"
   },
   {
+    "id": 169,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2023/0418/nsd124959421.png",
@@ -6253,6 +6422,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2023/0418/nsd124945796.png"
   },
   {
+    "id": 170,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/966.png",
@@ -6290,6 +6460,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/966.png"
   },
   {
+    "id": 171,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2021/0211/nsd0427277.png",
@@ -6327,6 +6498,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2021/0211/nsd0439284.png"
   },
   {
+    "id": 172,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/0817/nsd14480190.png",
@@ -6364,6 +6536,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/0817/nsd144754102.png"
   },
   {
+    "id": 173,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0219/nsd122730866.png",
@@ -6401,6 +6574,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0219/nsd122750849.png"
   },
   {
+    "id": 174,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/928.png",
@@ -6438,6 +6612,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/928.png"
   },
   {
+    "id": 175,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd175014923.png",
@@ -6475,6 +6650,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd175026897.png"
   },
   {
+    "id": 176,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd174916541.png",
@@ -6512,6 +6688,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd174929782.png"
   },
   {
+    "id": 177,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/354.png",
@@ -6549,6 +6726,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/354.png"
   },
   {
+    "id": 178,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/807.png",
@@ -6586,6 +6764,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/807.png"
   },
   {
+    "id": 179,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/908.png",
@@ -6623,6 +6802,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/908.png"
   },
   {
+    "id": 180,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2023/0330/nsd10125746.png",
@@ -6660,6 +6840,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2023/0330/nsd10148542.png"
   },
   {
+    "id": 181,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/967.png",
@@ -6697,6 +6878,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/967.png"
   },
   {
+    "id": 182,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2020/0615/nsd10319824.png",
@@ -6734,6 +6916,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2020/0615/nsd10311145.png"
   },
   {
+    "id": 183,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2024/1015/nsd144951657.png",
@@ -6771,6 +6954,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2024/1015/nsd14509252.png"
   },
   {
+    "id": 184,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181318779.png",
@@ -6808,6 +6992,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181331721.png"
   },
   {
+    "id": 185,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2021/0222/nsd13325188.png",
@@ -6845,6 +7030,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2021/0222/nsd13338358.png"
   },
   {
+    "id": 186,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/345.png",
@@ -6882,6 +7068,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/345.png"
   },
   {
+    "id": 187,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd165932303.png",
@@ -6919,6 +7106,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd165949113.png"
   },
   {
+    "id": 188,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/979.png",
@@ -6956,6 +7144,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/979.png"
   },
   {
+    "id": 189,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd1761708.png",
@@ -6993,6 +7182,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17614327.png"
   },
   {
+    "id": 190,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/982.png",
@@ -7030,6 +7220,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/982.png"
   },
   {
+    "id": 191,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd173440524.png",
@@ -7067,6 +7258,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17345250.png"
   },
   {
+    "id": 192,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2023/0826/nsd0145257.png",
@@ -7104,6 +7296,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2023/0826/nsd0136682.png"
   },
   {
+    "id": 193,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/815.png",
@@ -7141,6 +7334,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/815.png"
   },
   {
+    "id": 194,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/384.png",
@@ -7178,6 +7372,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/384.png"
   },
   {
+    "id": 195,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2024/1121/nsd174657186.png",
@@ -7215,6 +7410,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2024/1121/nsd174650998.png"
   },
   {
+    "id": 196,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2024/1112/nsd9551191.png",
@@ -7252,6 +7448,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2024/1112/nsd95454919.png"
   },
   {
+    "id": 197,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/355.png",
@@ -7289,6 +7486,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/355.png"
   },
   {
+    "id": 198,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/075.png",
@@ -7326,6 +7524,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/075.png"
   },
   {
+    "id": 199,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/356.png",
@@ -7363,6 +7562,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/356.png"
   },
   {
+    "id": 200,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/808.png",
@@ -7400,6 +7600,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/808.png"
   },
   {
+    "id": 201,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/0328/nsd22503109.png",
@@ -7437,6 +7638,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/0328/nsd22509287.png"
   },
   {
+    "id": 202,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2024/0531/nsd115428801.png",
@@ -7474,6 +7676,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2024/0531/nsd115449376.png"
   },
   {
+    "id": 203,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/1103/nsd124326426.png",
@@ -7511,6 +7714,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/1103/nsd124320554.png"
   },
   {
+    "id": 204,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181217467.png",
@@ -7548,6 +7752,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd181231652.png"
   },
   {
+    "id": 205,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd171358594.png",
@@ -7585,6 +7790,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd171410616.png"
   },
   {
+    "id": 206,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/140.png",
@@ -7622,6 +7828,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/140.png"
   },
   {
+    "id": 207,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd183246211.png",
@@ -7659,6 +7866,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd183259246.png"
   },
   {
+    "id": 208,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/938.png",
@@ -7696,6 +7904,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/938.png"
   },
   {
+    "id": 209,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/915.png",
@@ -7733,6 +7942,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/915.png"
   },
   {
+    "id": 210,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0421/nsd122024363.png",
@@ -7770,6 +7980,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0421/nsd122015588.png"
   },
   {
+    "id": 211,
     "category": "매거진/전문지",
     "totalPage": "62",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/991.png",
@@ -7807,6 +8018,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/991.png"
   },
   {
+    "id": 212,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/388.png",
@@ -7844,6 +8056,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/388.png"
   },
   {
+    "id": 213,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/336.png",
@@ -7881,6 +8094,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/336.png"
   },
   {
+    "id": 214,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17377527.png",
@@ -7918,6 +8132,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd173719609.png"
   },
   {
+    "id": 215,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/821.png",
@@ -7955,6 +8170,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/821.png"
   },
   {
+    "id": 216,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/937.png",
@@ -7992,6 +8208,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/937.png"
   },
   {
+    "id": 217,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0512/nsd155319792.png",
@@ -8029,6 +8246,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0512/nsd155341133.png"
   },
   {
+    "id": 218,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd165638566.png",
@@ -8066,6 +8284,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd165653491.png"
   },
   {
+    "id": 219,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd162538495.png",
@@ -8103,6 +8322,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd162554126.png"
   },
   {
+    "id": 220,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2023/0309/nsd195548501.png",
@@ -8140,6 +8360,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2023/0309/nsd1956932.png"
   },
   {
+    "id": 221,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/333.png",
@@ -8177,6 +8398,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/333.png"
   },
   {
+    "id": 222,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/936.png",
@@ -8214,6 +8436,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/936.png"
   },
   {
+    "id": 223,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd165241278.png",
@@ -8251,6 +8474,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd165254812.png"
   },
   {
+    "id": 224,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0521/nsd11716387.png",
@@ -8288,6 +8512,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0521/nsd1176592.png"
   },
   {
+    "id": 225,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/331.png",
@@ -8325,6 +8550,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/331.png"
   },
   {
+    "id": 226,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/389.png",
@@ -8362,6 +8588,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/389.png"
   },
   {
+    "id": 227,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/907.png",
@@ -8399,6 +8626,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/907.png"
   },
   {
+    "id": 228,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/391.png",
@@ -8436,6 +8664,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/391.png"
   },
   {
+    "id": 229,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/935.png",
@@ -8473,6 +8702,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/935.png"
   },
   {
+    "id": 230,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/338.png",
@@ -8510,6 +8740,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/338.png"
   },
   {
+    "id": 231,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/983.png",
@@ -8547,6 +8778,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/983.png"
   },
   {
+    "id": 232,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/817.png",
@@ -8584,6 +8816,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/817.png"
   },
   {
+    "id": 233,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd174249881.png",
@@ -8621,6 +8854,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17433161.png"
   },
   {
+    "id": 234,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/927.png",
@@ -8658,6 +8892,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/927.png"
   },
   {
+    "id": 235,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/337.png",
@@ -8695,6 +8930,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/337.png"
   },
   {
+    "id": 236,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/1017/nsd202616515.png",
@@ -8732,6 +8968,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/1017/nsd20268714.png"
   },
   {
+    "id": 237,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2020/1119/nsd213345745.png",
@@ -8769,6 +9006,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2020/1119/nsd213339585.png"
   },
   {
+    "id": 238,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd1750914.png",
@@ -8806,6 +9044,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd17513766.png"
   },
   {
+    "id": 239,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/1107/nsd1054226.png",
@@ -8843,6 +9082,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/1107/nsd105354391.png"
   },
   {
+    "id": 240,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2022/0331/nsd155937506.png",
@@ -8880,6 +9120,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2022/0331/nsd15594915.png"
   },
   {
+    "id": 241,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/385.png",
@@ -8917,6 +9158,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/385.png"
   },
   {
+    "id": 242,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/909.png",
@@ -8954,6 +9196,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/909.png"
   },
   {
+    "id": 243,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/976.png",
@@ -8991,6 +9234,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/2020/logo/dark/0604/976.png"
   },
   {
+    "id": 244,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd162426349.png",
@@ -9028,6 +9272,7 @@
     "darkLogo": "https://s.pstatic.net/static/newsstand/up/2025/0418/nsd162439445.png"
   },
   {
+    "id": 245,
     "category": "지역",
     "totalPage": "35",
     "logo": "https://s.pstatic.net/static/newsstand/2020/logo/light/0604/334.png",
