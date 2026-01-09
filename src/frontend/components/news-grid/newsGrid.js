@@ -28,7 +28,7 @@ function getLogoUrl(press, theme = 'auto') {
 
 function renderPage(pageItems, theme = 'auto') {
   const state = store.getState();
-  const subscribedIds = state.subscribedIds;
+  const subscribedIds = state.grid?.subscribedIds || [];
 
   const pageHtml = Array.from({ length: ITEMS_PER_PAGE }, (_, i) => {
     const press = pageItems[i];
@@ -90,7 +90,7 @@ export function renderNewsGrid(container, theme = 'auto') {
   
   containerElement = targetElement;
   const state = store.getState();
-  const currentPageItems = selectors.getCurrentPageItems(state);
+  const currentPageItems = selectors.getCurrentPageItems(state.grid || {});
 
   const initialHtml = `
     <div class="news-grid-page">
@@ -125,7 +125,7 @@ export function renderNewsGrid(container, theme = 'auto') {
   if (existingPrev) existingPrev.remove();
   if (existingNext) existingNext.remove();
 
-  const totalPages = selectors.getTotalPages(state);
+  const totalPages = selectors.getTotalPages(state.grid || {});
   if (totalPages > 1) {
 
     const controlsHtml = `
@@ -152,7 +152,8 @@ export function renderNewsGrid(container, theme = 'auto') {
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
         const state = store.getState();
-        if (selectors.canGoPrev(state.currentPage)) {
+        const gridState = state.grid || {};
+        if (selectors.canGoPrev(gridState)) {
           store.dispatch(prevPage());
         }
       });
@@ -161,14 +162,16 @@ export function renderNewsGrid(container, theme = 'auto') {
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
         const currentState = store.getState();
-        if (selectors.canGoNext(currentState)) {
+        const gridState = currentState.grid || {};
+        if (selectors.canGoNext(gridState)) {
           store.dispatch(nextPage());
         }
       });
     }
 
     const initialState = store.getState();
-    updateButtonVisibility(initialState.currentPage, selectors.getTotalPages(initialState));
+    const gridState = initialState.grid || {};
+    updateButtonVisibility(gridState.currentPage || 0, selectors.getTotalPages(gridState));
   } else {
     prevBtn = null;
     nextBtn = null;
@@ -187,17 +190,19 @@ function initNewsGridSubscription() {
   }
 
   unsubscribePageUpdate = observeStore(
-    (state) => selectors.getCurrentPageItems(state),
+    (state) => selectors.getCurrentPageItems(state.grid || {}),
     (currentPageItems) => {
       if (!pageContainer) return;
       pageContainer.innerHTML = renderPage(currentPageItems, 'auto');
-      updateButtonVisibility(store.getState().currentPage, selectors.getTotalPages(store.getState()));
+      const currentState = store.getState();
+      const gridState = currentState.grid || {};
+      updateButtonVisibility(gridState.currentPage || 0, selectors.getTotalPages(gridState));
     },
     shallowEqual 
   );
 
   unsubscribeSubscriptionUpdate = observeStore(
-    (state) => state.subscribedIds,
+    (state) => state.grid?.subscribedIds || [],
     (subscribedIds) => {
       updateSubscriptionButtons(subscribedIds);
     },

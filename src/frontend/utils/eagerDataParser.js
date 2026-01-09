@@ -68,3 +68,66 @@ export function parseGridDataFromEagerData() {
   return gridItems;
 }
 
+/**
+ * MATERIAL-PC-NEWS-ONELINE 타입의 material을 뉴스 아이템으로 변환
+ * @param {Object} material - MATERIAL-PC-NEWS-ONELINE 객체
+ * @returns {Object|null} 뉴스 아이템 { pressName, title, url, officeId, aid }
+ */
+function extractNewsItemFromMaterial(material) {
+  if (!material || material['@type'] !== 'MATERIAL-PC-NEWS-ONELINE') {
+    return null;
+  }
+
+  const { title, url, officeName, officeId, aid } = material;
+
+  if (!title || !url || !officeName) {
+    return null;
+  }
+
+  return {
+    pressName: officeName,
+    title,
+    url,
+    officeId,
+    aid,
+  };
+}
+
+/**
+ * EAGER DATA에서 rolling 뉴스 데이터 추출
+ * 경로: window["EAGER-DATA"]["PC-NEWSSTAND-YONHAP"]["materials"]
+ * @returns {Array} 뉴스 아이템 리스트
+ */
+export function parseRollingDataFromEagerData() {
+  try {
+    const eagerData = window['EAGER-DATA'];
+    if (!eagerData || !eagerData['PC-NEWSSTAND-YONHAP']) {
+      console.warn('EAGER-DATA not found or PC-NEWSSTAND-YONHAP not available');
+      return [];
+    }
+
+    const yonhapData = eagerData['PC-NEWSSTAND-YONHAP'];
+    
+    // PC-NEWSSTAND-YONHAP.materials 경로에서 materials 배열 추출
+    if (
+      yonhapData?.materials &&
+      Array.isArray(yonhapData.materials)
+    ) {
+      const materials = yonhapData.materials;
+      
+      // MATERIAL-PC-NEWS-ONELINE 타입의 materials만 추출하여 뉴스 아이템으로 변환
+      const newsItems = materials
+        .map(extractNewsItemFromMaterial)
+        .filter((item) => item !== null);
+
+      return newsItems;
+    }
+
+    console.warn('Rolling news materials not found at PC-NEWSSTAND-YONHAP.materials');
+    return [];
+  } catch (error) {
+    console.error('Error parsing rolling data from EAGER-DATA:', error);
+    return [];
+  }
+}
+

@@ -5,17 +5,25 @@ import { renderNewsTicker } from './components/news-ticker/newsTicker.js';
 import { renderPressHeader } from './components/press-header/pressHeader.js';
 import { observeStore } from './store/observeStore.js';
 import { shallowEqual } from './utils/compare.js';
-import { selectors } from './store/modules/grid.js';
+import { selectors as gridSelectors } from './store/modules/grid.js';
+import { selectors as rollingSelectors } from './store/modules/rolling.js';
 
 // 정적 요소 렌더링
 renderNewsstandHeader('#newsstand-header-container');
-renderNewsTicker('#news-ticker-container');
 
 // 동적 요소 렌더링
 observeStore(
+  (state) => rollingSelectors.getNewsList(state.rolling || {}),
+  (newsList) => {
+    renderNewsTicker('#news-ticker-container', newsList);
+  },
+  shallowEqual
+);
+
+observeStore(
   (state) => ({ 
-    currentTab: state.currentTab, 
-    subscribedCount: state.subscribedIds.length 
+    currentTab: state.grid?.currentTab || 'all', 
+    subscribedCount: (state.grid?.subscribedIds || []).length 
   }),
   (selectedState) => {
     renderPressHeader('#press-header-container', selectedState);
@@ -24,7 +32,7 @@ observeStore(
 );
 
 observeStore(
-  (state) => selectors.getFilteredPress(state),
+  (state) => gridSelectors.getFilteredPress(state.grid || {}),
   (filteredPress) => { 
     renderPressToDOM(filteredPress, '.press-content');
     renderNewsGrid('.press-content', 'auto');
