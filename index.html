@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News Stand</title>
     <link rel="stylesheet" href="./src/style.css" />
+    <link rel="icon" href="./src/assets/newspaper.svg" />
   </head>
   <body>
     <div id="app" class="news-stand">
       <!-- 상단 영역 -->
       <header class="news-header">
-        <div class="news-title">
+        <div class="news-title" onclick="location.reload()">
           <img src="./src/assets/newspaper.svg" alt="뉴스스탠드 로고" class="news-logo" />
           <h1 class="news-text">뉴스스탠드</h1>
         </div>
@@ -59,9 +60,9 @@
             <button class="nav-btn nav-btn--prev" aria-label="이전 페이지">
               <img src="./src/assets/left-arrow.svg" alt="" />
             </button>
-            <div class="provider-view__content">
-              <ul class="provider-grid view view--grid view--active"></ul>
-              <ul class="provider-list view view--list"></ul>
+            <div class="provider-content">
+              <ul class="provider-grid view--active"></ul>
+              <ul class="provider-list"></ul>
             </div>
             <button class="nav-btn nav-btn--next" aria-label="다음 페이지">
               <img src="./src/assets/right-arrow.svg" alt="" />
