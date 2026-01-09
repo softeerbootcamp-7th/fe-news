@@ -11,8 +11,8 @@ const observer = new MutationObserver((mutations) => {
       }
 
       // 삭제된 노드의 자식이 이벤트 리스너를 등록했다면, 그것도 지우기
-      if (node.querySelecotAll) {
-        node.querySelecotAll("*").forEach((child) => {
+      if (node.querySelectorAll) {
+        node.querySelectorAll("*").forEach((child) => {
           //위의 동작과 동일
           if (cleanupEventListenerMap.has(child)) {
             cleanupEventListenerMap.get(child)();
