@@ -1,59 +1,11 @@
+import {
+	BrokerEventStatusInfo,
+	DelayEventBroker,
+} from "../domain/delayEventBroker.js";
 import mockNews from "../../assets/mock_news.json";
 
-type CreateRollingTimer = {
-	count: number;
-	unitTime: number; // ms
-	interval: number; // ms
-	callbacks: Function[];
-};
-
-const createRollingTimer = ({
-	count,
-	unitTime,
-	interval,
-	callbacks,
-}: CreateRollingTimer) => {
-	const rollingInfoStates = Array.from({ length: count }, (_, i) => ({
-		isOn: true,
-		callback: callbacks[i],
-		currentIndex: 0,
-	}));
-
-	const startRolling = () => {
-		setInterval(() => {
-			rollingInfoStates.forEach((rollingInfoState, index) => {
-				setTimeout(() => {
-					if (!rollingInfoState.isOn) return;
-
-					rollingInfoState.currentIndex =
-						(rollingInfoState.currentIndex + 1) % 10;
-					rollingInfoState.callback(rollingInfoState.currentIndex);
-				}, index * interval);
-			});
-		}, unitTime);
-	};
-
-	return {
-		start: startRolling,
-		setOn: (index: number) => {
-			if (rollingInfoStates[index]) rollingInfoStates[index].isOn = true;
-		},
-		setOff: (index: number) => {
-			if (rollingInfoStates[index]) rollingInfoStates[index].isOn = false;
-		},
-	};
-};
-
-/**
- * 롤링되는 뉴스 섹션의 개수
- */
 const NEWS_BAR_COUNT = 2;
-
-/**
- *  각 롤링 뉴스 섹션에서 사용할 뉴스의 개수
- */
 const NEWS_BAR_LIST_COUNT = 10;
-
 const ALL_NEWS_DATA = mockNews.slice(0, NEWS_BAR_COUNT * NEWS_BAR_LIST_COUNT);
 
 export function renderNewsBar() {
@@ -61,7 +13,12 @@ export function renderNewsBar() {
 	const ulDOM = document.createElement("ul");
 	ulDOM.className = "flex flex-row justify-between gap-2 w-f";
 
-	const updateCallbacks = [];
+	// 각 뉴스 바가 현재 몇 번째 뉴스를 보여주고 있는지 관리하는 상태
+	const barState = Array.from({ length: NEWS_BAR_COUNT }, () => ({
+		currentDataIndex: 0,
+	}));
+
+	const tasks: { cb: () => BrokerEventStatusInfo }[] = [];
 
 	for (let i = 0; i < NEWS_BAR_COUNT; i++) {
 		const offset = i * NEWS_BAR_LIST_COUNT;
@@ -83,30 +40,35 @@ export function renderNewsBar() {
 		liDOM.append(agencyDOM, linkDOM);
 		ulDOM.appendChild(liDOM);
 
-		// UI를 업데이트하는 콜백 함수 정의
-		const updateUI = (relativeIndex: number) => {
-			const index = offset + relativeIndex;
-			const nextData = ALL_NEWS_DATA[index];
-			if (nextData) {
-				agencyDOM.textContent = nextData.press;
-				linkDOM.textContent = nextData.mainTitle;
-			}
-		};
-		updateCallbacks.push(updateUI);
+		tasks.push({
+			cb: () => {
+				const nextRelativeIndex =
+					(barState[i].currentDataIndex + 1) % NEWS_BAR_LIST_COUNT;
+				const globalIndex = offset + nextRelativeIndex;
+				const nextData = ALL_NEWS_DATA[globalIndex];
 
-		// 호버 이벤트 등록
-		liDOM.addEventListener("mouseenter", () => rollingControl.setOff(i));
-		liDOM.addEventListener("mouseleave", () => rollingControl.setOn(i));
+				if (nextData) {
+					agencyDOM.textContent = nextData.press;
+					linkDOM.textContent = nextData.mainTitle;
+
+					barState[i].currentDataIndex = nextRelativeIndex;
+					return { is_fine: true };
+				}
+				return { is_fine: false };
+			},
+		});
+
+		liDOM.addEventListener("mouseenter", () => newsRoller.pause());
+		liDOM.addEventListener("mouseleave", () => newsRoller.resume());
 	}
 
-	const rollingControl = createRollingTimer({
-		count: NEWS_BAR_COUNT,
+	const newsRoller = new DelayEventBroker({
 		unitTime: 5000,
 		interval: 1000,
-		callbacks: updateCallbacks,
+		tasks: tasks,
 	});
 
-	rollingControl.start();
+	newsRoller.start();
 
 	sectionDOM.appendChild(ulDOM);
 	return sectionDOM;
