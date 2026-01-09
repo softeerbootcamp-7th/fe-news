@@ -1,3 +1,4 @@
+import { cleanupEventListenerMap } from "../../../infrastructure/domObserver";
 import { pressList, store } from "../../../store";
 import { makeNode } from "../../../utils/utils";
 import { RightIcon } from "../../icons/RightIcon";
@@ -114,6 +115,11 @@ export function ListTab({ tabIndex = 0, category = {}, pressId = null }) {
   };
   window.addEventListener("viewGridChange", stopTimerOnGrid);
   window.addEventListener("listViewPageChange", render);
+
+  cleanupEventListenerMap.set($el, () => {
+    window.removeEventListener("viewGridChange", stopTimerOnGrid);
+    window.removeEventListener("listViewPageChange", render);
+  });
 
   render();
   return $el;

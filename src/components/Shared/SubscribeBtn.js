@@ -1,3 +1,4 @@
+import { cleanupEventListenerMap } from "../../infrastructure/domObserver";
 import { store } from "../../store";
 import { makeNode } from "../../utils/utils";
 import { CloseIcon } from "../icons/CloseIcon";
@@ -26,10 +27,13 @@ export function SubscribeBtn(pressId, whiteBg = false) {
     );
   };
 
-  window.addEventListener("subsListChange", render);
-  render();
-
   $el.onclick = () => store.setTargetPressId(pressId);
 
+  window.addEventListener("subsListChange", render);
+  cleanupEventListenerMap.set($el, () => {
+    window.removeEventListener("subsListChange", render);
+  });
+
+  render();
   return $el;
 }

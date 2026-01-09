@@ -106,7 +106,8 @@
     - [x] 애니메이션 추가
 
 - [ ] 기능적으로 불완전한 부분
-  - [ ] 중앙 store의 값이 변하는 것을 addEventListener로 추적하는데, unmount시 removeEventListner해야함.
+  - [x] 중앙 store의 값이 변하는 것을 addEventListener로 추적하는데, unmount시 removeEventListner해야함.
   - [ ] 구독한 언론사가 많을 시 탭 영역 너비를 넘어가기에 드래그로 옮길 수 있어야 함. 자동으로도 넘어가야 할 듯
   - [x] 구독한 언론사 모아보기/전체보기 시 기본 grid/list 기본 옵션이 선택되도록 해야함
   - [ ] 구독버튼 클릭시 서버에서 동작하는 것처럼 딜레이 줘야함
+    - [ ] 구독 버튼 클릭시에는 모달 띄우기 x

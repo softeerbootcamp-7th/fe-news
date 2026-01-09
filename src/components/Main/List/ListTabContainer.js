@@ -3,6 +3,7 @@ import "./ListSection.css";
 import { makeNode } from "../../../utils/utils";
 import { fetchPressListPerCategory } from "../../../mockServer/mockServer";
 import { store } from "../../../store";
+import { cleanupEventListenerMap } from "../../../infrastructure/domObserver";
 
 export function ListTabContainer() {
   const $el = makeNode(`<div class="list-tab-container"></div>`);
@@ -49,6 +50,10 @@ export function ListTabContainer() {
 
   window.addEventListener("viewOnlySubsChange", render);
   render();
+
+  cleanupEventListenerMap.set($el, () => {
+    window.removeEventListener("viewOnlySubsChange", render);
+  });
 
   return $el;
 }

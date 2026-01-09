@@ -14,5 +14,8 @@ function render() {
   app.appendChild(MainContents());
 }
 
-// 2. 초기 실행
+// 2. 이벤트 garbage collector 시작
+startEventRemovingObserver();
+
+// 3. 초기 실행
 render();

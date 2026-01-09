@@ -8,6 +8,7 @@ import { Prev } from "../icons/Previous";
 import { Next } from "../icons/Next";
 import { GridSection } from "./Grid/GridSection";
 import { ListSection } from "./List/ListSection";
+import { cleanupEventListenerMap } from "../../infrastructure/domObserver";
 
 export function MainContents() {
   const $el = makeNode(`
@@ -66,12 +67,19 @@ export function MainContents() {
 
     $contentWrapper.replaceChild($newContent, $oldContent);
   };
+
+  $el.appendChild(MainSectionHeader());
+  $el.appendChild($contentWrapper);
+
   window.addEventListener("pageChange", render);
   window.addEventListener("viewGridChange", render);
   window.addEventListener("viewOnlySubsChange", render);
 
-  $el.appendChild(MainSectionHeader());
-  $el.appendChild($contentWrapper);
+  cleanupEventListenerMap.set($el, () => {
+    window.removeEventListener("pageChange", render);
+    window.removeEventListener("viewGridChange", render);
+    window.removeEventListener("viewOnlySubsChange", render);
+  });
 
   render();
   return $el;

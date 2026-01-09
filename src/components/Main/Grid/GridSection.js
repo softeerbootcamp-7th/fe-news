@@ -2,6 +2,7 @@ import "./GridSection.css";
 import { PressLogo } from "./PressLogo";
 import { store } from "../../../store/index";
 import { makeNode } from "../../../utils/utils";
+import { cleanupEventListenerMap } from "../../../infrastructure/domObserver";
 
 export function GridSection() {
   const $el = makeNode(`<div class="grid-section"></div>`);
@@ -30,6 +31,12 @@ export function GridSection() {
   window.addEventListener("viewOnlySubsChange", reRender);
   window.addEventListener("pageChange", reRender);
   window.addEventListener("subsListChange", reRender);
+
+  cleanupEventListenerMap.set($el, () => {
+    window.removeEventListener("viewOnlySubsChange", reRender);
+    window.removeEventListener("pageChange", reRender);
+    window.removeEventListener("subsListChange", reRender);
+  });
 
   reRender();
   return $el;

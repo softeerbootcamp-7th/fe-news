@@ -1,3 +1,4 @@
+import { cleanupEventListenerMap } from "../../infrastructure/domObserver";
 import { store } from "../../store";
 import { makeNode } from "../../utils/utils";
 import "./Alert.css";
@@ -49,6 +50,11 @@ export function Alert() {
 
   window.addEventListener("subscribeTargetChange", reRender);
   window.addEventListener("subsListChange", reRender);
+
+  cleanupEventListenerMap.set($el, () => {
+    window.removeEventListener("subscribeTargetChange", reRender);
+    window.removeEventListener("subsListChange", reRender);
+  });
 
   return $el;
 }

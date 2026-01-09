@@ -1,3 +1,4 @@
+import { cleanupEventListenerMap } from "../../../infrastructure/domObserver";
 import { fetchNewsListOfOnePress } from "../../../mockServer/mockServer";
 import { pressList, store } from "../../../store";
 import { makeNode } from "../../../utils/utils";
@@ -64,6 +65,9 @@ export function PressDashboard() {
 
   window.addEventListener("currentPressIdChange", render);
 
+  cleanupEventListenerMap.set($el, () => {
+    window.removeEventListener("currentPressIdChange", render);
+  });
   render();
   return $el;
 }
