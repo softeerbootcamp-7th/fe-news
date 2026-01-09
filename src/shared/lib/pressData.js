@@ -22,6 +22,7 @@ function buildPressList(byPress) {
   return [...byPress.entries()].map(([press, item]) => ({
     press,
     logo: item?.logo ?? "",
+    darkLogo: item?.darkLogo ?? "",
   }));
 }
 
@@ -34,6 +35,12 @@ export function normalizePressLogo(logoUrl, theme) {
     return logoUrl.replace("/dark/", "/light/");
   }
   return logoUrl;
+}
+
+export function getPressLogo(entry, theme) {
+  if (!entry) return "";
+  if (theme === "dark" && entry.darkLogo) return entry.darkLogo;
+  return normalizePressLogo(entry.logo ?? "", theme);
 }
 
 export function ensurePressData({

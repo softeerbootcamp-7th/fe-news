@@ -1,4 +1,4 @@
-import { $, normalizePressLogo } from "../../../shared/lib/index.js";
+import { $, getPressLogo } from "../../../shared/lib/index.js";
 import {
   renderActiveTabButtons,
   renderNavButtons,
@@ -26,7 +26,7 @@ export function renderLogoGrid({
         return `<li class="logo-card is-empty" aria-hidden="true"></li>`;
 
       const press = entry.press ?? "";
-      const src = normalizePressLogo(entry.logo ?? "", theme);
+      const src = getPressLogo(entry, theme);
       const isSub = subscribed.has(press);
       const btnText = isSub ? "해지하기" : "구독하기";
       const btnIcon = isSub ? "×" : "+";
