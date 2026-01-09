@@ -40,6 +40,16 @@ export class NewsViewController {
 
   updateNavButtons({ page, totalPages } = {}) {
     const state = this.store?.getState?.() ?? {};
+    if (state.tab === "subscribed" && totalPages <= 1) {
+      renderNavButtons({
+        documentRef: this.document,
+        leftSelector: this.leftSelector,
+        rightSelector: this.rightSelector,
+        page: 0,
+        totalPages: 1,
+      });
+      return;
+    }
     if (state.view === "list") {
       renderNavButtons({
         documentRef: this.document,
