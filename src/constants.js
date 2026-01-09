@@ -1,6 +1,6 @@
-export const STORE_KEY = Object.freeze({
-  PRESS_MODE: "press-mode",
-  VIEW_MODE: "view-mode",
+export const TAB_GROUP = Object.freeze({
+  PRESS_MODE: "pressMode",
+  VIEW_MODE: "viewMode",
 });
 
 export const TAB_VALUE = Object.freeze({
@@ -8,6 +8,13 @@ export const TAB_VALUE = Object.freeze({
   SUBSCRIBED: "subscribed",
   LIST: "list",
   GRID: "grid",
+});
+
+export const TAB_LABELS = Object.freeze({
+  [TAB_VALUE.ALL]: "전체 언론사",
+  [TAB_VALUE.SUBSCRIBED]: "내가 구독한 언론사",
+  [TAB_VALUE.LIST]: "리스트",
+  [TAB_VALUE.GRID]: "그리드",
 });
 
 export const TAB_TYPE = Object.freeze({

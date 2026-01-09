@@ -5,40 +5,38 @@ import {
   PRESS_MODE_TABS,
   VIEW_MODE_TABS,
   VIEW_MODE_ICONS,
-  STORE_KEY,
+  TAB_GROUP,
   BUTTON_ICONS,
-} from "../../src/constants.js";
+} from "@/constants.js";
 
 export function NewsContainer() {
   const pressModeTab = TextTab({
     tabItems: PRESS_MODE_TABS,
-    groupName: STORE_KEY.PRESS_MODE,
+    groupName: TAB_GROUP.PRESS_MODE,
   });
   const viewModeTab = IconTab({
     tabItems: VIEW_MODE_TABS,
     tabIcons: VIEW_MODE_ICONS,
-    groupName: STORE_KEY.VIEW_MODE,
+    groupName: TAB_GROUP.VIEW_MODE,
   });
-  const button = Button({
-    label: "구독하기",
-    iconType: BUTTON_ICONS[0],
-    isWhiteMode: false,
-  });
+
   return `
     <main class="mt-8">
       <div class="flex flex-col gap-4 relative">
-        <div class="flex justify-between">
+        <div class="news-tab-area flex justify-between">
           ${pressModeTab}
           ${viewModeTab}
         </div>
-        <div id="news-content-area"></div>
-        ${button}
-        <button class="absolute top-1/2 left-neg-18 border-none bg-transparent">
+        <div id="news-content-area">
+          <div id="all-press-container" class="grid gap-0 grid-cols-6 grid-rows-4 mt-6 w-930 h-97 border-t-l"></div>
+          <div id="subscribed-press-container" class="grid gap-0 grid-cols-6 grid-rows-4 mt-6 w-930 h-97 border-t-l" style="display: none;"></div>
+        </div>
+        <button id="prev-page-btn" class="absolute top-1/2 left-neg-18 border-none bg-transparent" style="display: none;">
           <svg width="24" height="40" viewBox="0 0 24 40">
             <use href="/assets/icons/left-button.svg"/>
            </svg>
         </button>
-        <button class="absolute top-1/2 right-neg-18 border-none bg-transparent">
+        <button id="next-page-btn" class="absolute top-1/2 right-neg-18 border-none bg-transparent">
           <svg width="24" height="40" viewBox="0 0 24 40">
             <use href="/assets/icons/right-button.svg"/>
            </svg>

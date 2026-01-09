@@ -301,6 +301,9 @@ body {
 .w-full {
   width: 100%;
 }
+.w-5 {
+  width: 20px;
+}
 .w-6 {
   width: 24px;
 }
@@ -318,6 +321,9 @@ body {
 }
 
 /* Height */
+.h-5 {
+  height: 20px;
+}
 .h-6 {
   height: 24px;
 }
@@ -418,10 +424,24 @@ body {
 .border-none {
   border: none;
 }
+/* 부모 그리드용: 위와 왼쪽 테두리 */
+.border-t-l {
+  border-top: var(--border-width) solid var(--border-default);
+  border-left: var(--border-width) solid var(--border-default);
+}
+
+/* 자식 셀용: 아래와 오른쪽 테두리 */
+.border-b-r {
+  border-bottom: var(--border-width) solid var(--border-default);
+  border-right: var(--border-width) solid var(--border-default);
+}
 
 /* Background */
 .bg-surface-default {
   background-color: var(--surface-default);
+}
+.bg-surface-brand-default {
+  background-color: var(--surface-brand-default);
 }
 .bg-surface-alt {
   background-color: var(--surface-alt);
@@ -530,4 +550,68 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-container {
+  background-color: var(--surface-default);
+  border-radius: 8px;
+  padding: 24px;
+  width: 384px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 18px;
+  line-height: var(--lh-medium);
+  color: var(--text-strong);
+}
+
+.modal-button-container {
+  display: flex;
+  gap: 8px;
+}
+
+.modal-button {
+  flex: 1;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: var(--size-r);
+  transition: background-color 0.2s;
+}
+
+.modal-button-secondary {
+  border: 1px solid var(--border-default);
+  background: var(--surface-default);
+  color: var(--text-strong);
+}
+
+.modal-button-secondary:hover {
+  background-color: var(--surface-alt);
+}
+
+.modal-button-primary {
+  background: var(--grayscale-100);
+  border: none;
+  color: var(--text-strong);
+}
+
+.modal-button-primary:hover {
+  background-color: var(--grayscale-200);
 }
