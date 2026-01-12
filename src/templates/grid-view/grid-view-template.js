@@ -1,7 +1,7 @@
 export const gridViewTemplate = () => {
   return `
   <div class="news-grid-view__wrapper">
-    <div class="news-grid-view"></div>
+    <ul class="news-grid-view"></ul>
   </div>
   `;
 };

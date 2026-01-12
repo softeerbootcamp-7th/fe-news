@@ -1,17 +1,27 @@
 import { NEWS_SECTION_STATE } from '@/constants';
 import { Observer } from '@/libs';
-import { getNewspaperForGrid } from '@/models';
-import { newsSectionStore } from '@/stores';
+import {
+  getNewspaperForGrid,
+  getNewspaperForList,
+  newsSectionStore,
+} from '@/models';
 
 import { GridView } from '../grid-view';
+import { ListView } from '../list-view';
 import { NewsSectionHeader } from '../news-section-header';
 import { RollingSection } from '../rolling-section';
 import { SubscribedNewsNumber } from '../subscribed-news-number';
 
 export const Main = async () => {
   let currentView = newsSectionStore.getState().view;
-  let gridViewCleanupFunctions = null;
-  const { newspaperList: totalNewspaperList } = await getNewspaperForGrid();
+  let cleanupFunctions = null;
+
+  const [totalNewspaperList, categoryNewspaperMap] = await Promise.all([
+    getNewspaperForGrid().then(({ newspaperList }) => newspaperList),
+    getNewspaperForList().then(
+      ({ categoryNewspaperMap }) => categoryNewspaperMap,
+    ),
+  ]);
 
   const updateMain = () => {
     const newView = newsSectionStore.getState().view;
@@ -20,19 +30,26 @@ export const Main = async () => {
     }
 
     currentView = newView;
+    cleanupFunctions?.();
+    cleanupFunctions = null;
 
     if (newView === NEWS_SECTION_STATE.VIEW.LIST) {
-      if (gridViewCleanupFunctions) {
-        gridViewCleanupFunctions();
-      }
+      const { cleanup: cleanupListView } = ListView({ categoryNewspaperMap });
+      cleanupFunctions = cleanupListView;
       return;
     }
 
-    GridView({ newspaperList: totalNewspaperList }).then(
-      ({ cleanup: cleanupGridView }) => {
-        gridViewCleanupFunctions = cleanupGridView;
-      },
-    );
+    if (newView === NEWS_SECTION_STATE.VIEW.GRID) {
+      const $listViewWrapper = document.querySelector(
+        '.news-list-view__wrapper',
+      );
+      $listViewWrapper?.remove();
+      GridView({ newspaperList: totalNewspaperList }).then(
+        ({ cleanup: cleanupGridView }) => {
+          cleanupFunctions = cleanupGridView;
+        },
+      );
+    }
   };
 
   const observer = new Observer(updateMain);
@@ -43,7 +60,7 @@ export const Main = async () => {
   SubscribedNewsNumber();
   GridView({ newspaperList: totalNewspaperList }).then(
     ({ cleanup: cleanupGridView }) => {
-      gridViewCleanupFunctions = cleanupGridView;
+      cleanupFunctions = cleanupGridView;
     },
   );
 };

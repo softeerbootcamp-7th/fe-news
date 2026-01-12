@@ -3,6 +3,7 @@ import {
   createGridCardListHTML,
   getArrowButtonPosition,
   gridViewEventHandler,
+  gridViewStore,
   insertArrowButtons,
   totalGridViewEventHandler,
 } from '@/models';
@@ -14,15 +15,11 @@ import {
  * @returns {{cleanup: () => void}}
  */
 export const TotalGridView = ({ newspaperList }) => {
-  const {
-    PAGE_SIZE,
-    INITIAL_PAGE,
-    LEFT_BUTTON_CLASS_NAME,
-    RIGHT_BUTTON_CLASS_NAME,
-  } = GRID_VIEW;
+  const { PAGE_SIZE, LEFT_BUTTON_CLASS_NAME, RIGHT_BUTTON_CLASS_NAME } =
+    GRID_VIEW;
 
   const totalPage = Math.ceil(newspaperList.length / PAGE_SIZE) - 1;
-  const currentPage = INITIAL_PAGE;
+  const currentPage = gridViewStore.getTotalGridViewPageIndex();
 
   const $gridView = document.querySelector('.news-grid-view');
 
