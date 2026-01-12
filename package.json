@@ -11,16 +11,16 @@
     "url": "git+https://github.com/forhyundaisofteer/fe-news.git"
   },
   "license": "ISC",
-  "author": "",
-  "type": "commonjs",
-  "main": "index.js",
+  "author": "Jiun Hong",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server",
-    "format": "prettier --write \"**/*.{js,json,html,css,md}\""
+    "start": "vite build && wrangler dev --port 3000",
+    "build": "vite build",
+    "deploy": "npm run build && wrangler deploy"
   },
   "devDependencies": {
-    "live-server": "^1.2.2",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.0",
+    "vite": "^6.4.1",
+    "wrangler": "^3.114.16"
   }
 }
