@@ -20,10 +20,12 @@ export function updateView({type, view, currentPage, currentData, itemCount}) {
         });
     }
     else if (type === "LIST-UPDATE") {
-        let viewUpdate = document.getElementById('news-list-container');
+        let viewUpdate = document.getElementById('list-content-wrapper');
 
         updateList({
-            container: viewUpdate
+            container: viewUpdate,
+            data: currentData,
+            page: currentPage
         });
     }
 

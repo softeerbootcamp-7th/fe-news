@@ -1,4 +1,6 @@
-// import { loadNews, getCategories } from "../../store/newsStore.js";
+import { getNewsByCategory, findFirstPage } from "../../store/newsStore.js";
+import { getNewsDuration, updatePage } from "./listController.js";
+
 export function initListCategories(categories) {
     const fragment = document.createDocumentFragment(); // DOM 한번만 조작
     
@@ -9,8 +11,14 @@ export function initListCategories(categories) {
     for (let i = 0; i < categories.length; i++) {   // 각 카테고리 탭 생성
         const cell = document.createElement('li');
         cell.className = 'news-category available-medium14';
-        cell.id = `category-${toSlug(categories[i])}`;
+        cell.id = `category-${categories[i]}`;
 
+        // 상태 바
+        const progress_bar = document.createElement('span');
+        progress_bar.className = 'progress-bar';
+        cell.appendChild(progress_bar);
+
+        // 카테고리 종류 텍스트
         const cateName = document.createElement('div');
         cateName.classList = 'news-category-text';
         cateName.innerHTML = categories[i];
@@ -18,7 +26,7 @@ export function initListCategories(categories) {
         
         // 각 카테고리 클릭 시
         cell.addEventListener('click', () => {
-            categorySetActive(categories[i]);
+            selectCategory(categories[i]);
         });
 
         // 초기 렌더 시 첫번째 카테고리가 자동으로 활성화상태
@@ -26,6 +34,14 @@ export function initListCategories(categories) {
             cell.classList.toggle('available-medium14');
             cell.classList.toggle('active');
             cell.classList.toggle('selected-bold14');
+
+            let bar = cell.querySelector('.progress-bar');            
+            bar.style.animation = `fillProgress ${getNewsDuration()/1000}s linear forwards`
+
+            let count = document.createElement('div');
+            count.className = `cate-count`;
+            count.innerHTML = `1/${getNewsByCategory(categories[i]).length}`;
+            cell.appendChild(count);
         }
         
         fragment.appendChild(cell); // fragment에 생성된 카테고리 추가
@@ -35,26 +51,16 @@ export function initListCategories(categories) {
     return category_container;  // 컨테이너 반환
 }
 
-function categorySetActive(category) {
-    // 현재 활성화된 카테고리에서 active효과 삭제
-    const prevCategory = document.querySelectorAll('.news-category.active');
-    prevCategory.forEach(e => {
-        e.classList.toggle('active');
-        e.classList.toggle('selected-bold14');
-        e.classList.toggle('available-medium14');
-    });
-
-    // 선택 카테고리 active효과 추가
-    let cate = document.getElementById(`category-${toSlug(category)}`);
-    cate.classList.toggle('available-medium14');
-    cate.classList.toggle('active');
-    cate.classList.toggle('selected-bold14');
+// 카테고리 선택 시 렌더링
+function selectCategory(category) {
+    let currentPage = findFirstPage(category);
+    updatePage(currentPage);
 }
 
-// 카테고리id 지정하기 전에 정리
-function toSlug(text) {
-    return text
-        .toLowerCase()
-        .replace(/\+s/g, '-')           // 공백 제거
-        .replace(/[^\w\-가-힣]/g, '');  // 특수문자 제거
-}
+// // 카테고리id 지정하기 전에 정리
+// function toSlug(text) {
+//     return text
+//         .toLowerCase()
+//         .replace(/\+s/g, '-')           // 공백 제거
+//         .replace(/[^\w\-가-힣]/g, '');  // 특수문자 제거
+// }
