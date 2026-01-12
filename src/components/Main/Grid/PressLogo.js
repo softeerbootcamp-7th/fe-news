@@ -12,7 +12,7 @@ export function PressLogo(press) {
   $el.appendChild($logo);
 
   const $containerOnHover = makeNode(`<div class="press-logo-overlay"></div>`);
-  $containerOnHover.appendChild(SubscribeBtn(press));
+  $containerOnHover.appendChild(SubscribeBtn(press.id));
 
   $el.appendChild($containerOnHover);
   return $el;

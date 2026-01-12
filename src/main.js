@@ -4,6 +4,7 @@ import "./styles/reset.css";
 import { Header } from "./components/Header/Header.js";
 import { RollingSection } from "./components/Rollable/RollingSection.js";
 import { MainContents } from "./components/Main/MainContent.js";
+import { startEventRemovingObserver } from "./infrastructure/domObserver.js";
 
 const app = document.querySelector("#app");
 
@@ -14,5 +15,8 @@ function render() {
   app.appendChild(MainContents());
 }
 
-// 2. 초기 실행
+// 2. 이벤트 garbage collector 시작
+startEventRemovingObserver();
+
+// 3. 초기 실행
 render();

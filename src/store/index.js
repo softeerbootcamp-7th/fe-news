@@ -149,27 +149,28 @@ export const tabNames = [
 ];
 export const store = {
   state: {
-    viewOnlySubs: false,
-    viewGrid: true,
+    viewOnlySubs: true,
+    viewGrid: false,
     shuffledPressList: shuffle(pressList),
     currentPage: 0,
-    maxPage: parseInt(pressList.length / 24),
+    maxPage: Math.ceil(pressList.length / 24),
     targetPressId: null,
     targetPressName: "",
     subscribedIds: loadSavedSubs(), // 구독한 언론사의 ID를 저장하는 Sets
 
-    currentPressNumber: 0,
+    // List view에서 추가되는 변수들 _ 언론사 순서는 page 변수 재사용
+    listViewPage: 0, //탭 번호
+    currentPressId: 0, //현재 언론사의 'id'를 저장할 변수
+    currentTabIndex: 0, //현재 카테고리 인덱스 지정. ?-> page를 0으로? 아님 배열이 있으니 0~72중 해당 값으로?
+
+    pressNumPerTab: [0, 0, 0, 0, 0, 0, 0], // 카테고리별 언론사 개수 목록. fetch해서 받아오고 넣기
     timerId: null,
     pressData: [],
   },
   setViewOnlySubs(bool) {
     if (this.state.viewOnlySubs === bool) return;
     this.state.viewOnlySubs = bool;
-    this.state.currentPage = 0;
-    this.setTargetPressId(null, "");
-    this.clearTimerId();
-    this.state.currentPressNumber = 0;
-    this.setMaxPage();
+    this.setViewGrid(!bool);
     notify("viewOnlySubs");
   },
   setViewGrid(bool) {
@@ -178,7 +179,7 @@ export const store = {
     this.state.currentPage = 0;
     this.setTargetPressId(null, "");
     this.clearTimerId();
-    this.state.currentPressNumber = 0;
+    this.state.listViewPage = 0;
     this.setMaxPage();
     notify("viewGrid");
   },
@@ -188,23 +189,18 @@ export const store = {
     window.dispatchEvent(new Event("pressListOrder"));
   },
   setMaxPage() {
-    if (this.state.viewGrid) {
-      if (this.state.viewOnlySubs)
-        //그리드 뷰, 구독한 것만 모이보기
-        this.state.maxPage = parseInt(
-          Array.from(this.state.subscribedIds).length / 24
-        );
-      //그리드 뷰, 전체 보기
-      else this.state.maxPage = parseInt(pressList.length / 24);
-    } else {
-      if (this.state.viewOnlySubs)
-        //리스트 뷰, 구독한 언론사 탭 보기
-        this.state.maxPage = parseInt(
-          Array.from(this.state.subscribedIds).length - 1
-        );
-      //리스트 뷰, 전체 탭 보기
-      else this.state.maxPage = 7 - 1;
-    }
+    const prevPage = this.state.currentPage;
+    let nextMaxPage = 0;
+    if (this.state.viewOnlySubs)
+      //그리드 뷰, 구독한 것만 모이보기
+      nextMaxPage =
+        Math.ceil(Array.from(this.state.subscribedIds).length / 24) - 1;
+    //그리드 뷰, 전체 보기
+    else nextMaxPage = Math.ceil(pressList.length / 24) - 1;
+
+    this.state.maxPage = nextMaxPage;
+    if (prevPage > nextMaxPage) this.state.currentPage = nextMaxPage;
+    notify("page");
   },
   /** page 설정 함수 */
   setPage(page) {
@@ -214,20 +210,26 @@ export const store = {
     if (page === 0) this.state.currentPage = 0;
     else this.state.currentPage = result;
 
-    this.setCurrentPressNumber(0);
     this.setTargetPressId(null, "");
     notify("page");
   },
   /** 구독/해제 버튼 클릭시 Alert모달에 전달할 언론사 정보 관리 함수 */
-  setTargetPressId(id, name) {
+  setTargetPressId(id) {
     if (this.state.targetPressId === id) {
       this.state.targetPressId = null;
       this.state.targetPressName = "";
     } else {
       this.state.targetPressId = id;
-      this.state.targetPressName = name;
+      this.state.targetPressName = pressNames[id];
     }
     notify("subscribeTarget");
+  },
+  subscribePress(pressId) {
+    const { subscribedIds } = this.state;
+    subscribedIds.add(pressId);
+    saveSubscribedIds(subscribedIds);
+    this.setMaxPage();
+    notify("subsList");
   },
   /** Alert모달에서 [확인]기능 함수 */
   toggleSub() {
@@ -246,22 +248,91 @@ export const store = {
    *
    */
   setCurrentTabIndex(index) {
-    if (index < 0 || index > this.state.maxPage) this.state.currentPage = 0;
-    else this.state.currentPage = index;
+    if (index < 0 || index > tabNames.length - 1)
+      this.state.currentTabIndex = 0;
+    else this.state.currentTabIndex = index;
 
-    this.setCurrentPressNumber(0);
-    notify("page");
+    this.setListViewPage(0);
+    notify("tabIndex");
   },
-  setCurrentPressNumber(number) {
-    if ((number !== 0) & (number !== 1)) return;
+  goBackTabIndex() {
+    const targetIndex = (this.state.currentTabIndex + 6) % 7;
+    this.state.currentTabIndex = targetIndex;
 
-    if (number === 0) this.state.currentPressNumber = 0;
-    else if (number === 1)
-      this.state.currentPressNumber = this.state.currentPressNumber + 1;
+    this.state.listViewPage = this.state.pressNumPerTab[targetIndex] - 1;
+  },
 
-    notify("currentPressNumber");
+  /**
+   *  리스트 뷰 탭 이동 핵심 함수야!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   */
+  setListViewPage(number) {
+    const prevTabIdx = this.state.listViewPage;
+    if ((number !== 0) & (number !== 1) & (number !== -1)) return;
+
+    if (number === 0) this.state.listViewPage = 0;
+    else if (number === 1) {
+      /**
+       * 다음 페이지 눌렀다!! 늘리자!!!!
+       */
+      if (this.state.viewOnlySubs) {
+        //구독한 언론사가 탭인 뷰
+        if (prevTabIdx >= Array.from(this.state.subscribedIds).length - 1) {
+          // 구독한 언론사가 탭인 뷰에서 늘리려는데, 마지막 구독한 언론사라면? 0으로 돌아가자
+          this.state.listViewPage = 0;
+        } else {
+          // 구독한 언론사가 탭인 뷰에서 늘리려는데 마지막이 아니야? 그냥 늘려
+          this.state.listViewPage = prevTabIdx + 1;
+        }
+      } else {
+        //카테고리가 탭인 뷰
+        if (
+          prevTabIdx >=
+          this.state.pressNumPerTab[this.state.currentTabIndex] - 1
+        ) {
+          // 카테고리 뷰에서 늘리고 있는데, 마지막 언론사라면? 카테고리 인덱스 늘리고, 0으로 가야지!
+          this.setCurrentTabIndex(this.state.currentTabIndex + 1);
+          this.state.listViewPage = 0;
+        } else {
+          //카테고리 뷰에서 늘리는데, 마지막 언론사가 아니면? 그냥 다음거 보여주면 됨
+          this.state.listViewPage = prevTabIdx + 1;
+        }
+      }
+    } else if (number === -1) {
+      /**
+       * 이전 페이지 눌렀다!! 줄이자!!!!
+       */
+      if (this.state.viewOnlySubs) {
+        //구독한 언론사가 탭인 뷰
+        if (prevTabIdx === 0) {
+          // 구독한 언론사가 탭인 뷰에서 줄이려는데, 첫번째 구독한 언론사라면? 마지막으로 보내자
+          this.state.listViewPage =
+            Array.from(this.state.subscribedIds).length - 1;
+        } else {
+          // 구독한 언론사가 탭인 뷰에서 줄이려는데 첫번째 아니야? 그냥 줄여
+          this.state.listViewPage = prevTabIdx - 1;
+        }
+      } else {
+        //카테고리가 탭인 뷰
+        if (prevTabIdx === 0) {
+          // 카테고리 뷰에서 줄이고 있는데, 첫번째 언론사라면? 마지막의 마지막으로 가야지!
+          this.goBackTabIndex();
+        } else {
+          //카테고리 뷰에서 줄이는데, 첫번째 언론사가 아니면? 그냥 이전거 보여주면 됨
+          this.state.listViewPage = prevTabIdx - 1;
+        }
+      }
+    }
+
+    notify("listViewPage");
+  },
+  jumpPressId(index) {
+    this.state.listViewPage = index;
+    notify("listViewPage");
   },
   setTimerId(id) {
+    if (this.state.timerId !== null) {
+      this.clearTimerId();
+    }
     this.state.timerId = id;
   },
   clearTimerId() {
@@ -271,5 +342,21 @@ export const store = {
   setPressData(data) {
     this.state.pressData = data;
     notify("pressData");
+  },
+  //카테고리별 언론사 개수 저장 함수
+  setPressNumPerTab(arr) {
+    if (arr.length !== tabNames.length) return;
+    this.state.pressNumPerTab = arr;
+
+    notify("pressNumPerTab");
+  },
+  setListViewPageAfterCheck(orderingId, targetNum) {
+    if (orderingId !== this.state.listViewPage) return;
+    this.setListViewPage(targetNum);
+  },
+  setCurrentPressId(pressId) {
+    this.state.currentPressId = pressId;
+
+    notify("currentPressId");
   },
 };

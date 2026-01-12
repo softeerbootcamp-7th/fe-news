@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 388px;
-  overflow: hidden;
+  min-height: 388px;
+  min-width: 0;
 }
 
 .list-tab-container {
@@ -12,18 +12,22 @@
   background-color: var(--surface-alt);
   border: 1px solid var(--border-default);
   height: 40px;
+  overflow-x: scroll;
+  align-items: center; /* 추가: 자식 탭들을 수직 중앙으로 강제 정렬 */
+}
+.list-tab-container::-webkit-scrollbar {
+  height: 0px; /* 가로 스크롤바의 높이 */
+  width: 0px; /* 세로 스크롤바의 너비 */
 }
 
 .list-tab {
   display: flex;
   align-items: center;
   padding: 0 16px;
-  gap: 40px;
-  font-size: 14px;
-  line-height: 100%;
   height: 40px;
   cursor: pointer;
   white-space: nowrap;
+  position: relative;
 }
 
 .list-tab.active {
@@ -32,11 +36,52 @@
   font-weight: bold;
   cursor: default;
 }
-.list-tab span {
+.list-tab-contents {
+  z-index: 2;
+  font-size: 14px;
+  line-height: 100%;
+  display: flex; /* 추가: 내부 요소를 flex로 정렬 */
+  align-items: center; /* 추가: 수직 중앙 정렬 */
+}
+.list-tab-contents span {
+  margin-left: 40px;
+  display: inline-flex; /* inline에서 inline-flex로 변경 */
+  line-height: 1; /* 추가적인 줄간격 간섭 방지 */
+  align-items: center; /* 내부 svg를 수직 중앙 정렬 */
+}
+.list-tab-contents svg {
+  width: 14px;
   height: 14px;
 }
 
-.list-tab.active svg {
-  width: 14px;
-  height: 14px;
+.list-tab:hover .list-tab-contents {
+  text-decoration: underline;
+}
+
+.list-tab.active:hover .list-tab-contents {
+  text-decoration: none;
+}
+
+:root {
+  --animation-time: 20s;
+}
+.list-tab-progress-bar {
+  position: absolute;
+  background-color: var(--blue-500);
+  left: 0;
+  transform-origin: left;
+  width: 100%;
+  height: 100%;
+
+  animation-name: fillRect;
+  animation-duration: var(--animation-time);
+}
+
+@keyframes fillRect {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
