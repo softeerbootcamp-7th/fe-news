@@ -1,9 +1,13 @@
 # fe-news
+
 ### 개발 기능
+
 #### 미션 설계
+
 - 미션 설계
 
 #### HTML
+
 - 화면 구성 설계
 - html 코드 작성
   - 기본 상단 영역
@@ -12,16 +16,18 @@
   - 리스트 뷰
 
 #### CSS
+
 - 레이아웃 및 스타일 작업
 
 #### JS
+
 - 로고 클릭시, 새로고침
 - 새로고침시 언론사 순서 랜덤 배치
 - 구독 기능
   - 구독하기 이벤트
   - loading indicator 표시
   - 페이지 전환
-  - 내가 구독한 언론사 페이지에서 표시 
+  - 내가 구독한 언론사 페이지에서 표시
   - 구독시 페이지 전환
 - 롤링 기능
   - 5초마다 뉴스 전환(좌우 영역 시간차 1초)
@@ -37,6 +43,7 @@
   - 구독 리스트 불러와서 반영
 
 #### 학습정리
+
 - [6일차 주간 수업](https://www.notion.so/using2/Softeer-bootcamp-7-Day06-2df1b5b8021280c69e8ce292881b3dae)
 - [requestAnimationFrame로 애니메이션 수행하기](https://www.notion.so/using2/Softeer-bootcamp-7-requestAnimationFrame-2df1b5b80212801d9dc4d303575aedac)
 - [1주차 학습 정리 및 회고](https://www.notion.so/using2/Softeer-bootcamp-7-1-2e01b5b8021280e9a8f2dcefefd6db3b)
@@ -45,3 +52,4 @@
 - [mouseenter, mouseleave, mouseover, mouseout](https://www.notion.so/using2/Softeer-bootcamp-7-mouseenter-mouseleave-mouseover-mouseout-2e11b5b8021280e494ace4e8a84eaa51)
 - [자동 페이지네이션 타이머 구현기 - 클래스 설계부터 this 바인딩까지](https://www.notion.so/using2/Softeer-bootcamp-7-this-2e21b5b80212800ab7d7f30a591ecb54)
 - [Observer vs PubSub pattern: 복잡한 상태 관리, 패턴으로 해결하기](https://www.notion.so/using2/Softeer-bootcamp-7-Observer-vs-PubSub-pattern-2e31b5b8021280509b8bc34cc396ae85)
+- [2주차 학습 정리 및 회고](https://www.notion.so/using2/Softeer-bootcamp-7-2-2e31b5b8021280f1b252e957aeac129d)
