@@ -23,7 +23,6 @@
                   fill="currentColor"
                 />
               </svg>
-              
 
               <span class="brand__name">뉴스스탠드</span>
             </a>
@@ -149,6 +148,40 @@
         </section>
       </main>
     </div>
+
+    <template id="news-list-template">
+      <div class="newslist">
+        <div class="newslist__tabs" data-role="newslist-tabs"></div>
+        <div class="newslist__panel">
+          <div class="newslist__header">
+            <div class="newslist__press">
+              <img class="newslist__logo" alt="" />
+              <span class="newslist__name"></span>
+            </div>
+            <div class="newslist__meta">
+              <time class="newslist__time"></time>
+              <button
+                class="newslist__sub"
+                type="button"
+                data-action="toggle-sub"
+              >
+                구독하기
+              </button>
+            </div>
+          </div>
+          <div class="newslist__body">
+            <a class="newslist__main" target="_blank" rel="noreferrer">
+              <img class="newslist__thumb" alt="" />
+              <div class="newslist__main-text">
+                <strong class="newslist__main-title"></strong>
+              </div>
+            </a>
+            <ul class="newslist__subs"></ul>
+          </div>
+      
+        </div>
+      </div>
+    </template>
 
     <dialog
       class="confirm-dialog"

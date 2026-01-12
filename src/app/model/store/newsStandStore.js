@@ -1,5 +1,12 @@
 import { createStore } from "./createStore.js";
 
+export const DEFAULT_NEWSLIST_STATE = {
+  categoryOrder: [],
+  categoryIndex: 0,
+  pressIndexByCategory: {},
+  subscriptionIndex: 0,
+};
+
 export function getInitialNewsStandState(overrides = {}) {
   const base = {
     page: 0,
@@ -7,23 +14,22 @@ export function getInitialNewsStandState(overrides = {}) {
     theme: "light",
     view: "grid",
     tab: "all", // "all" | "subscribed"
-    shuffledByTheme: {
-      light: null,
-      dark: null,
-    },
+    pressList: [],
+    shuffledPress: [],
     subscribedPress: new Set(),
-  };
-
-  const shuffledByTheme = {
-    light: overrides.shuffledByTheme?.light ?? base.shuffledByTheme.light,
-    dark: overrides.shuffledByTheme?.dark ?? base.shuffledByTheme.dark,
+    newsList: { ...DEFAULT_NEWSLIST_STATE },
   };
 
   return {
     ...base,
     ...overrides,
-    shuffledByTheme,
+    pressList: overrides.pressList ?? base.pressList,
+    shuffledPress: overrides.shuffledPress ?? base.shuffledPress,
     subscribedPress: overrides.subscribedPress ?? base.subscribedPress,
+    newsList: {
+      ...base.newsList,
+      ...(overrides.newsList ?? {}),
+    },
   };
 }
 
