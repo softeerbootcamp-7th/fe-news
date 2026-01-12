@@ -1,9 +1,13 @@
+* {
+  box-sizing: border-box;
+}
 #page {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 header {
   display: flex;
@@ -33,17 +37,23 @@ h1 {
 #subscribed-press {
   display: flex;
 }
+
 #press-view {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  width: 100%;
 }
 
 #newspaper-icon {
   color: var(--text-point);
 }
-#grid-view-icon {
+
+.view-type-icon {
+  color: var(--text-weak);
+}
+
+.is-active-icon {
   color: var(--text-point);
 }
 .auto-rolling-news {
@@ -71,6 +81,10 @@ h1 {
 #tab-button-bar {
   display: flex;
   gap: 24px;
+}
+
+.tab-button {
+  color: var(--text-weak);
 }
 #tab-and-viewer {
   display: flex;
@@ -144,9 +158,6 @@ h1 {
 .selected-text {
   color: var(--text-strong);
 }
-#subscribed-press-tab {
-  color: var(--text-weak);
-}
 
 #main-view {
   display: flex;
@@ -169,4 +180,42 @@ h1 {
 
 .subscribe-info-txt {
   padding: 4px;
+}
+
+.is-active-text {
+  color: var(--text-strong);
+}
+
+.alert {
+  visibility: hidden;
+  width: 320px;
+  background-color: var(--surface-alt);
+  border: 1px solid var(--border-default);
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  box-shadow: 0px 2px 18px 0px #14212b14;
+}
+
+.alert-message {
+  padding: 24px;
+
+  background-color: var(--surface-default);
+  text-align: center;
+}
+
+.alert .buttons {
+  height: 48px;
+
+  display: flex;
+}
+
+.alert .buttons > button {
+  padding: 10px;
+  border: 1px solid var(--border-default);
+  width: 50%;
+}
+
+.alert button:hover {
+  text-decoration: underline;
 }
