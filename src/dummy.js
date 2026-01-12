@@ -45,11 +45,11 @@ export const NEWS_LISTS = [
   ],
 ];
 
-export const PRESS_LIST = Array(24)
+export const PRESS_LIST = Array(96)
   .fill(null)
   .map((_, i) => ({
     id: i + 1,
-    name: `press${i + 1}`,
+    name: `언론사 ${i + 1}`,
     lightLogo: `/assets/light_mode_logo/press${i + 1}.png`,
     darkLogo: `/assets/dark_mode_logo/press${i + 1}.png`,
   }));

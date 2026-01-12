@@ -1,35 +1,22 @@
-// src/main.js
 import { Header } from "./components/Header.js";
 import { RollingNews } from "./components/RollingNews.js";
 import { NewsContainer } from "./components/NewsContainer.js";
-import { NEWS_LISTS, PRESS_LIST, SUBSCRIBED_PRESS_IDS } from "./dummy.js";
-import { Store } from "./store/Store.js";
+import { NEWS_LISTS, SUBSCRIBED_PRESS_IDS } from "./dummy.js";
+import { PRESS_MODE_TABS } from "./constants.js";
 import {
-  PRESS_MODE_TABS,
-  VIEW_MODE_TABS,
-  STORE_KEY,
-  TAB_TYPE,
-  TAB_VALUE,
-} from "../src/constants.js";
-import { NewsGrid } from "./components/NewsGrid.js";
-import { NewsList } from "./components/NewsList.js";
-
-// 앱 상태
-// const state = {
-//   isDarkMode: window.matchMedia("(prefers-color-scheme: dark)").matches,
-// };
-
-const appStore = new Store({
-  subscribedPressIds: SUBSCRIBED_PRESS_IDS,
-  // 키 이름을 STORE_KEY.PRESS_MODE ("press-mode")와 일치시킴
-  [STORE_KEY.PRESS_MODE]: PRESS_MODE_TABS[0],
-  [STORE_KEY.VIEW_MODE]: VIEW_MODE_TABS[1],
-});
+  updateSubscribedPressCount,
+  updateSubscribedPressCards,
+  updatePressMode,
+  updateAllPressSubscriptionState,
+  updatePageIdx,
+} from "./subscribers/newsStandSubscriber.js";
+import { NewsStandObservable } from "./store/NewsStandObservable.js";
+import { setupEventListeners } from "./events/appClickHandler.js";
+import { tabSubscriber } from "./subscribers/tabSubscriber.js";
 
 // 렌더링
 const render = () => {
   const app = document.getElementById("app");
-
   const header = Header({ title: "뉴스스탠드" });
   const rollingNews = RollingNews({
     newsLists: NEWS_LISTS,
@@ -56,91 +43,30 @@ window
 // 앱 초기화
 render();
 
-// 클릭시 상태 업데이트
-document.getElementById("app").addEventListener("click", (e) => {
-  // 탭 클릭 처리
-  const tabTarget = e.target.closest("[data-tab-group]");
-  if (tabTarget) {
-    const { tabItem, tabGroup } = tabTarget.dataset;
-
-    // press mode 탭
-    if (tabGroup === STORE_KEY.PRESS_MODE) {
-      // debugger;
-      appStore.setState({ [STORE_KEY.PRESS_MODE]: tabItem });
-    }
-    // view mode 탭
-    else if (tabGroup === STORE_KEY.VIEW_MODE) {
-      // debugger;
-      appStore.setState({ [STORE_KEY.VIEW_MODE]: tabItem });
-    }
-  }
+// 전체/구독 탭
+// 페이지 인덱스
+// 구독정보 저장
+const newsStandObservable = new NewsStandObservable({
+  pressMode: PRESS_MODE_TABS[0],
+  pageIdx: 0,
+  subscribedPressIds: SUBSCRIBED_PRESS_IDS,
 });
 
-// 호버시 상태 업데이트
-// document.getElementById("app").addEventListener("mouseover", (e) => {
-//   // 버튼 호버 처리
-//   const buttonTarget = e.target.closest("button");
-//   if (buttonTarget) {
-//     buttonTarget.classList.toggle("border-bold");
-//   }
-//   // 탭 호버 처리
-//   const tabTarget = e.target.closest("[data-tab-group]");
-// });
+// 구독정보로 배지 업데이트
+newsStandObservable.subscribe(updateSubscribedPressCount);
+// 구독정보로 구독언론사 카드업데이트
+newsStandObservable.subscribe(updateSubscribedPressCards);
+// 전체/구독 화면 업데이트
+newsStandObservable.subscribe(updatePressMode);
+// 전체 언론사 탭의 구독 상태 업데이트
+newsStandObservable.subscribe(updateAllPressSubscriptionState);
+// 페이지 인덱스 변경 시 카드 렌더링
+newsStandObservable.subscribe(updatePageIdx);
+// 탭 스타일 업데이트
+newsStandObservable.subscribe(tabSubscriber);
 
-// document.getElementById("app").addEventListener("mouseout", (e) => {
-//   const buttonTarget = e.target.closest("button");
-//   if (buttonTarget) {
-//     buttonTarget.classList.toggle("border-default");
-//   }
-// });
+// 이벤트 리스너 설정
+setupEventListeners({ newsStandObservable });
 
-// 탭 변화에 대한 리스너 추가
-appStore.subscribe((state) => {
-  const tabTargets = document.querySelectorAll("[data-tab-group]");
-
-  tabTargets.forEach((target) => {
-    // tabGroup에 "pressModeTab" 혹은 "viewModeTab"이 담겨 있음
-    const { tabItem, tabGroup, tabType } = target.dataset;
-
-    // 대괄호 표기법을 사용하여 state에서 동적으로 값을 꺼내옵니다.
-    const isActive = state[tabGroup] === tabItem;
-
-    // 텍스트 탭 처리
-    if (tabType === TAB_TYPE.TEXT) {
-      target.classList.toggle("text-strong", isActive);
-      target.classList.toggle("selected-bold16", isActive);
-      target.classList.toggle("text-weak", !isActive);
-      target.classList.toggle("available-medium16", !isActive);
-    }
-
-    // 아이콘 탭 처리
-    if (tabType === TAB_TYPE.ICON) {
-      const svg = target.querySelector("svg");
-      svg?.classList.toggle("fill-strong", isActive);
-      svg?.classList.toggle("fill-weak", !isActive);
-    }
-  });
-});
-
-// press-mode, view-mode에 변화에 대한 news conatiner 업데이트 리스너 추가
-appStore.subscribe((state) => {
-  const contentArea = document.getElementById("news-content-area");
-  if (!contentArea) return;
-
-  // 1. 데이터 필터링 (전체 vs 구독)
-  const displayList =
-    state[STORE_KEY.PRESS_MODE] === TAB_VALUE.ALL
-      ? PRESS_LIST
-      : PRESS_LIST.filter((press) =>
-          state.subscribedPressIds.includes(press.id)
-        );
-
-  // 2. 뷰 모드 결정 (그리드 vs 리스트)
-  const contentHtml =
-    state[STORE_KEY.VIEW_MODE] === TAB_VALUE.GRID
-      ? NewsGrid({ pressList: displayList })
-      : NewsList({ pressList: displayList });
-
-  // 3. 바뀐 부분만 주입
-  contentArea.innerHTML = contentHtml;
-});
+// 초기 상태 notify하여 초기 렌더링 트리거
+newsStandObservable.notify(newsStandObservable.state);

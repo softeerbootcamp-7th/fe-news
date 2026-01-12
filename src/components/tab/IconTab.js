@@ -1,4 +1,4 @@
-import { TAB_TYPE } from "../../../src/constants.js";
+import { TAB_TYPE } from "@/constants.js";
 export function IconTab({ tabItems, tabIcons, groupName = "default" }) {
   const tabItemsHtml = tabItems
     .map(
