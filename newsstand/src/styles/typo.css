@@ -125,6 +125,10 @@
   color: var(--color-text-white-weak);
 }
 
+.text-white-default {
+  color: white;
+}
+
 /* white 텍스트 (dark surface 위) */
 .text-on-dark {
   color: var(--color-text-white-default);

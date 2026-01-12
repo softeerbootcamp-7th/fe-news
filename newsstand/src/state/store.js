@@ -1,3 +1,5 @@
+import { PRESS_CATEGORIES } from "../lib/pressData";
+import { getNextIdx, getPrevIdx } from "../lib/utils";
 import { createStore } from "./createStore";
 
 const initialState = {
@@ -5,6 +7,10 @@ const initialState = {
   view: "list", // "grid" | "list"
   subscribedPresses: [],
   page: 1,
+  listCategoryIdx: 0,
+  listPressIdx: 0,
+  isLoading: false,
+  listPressData: null,
 };
 
 export const store = createStore(initialState);
@@ -29,6 +35,14 @@ export const actions = {
     });
   },
 
+  setListIdx({ categoryIdx, pressIdx }) {
+    store.setState((prev) =>
+      prev.listCategoryIdx === categoryIdx && prev.listPressIdx === pressIdx
+        ? prev
+        : { ...prev, listCategoryIdx: categoryIdx, listPressIdx: pressIdx }
+    );
+  },
+
   setSubscribe(press) {
     store.setState((prev) => {
       const nextIds = [...prev.subscribedPresses, press];
@@ -43,5 +57,39 @@ export const actions = {
       );
       return { ...prev, subscribedPresses: nextIds };
     });
+  },
+
+  setLoading(l) {
+    store.setState((prev) =>
+      prev.isLoading === l ? prev : { ...prev, isLoading: l }
+    );
+  },
+
+  setListPressData(data) {
+    store.setState((prev) =>
+      prev.listPressData === data ? prev : { ...prev, listPressData: data }
+    );
+  },
+
+  setNext() {
+    const { listCategoryIdx, listPressIdx, listPressData } = store.getState();
+    const totalLength =
+      listPressData[PRESS_CATEGORIES[listCategoryIdx]].presses.length;
+    const { categoryIdx, pressIdx } = getNextIdx(
+      listCategoryIdx,
+      listPressIdx,
+      totalLength
+    );
+    actions.setListIdx({ categoryIdx, pressIdx });
+  },
+
+  setPrev() {
+    const { listCategoryIdx, listPressIdx, listPressData } = store.getState();
+    const { categoryIdx, pressIdx } = getPrevIdx(listCategoryIdx, listPressIdx, listPressData);
+    actions.setListIdx({ categoryIdx, pressIdx });
+  },
+
+  setCategory(categoryIdx) {
+    actions.setListIdx({ categoryIdx, pressIdx: 0 });
   },
 };

@@ -6,9 +6,14 @@ function easeInOutCubic(x) {
   return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 }
 
+function linear(x) {
+  return x;
+}
+
 const EASING_FUNCTIONS = {
   easeInOutSine,
   easeInOutCubic,
+  linear,
 };
 
 export const animateTranslateY = ({
@@ -35,6 +40,24 @@ export const animateTranslateY = ({
     }
 
     if (onComplete) onComplete();
+  };
+  requestAnimationFrame(tick);
+};
+
+export const animateProgressBar = ({ el, duration }) => {
+  const start = performance.now();
+
+  const tick = (now) => {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const currentX = progress;
+
+    el.style.transform = `scaleX(${currentX})`;
+
+    if (progress < 1) {
+      requestAnimationFrame(tick);
+      return;
+    }
   };
   requestAnimationFrame(tick);
 };

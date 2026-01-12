@@ -27,7 +27,6 @@
 
 .surface-brand-default {
   background-color: var(--color-surface-brand-default);
-  color: var(--color-text-white-default);
 }
 
 .surface-brand-alt {

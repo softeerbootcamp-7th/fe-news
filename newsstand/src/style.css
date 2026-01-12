@@ -8,7 +8,6 @@
 
 /* Main Container Styles */
 .ns-main-container {
-  outline: 1px solid red;
   padding: 58px 175px;
   width: 1280px;
   height: 720px;
@@ -229,6 +228,15 @@
 
 .ns-press-list__nav {
   height: 40px;
+  position: relative;
+}
+
+.ns-list-nav__btn {
+  position: absolute;
+  top: 160px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .ns-press-list__nav-list {
@@ -245,6 +253,31 @@
   display: flex;
   align-items: center;
   padding: 16px;
+  position: relative;
+  overflow: hidden;
+  height: 40px;
+}
+
+.ns-press-list__nav-item--active {
+  width: 166px;
+  justify-content: space-between;
+}
+
+.ns-press-list__nav-item--active-indicator {
+  display: flex;
+  gap: 2px;
+  z-index: 1;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.ns-press-list__nav-item--active-bar {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  transform: scaleX(30%);
 }
 
 .ns-press-list__content-container {
