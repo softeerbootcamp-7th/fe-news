@@ -1,6 +1,6 @@
 import { pressLogos, PER_PAGE } from '../data/pressLogo.js';
 import { createSubButton } from './subButton.js';
-import { isSubscribed } from '../state/subscription.js';
+import { isSubscribed, subscribe } from '../store/subscription.js';
 import { shuffle } from '../utils/utils.js';
 
 export function initPressGrid() {
@@ -17,11 +17,15 @@ export function initPressGrid() {
       : shuffledPressLogos.filter(({ id }) => isSubscribed(id));
   }
 
+  function getLastPage(length) {
+    return Math.max(0, Math.ceil(length / PER_PAGE) - 1);
+  }
+
   function render() {
     grid.innerHTML = '';
 
     const data = getGridData();
-    const lastPage = Math.max(0, Math.ceil(data.length / PER_PAGE) - 1);
+    const lastPage = getLastPage(data.length);
 
     const start = currentPage * PER_PAGE;
     const items = data.slice(start, start + PER_PAGE);
@@ -35,9 +39,11 @@ export function initPressGrid() {
 
       const logo = document.createElement('img');
       logo.src = src;
+      logo.alt = id;
+      logo.loading = 'lazy';
       logo.className = 'provider-logo';
 
-      const subButton = createSubButton(id);
+      const subButton = createSubButton(id, pressGrid);
 
       wrapper.append(logo, subButton);
       li.appendChild(wrapper);
@@ -52,6 +58,15 @@ export function initPressGrid() {
     }
 
     return { page: currentPage, lastPage };
+  }
+
+  function update() {
+    const data = getGridData();
+    const lastPage = getLastPage(data.length);
+    if (currentPage > lastPage) {
+      currentPage = lastPage;
+    }
+    return render();
   }
 
   function setTab(tab) {
@@ -74,10 +89,18 @@ export function initPressGrid() {
     return render();
   }
 
-  return {
+  const unsubscribe = subscribe(update);
+
+  const pressGrid = {
     render,
     setTab,
     goPrev,
     goNext,
+    update,
+    destroy() {
+      unsubscribe();
+    },
   };
+
+  return pressGrid;
 }

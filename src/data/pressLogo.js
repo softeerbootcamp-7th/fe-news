@@ -1,7 +1,10 @@
+import pressData from '../data/pressData.json';
+
 export const TOTAL_PRESS = 96;
 export const PER_PAGE = 24;
 
-export const pressLogos = Array.from({ length: TOTAL_PRESS }, (_, i) => ({
-  id: i + 1,
-  src: `/src/assets/press-logo/light/${i + 1}.png`,
+export const pressLogos = pressData.slice(0, TOTAL_PRESS).map((press) => ({
+  id: press.press,
+  src: press.logo,
+  darkSrc: press.darkLogo,
 }));
