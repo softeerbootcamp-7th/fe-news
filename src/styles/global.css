@@ -1,5 +1,7 @@
 body {
   background-color: var(--surface-default);
+  color: var(--text-default);
+  font: var(--medium14);
 }
 button {
   background-color: transparent;
@@ -15,6 +17,11 @@ h3,
 ul {
   margin: 0;
   padding: 0;
+}
+a {
+  text-decoration: none;
+  height: fit-content;
+  color: inherit;
 }
 
 .button-label {
@@ -42,9 +49,7 @@ ul {
     display: block;
   }
   & > p {
-    /* medium-12 */
-    font-size: var(--font-size-12);
-    font-weight: var(--font-weight-medium);
+    font: var(--medium12);
     margin-right: 4px;
   }
 }
@@ -87,9 +92,7 @@ ul {
   }
 
   & > span {
-    /* medium-12 */
-    font-size: var(--font-size-12);
-    font-weight: var(--font-weight-medium);
+    font: var(--medium12);
   }
 }
 
@@ -131,6 +134,7 @@ dialog {
     justify-content: center;
     align-items: center;
     & > h3 {
+      font: var(--medium16);
       text-align: center;
       color: var(--text-default);
       & > strong {

@@ -5,9 +5,14 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  base: "/fe-news/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
+  },
+  build: {
+    outDir: "dist",
+    emptyOutDir: true,
   },
 });

@@ -1,15 +1,36 @@
 import { VIEW_TAB, CATEGORY_LIST } from "@/types/constant";
 
-export function parseDateString(datetime) {
+export function formatDate(datetime) {
+  // 2026. 01. 08. 목요일
   const options = {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
     weekday: "long",
   };
-  const formatted = new Intl.DateTimeFormat("ko-KR", options).format(datetime);
+  return new Intl.DateTimeFormat("ko-KR", options).format(datetime);
+}
 
-  return formatted;
+function parseDatetimeString(text, baseDate = new Date()) {
+  // 01월 07일 10:28 직접 편집
+  const regex = /(\d{2})월\s*(\d{2})일\s*(\d{2}):(\d{2})/;
+  const match = text.match(regex);
+
+  if (!match) return null;
+
+  const [, month, day, hour, minute] = match.map(Number);
+  const year = baseDate.getFullYear();
+
+  return new Date(year, month - 1, day, hour, minute);
+}
+
+function formateDatetime(datetime) {
+  // 2026.01.07. 10:28
+  const pad = (n) => String(n).padStart(2, "0");
+
+  return `${datetime.getFullYear()}.${pad(datetime.getMonth() + 1)}.${pad(
+    datetime.getDate()
+  )}. ${pad(datetime.getHours())}:${pad(datetime.getMinutes())}`;
 }
 
 export function parsePressData(rawData) {
@@ -18,6 +39,7 @@ export function parsePressData(rawData) {
       category,
       totalPage,
       logo,
+      darkLogo,
       press,
       time,
       mainTitle,
@@ -30,8 +52,9 @@ export function parsePressData(rawData) {
       category,
       totalPage,
       logo,
+      darkLogo,
       name: press,
-      time,
+      time: formateDatetime(parseDatetimeString(time)),
       mainNews: {
         title: mainTitle,
         thumbnail: mainImg,
