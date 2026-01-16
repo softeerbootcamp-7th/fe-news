@@ -1,9 +1,9 @@
 import '@/assets/css/style.css'
 import { Header } from '@/components/Header';
 import { PressView } from '@/components/PressView';
-import { NewsBar } from '@/components/NewsBar';
-import { rollingHeadLine } from '@/js/rolling';
-import { renderGrid } from '@/js/grid';
+import { NewsBar, rollingHeadLine } from '@/components/NewsBar';
+import { renderGrid } from '@/components/PressView/Grid';
+import { Label } from '@/components/Label';
 
 
 const app = document.getElementById('app');

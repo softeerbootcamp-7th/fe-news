@@ -15,24 +15,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Get commit hash
-        id: commit
-        run: echo "hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      # 1. Node.js 환경 설정 (npm 명령어를 쓰기 위해 필요)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20   # 프로젝트에 맞는 버전으로 조정 가능 (보통 18 or 20)
+          cache: 'npm'
 
-      - name: Prepare Build Directory
-        run: |
-          mkdir build
-          rsync -av --exclude='.git' --exclude='build' . build/
+      # 2. 의존성 설치 (npm ci는 CI 환경에서 더 빠르고 안정적입니다)
+      - name: Install dependencies
+        run: npm ci
 
-          HASH=${{ steps.commit.outputs.hash }}
-          mkdir -p build/snapshots/$HASH
+      # 3. 빌드 실행 (이 단계가 끝나면 dist 폴더가 생성됨)
+      - name: Build
+        run: npm run build
 
-          rsync -av --exclude='.git' --exclude='build' . build/snapshots/$HASH/
-          ls -R build
-
+      # 4. GitHub Pages 배포
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-          keep_files: true
+          publish_dir: ./dist   # ./build에서 ./dist로 변경
+          force_orphan: true    # 기존 히스토리 없이 깔끔하게 덮어쓰려면 true (추천)

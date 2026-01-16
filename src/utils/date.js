@@ -1,10 +1,11 @@
+import { DATE_CONSTANTS } from '@/constants';
+
 export function getDate() {
   const date = new Date();
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
   const dayOfWeek = date.getDay();
-  const days = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
 
-  return `${year}. ${month}. ${day}. ${days[dayOfWeek]}`;
+  return `${year}. ${month}. ${day}. ${DATE_CONSTANTS.DAYS[dayOfWeek]}`;
 }
