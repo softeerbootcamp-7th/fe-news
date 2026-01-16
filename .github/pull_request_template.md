@@ -1,23 +1,21 @@
-## PR 작성 전 체크 리스트
- 
-- `타이틀`은 “[실명] - 이번 작업을 한 문장의 메시지로 요약한 것”으로 설정합니다.
-    - 예시) [김서울] - 나만의 체크리스트 작성
-- `완료 작업 목록`을 기록합니다. (WHAT)
-    - 커밋이 작게 쪼개져 있기 때문에 맥락을 알 수 있도록 어떤 작업을 완료했는지 드러나야 합니다.
-    - 완료하지 않은 것은 반드시 제외합니다. 동작 화면이 있다면 스크린 캡처를 포함해도 좋습니다.
-- `고민과 해결 과정`을 기록합니다. (HOW+WHY)
-    - 어떤 문제를 해결하려고 무엇을 시도했는지, 결과적으로 어떻게 해결했는지 포함합니다.
-- `AI 활용 경험`을 정리하여 기록합니다.
-    - 미션을 해결하며 AI를 어느 부분에 활용했는지 정리합니다.
-    - AI 활용에 대해 좋았던 점, 아쉬웠던 점 등 구체적인 사례가 있다면 함께 기록해보세요.
-
-
-**<위 내용은 모두 삭제하고 PR 보내세요>**
-
----- 절취선 ----
-
 ## 완료 작업 목록
-
+  - NPM 환경 구성
+    - npm init
+  - Module System 변경 (CommonJS -> ESM)
+    - package.json에서 `"type": "commonjs"` -> `"type": "module"`
+  - .gitignore 세팅
+    - node_modules
+  - Live Server 세팅
+    - npm install -D live-server
+    - package.json에서 `"scripts" : {"start": "live-server"}`로 설정
+  - HTML 뼈대 잡기
+    - Semantic Elements 사용
+      - section
+      - header
+      - time 
+    - WAI-ARIA 적용
+      - aria-hidden
+      - aria-label
+      - role
 ## 고민과 해결 과정
-
-## AI 활용 경험
+  - 동적 html 들이 많을텐데, 어떻게 유지보수 쉽게 파일을 나눌 수 있을지 고민 중
